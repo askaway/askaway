@@ -1,3 +1,20 @@
+# git instructions!
+
+here's how to pull down other people's changes from github:
+
+    git pull origin master
+
+here's how to commit your work:
+
+    git status (shows you what you've changed)
+    git add <file_name> (says you intend to save the file)
+    git commit -m "your message here" (saves your changes)
+
+here's how to push your changes up to github (after you've committed):
+
+    git push origin master
+
+
 == Welcome to Rails
 
 Rails is a web-application framework that includes everything needed to create
