@@ -5,3 +5,224 @@
   To use Glyphicons sprites instead of Font Awesome, replace with "require twitter-bootstrap-static/sprites"
   =require twitter-bootstrap-static/fontawesome
   */
+
+/*-----------Border-box Mixin-----------doesn't work because no LESS?
+
+*, *:before, *:after {
+    .box-sizing(border-box);
+}
+
+input {
+    .box-sizing(content-box);
+}
+
+
+/*-----------COLOR SWATCHES-----------*/
+
+.colorswatches {
+  border: 1px solid #e1e1e8;
+  padding: 2%;
+}
+
+.colorswatches .span2{
+  padding: 1%;
+  font-size: 18px;
+  height: 50px;
+}
+
+.salmon {
+  color: #FFF;
+  background-color: rgb(255, 99, 71);
+}
+
+.palesalmon {
+  background-color: rgba(255, 99, 71, 0.1);
+}
+
+.colorswatches .palesalmon:hover {
+  background-color: rgba(255, 99, 71, 0.4);
+}
+.green {
+  color: #FFF;
+  background-color:rgb(182, 179, 40);
+}
+
+.palegreen {
+  background-color: rgba(182, 179, 40, 0.2);
+}
+
+.colorswatches .palegreen:hover {
+  background-color: rgba(182, 179, 40, 0.4);
+}
+.teal {
+  color: #FFF;
+  background-color: rgb(38, 178, 170);
+}
+.paleteal {
+  background-color: rgba(38, 178, 170, 0.2);
+}
+
+.colorswatches .paleteal:hover {
+  background-color: rgba(38, 178, 170, 0.4);
+}
+
+.purple {
+  color: #FFF;
+  background-color:rgb(81, 71, 104);
+}
+
+.palepurple {
+  background-color:rgba(81, 71, 104, 0.2);
+}
+
+.colorswatches .palepurple:hover {
+  background-color:rgba(81, 71, 104, 0.4);
+}
+
+.tan {
+  background-color: rgb(250, 247, 240)
+}
+
+
+
+
+
+
+/*-----------TYPOGRAPHY-----------*/
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Nunito';
+
+}
+
+p {
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.muted {
+  color: #999999;
+  font-size: 13px;
+  line-height: 16px;
+  margin-top: 5px;
+}
+
+
+
+/*-----------BUTTONS-----------*/
+
+.btn-primary {
+  background-color: hsl(14, 94%, 65%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#fa9779", endColorstr="#f97951");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#fa9779), to(#f97951));
+  background-image: -moz-linear-gradient(top, #fa9779, #f97951);
+  background-image: -ms-linear-gradient(top, #fa9779, #f97951);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fa9779), color-stop(100%, #f97951));
+  background-image: -webkit-linear-gradient(top, #fa9779, #f97951);
+  background-image: -o-linear-gradient(top, #fa9779, #f97951);
+  background-image: linear-gradient(#fa9779, #f97951);
+  border-color: #f97951 #f97951 hsl(14, 94%, 63%);
+  color: #333 !important;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.13);
+  -webkit-font-smoothing: antialiased;
+}
+
+
+/*-----------SPEECHBUBBLES-----------*/
+
+
+.bubble-left 
+{
+position: relative;
+padding: 2%;
+margin: 2%;
+background: #EEE;
+-webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+border-radius: 10px;
+}
+
+.bubble-left:after 
+{
+content: "";
+position: absolute;
+top: 24px;
+left: -15px;
+border-style: solid;
+border-width: 15px 15px 15px 0;
+border-color: transparent #EEE;
+display: block;
+width: 0;
+z-index: 1;
+}
+
+.bubble-top 
+{
+position: relative;
+padding: 2%;
+margin: 2%;
+background: #EEE;
+-webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+border-radius: 10px;
+}
+
+.bubble-top:after 
+{
+content: "";
+position: absolute;
+top: -15px;
+left: 41px;
+border-style: solid;
+border-width: 0 15px 15px;
+border-color: #EEE transparent;
+display: block;
+width: 0;
+z-index: 1;
+}
+
+.yan:after {
+content: "Authorised by C. Johnston of 35–8 Cambridge Terrace, Wellington 6011";
+display: block;
+color: #999999;
+font-size: 13px;
+line-height: 16px;
+margin-top:5px;
+}
+
+
+.young:after {
+content: "Authorised by Nicola Young of B44/10 Ebor Street, Te Aro, Wellington 6011";
+display: block;
+color: #999999;
+font-size: 13px;
+line-height: 16px;
+margin-top: 5px;
+}
+
+
+/*-----------ACCORDION-----------*/
+
+.accordion-heading {
+
+}
+
+.accordion-toggle {
+  font-size: 17.5px;
+  line-height: 22px;
+  color: #000;
+  padding: 16px 30px;
+
+  background-color: rgba(255, 99, 71, 0.2);
+}
+.accordion-toggle:hover {
+  background-color: rgba(255, 99, 71, 0.4);
+  text-decoration: none;
+  color: #000;
+}
+
+
+
+
+

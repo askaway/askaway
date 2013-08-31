@@ -5,9 +5,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Askaway" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "Ask Away" %></title>
     <meta name="description" content="">
     <meta name="author" content="">
+
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag "application", :media => "all" %>
@@ -19,6 +20,9 @@
     </style>
 
     <%= javascript_include_tag "application" %>
+
+    <!-- fonts added by meg-->
+    <link href='http://fonts.googleapis.com/css?family=Nunito' rel='stylesheet' type='text/css'>
 
     <!-- Fav and touch icons -->
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
