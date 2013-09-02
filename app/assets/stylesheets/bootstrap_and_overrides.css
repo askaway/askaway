@@ -6,22 +6,54 @@
   =require twitter-bootstrap-static/fontawesome
   */
 
-/*-----------Border-box Mixin-----------doesn't work because no LESS?
 
-*, *:before, *:after {
-    .box-sizing(border-box);
+a {
+ color: rgb(38, 178, 170)
 }
 
-input {
-    .box-sizing(content-box);
+a:hover {
+ color: rgb(38, 178, 170)
 }
 
+.inline-message {
+  margin-top: 30px;
+  padding: 60px;
+margin-bottom: 30px;
+font-size: 18px;
+font-weight: 200;
+line-height: 30px;
+  background-color: #FFF;
+  -webkit-border-radius: 6px;
+-moz-border-radius: 6px;
+border-radius: 6px;
+  text-align: center;
+}
+
+.inline-message .btn {
+  margin-left: 7px;
+}
+
+footer img {
+  max-width: 20%;
+}
+
+.container {
+  width: 66.6667%;
+}
+
+.placeholder {
+  height: 60px;
+}
+
+.outline {
+  border: 1px solid #e1e1e8;
+  padding: 2%;
+}
 
 /*-----------COLOR SWATCHES-----------*/
 
 .colorswatches {
-  border: 1px solid #e1e1e8;
-  padding: 2%;
+  height: 160px;
 }
 
 .colorswatches .span2{
@@ -84,7 +116,9 @@ input {
 }
 
 
-
+#bg {
+  padding: 3%;
+}
 
 
 
@@ -92,6 +126,7 @@ input {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Nunito';
+  text-shadow: 0.1px 0.1px 0.8px;
 
 }
 
@@ -111,6 +146,27 @@ p {
 
 /*-----------BUTTONS-----------*/
 
+
+.btn {
+  .btn-custom {
+  background-color: hsl(32, 13%, 88%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#e8e5e2", endColorstr="#e4e0dc");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#e8e5e2), to(#e4e0dc));
+  background-image: -moz-linear-gradient(top, #e8e5e2, #e4e0dc);
+  background-image: -ms-linear-gradient(top, #e8e5e2, #e4e0dc);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e8e5e2), color-stop(100%, #e4e0dc));
+  background-image: -webkit-linear-gradient(top, #e8e5e2, #e4e0dc);
+  background-image: -o-linear-gradient(top, #e8e5e2, #e4e0dc);
+  background-image: linear-gradient(#e8e5e2, #e4e0dc);
+  border-color: #e4e0dc #e4e0dc hsl(32, 13%, 87.5%);
+  color: #333 !important;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.03);
+  -webkit-font-smoothing: antialiased;
+}
+
+}
+
 .btn-primary {
   background-color: hsl(14, 94%, 65%) !important;
   background-repeat: repeat-x;
@@ -129,6 +185,51 @@ p {
 }
 
 
+
+.btn-ask {
+  background-color: hsl(60, 67%, 48%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#d8d83b", endColorstr="#cccc28");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#d8d83b), to(#cccc28));
+  background-image: -moz-linear-gradient(top, #d8d83b, #cccc28);
+  background-image: -ms-linear-gradient(top, #d8d83b, #cccc28);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #d8d83b), color-stop(100%, #cccc28));
+  background-image: -webkit-linear-gradient(top, #d8d83b, #cccc28);
+  background-image: -o-linear-gradient(top, #d8d83b, #cccc28);
+  background-image: linear-gradient(#d8d83b, #cccc28);
+  border-color: #cccc28 #cccc28 hsl(60, 67%, 46.5%);
+  color: #333 !important;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.09);
+  -webkit-font-smoothing: antialiased;
+}
+
+/*-----------LANDING PAGE-----------*/
+
+#banner {
+  background-image: url('banner.jpg');
+  background-size: cover;
+  height: 300px;
+  display: block;
+}
+
+#logo {
+  display: block;
+  margin: auto;
+  padding-top: 4%;
+}
+
+#home {
+  text-align: center;
+  padding-bottom: 50px;
+  border-bottom: 1px solid #e1e1e8;
+}
+
+#header-img {
+  height: 40px;
+  width: 100%;
+  background-size: cover;
+}
+
 /*-----------SPEECHBUBBLES-----------*/
 
 
@@ -136,12 +237,13 @@ p {
 {
 position: relative;
 padding: 2%;
-margin: 2%;
-background: #EEE;
+margin: 0 0 2% 0;
+background: #FFF;
 -webkit-border-radius: 10px;
 -moz-border-radius: 10px;
 border-radius: 10px;
 }
+
 
 .bubble-left:after 
 {
@@ -151,7 +253,7 @@ top: 24px;
 left: -15px;
 border-style: solid;
 border-width: 15px 15px 15px 0;
-border-color: transparent #EEE;
+border-color: transparent #FFF;
 display: block;
 width: 0;
 z-index: 1;
@@ -162,7 +264,7 @@ z-index: 1;
 position: relative;
 padding: 2%;
 margin: 2%;
-background: #EEE;
+background: #FFF;
 -webkit-border-radius: 10px;
 -moz-border-radius: 10px;
 border-radius: 10px;
@@ -176,10 +278,48 @@ top: -15px;
 left: 41px;
 border-style: solid;
 border-width: 0 15px 15px;
-border-color: #EEE transparent;
+border-color: #FFF transparent;
 display: block;
 width: 0;
 z-index: 1;
+}
+
+/*-----------AUTHORIZATION STATEMENTS-----------*/
+
+.goulden:after {
+content: "Authorised by Rob Goulden, 14 Kauri Street, Miramar, Wellington";
+display: block;
+color: #999999;
+font-size: 13px;
+line-height: 16px;
+margin-top: 5px;
+}
+
+.morrison:after {
+content: "DOES HE HAVE ONE? DOES HE HAVE ONE? DOES HE HAVE ONE? DOES HE HAVE ONE?";
+display: block;
+color: #999999;
+font-size: 13px;
+line-height: 16px;
+margin-top: 5px;
+}
+
+.muthu:after {
+content: "Authorised by Karunanidhi Muthu of Suite 239, 32 Salamanca Road, Kelburn, Wellington 6012";
+display: block;
+color: #999999;
+font-size: 13px;
+line-height: 16px;
+margin-top: 5px;
+}
+
+.wade-brown:after {
+content: "Authorised by Celia Wade-Brown of 101 Wakefield Street, Wellington";
+display: block;
+color: #999999;
+font-size: 13px;
+line-height: 16px;
+margin-top: 5px;
 }
 
 .yan:after {
@@ -202,27 +342,168 @@ margin-top: 5px;
 }
 
 
+
+
+/*-----------PROFILE PICTURES-----------*/
+
+
+.profile-pic {
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 100px;
+
+}
+
+.goulden-img {
+  background-image: url('Rob-Goulden.png');
+}
+
+.morrison-img {
+  background-image: url('John-Morrison.png');
+}
+
+.muthu-img {
+  background-image: url('Karunanidhi-Muthu.png');
+}
+
+.wade-brown-img {
+  background-image: url('Celia-Wade-Brown.png');
+}
+
+.yan-img {
+  background-image: url('Jack-Yan.png');
+}
+
+.young-img {
+  background-image: url('Nicola-Young.png');
+}
+
+
+
 /*-----------ACCORDION-----------*/
 
-.accordion-heading {
+/*----Styling for answered questions-----*/
 
+.accordion {
+  margin-bottom: 0;
+}
+
+.accordion .profile-pic {
+  height: 50px;
+}
+
+
+
+.accordion-heading {
+  background-color: #FFF;
+}
+
+.accordion-group {
+  margin-bottom: 5px;
 }
 
 .accordion-toggle {
   font-size: 17.5px;
   line-height: 22px;
-  color: #000;
+  color: rgb(255, 99, 71);
   padding: 16px 30px;
-
-  background-color: rgba(255, 99, 71, 0.2);
 }
+
+.accordion-toggle .btn {
+display: none;
+}
+
+
+.accordion-toggle:hover .btn {
+display: inline;
+}
+
 .accordion-toggle:hover {
-  background-color: rgba(255, 99, 71, 0.4);
+  background-color: #EEE;
   text-decoration: none;
-  color: #000;
+  color: rgb(255, 99, 71);
+}
+
+.accordion-inner {
+  background-color: rgba(255, 99, 71, 0.1);
+}
+
+.all-questions .bubble-left {
+  background-color: ;
+}
+.all-questions .bubble-left:after {
+  border-color: ;
 }
 
 
 
+/*----Styling for unanswered questions-----*/
 
 
+
+#all-accordion .accordion-heading {
+    border: 1px solid #e1e1e8;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    margin-bottom: 5px;
+}
+
+#all-accordion .accordion-heading:hover {
+  background-color: rgba(255, 99, 71, 0.1);
+}
+
+#all-accordion p {
+  padding: 8px 15px;
+  font-size: 17.5px;
+  line-height: 22px;
+  color: rgb(255, 99, 71);
+
+}
+
+#all-accordion .muted {
+color: #999999;
+font-size: 13px;
+line-height: 16px;
+margin-top: 5px;
+}
+
+.accordion-heading .btn {
+display: none;
+}
+
+.accordion-heading:hover .btn {
+display: inline;
+}
+
+
+/*-----------QUESTION OF THE DAY-----------*/
+
+#QOTD .row {
+  margin-left: 40px;
+}
+
+#QOTD a {
+  color: rgb(38, 178, 170);
+}
+
+/*-----------ALL QUESTIONS-----------*/
+
+.all-questions {
+background-color: #FFF;
+}
+
+.all-questions .navbar {
+  margin-bottom: 0;
+}
+
+
+#ask-modal fieldset {
+  padding: 15px;
+}
+
+/*-----------ABOUT-----------*/
+
+#about-bg .inline-message {
+  margin-top: 4em;
+  margin-left: 60px;
+}
