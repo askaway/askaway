@@ -1,8 +1,32 @@
-<div>
-<img src="type-banner.png">
+<div id="banner"></div>
+<div id="home-bg">
+  <div class="container">
+    <div id="home">
+       <h1>Welcome to Ask Away</h1>
+       <h4>Need help deciding who to vote for to be Wellington's next mayor?</h4>
+    </div>
+
+    <div id="how-it-works" class="inline-message">
+      <h4>How it works:</h4><br>
+        <div class="row-fluid">
+          <div class="span4">
+            <div id="img-q"></div><br>
+            1. Anyone can ask a question for the candidates
+          </div>
+          <div class="span4">
+            <div id="img-qmany"></div><br>
+            2. People add their ask by voting the questions up
+          </div>
+          <div class="span4">
+            <div id="img-a"></div><br>
+            3. The top question at the end of each day will get an answer from the candidates!
+          </div>
+        </div>
+      </div>
+    </div>
+    <a class="btn btn-primary btn-large" href="#about-bg">Find out more about how it works</a>
+  <div class="placeholder"></div>
 </div>
-
-
 
 
 
@@ -11,7 +35,7 @@
 
 <div id="QOTD-bg" class="paleteal">
     <div class="placeholder"></div>
-    <div class="container">
+    <div class="container paleteal">
       <div id="QOTD">
         <h4>Question of the day:</h4>
         <h2>How do you propose to manage rising costs of living (especially rent) for students and low-income earners?</h2>
@@ -483,6 +507,29 @@
         <a href="#ask-modal" role="button" class="btn btn-ask btn-large" data-toggle="modal">Ask a Question</a>
       </div>
 
+
+  <div class="placeholder"></div>
+    <div class="box">
+      <div class="individual-q">
+         <p>
+          How do you propose to manage rising costs of living (especially rent) for students and low-income earners?
+        </p>
+        <p class="muted">Asked by Pip Clark and 23 others</p>
+        <div class="row-fluid">
+          <div class="fb-like span5" data-href="http://www.askaway.co.nz" data-width="450" data-show-faces="true" data-send="false"></div>
+          <div class="pointer span6">
+          <a rel="popover" data-content="The question with the most likes at the end of the day will be tomorrow's Question of the Day!">
+            Add your ask to this question by liking it
+          </a>
+        </div>
+      </div>
+        <br>
+      </div>
+    </div>
+            <a class="btn pull-right" href="#all-questions-bg">
+          Back to list of questions
+        </a>
+    <div class="placeholder"></div><div class="placeholder"></div><div class="placeholder"></div><div class="placeholder"></div><div class="placeholder"></div>
   </div> <!--container -->
 </div>
 
@@ -499,7 +546,7 @@
     <h4 id="ask-modalLabel">Ask a question</h4>
   </div>
   <div class="modal-body">
-    <p>There are no right or wrong questions, and you might find that everyone else is wondering the same thing!</p>
+    <p>Go ahead, there are no right or wrong questions, and you might find that everyone else is wondering the same thing!</p>
   </div>
   <form>
   <fieldset>
@@ -508,9 +555,6 @@
 <br>
     <input type="text" id="inputName" placeholder="Name"><br>
     <input type="text" id="inputEmail" placeholder="Email">
-    <a href="#" data-toggle="tooltip" title="We'll check over your question before we publish it, and reserve the right not publish any questions that are offensive or repetitions of already asked questions.
-When your question is live on the site, we'll send you a link so that you can share it with your family and friends and get them to vote it up.">
-    Why?</a>
     <br>
     <label class="checkbox">
       <input type="checkbox"> Want your question to be anonymous?
@@ -520,16 +564,33 @@ When your question is live on the site, we'll send you a link so that you can sh
 
   <div class="modal-footer">
     <button class="btn btn-large" data-dismiss="modal" aria-hidden="true">Close</button>
-    <button type="submit" class="btn btn-ask btn-large">Ask</button>
+    <button type="submit" class="btn btn-ask btn-large" href="#thanks-modal" role="button" class="btn btn-ask btn-large" data-toggle="modal">Ask</button>
   </div>
 </div>
+
+<!--Thank-you messsage -->
+
+
+<div id="thanks-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header green">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h4 id="ask-modalLabel">Ask a question</h4>
+  </div>
+  <div class="modal-body">
+    <p>Thanks for contributing!<br><br>
+  We'll check over your question before we publish it, and won't publish anything offensive or too similar to questions that have already been asked.<br><br>
+  Sit tight, and when your question is live on the site we'll send you a link so that you can share it with your family and friends and get them to vote it up.<br><br>
+  <div class="modal-footer">
+    <button class="btn btn-large" data-dismiss="modal" aria-hidden="true">Close</button>
+</div>
+
 
 
 </div>
 </div>
 <div id="about-bg" class="palepurple">
   <div class="placeholder"></div>
-    <div id="about" class="container">
+    <div id="about" class="container palepurple">
       <h5>About</h5>
 
       <div class="row-fluid">
@@ -549,13 +610,15 @@ When your question is live on the site, we'll send you a link so that you can sh
           </p>
         </div>
       </div>
+    </div>
+    <div class="container">
             <div id="contact" class="inline-message">
           <p>
             <strong>Want to get in touch?</strong><br>
             Shoot us a line at <a>info@askaway.co.nz</a>
           </p>
         </div>
-
+<div class="placeholder"></div>
 
 
 
@@ -581,7 +644,16 @@ When your question is live on the site, we'll send you a link so that you can sh
                 });
                 </script>
 
-    
+    <!-- Facebook likes -->
+
+    <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
 
 
