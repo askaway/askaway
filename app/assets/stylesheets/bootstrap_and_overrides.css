@@ -42,6 +42,10 @@ footer img {
   width: 66.6667%;
 }
 
+.container-wide {
+  width: 80%;
+}
+
 .placeholder {
   height: 60px;
 }
@@ -143,7 +147,10 @@ p {
   margin-top: 5px;
 }
 
-
+.light {
+  font-size: 18px;
+  font-weight: 200;
+}
 
 /*-----------BUTTONS-----------*/
 
@@ -273,7 +280,7 @@ margin-top: 5px;
 }
 
 .morrison:after {
-content: "DOES HE HAVE ONE? DOES HE HAVE ONE? DOES HE HAVE ONE? DOES HE HAVE ONE?";
+content: "Authorised by John Morrison, Level 5, 93 Boulcott Street, Wellington";
 display: block;
 color: #999999;
 font-size: 13px;
@@ -454,19 +461,21 @@ display: inline;
 .box {
     padding: 8px 15px;
     background-color: #FFF;
-      border: 1px solid #e1e1e8;
+    border: 1px solid #e1e1e8;
     -webkit-border-radius: 6px;
     -moz-border-radius: 6px;
     margin-bottom: 20px;
 }
 
-
+/*
 .individual-q p {
 
   font-size: 17.5px;
   line-height: 22px;
   color: rgb(255, 99, 71);
 }
+*/
+
 .individual-q .muted {
 color: #999999;
 font-size: 13px;
@@ -478,16 +487,29 @@ margin-top: 5px;
   padding: 8px 15px;
 }
 
+.individual-q h3 {
+  color: rgb(255, 99, 71);
+}
 /*-----------HOME-----------*/
 
 #banner {
   background-image: url('type-banner.png');
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
   display: block;
   height: 395px;
 }
 
+/*-- 
+#banner {
+  margin-top: 10px;
+  background-image: url('type-banner2.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: block;
+  height: 362px;
+}
+*/
 
 #home-bg {
   background-color: rgb(249, 249, 249);
@@ -530,7 +552,7 @@ margin-top: 5px;
 /*-----------QUESTION OF THE DAY-----------*/
 
 #QOTD-bg {
-  background-image: url("texture-teal-50.png");
+  background-image: url("texture-teal-25.png");
 }
 
 #QOTD .row {
@@ -543,7 +565,7 @@ margin-top: 5px;
 
 /*-----------ALL QUESTIONS-----------*/
 #all-questions-bg {
-  background-image: url("texture-salmon-50.png");
+  background-image: url("texture-salmon-25.png");
 }
 
 .all-questions {
@@ -559,12 +581,11 @@ background-color: #FFF;
   padding: 15px;
 }
 
-
 .box a {
-  margin-left: 40px;
   color: #000;
   padding: 3%;
-  color: rgb(255, 99, 71);
+  font-size: 18px;
+  font-weight: 200;
   text-decoration: none;
 }
 
@@ -572,9 +593,19 @@ background-color: #FFF;
     background-color: rgb(250, 247, 240)
 }
 
+.question-min {
+  margin-top: 2%;
+  padding: 1%;
+  border-bottom: 1px solid #e1e1e8;
+}
+
+.question-min:hover {
+ background-color: rgb(255, 224, 218);
+}
+
 /*-----------ABOUT-----------*/
 #about-bg {
- background-image: url("texture-purple-50.png"); 
+   background-image: url("texture-purple-25.png");
 }
 
 #about {
