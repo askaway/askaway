@@ -5,6 +5,7 @@ class PagesController < ApplicationController
   end
 
   def another_page
+    @question = Question.new
   end
 
     def individual_question

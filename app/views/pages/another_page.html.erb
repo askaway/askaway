@@ -49,8 +49,8 @@
           <a class="pull-right" data-toggle="collapse" data-target="#comments2" data-parent="#selector">
             See comments
           </a>
-          <div id="comments2" class="collapse"> 
-            Here are the comments 
+          <div id="comments2" class="collapse">
+            Here are the comments
           </div>
         </div>
       </div>
@@ -63,7 +63,7 @@
           <a class="pull-right" data-toggle="collapse" data-target="#comments3" data-parent="#selector">
             See comments
           </a>
-          <div id="comments3" class="collapse"> 
+          <div id="comments3" class="collapse">
             Here are the comments Here's a 200 character answer from one of our mayoral candidates. I love being mayor, we have a really nice office with very nice pot plants in it. The peace lily is my favourite. The end of my answer.Here's a 200 character answer from one of our mayoral candidates. I love being mayor, we have a really nice office with very nice pot plants in it. The peace lily is my favourite. The end of my answer.Here's a 200 character answer from one of our mayoral candidates. I love being mayor, we have a really nice office with very nice pot plants in it. The peace lily is my favourite. The end of my answer.Here's a 200 character answer from one of our mayoral candidates. I love being mayor, we have a really nice office with very nice pot plants in it. The peace lily is my favourite. The end of my answer.
           </div>
         </div>
@@ -75,8 +75,8 @@
           <a class="pull-right" data-toggle="collapse" data-target="#comments4" data-parent="#selector">
             See comments
           </a>
-          <div id="comments4" class="collapse"> 
-            Here are the comments 
+          <div id="comments4" class="collapse">
+            Here are the comments
           </div>
         </div>
       </div>
@@ -89,8 +89,8 @@
             <a class="pull-right" data-toggle="collapse" data-target="#comments5" data-parent="#selector">
               See comments
             </a>
-            <div id="comments5" class="collapse"> 
-              Here are the comments 
+            <div id="comments5" class="collapse">
+              Here are the comments
             </div>
           </div>
         <div class="wade-brown-img profile-pic span2"></div>
@@ -102,7 +102,7 @@
             See comments
           </a>
           <div id="comments6" class="collapse">
-            Here are the comments 
+            Here are the comments
           </div>
         </div>
       </div>
@@ -127,7 +127,7 @@
 
           <p>Every day the candidates will answer the question with the most votes. See what people have been asking, and up-vote the questions that are important to you. <br>If no one’s asked what you want to know, ask if for yourself!<br><br>
 
-          <strong>When:</strong> The voting for the day finishes at 7pm, and the candidates answers will be on the site by 8am the following morning. 
+          <strong>When:</strong> The voting for the day finishes at 7pm, and the candidates answers will be on the site by 8am the following morning.
           Questions will be answered Monday to Friday, until voting closes on the 12th October.<br><br>
 
           <strong>Who:</strong> This is the honours project of Meg Howie at Massey University’s School of Design. She hopes to expand the site to facilitate ongoing public engagement at local, regional and national levels of government.<br><br>
@@ -210,7 +210,7 @@
                       <a class="pull-right" data-toggle="collapse" data-target="#comments21" data-parent="#selector">
                         See comments
                       </a>
-                      <div id="comments21" class="collapse"> Here are the comments 
+                      <div id="comments21" class="collapse"> Here are the comments
                       </div>
                   </div>
                   <div class="young-img profile-pic span1"></div>
@@ -265,7 +265,7 @@
                         <a class="pull-right" data-toggle="collapse" data-target="#comments26" data-parent="#selector">
                           See comments
                         </a>
-                        <div id="comments26" class="collapse"> Here are the comments 
+                        <div id="comments26" class="collapse"> Here are the comments
                         </div>
                     </div>
                   </div>
@@ -402,7 +402,7 @@
                   <div class="row-fluid" id="answered-by">
                       <div class="young-img profile-pic span1"></div><div class="morrison-img profile-pic span1"></div><div class="wade-brown-img profile-pic span1"></div><div class="goulden-img profile-pic span1"></div><div class="yan-img profile-pic span1"></div><div class="muthu-img profile-pic span1"></div>
                   </div>
-                </a>           
+                </a>
             </div>
             <div id="collapseFive" class="accordion-body collapse">
               <div class="accordion-inner">
@@ -461,7 +461,7 @@
                   <i class="icon-thumbs-up">Like this question to help it grow</i>
                 </a>
                   <p class="muted">Asked by Pip Clark and 23 others</p>
-              
+
             </div>
             <div class="accordion-heading">
               <p>
@@ -508,8 +508,8 @@
                 <p class="muted">Asked by Pip Clark and 23 others</p>
               </p>
             </div>
-          </div> 
-        </div>         
+          </div>
+        </div>
       </div>
 
       <div class="inline-message">
@@ -585,7 +585,7 @@
   </div> <!--container -->
 </div>
 
- 
+
 
 
 <!--  INDIVIDUAL QUESTION WITH ANSWERS -->
@@ -711,31 +711,7 @@
 
 <!-- Modal -->
 <div id="ask-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-header green">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h4 id="ask-modalLabel">Ask a question</h4>
-  </div>
-  <div class="modal-body">
-    <p>Go ahead, there are no right or wrong questions, and you might find that everyone else is wondering the same thing!</p>
-  </div>
-  <form>
-  <fieldset>
-    <textarea rows="5" placeholder="What would you like to ask the mayoral candidates? " maxlength="140"></textarea>
-
-<br>
-    <input type="text" id="inputName" placeholder="Name"><br>
-    <input type="text" id="inputEmail" placeholder="Email">
-    <br>
-    <label class="checkbox">
-      <input type="checkbox"> Want your question to be anonymous?
-    </label>
-  </fieldset>
-</form>
-
-  <div class="modal-footer">
-    <button class="btn btn-large" data-dismiss="modal" aria-hidden="true">Close</button>
-    <button type="submit" class="btn btn-ask btn-large" href="#thanks-modal" role="button" class="btn btn-ask btn-large" data-toggle="modal">Ask</button>
-  </div>
+<%= render partial: 'questions/form' %>
 </div>
 
 <!--Thank-you messsage -->
@@ -766,23 +742,13 @@
     <div class="placeholder"></div>
 </div>
 
-
-<script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript">
-      $(".comments").click(function(){
-        var $link = $(this);
-        $link.html("See Less");
-      });
-    </script>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-                <script src="http://w3resource.com/twitter-bootstrap/twitter-bootstrap-v2/js/bootstrap-tooltip.js"></script>
-                <script src="http://w3resource.com/twitter-bootstrap/twitter-bootstrap-v2/js/bootstrap-popover.js"></script>
-                <script>
-                $(function (){
-                   $("#example").popover();
-                });
-                </script>
+<script src="http://w3resource.com/twitter-bootstrap/twitter-bootstrap-v2/js/bootstrap-tooltip.js"></script>
+<script src="http://w3resource.com/twitter-bootstrap/twitter-bootstrap-v2/js/bootstrap-popover.js"></script>
+<script>
+$(function (){
+   $("#example").popover();
+});
+</script>
 
     <!-- Facebook likes -->
 

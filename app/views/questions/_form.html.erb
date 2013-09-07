@@ -1,0 +1,39 @@
+<div class="modal-header green">
+  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+  <h4 id="ask-modalLabel">Ask a question</h4>
+</div>
+<%= form_for(@question, remote: true) do |f| %>
+  <div class="modal-body">
+    <p>Go ahead, there are no right or wrong questions, and you might find that everyone else is wondering the same thing!</p>
+  </div>
+  <% if @question.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@question.errors.count, "error") %> prohibited this question from being saved:</h2>
+
+      <ul>
+      <% @question.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <fieldset>
+    <%= f.text_area :body, rows: 5, placeholder: "What would you like to ask the mayoral candidates?", maxlength: 140 %>
+    <br>
+    <%= f.text_field :name, placeholder: "Name", id: "inputName" %>
+    <br>
+    <%= f.text_field :email, placeholder: "Email", id: "inputEmail" %>
+    <br>
+    <label class="checkbox">
+      <%= f.check_box :is_anonymous %> Want your question to be anonymous?
+    </label>
+  </fieldset>
+
+  <div class="modal-footer">
+    <button class="btn btn-large" data-dismiss="modal" aria-hidden="true">Close</button>
+    <%= f.submit "Ask", class: "btn btn-ask btn-large" %>
+    <!-- <button type="submit" class="btn btn-ask btn-large" href="#thanks-modal" role="button" class="btn btn-ask btn-large" data-toggle="modal">Ask</button> -->
+  </div>
+<% end %>
+
