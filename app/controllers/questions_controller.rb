@@ -3,7 +3,7 @@ class QuestionsController < ApplicationController
   # GET /questions
   # GET /questions.json
   def index
-    @questions = Question.approved
+    @questions = Question.accepted
 
     respond_to do |format|
       format.html # index.html.erb

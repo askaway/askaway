@@ -8,8 +8,8 @@ class Question < ActiveRecord::Base
 
   before_validation :set_init_defaults
 
-  def self.approved
-    where(status: :approved)
+  def self.accepted
+    where(status: :accepted)
   end
 
   private
