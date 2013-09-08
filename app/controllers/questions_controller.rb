@@ -7,7 +7,7 @@ class QuestionsController < ApplicationController
   # GET /questions.json
   def index
     if params[:filter] == 'recent'
-      @questions = Question.accepted.order("created_at DESC")
+      @questions = Question.accepted.recent
     elsif params[:filter] == 'answered'
       @questions = Question.accepted.answered
     else
