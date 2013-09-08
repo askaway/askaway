@@ -31,6 +31,9 @@
 
       <div class="box list-q">
         <%= render partial: 'question', collection: @questions %>
+        <% @questions.each do |question| %>
+          <%= render 'question', question: question %>
+        <% end %>
       </div>
       <%= paginate @questions %>
     </div>
