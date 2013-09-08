@@ -32,6 +32,7 @@
       <div class="box list-q">
         <%= render partial: 'question', collection: @questions %>
       </div>
+      <%= paginate @questions %>
     </div>
   </div>
 </div>

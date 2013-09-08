@@ -7,12 +7,13 @@ class QuestionsController < ApplicationController
   # GET /questions
   # GET /questions.json
   def index
+    page = params[:page] || 1
     if params[:filter] == 'recent'
-      @questions = Question.accepted.recent
+      @questions = Question.accepted.recent.page(page)
     elsif params[:filter] == 'answered'
-      @questions = Question.accepted.answered
+      @questions = Question.accepted.answered.page(page)
     else
-      @questions = Question.accepted
+      @questions = Question.accepted.page(page)
     end
 
     respond_to do |format|
