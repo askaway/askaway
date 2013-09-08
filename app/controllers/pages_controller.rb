@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   # layout 'test1'
 
-  def index
+  def styles
   end
 
   def another_page

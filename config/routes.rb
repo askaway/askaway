@@ -4,6 +4,7 @@ Askaway::Application.routes.draw do
 
 
   get 'another_page', to: 'pages#another_page'
-  
-  root to: 'pages#index'
+  get 'styles', to: 'pages#styles'
+
+  root to: 'pages#another_page'
 end
