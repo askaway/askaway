@@ -1,0 +1,13 @@
+<div class="tan answers">
+  <div class="row-fluid">
+    <div class="profile-pic span2"><%=image_tag answer.candidate_avatar %></div>
+    <div class="bubble-left span4">
+        <p class="yan"><strong><%= answer.candidate_name %> </strong><%= answer.body %>
+        </p>
+        <i class="icon-thumbs-up"> Like</i>
+        <a class="pull-right" data-toggle="collapse" data-target="#comments21" data-parent="#selector">
+          See comments
+        </a>
+        <div id="comments21" class="collapse"> Here are the comments </div>
+    </div>
+</div>

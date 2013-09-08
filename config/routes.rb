@@ -4,7 +4,9 @@ Askaway::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
-  resources :questions
+  resources :questions do
+    # resources :answers, only: [:index, :show], shallow: true
+  end
 
 
   get 'another_page', to: 'pages#another_page'

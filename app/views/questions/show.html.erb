@@ -12,7 +12,14 @@
         </div>
         <div class="box palesalmon light">
           <h4>Answers:</h4>
-          <p>None of Wellington's mayoral candidates have answered this question yet. <br><br>If you want it to get answered, like and share the question to show the candidates it's important to you.</p><br><br>
+          <% if @answers.present? %>
+            <% @answers.each do |answer| %>
+              <%= render 'answer', answer: answer %>
+            <% end %>
+          <% else %>
+            <p>None of Wellington's mayoral candidates have answered this question yet. <br><br>If you want it to get answered, like and share the question to show the candidates it's important to you.</p>
+          <% end %>
+          <br><br>
         </div>
           <div>
             <a href="#all-questions-bg" role="button" class="btn btn-primary btn-large">See all the questions</a> or

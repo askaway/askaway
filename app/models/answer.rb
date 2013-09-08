@@ -5,4 +5,13 @@ class Answer < ActiveRecord::Base
   validates_presence_of :candidate
   validates_presence_of :question
   validates_presence_of :body
+
+
+  def candidate_name
+    candidate.name
+  end
+
+  def candidate_avatar
+    candidate.avatar
+  end
 end

@@ -2,6 +2,7 @@ class QuestionsController < ApplicationController
   respond_to :js
 
   before_filter :fetch_question, only: [:show, :edit, :update, :destroy]
+  before_filter :fetch_answers, only: :show
 
   # GET /questions
   # GET /questions.json
@@ -96,5 +97,9 @@ class QuestionsController < ApplicationController
 
   def fetch_question
     @question = Question.find(params[:id])
+  end
+
+  def fetch_answers
+    @answers = @question.answers
   end
 end
