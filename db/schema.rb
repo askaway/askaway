@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130907232708) do
+ActiveRecord::Schema.define(:version => 20130908004114) do
 
   create_table "questions", :force => true do |t|
     t.text     "body"
@@ -20,9 +20,11 @@ ActiveRecord::Schema.define(:version => 20130907232708) do
     t.boolean  "is_anonymous"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.string   "status"
   end
 
   add_index "questions", ["email"], :name => "index_questions_on_email"
   add_index "questions", ["name"], :name => "index_questions_on_name"
+  add_index "questions", ["status"], :name => "index_questions_on_status"
 
 end
