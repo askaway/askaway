@@ -10,9 +10,9 @@ class Question < ActiveRecord::Base
 
   before_validation :set_init_defaults
 
-  def self.accepted
-    where(status: :accepted)
-  end
+  scope :accepted, -> { where(status: :accepted) }
+
+  scope :answered, -> { joins(:answers) }
 
   def accept!
     update_attribute(:status, 'accepted')

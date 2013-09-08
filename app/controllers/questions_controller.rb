@@ -8,6 +8,8 @@ class QuestionsController < ApplicationController
   def index
     if params[:filter] == 'recent'
       @questions = Question.accepted.order("created_at DESC")
+    elsif params[:filter] == 'answered'
+      @questions = Question.accepted.answered
     else
       @questions = Question.accepted
     end
