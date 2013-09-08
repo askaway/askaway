@@ -7,6 +7,9 @@ class Question < ActiveRecord::Base
 
   before_validation :set_init_defaults
 
+  def self.approved
+    where(status: :approved)
+  end
 
   private
 
