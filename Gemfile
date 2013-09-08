@@ -41,9 +41,13 @@ gem 'jquery-rails'
 # gem 'debugger'
 
 gem 'aasm'
+gem 'mocha'
 
 group :development do
   gem 'quiet_assets'
+  gem "debugger", :platforms => [:mingw_19, :ruby_19]
+  gem 'byebug', :platforms => [:mingw_20, :ruby_20]
+  gem 'pry-byebug', :platforms => [:mingw_20, :ruby_20]
 end
 
 group :development, :test do

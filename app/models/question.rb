@@ -40,6 +40,10 @@ class Question < ActiveRecord::Base
     "#{h name} <#{h email}>".html_safe
   end
 
+  def label
+    id.to_s + " - ".html_safe + body
+  end
+
   private
 
   def set_init_defaults

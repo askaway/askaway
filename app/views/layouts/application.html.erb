@@ -8,6 +8,7 @@
     <title><%= content_for?(:title) ? yield(:title) : "Ask Away" %></title>
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta property="fb:admins" content="1059799116"/>
 
     <%= csrf_meta_tags %>
 
@@ -30,9 +31,10 @@
       <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
                     <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
                                    <link rel="shortcut icon" href="../assets/ico/favicon.png">
-  <link rel="icon"
+
+<!--   <link rel="icon"
       type="image/png"
-      href="AA.png">
+      href="/AA.png"> -->
   </head>
 
   <body data-spy="scroll" data-target=".navbar">
@@ -73,7 +75,8 @@
       <hr>
 <div class="container">
       <footer>
-      <img src="massey-logo.jpg"><p class="pull-right muted">&copy; Meg Howie 2013</p>
+      <%= image_tag 'Massey-logo.jpg' %>
+      <p class="pull-right muted">&copy; Meg Howie 2013</p>
       </footer>
 
 </div><!-- /container -->
