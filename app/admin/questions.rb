@@ -1,4 +1,7 @@
 ActiveAdmin.register Question do
+  scope :pending, default: true
+  scope :all
+
   index do
     selectable_column
     column :body

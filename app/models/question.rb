@@ -30,7 +30,6 @@ class Question < ActiveRecord::Base
   after_create :email_meg
 
   scope :answered, -> { joins(:answers) }
-
   scope :recent, -> { order("created_at DESC") }
 
   def first_name
