@@ -40,6 +40,8 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'debugger'
 
+gem 'aasm'
+
 group :development do
   gem 'quiet_assets'
 end

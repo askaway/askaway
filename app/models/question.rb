@@ -1,31 +1,35 @@
 class Question < ActiveRecord::Base
-  STATUSES = %w(pending accepted declined)
+  include AASM
   attr_accessible :body, :email, :name, :is_anonymous
+
+  aasm column: "status", whiny_transitions: false do
+    state :pending, initial: true
+    state :accepted
+    state :declined
+
+    event :accept do
+      after do
+        QuestionMailer.question_accepted(self).deliver
+      end
+
+      transitions from: :pending, to: :accepted
+    end
+
+    event :decline do
+      transitions from: :pending, to: :declined
+    end
+  end
 
   has_many :answers
 
   validates_presence_of :body, :email, :name
   validates_length_of :body, maximum: 140
-  validates_inclusion_of :status, in: STATUSES
 
   before_validation :set_init_defaults
-
-  scope :accepted, -> { where(status: :accepted) }
 
   scope :answered, -> { joins(:answers) }
 
   scope :recent, -> { order("created_at DESC") }
-
-  def accept!
-    unless accepted?
-      update_attribute(:status, 'accepted')
-      QuestionMailer.question_accepted(self).deliver
-    end
-  end
-
-  def accepted?
-    status == 'accepted'
-  end
 
   def first_name
     name.split(' ',).first
@@ -33,10 +37,6 @@ class Question < ActiveRecord::Base
 
   def name_and_email
     "#{name} <#{email}>"
-  end
-
-  def pending?
-    status == 'pending'
   end
 
   private
