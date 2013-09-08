@@ -16,4 +16,8 @@ class Answer < ActiveRecord::Base
   def candidate_avatar
     candidate.avatar
   end
+
+  def candidate_authorisation
+    candidate.authorisation
+  end
 end
