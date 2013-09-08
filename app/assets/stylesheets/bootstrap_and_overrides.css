@@ -34,6 +34,10 @@ border-radius: 6px;
   margin-left: 7px;
 }
 
+.inline-block {
+  display: inline-block;
+}
+
 footer img {
   max-width: 20%;
 }

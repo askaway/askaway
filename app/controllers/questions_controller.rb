@@ -23,6 +23,8 @@ class QuestionsController < ApplicationController
   # GET /questions/1
   # GET /questions/1.json
   def show
+    @recently_asked = Question.accepted.limit(5)
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @question }
@@ -53,11 +55,14 @@ class QuestionsController < ApplicationController
       if @question.save
         format.html { redirect_to @question, notice: 'Question was successfully created.' }
         format.json { render json: @question, status: :created, location: @question }
-        format.js {render :create}
+        format.js do
+          @question = Question.new
+          render :create
+        end
       else
         format.html { render action: "new" }
         format.json { render json: @question.errors, status: :unprocessable_entity }
-        format.js {render :new}
+        format.js { render :new }
       end
     end
   end
