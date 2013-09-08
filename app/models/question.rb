@@ -12,6 +12,10 @@ class Question < ActiveRecord::Base
     where(status: :accepted)
   end
 
+  def first_name
+    name.split(' ',).first
+  end
+
   private
 
   def set_init_defaults

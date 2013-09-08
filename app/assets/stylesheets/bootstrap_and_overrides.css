@@ -564,7 +564,7 @@ margin-top: 5px;
 }
 
 /*-----------ALL QUESTIONS-----------*/
-#all-questions-bg {
+.all-questions-bg {
   background-image: url("texture-salmon-25.png");
 }
 
