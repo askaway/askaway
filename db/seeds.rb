@@ -62,7 +62,7 @@ require 'mocha'
 
 FactoryGirl.define do
   factory :seed_question, class: Question do
-    body { "How will you #{Faker::Company.bs.split[0]} the role of #{Faker::Name.title.split[0-2].pluralize(2)} to make Wellington a more #{Faker::Commerce.fetch('commerce.product_name.adjective').downcase} place?" }
+    body { "How will you #{Faker::Company.bs.split[0]} the role of #{Faker::Name.title.split[0..1].join(' ')} to make Wellington a more #{Faker::Commerce.fetch('commerce.product_name.adjective').downcase} place?" }
     name { Faker::Name.name }
     email { Faker::Internet.email }
     sequence :status do |n|
