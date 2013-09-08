@@ -15,4 +15,9 @@
 //= require twitter/bootstrap
 //= require_tree .
 
-$('#example').tooltip(options)
+//$('#example').tooltip(options)
+
+  $(".comments").click(function(){
+    var $link = $(this);
+    $link.html("See Less");
+  });
