@@ -1,0 +1,15 @@
+<a href="<%= question_path(question)%>">
+  <h3><%= question.body %></h3>
+  <div class="row-fluid" id="answered-by">
+    <div class="span4">
+      <p class="muted"><%= asked_by(question) %></p>
+      <%= facebook_button(question) %>
+      <p>Answered yesterday by:</p>
+    </div>
+    <div class="span8">
+      <div class="row-fluid">
+        <div class="young-img profile-pic span2"></div><div class="morrison-img profile-pic span2"></div><div class="wade-brown-img profile-pic span2"></div><div class="goulden-img profile-pic span2"></div><div class="yan-img profile-pic span2"></div><div class="muthu-img profile-pic span2"></div>
+      <div>
+    </div>
+  </div>
+</a>

@@ -338,7 +338,7 @@ margin-top: 5px;
 .profile-pic {
   background-size: contain;
   background-repeat: no-repeat;
-  height: 100px;
+  height: 70px;
 
 }
 
@@ -417,8 +417,20 @@ display: inline;
 }
 
 
+.list-q {
+  font-size: 17.5px;
+  line-height: 22px;
+  color: rgb(255, 99, 71);
+  padding: 16px 30px;
+}
 
+.list-q h3 {
+  color: rgb(255, 99, 71);
+}
 
+.list-q:hover {
+ background-color: rgba(255, 99, 71, 0.1);
+}
 
 
 /*----Styling for unanswered questions-----*/

@@ -1,31 +1,37 @@
-<h1>Listing questions</h1>
+<div class="tan all-questions-bg">
+  <div class="container">
+    <div class="placeholder" id="all-questions-answered"></div>
+    <h4>All the questions you've asked so far:</h4>
+    <br>
+    <div class="all-questions">
+      <div class="row-fluid">
+        <div class="navbar">
+          <div class="navbar-inner">
+            <div class="container">
+              <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="brand">Sort questions by:</a>
+              <div class="nav-collapse collapse">
+                <ul class="nav">
+                  <li class=""><a href="#all-questions-answered">Answered</a></li>
+                  <li><a href="#all-questions-top">Top</a></li>
+                  <li><a href="#all-questions-bg">All</a></li>
+                </ul>
+                <form class="navbar-search pull-right">
+                  <input type="text" class="search-query" placeholder="Search">
+                </form>
+              </div><!--/.nav-collapse -->
+            </div>
+          </div>
+        </div>
+      </div>
 
-<table>
-  <tr>
-    <th>Body</th>
-    <th>Name</th>
-    <th>Email</th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @questions.each do |question| %>
-  <tr>
-    <td><%= question.body %></td>
-    <td><%= question.name %></td>
-    <td><%= question.email %></td>
-    <td><fb:like href="<%= url_for question_path(question, host: 'example.com', port: nil, only_path: false) %>" show_faces="false" send="false" layout="button_count" width="90"></fb:like></td>
-    <td><%= link_to 'Show', question %></td>
-    <td><%= link_to 'Edit', edit_question_path(question) %></td>
-    <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-
-
-<br />
-
-<%= link_to 'New Question', new_question_path %>
+      <div class="box list-q">
+        <%= render partial: 'question', collection: @questions %>
+      </div>
+    </div>
+  </div>
+</div>
