@@ -1,10 +1,16 @@
 ActiveAdmin.register Question do
   scope :pending, default: true
+  scope :accepted
   scope :all
 
   index do
     selectable_column
     column :body
+    column "Answer" do |question|
+      if question.accepted?
+        link_to "Answer", new_admin_answer_path(question_id: question.id)
+      end
+    end
     column :name
     column :email
     column :status
@@ -24,13 +30,17 @@ ActiveAdmin.register Question do
 
   form do |f|
     f.inputs :body, :name, :email
-    f.inputs "status" do
-      f.input :status, input_html: { disabled: true }
-    end
     f.actions
   end
 
   member_action :accept do
+    question = Question.find(params[:id])
+    question.accept!
+    flash[:notice] = "Question accepted"
+    redirect_to action: :index
+  end
+
+  member_action :answer do
     question = Question.find(params[:id])
     question.accept!
     flash[:notice] = "Question accepted"
