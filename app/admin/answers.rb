@@ -1,7 +1,6 @@
 ActiveAdmin.register Answer do
 
   member_action :new do
-    # @question = Question.find_by_id(params[:question_id])
     @answer = Answer.new(question_id: params[:question_id])
   end
 
