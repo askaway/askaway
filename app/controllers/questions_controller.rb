@@ -1,9 +1,16 @@
 class QuestionsController < ApplicationController
   respond_to :js
+
+  before_filter :fetch_question, only: [:show, :edit, :update, :destroy]
+
   # GET /questions
   # GET /questions.json
   def index
-    @questions = Question.accepted
+    if params[:filter] == 'recent'
+      @questions = Question.accepted.order("created_at DESC")
+    else
+      @questions = Question.accepted
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,8 +21,6 @@ class QuestionsController < ApplicationController
   # GET /questions/1
   # GET /questions/1.json
   def show
-    @question = Question.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @question }
@@ -35,7 +40,6 @@ class QuestionsController < ApplicationController
 
   # GET /questions/1/edit
   def edit
-    @question = Question.find(params[:id])
   end
 
   # POST /questions
@@ -59,8 +63,6 @@ class QuestionsController < ApplicationController
   # PUT /questions/1
   # PUT /questions/1.json
   def update
-    @question = Question.find(params[:id])
-
     respond_to do |format|
       if @question.update_attributes(params[:question])
         format.html { redirect_to @question, notice: 'Question was successfully updated.' }
@@ -75,12 +77,17 @@ class QuestionsController < ApplicationController
   # DELETE /questions/1
   # DELETE /questions/1.json
   def destroy
-    @question = Question.find(params[:id])
     @question.destroy
 
     respond_to do |format|
       format.html { redirect_to questions_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+
+  def fetch_question
+    @question = Question.find(params[:id])
   end
 end
