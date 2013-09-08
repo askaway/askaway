@@ -238,6 +238,7 @@ DEPENDENCIES
   faker
   jquery-rails
   jquery-ui-rails
+  kaminari
   launchy
   mocha
   poltergeist

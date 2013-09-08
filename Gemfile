@@ -43,6 +43,8 @@ gem 'jquery-rails'
 gem 'aasm'
 gem 'mocha'
 
+gem 'kaminari'  # pagination
+
 group :development do
   gem 'quiet_assets'
   gem "debugger", :platforms => [:mingw_19, :ruby_19]
