@@ -1,11 +1,18 @@
 require 'spec_helper'
 
 describe Question do
-  let(:question) { FactoryGirl.create :question }
+  let(:question) { FactoryGirl.create :question, status: 'pending' }
   let(:mailer) { double(deliver: true) }
 
   it "defaults to pending status" do
     question.should be_pending
+  end
+
+  it "emails meg after create" do
+    question = FactoryGirl.build :question
+    QuestionMailer.stub(question_asked: mailer)
+    mailer.should_receive(:deliver)
+    question.save!
   end
 
   describe "#accept!" do
