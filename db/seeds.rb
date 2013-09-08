@@ -57,17 +57,21 @@ candidates.each do |candidate_details|
   create_or_update_candidate( candidate_details )
 end
 
+
+require 'mocha'
+
 FactoryGirl.define do
   factory :seed_question, class: Question do
-    body { "How will you #{Faker::Company.bs.split[0]} the role of #{Faker::Name.fetch('name.title.descriptor')} #{Faker::Name.fetch('name.title.level').pluralize(2)} to make Wellington a more #{Faker::Commerce.fetch('commerce.product_name.adjective').downcase} place?" }
+    body { "How will you #{Faker::Company.bs.split[0]} the role of #{Faker::Name.title.split[0-2].pluralize(2)} to make Wellington a more #{Faker::Commerce.fetch('commerce.product_name.adjective').downcase} place?" }
     name { Faker::Name.name }
     email { Faker::Internet.email }
     sequence :status do |n|
-      Question::STATUSES[n % Question::STATUSES.length]
+      Question.aasm.states[n % Question.aasm.states.length].name
     end
   end
 end
 
+Question.any_instance.stubs(:set_initial_state)
 100.times do |i|
   FactoryGirl.create(:seed_question)
 end
