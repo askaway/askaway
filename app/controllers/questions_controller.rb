@@ -1,9 +1,14 @@
 class QuestionsController < ApplicationController
   respond_to :js
+
   # GET /questions
   # GET /questions.json
   def index
-    @questions = Question.accepted
+    if params[:filter] == 'recent'
+      @questions = Question.accepted.order("created_at DESC")
+    else
+      @questions = Question.accepted
+    end
 
     respond_to do |format|
       format.html # index.html.erb
