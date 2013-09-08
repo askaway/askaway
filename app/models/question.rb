@@ -14,6 +14,8 @@ class Question < ActiveRecord::Base
 
   scope :answered, -> { joins(:answers) }
 
+  scope :recent, -> { order("created_at DESC") }
+
   def accept!
     update_attribute(:status, 'accepted')
   end
