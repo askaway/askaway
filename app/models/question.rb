@@ -1,4 +1,7 @@
 class Question < ActiveRecord::Base
+  # include ActiveSupport::Helpers
+  include ERB::Util
+
   STATUSES = %w(pending accepted declined)
   attr_accessible :body, :email, :name, :is_anonymous
 
@@ -9,6 +12,7 @@ class Question < ActiveRecord::Base
   validates_inclusion_of :status, in: STATUSES
 
   before_validation :set_init_defaults
+  after_create :email_meg
 
   scope :accepted, -> { where(status: :accepted) }
 
@@ -32,7 +36,7 @@ class Question < ActiveRecord::Base
   end
 
   def name_and_email
-    "#{name} <#{email}>"
+    "#{h name} <#{h email}>".html_safe
   end
 
   def pending?
@@ -43,5 +47,9 @@ class Question < ActiveRecord::Base
 
   def set_init_defaults
     self.status ||= "pending"
+  end
+
+  def email_meg
+    QuestionMailer.question_asked(self).deliver
   end
 end
