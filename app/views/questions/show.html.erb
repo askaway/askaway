@@ -68,6 +68,7 @@
   <%= @question.email %>
 </p>
 
+<p><fb:like href="<%= url_for question_path(@question, host: 'example.com', port: nil, only_path: false) %>" show_faces="false" send="false" layout="button_count" width="90"></fb:like></p>
 
 <%= link_to 'Edit', edit_question_path(@question) %> |
 <%= link_to 'Back', questions_path %>
