@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    aasm (3.0.22)
     actionmailer (3.2.12)
       actionpack (= 3.2.12)
       mail (~> 2.4.4)
@@ -204,6 +205,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  aasm
   activeadmin
   capybara
   coffee-rails (~> 3.2.1)
