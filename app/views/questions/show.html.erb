@@ -1,3 +1,56 @@
+
+<div class="all-questions-bg tan">
+  <div class="placeholder"></div>
+  <div class="container container-wide">
+    <div class="row-fluid">
+      <div class="box span9 individual-q">
+        <h4><%= @question.first_name.titleize %>'s question for the mayoral candidates:</h4>
+         <h3><%= @question.body %></h3>
+        <p class="muted">Asked by <%= @question.name.titleize %> on <%= @question.created_at.strftime("%b %-d") %></p>
+        <div class="fb-like box tan" data-href="https://askaway.co.nz" data-width="100" data-layout="button_count" data-show-faces="false" data-send="false"></div>
+        <div class="box palesalmon light">
+          <h4>Answers:</h4>
+          <p>None of Wellington's mayoral candidates have answered this question yet. <br><br>If you want it to get answered, like and share the question to show the candidates it's important to you.</p><br><br>
+        </div>
+          <div>
+            <a href="#all-questions-bg" role="button" class="btn btn-primary btn-large">See all the questions</a> or
+              <a href="#ask-modal" role="button" class="btn btn-ask btn-large" data-toggle="modal">Ask a Question</a>
+          </div>
+          <br>
+          <h4>What do you think about this question?</h4>
+          <div class="fb-comments" data-href="http://askaway.co.nz" data-width="470"></div>
+      </div>
+      <div class="box palesalmon span3">
+        <h4>Other recently asked questions</h4>
+        <div class="question-min">
+          How are we going to make bicycling safer in the CBD and turn Wellington into a truly "smart transport" city?<br><br>
+          <div class="fb-like" data-href="https://twitter.com/AskAwayNZ" data-width="100" data-layout="button_count" data-show-faces="false" data-send="false"></div><p class="muted">Asked by Pip Clark on Sept 5</p>
+        </div>
+        <div class="question-min">
+          How are we going to make bicycling safer in the CBD and turn Wellington into a truly "smart transport" city?<br><br>
+          <div class="fb-like" data-href="https://twitter.com/AskAwayNZ" data-width="100" data-layout="button_count" data-show-faces="false" data-send="false"></div><p class="muted">Asked by Pip Clark on Sept 5</p>
+        </div>
+        <div class="question-min">
+          How are we going to make bicycling safer in the CBD and turn Wellington into a truly "smart transport" city?<br><br>
+          <div class="fb-like" data-href="https://twitter.com/AskAwayNZ" data-width="100" data-layout="button_count" data-show-faces="false" data-send="false"></div><p class="muted">Asked by Pip Clark on Sept 5</p>
+        </div>
+      </div>
+
+
+      <div class="row-fluid">
+        <div class="inline-message"><a href="#all-questions-bg" role="button" class="btn btn-primary btn-large">See all the questions</a>  Or, if you've got your own question
+          <a href="#ask-modal" role="button" class="btn btn-ask btn-large" data-toggle="modal">Ask a Question</a>
+        </div>
+      </div>
+  </div>
+</div>
+
+
+
+
+
+
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -15,6 +68,7 @@
   <%= @question.email %>
 </p>
 
+<p><fb:like href="<%= url_for question_path(@question, host: 'example.com', port: nil, only_path: false) %>" show_faces="false" send="false" layout="button_count" width="90"></fb:like></p>
 
 <%= link_to 'Edit', edit_question_path(@question) %> |
 <%= link_to 'Back', questions_path %>

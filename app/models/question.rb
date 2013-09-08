@@ -14,16 +14,20 @@ class Question < ActiveRecord::Base
     where(status: :accepted)
   end
 
-  def pending?
-    status == 'pending'
+  def accept!
+    update_attribute(:status, 'accepted')
   end
 
   def accepted?
     status == 'accepted'
   end
 
-  def accept!
-    update_attribute(:status, 'accepted')
+  def first_name
+    name.split(' ',).first
+  end
+
+  def pending?
+    status == 'pending'
   end
 
   private
