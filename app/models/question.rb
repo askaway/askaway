@@ -14,6 +14,18 @@ class Question < ActiveRecord::Base
     where(status: :accepted)
   end
 
+  def pending?
+    status == 'pending'
+  end
+
+  def accepted?
+    status == 'accepted'
+  end
+
+  def accept!
+    update_attribute(:status, 'accepted')
+  end
+
   private
 
   def set_init_defaults
