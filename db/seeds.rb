@@ -69,9 +69,23 @@ FactoryGirl.define do
       Question.aasm.states[n % Question.aasm.states.length].name
     end
   end
+  # factory :seed_answer, class: Answer do
+  #   body { "By importing more #{Faker::Commerce.product_name.pluralize(10)}" }
+  # end
 end
 
 Question.any_instance.stubs(:set_initial_state)
 100.times do |i|
   FactoryGirl.create(:seed_question)
+end
+
+Question.accepted.each do |question|
+  unless question.answers
+    6.times do |i|
+      question.answers.create do |answer|
+        answer.body = "By importing more #{Faker::Commerce.product_name.pluralize(10)}"
+        answer.candidate_id = (i + 1)
+      end
+    end
+  end
 end
