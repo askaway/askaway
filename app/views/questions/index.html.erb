@@ -8,6 +8,7 @@
     <th></th>
     <th></th>
     <th></th>
+    <th></th>
   </tr>
 
 <% @questions.each do |question| %>
@@ -15,12 +16,15 @@
     <td><%= question.body %></td>
     <td><%= question.name %></td>
     <td><%= question.email %></td>
+    <td><fb:like href="<%= url_for question_path(question, host: 'askaway.co.nz', port: nil, only_path: false) %>" show_faces="false" send="false" layout="button_count" width="90"></fb:like></td>
     <td><%= link_to 'Show', question %></td>
     <td><%= link_to 'Edit', edit_question_path(question) %></td>
     <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
+
+
 
 <br />
 
