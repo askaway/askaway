@@ -15,7 +15,7 @@ candidates = [
   {
     name: 'Jack Yan',
     email: '',
-    authorisation: 'Authorised by C. Johnston of 35–8 Cambridge Terrace, Wellington 6011',
+    authorisation: 'Authorised by C. Johnston of 35-8 Cambridge Terrace, Wellington 6011',
   },
   {
     name: 'John Morrison',

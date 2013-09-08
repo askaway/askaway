@@ -422,6 +422,7 @@ display: inline;
   line-height: 22px;
   color: rgb(255, 99, 71);
   padding: 16px 30px;
+  border-bottom: 1px solid #e1e1e8;
 }
 
 .list-q h3 {
