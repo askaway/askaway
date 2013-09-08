@@ -17,7 +17,10 @@ class Question < ActiveRecord::Base
   scope :recent, -> { order("created_at DESC") }
 
   def accept!
-    update_attribute(:status, 'accepted')
+    unless accepted?
+      update_attribute(:status, 'accepted')
+      QuestionMailer.question_accepted(self).deliver
+    end
   end
 
   def accepted?
@@ -26,6 +29,10 @@ class Question < ActiveRecord::Base
 
   def first_name
     name.split(' ',).first
+  end
+
+  def name_and_email
+    "#{name} <#{email}>"
   end
 
   def pending?

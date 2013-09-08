@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Question do
   let(:question) { FactoryGirl.create :question }
+  let(:mailer) { double(deliver: true) }
 
   it "defaults to pending status" do
     question.should be_pending
@@ -14,9 +15,15 @@ describe Question do
       question.should be_accepted
     end
     it "sends an email to the asker" do
-      pending
-      # QuestionMailer.should_receive(:accepted)
-      # question.accept!
+      QuestionMailer.stub(question_accepted: mailer)
+      mailer.should_receive(:deliver)
+      question.accept!
+    end
+    it "does not do anything if already accepted" do
+      question.accept!
+      question.should_not_receive(:update_attribute)
+      QuestionMailer.should_not_receive(:question_accepted)
+      question.accept!
     end
   end
 
