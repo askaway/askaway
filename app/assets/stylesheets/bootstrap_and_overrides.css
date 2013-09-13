@@ -510,13 +510,14 @@ margin-top: 5px;
 /*-----------HOME-----------*/
 
 #banner {
-  background-image: url('type-banner.png');
-  background-size: contain;
+  background-image: url('type-banner-1440.png');
+  background-size: 100%;
   background-repeat: no-repeat;
   display: block;
+  min-height: 80px;
   height: 395px;
-  max-width: 1280px;
   margin: 0 auto;
+  position: top center;
 }
 
 /*-- 
@@ -534,6 +535,9 @@ margin-top: 5px;
   background-color: rgb(249, 249, 249);
   text-align: center;
   padding-bottom: 60px;
+}
+#QOTD {
+    background: rgb(212, 240, 238);
 }
 
 #home {
@@ -635,4 +639,111 @@ background-color: #FFF;
 #about-bg .inline-message {
   margin-top: 4em;
   margin-left: 60px;
+}
+
+
+/*-----------MEDIA QUERIES-----------*/
+
+@media (max-width: 768px) {
+#banner {
+  height: 368px;
+  background-image: url('type-banner-768.png') !important;
+  background-repeat:no-repeat;
+
+}
+
+
+
+@media (max-width: 480px) {
+
+
+  body {
+    padding-right: 0;
+    padding-left: 0;
+
+  }
+  .navbar-fixed-top,
+  .navbar-fixed-bottom,
+  .navbar-static-top {
+    margin-right: 0;
+    margin-left: 0;
+
+  }
+
+
+#banner {
+  height: 343px;
+  background-image: url('type-banner-480.png') !important;
+  background-repeat:no-repeat;
+}
+
+.navbar-fixed-top {
+margin-bottom: 0;
+}
+.container {
+  width: 90%;
+}
+
+#QOTD-bg .box {
+  width: 100%;
+    background: rgb(212, 240, 238);
+    border: none;
+}
+
+.bubble-left {
+
+  position: relative;
+  top: 15px;
+  padding: 4%;
+  margin: 2%;
+  background: #FFF;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+
+.bubble-left:after 
+{
+
+  margin-top: 20px;
+  content: "";
+  position: absolute;
+  top: -35px;
+  left: 20px;
+  border-style: solid;
+  border-width: 0 15px 15px;
+  border-color: #FFF transparent;
+  display: block;
+  width: 0;
+  z-index: 1;
+}
+
+#QOTD-bg .profile-pic {
+  margin-top: 30px;
+}
+
+}
+
+#about h2 {
+  font-size: 18px;
+}
+
+#contact {
+  width: 80%;
+}
+
+
+.fb-comments {
+  width: 300px;
+}
+
+}
+
+@media (max-width: 989px) {
+#banner {
+  height: 270px;
+  background-image: url('type-banner-768.png') !important;
+  background-repeat:no-repeat;
+  background-size: contain;
+
 }
