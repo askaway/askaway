@@ -1,4 +1,4 @@
-# git instructions!
+== git instructions!
 
 here's how to pull down other people's changes from github:
 

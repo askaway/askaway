@@ -2,40 +2,44 @@
 <div class="all-questions-bg tan">
   <div class="placeholder"></div>
   <div class="container container-wide">
+    <div class="row-fluid" id="extra-buttons-768">
+      <a href="#all-questions-bg" role="button" class="btn btn-primary btn-large">See all the questions</a>
+      <a href="#ask-modal" role="button" class="btn btn-ask  btn-large" data-toggle="modal">
+        Ask a Question
+      </a>
+      <a href="#how-it-works-modal" role="button" class="btn btn-large" data-toggle="modal">How it works</a>
+    </div>
     <div class="row-fluid">
       <div class="box span9 individual-q">
-        <h4><%= @question.first_name.titleize %>'s question for the mayoral candidates:</h4>
-         <h3><%= @question.body %></h3>
-        <p class="muted"><%= asked_by(@question) %></p>
-        <div class="box tan inline-block">
-          <%= facebook_button(@question) %>
-        </div>
-        <div class="box palesalmon light">
-          <h4>Answers:</h4>
-          <% if @answers.present? %>
-            <div class='row-fluid'>
-              <% @answers.shuffle.each do |answer| %>
-                <%= render 'answer', answer: answer %>
-              <% end %>
-            </div>
-          <% else %>
-            <p>None of Wellington's mayoral candidates have answered this question yet. <br><br>If you want it to get answered, like and share the question to show the candidates it's important to you.</p>
-          <% end %>
-          <br><br>
-        </div>
-          <div>
-            <a href="#all-questions-bg" role="button" class="btn btn-primary btn-large">See all the questions</a> or
-            <a href="#ask-modal" role="button" class="btn btn-ask  btn-large" data-toggle="modal">
-              Ask a Question
-            </a>
+        <div class="box-inner">
+          <h4><%= @question.first_name.titleize %>'s question for the mayoral candidates:</h4>
+           <h3><%= @question.body %></h3>
+          <p class="muted"><%= asked_by(@question) %></p>
+          <div class="inline-block light CTA-vote">
+            <%= facebook_button(@question) %>
+            Vote for this question by liking it
           </div>
-          <br>
-          <h4>What do you think about this question?</h4>
-          <div class="fb-comments" data-href="<%= facebook_link(@question) %>" data-width="470"></div>
+        </div>
+          <div class="tan bar light">
+            <h4>Answers:</h4>
+            <% if @answers.present? %>
+              <div class='row-fluid'>
+                <% @answers.shuffle.each do |answer| %>
+                  <%= render 'answer', answer: answer %>
+                <% end %>
+              </div>
+            <% else %>
+              <p>None of Wellington's mayoral candidates have answered this question yet. <br><br>If you want it to get answered, like and share the question to show the candidates it's important to you.</p>
+            <% end %>
+        </div>
       </div>
+
       <%= render partial: 'recently_asked_sidebar' %>
 
-
+        <div class="box-inner">
+          <h4>What do you think about this question?</h4>
+          <div class="fb-comments" data-href="<%= facebook_link(@question) %>" data-width="300"></div>
+        </div>
       <div class="row-fluid">
         <div class="inline-message"><a href="#all-questions-bg" role="button" class="btn btn-primary btn-large">See all the questions</a>  Or, if you've got your own question
           <a href="#ask-modal" role="button" class="btn btn-ask btn-large" data-toggle="modal">Ask a Question</a>
@@ -43,3 +47,72 @@
       </div>
   </div>
 </div>
+<div class="all-questions-bg tan">
+  <div class="placeholder"></div>
+    <div class="container container-wide">
+      <div class="profile-pic young-img"></div>
+      <h3>Nicola Young</h3>
+      <div class="statement span4 box">
+      <p>My principal place of residence is in the Wellington City Council area.
+
+I am also standing for Lambton Ward Wellington City Council.</p>
+
+<p>This election is all about the future of our city. Wellington needs change and leadership, affordable rates that deliver value, improved infrastructure, a strong regional voice, better relationships with central Government, and an increased focus on quality of life. We need to address the big issues like the high cost of rates, and annoying ones like parking.<p>
+
+<p>Voters have told me our Council needs fresh faces, not incumbents who've been there for decades. I want to contribute my business experience, energy and abilities to restore our capital city's momentum. I'm accessible, connected and keen to get stuck into revitalising Wellington. Please give me the opportunity to serve the city where I was born and raised, so I can help bring back the spark. Support me with your No 1 vote, for Mayor and Lambton Ward.</p>
+
+<p>Contact me: 801 5100; nicola@nicolayoung.co.nz; www.nicolayoung.co.nz 
+FB: NicolaYoungForWellingtonMayor; Twitter: @nmjyoung
+
+Think Young, Vote Young!</p>
+</div>
+      <div class="bubble-left span4">
+          <p class="young"><strong>Candidate's name: </strong>Here's a 200 character answer from one of our mayoral candidates. I love being mayor, we have a really nice office with very nice pot plants in it. The peace lily is my favourite. The end of my answer.
+          </p>
+          <i class="icon-thumbs-up"></i> Like
+          <a class="pull-right" data-toggle="collapse" data-target="#comments2" data-parent="#selector">
+            See comments
+          </a>
+          <div id="comments2" class="collapse">
+            Here are the comments
+          </div>
+
+    </div>
+  </div>
+</div>
+
+<div id="how-it-works-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header purple">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h4 id="ask-modalLabel">How it works</h4>
+  </div>
+  <div class="modal-body">
+
+          <h3>This is an independent platform designed to make it easier for you to get to know the people standing for mayor in Wellington's local body elections.</h3><br>
+
+    <div class="row-fluid"id="how-it-works">
+      <div class="span4">
+        <div id="img-q"></div>Anyone can ask a question for the candidates.
+      </div>
+      <div class="span4">
+        <div id="img-qmany"></div>People add their vote to questions by 'liking' them.
+      </div>
+      <div class="span4">
+        <div id="img-a"></div>The top question at the end of each day will get answered by the candidates and shown on the site the next day.
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-large" href="about" data-dismiss="modal" aria-hidden="true">Learn more</button>
+    <button class="btn btn-large" data-dismiss="modal" aria-hidden="true">Got it</button>
+</div>
+
+
+
+
+
+
+
+
+
+
