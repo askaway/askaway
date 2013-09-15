@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require twitter/bootstrap
+//= require bootstrap
 //= require_tree .
 
 //$('#example').tooltip(options)
@@ -21,3 +21,9 @@
     var $link = $(this);
     $link.html("See Less");
   });
+
+jQuery(function() {
+	$("a[rel~=popover], .has-popover").popover();
+  $("a[rel~=tooltip], .has-tooltip").tooltip();
+});
+  

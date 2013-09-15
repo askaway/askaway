@@ -9,11 +9,10 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require jquery.ui.all
- *= require twitter-bootstrap-static/bootstrap
- *= require twitter-bootstrap-static/fontawesome
  *= require_self
  */
 
+@import "bootstrap";
 @import "jquery-ui";
 @import "active_admin";
 @import "variables";

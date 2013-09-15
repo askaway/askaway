@@ -5,7 +5,7 @@ gem 'rails', '3.2.12'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem "twitter-bootstrap-rails"
+gem "bootstrap-sass", '~> 2.3.2.1'
 
 gem "activeadmin"
 gem 'jquery-ui-rails'
