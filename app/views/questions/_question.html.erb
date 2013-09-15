@@ -2,20 +2,22 @@
   <a href="<%= question_path(question)%>">
     <h3><%= question.body %></h3>
     <div class="row-fluid" id="answered-by">
-        <p class="muted"><%= asked_by(question) %></p>
-          <div class="light span7 CTA-vote">
+      <p class="muted"><%= asked_by(question) %></p>
+      <div class="light span7 CTA-vote">
         <%= facebook_button(question) %>
-          Vote for this question by liking it
-        </div>
+        Vote for this question by liking it
       </div>
-      <div class="row-fluid">
-        <p>Answered yesterday by:</p>
+    </div>
+    <div class="row-fluid">
+      <p>Answered yesterday by:</p>
       <div class="span8">
         <div class="row-fluid">
-          <% question.answers.each do |answer| %>
-            <div class="profile-pic span2">
-              <%= image_tag answer.candidate_avatar %>
-            </div>
+          <% unless question.answers_count == 0 %>
+            <% question.answers.each do |answer| %>
+              <div class="profile-pic span2">
+                <%= image_tag answer.candidate_avatar %>
+              </div>
+            <% end %>
           <% end %>
         </div>
       </div>

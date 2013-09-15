@@ -58,6 +58,10 @@ class Question < ActiveRecord::Base
     save
   end
 
+  def needs_voting_reminder?
+    answers_count < 3
+  end
+
   private
 
   def init_count
