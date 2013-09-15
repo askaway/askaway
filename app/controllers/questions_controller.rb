@@ -19,7 +19,7 @@ class QuestionsController < ApplicationController
     else #if params[:filter] == 'answered'
       @questions = @questions.answered.recent.page(page)
     end
-    if params[:q]
+    if params[:q].present?
       @questions = @questions.search_scope(params[:q])
     end
 

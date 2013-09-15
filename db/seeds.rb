@@ -58,7 +58,6 @@ candidates.each do |candidate_details|
 end
 
 
-require 'mocha/setup'
 
 FactoryGirl.define do
   factory :seed_question, class: Question do
@@ -74,18 +73,23 @@ FactoryGirl.define do
   # end
 end
 
-Question.any_instance.stubs(:set_initial_state)
+require "rspec/mocks/standalone"
+Question.any_instance.stub(:set_initial_state)
+
 100.times do |i|
   FactoryGirl.create(:seed_question)
 end
 
 Question.accepted.each do |question|
-  unless question.answers
+  if question.answers.blank?
+    puts "Creating answers"
     6.times do |i|
-      question.answers.create do |answer|
+      question.answers.create! do |answer|
         answer.body = "By importing more #{Faker::Commerce.product_name.pluralize(10)}"
         answer.candidate_id = (i + 1)
       end
     end
+  else
+    puts "No accepted questions found"
   end
 end
