@@ -58,7 +58,6 @@ candidates.each do |candidate_details|
 end
 
 
-require 'mocha/setup'
 
 FactoryGirl.define do
   factory :seed_question, class: Question do
@@ -74,7 +73,9 @@ FactoryGirl.define do
   # end
 end
 
-Question.any_instance.stubs(:set_initial_state)
+require "rspec/mocks/standalone"
+Question.any_instance.stub(:set_initial_state)
+
 100.times do |i|
   FactoryGirl.create(:seed_question)
 end
