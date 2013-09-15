@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  respond_to :js
+  #respond_to :js
 
   before_filter :fetch_question, only: [:show, :edit, :update, :destroy, :like, :unlike]
   before_filter :fetch_answers, only: :show
