@@ -58,7 +58,7 @@ candidates.each do |candidate_details|
 end
 
 
-require 'mocha'
+require 'mocha/setup'
 
 FactoryGirl.define do
   factory :seed_question, class: Question do
