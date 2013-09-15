@@ -12,12 +12,18 @@
     <div class="row-fluid">
       <div class="box span9 individual-q">
         <div class="box-inner">
-          <h4><%= @question.first_name.titleize %>'s question for the mayoral candidates:</h4>
-           <h3><%= @question.body %></h3>
+          <% if @question.is_anonymous? %>
+            <h4>Anonymous question for the mayoral candidates:</h4>
+          <% else %>
+            <h4><%= @question.first_name.titleize %>'s question for the mayoral candidates:</h4>
+          <% end %>
+          <h3><%= @question.body %></h3>
           <p class="muted"><%= asked_by(@question) %></p>
           <div class="inline-block light CTA-vote">
             <%= facebook_button(@question) %>
-            Vote for this question by liking it
+            <% if @question.needs_voting_reminder? %>
+              Vote for this question by liking it
+            <% end %>
           </div>
         </div>
           <div class="tan bar light">
