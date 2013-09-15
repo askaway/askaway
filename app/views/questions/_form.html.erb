@@ -35,8 +35,8 @@
   </fieldset>
 
   <div class="modal-footer">
-    <button class="btn btn-large" data-dismiss="modal" aria-hidden="true">Close</button>
-    <%= f.submit "Ask", class: "btn btn-ask btn-large" %>
+    <!-- <button class="btn btn-large" data-dismiss="modal" aria-hidden="true">Close</button> -->
+    <%= f.submit "Ask", class: "btn btn-ask btn-large", "data" => { "disable-with" => "Ask" } %>
     <!-- <button type="submit" class="btn btn-ask btn-large" href="#thanks-modal" role="button" class="btn btn-ask btn-large" data-toggle="modal">Ask</button> -->
   </div>
 <% end %>

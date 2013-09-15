@@ -8,4 +8,5 @@
     %p.muted= answer.candidate_authorisation
     %i.icon-thumbs-up
     Like
-    = link_to "See comments", answer_path(answer), class: 'pull-right'
+    - unless @hide_see_comments
+      = link_to "See comments", answer_path(answer), class: 'pull-right'
