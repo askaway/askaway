@@ -106,36 +106,15 @@
         </div>
       </div>
     </div>
-    <div class="span3">
-        <a href="#ask-modal" role="button" class="btn btn-ask  btn-large btn-block" data-toggle="modal">
-          Ask a Question
-        </a>
-        <br>
-    <div class="box palesalmon">
-          <h4>Other recently asked questions</h4>
-          <div class="question-min">
-            How are we going to make bicycling safer in the CBD and turn Wellington into a truly "smart transport" city?<br><br>
-            <div class="fb-like" data-href="https://twitter.com/AskAwayNZ" data-width="100" data-layout="button_count" data-show-faces="false" data-send="false"></div><p class="muted">Asked by Pip Clark on Sept 5</p>
-          </div>
-          <div class="question-min">
-            How are we going to make bicycling safer in the CBD and turn Wellington into a truly "smart transport" city?<br><br>
-            <div class="fb-like" data-href="https://twitter.com/AskAwayNZ" data-width="100" data-layout="button_count" data-show-faces="false" data-send="false"></div><p class="muted">Asked by Pip Clark on Sept 5</p>
-          </div>
-          <div class="question-min">
-            How are we going to make bicycling safer in the CBD and turn Wellington into a truly "smart transport" city?<br><br>
-            <div class="fb-like" data-href="https://twitter.com/AskAwayNZ" data-width="100" data-layout="button_count" data-show-faces="false" data-send="false"></div><p class="muted">Asked by Pip Clark on Sept 5</p>
-          </div>
-        </div>
-          <%= link_to "See more questions", questions_path, role: "button", class: "btn btn-primary btn-large btn-block" %>
-      </div>
-      </div>
+    <%= render 'questions/recently_asked_sidebar' %>
+  </div>
 
 
 
 
-     <div class="inline-message">
-      <%= link_to "See all the questions", questions_path, role: "button", class: "btn btn-primary btn-large" %> Or, if you've got your own question
-      <a href="#ask-modal" role="button" class="btn btn-ask btn-large" data-toggle="modal">Ask a Question</a>
+  <div class="inline-message">
+    <%= link_to "See all the questions", questions_path, role: "button", class: "btn btn-primary btn-large" %> Or, if you've got your own question
+    <a href="#ask-modal" role="button" class="btn btn-ask btn-large" data-toggle="modal">Ask a Question</a>
 
   </div> <!--container -->
 </div>

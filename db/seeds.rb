@@ -81,7 +81,7 @@ Question.any_instance.stub(:set_initial_state)
 end
 
 Question.accepted.each do |question|
-  if question.answers.blank?
+  if question.answers.blank? && Random.rand < 0.7
     puts "Creating answers"
     6.times do |i|
       question.answers.create! do |answer|
