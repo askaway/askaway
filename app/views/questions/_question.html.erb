@@ -12,10 +12,12 @@
       <p>Answered yesterday by:</p>
       <div class="span8">
         <div class="row-fluid">
-          <% question.answers.each do |answer| %>
-            <div class="profile-pic span2">
-              <%= image_tag answer.candidate_avatar %>
-            </div>
+          <% unless question.answers_count == 0 %>
+            <% question.answers.each do |answer| %>
+              <div class="profile-pic span2">
+                <%= image_tag answer.candidate_avatar %>
+              </div>
+            <% end %>
           <% end %>
         </div>
       </div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130914233739) do
+ActiveRecord::Schema.define(:version => 20130915030851) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -68,12 +68,14 @@ ActiveRecord::Schema.define(:version => 20130914233739) do
     t.string   "name"
     t.string   "email"
     t.boolean  "is_anonymous"
-    t.datetime "created_at",                  :null => false
-    t.datetime "updated_at",                  :null => false
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
     t.string   "status"
-    t.integer  "likes_count",  :default => 0
+    t.integer  "likes_count",   :default => 0
+    t.integer  "answers_count", :default => 0
   end
 
+  add_index "questions", ["answers_count"], :name => "index_questions_on_answers_count"
   add_index "questions", ["email"], :name => "index_questions_on_email"
   add_index "questions", ["likes_count"], :name => "index_questions_on_likes_count"
   add_index "questions", ["name"], :name => "index_questions_on_name"

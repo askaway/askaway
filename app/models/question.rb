@@ -21,7 +21,7 @@ class Question < ActiveRecord::Base
     end
   end
 
-  has_many :answers#, counter_cache: true
+  has_many :answers
 
   validates_presence_of :body, :email, :name
   validates_length_of :body, maximum: 140
@@ -59,7 +59,7 @@ class Question < ActiveRecord::Base
   end
 
   def needs_voting_reminder?
-    answers.count < 3
+    answers_count < 3
   end
 
   private
