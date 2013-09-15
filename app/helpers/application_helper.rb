@@ -8,4 +8,8 @@ module ApplicationHelper
     host = (Rails.env.development?) ? 'example.com' : ENV['DEFAULT_URL_HOST']
     url_for polymorphic_path(obj, host: host, port: nil, only_path: false)
   end
+
+  def image_url(source)
+    URI.join(root_url, image_path(source))
+  end
 end
