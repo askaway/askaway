@@ -4,7 +4,7 @@ ActiveAdmin.register Answer do
     @answer = Answer.new(question_id: params[:question_id])
   end
 
-  member_action :create do 
+  member_action :create do
     @answer = Answer.new(params[:answer])
     if @answer.save
       flash[:notice] = "Answer created for #{@answer.candidate.name}."
@@ -18,7 +18,7 @@ ActiveAdmin.register Answer do
   form do |f|
     f.inputs "Content" do
       f.input :candidate
-      f.input :question, member_label: :label
+      f.input :question, member_label: :label, collection: Question.accepted
       f.input :body
    end
    f.actions
