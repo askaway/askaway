@@ -1,4 +1,4 @@
-
+<% content_for :description, "An independent platform designed to make it easier for you to get to know the people standing for mayor in Wellington's local body elections." %>
 <div id="title">
 <div id="banner"></div>
 
@@ -15,7 +15,10 @@
 <div id="QOTD-bg" class="paleteal">
 
   <div class="container container-wide">
-  <%= render partial: 'questions/featured_question', object: @featured_question %>
+  <% if @featured_question %>
+    <%= render partial: 'questions/featured_question', object: @featured_question %>
+  <% end %>
+
   <!--container -->
 </div>
 </div>

@@ -63,6 +63,10 @@ class Question < ActiveRecord::Base
     answers_count < 3
   end
 
+  def candidates_with_no_answer
+    Candidate.all-answers.map(&:candidate)
+  end
+
   private
 
   def init_count
