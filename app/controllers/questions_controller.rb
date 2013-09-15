@@ -32,7 +32,7 @@ class QuestionsController < ApplicationController
   # GET /questions/1
   # GET /questions/1.json
   def show
-    @recently_asked = Question.accepted.limit(5)
+    @recently_asked = recently_asked
 
     respond_to do |format|
       format.html # show.html.erb
