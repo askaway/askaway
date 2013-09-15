@@ -1,0 +1,16 @@
+.list-q
+  %a{:href => question_path(question)}
+    %h3= question.body
+    .row-fluid#answered-by
+      %p.muted= asked_by(question)
+      .light.span7.CTA-vote
+        = facebook_button(question)
+        Vote for this question by liking it
+    -unless question.answers_count == 0
+      .row-fluid
+        %p Answered by:
+        .span8
+          .row-fluid
+            -question.answers.each do |answer|
+              .profile-pic.span2
+                = image_tag answer.candidate_avatar
