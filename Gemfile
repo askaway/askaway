@@ -5,7 +5,6 @@ gem 'rails', '3.2.12'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
 gem "twitter-bootstrap-rails"
 
 gem "activeadmin"
@@ -53,10 +52,15 @@ group :development do
 end
 
 group :development, :test do
+  gem 'sqlite3'
   gem 'rspec-rails', '~> 2.0'
   gem 'capybara'
   gem 'poltergeist'
   gem 'faker'
   gem 'factory_girl_rails'
   gem 'launchy'
+end
+
+group :production do
+  gem 'pg'
 end

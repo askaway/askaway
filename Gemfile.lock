@@ -45,7 +45,7 @@ GEM
     arbre (1.0.1)
       activesupport (>= 3.0.0)
     arel (3.0.2)
-    atomic (1.1.13)
+    atomic (1.1.14)
     bcrypt-ruby (3.1.2)
     bourbon (3.1.8)
       sass (>= 3.2.0)
@@ -127,15 +127,16 @@ GEM
       polyamorous (~> 0.5.0)
     metaclass (0.0.1)
     method_source (0.8.2)
-    mime-types (1.24)
+    mime-types (1.25)
     mini_portile (0.5.1)
     mocha (0.14.0)
       metaclass (~> 0.0.1)
-    multi_json (1.7.9)
+    multi_json (1.8.0)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
     orm_adapter (0.4.0)
-    poltergeist (1.4.0)
+    pg (0.16.0)
+    poltergeist (1.4.1)
       capybara (~> 2.1.0)
       cliver (~> 0.2.1)
       multi_json (~> 1.0)
@@ -203,7 +204,7 @@ GEM
       tilt (~> 1.1, != 1.3.0)
     sqlite3 (1.3.8)
     thor (0.18.1)
-    thread_safe (0.1.2)
+    thread_safe (0.1.3)
       atomic
     tilt (1.4.1)
     treetop (1.4.15)
@@ -215,12 +216,12 @@ GEM
       rails (>= 3.1)
       railties (>= 3.1)
     tzinfo (0.3.37)
-    uglifier (2.2.0)
+    uglifier (2.2.1)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
     warden (1.2.3)
       rack (>= 1.0)
-    websocket-driver (0.2.3)
+    websocket-driver (0.3.0)
     xpath (2.0.0)
       nokogiri (~> 1.3)
 
@@ -241,6 +242,7 @@ DEPENDENCIES
   kaminari
   launchy
   mocha
+  pg
   poltergeist
   pry-byebug
   quiet_assets
