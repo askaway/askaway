@@ -101,7 +101,7 @@ footer img {
 
 .salmon {
   color: #FFF;
-  background-color: rgb(255, 99, 71);
+  background-color: $salmon;
 }
 
 .palesalmon {
@@ -767,7 +767,6 @@ overflow: auto;
 /* Landscape phones and down */
 
 @media (max-width: 480px) {
-
   body {
     padding-right: 0;
     padding-left: 0;
