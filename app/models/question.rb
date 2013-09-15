@@ -21,7 +21,7 @@ class Question < ActiveRecord::Base
     end
   end
 
-  has_many :answers
+  has_many :answers, inverse_of: :question
 
   validates_presence_of :body, :email, :name
   validates_length_of :body, maximum: 140
@@ -32,8 +32,9 @@ class Question < ActiveRecord::Base
   after_create :email_meg
 
   scope :answered, -> { joins(:answers) }
-  scope :recent, -> { order("created_at DESC") }
-  scope :top, -> { order("likes_count DESC") }
+  scope :unanswered, -> { joins('LEFT OUTER JOIN answers ON questions.id = answers.question_id').where('answers.question_id IS NULL') }
+  scope :recent, -> { order("questions.updated_at DESC") }
+  scope :top, -> { order("questions.likes_count DESC") }
   scope :search_scope, ->(query) { where(Question.arel_table[:body].matches("%#{query}%")) }
 
   def first_name
@@ -61,7 +62,7 @@ class Question < ActiveRecord::Base
   private
 
   def init_count
-    self.likes_count ||= 0
+    likes_count ||= 0
   end
 
   def set_init_defaults

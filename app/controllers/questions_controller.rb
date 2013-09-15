@@ -8,15 +8,16 @@ class QuestionsController < ApplicationController
   # GET /questions.json
   def index
     page = params[:page] || 1
-    @filter = params[:filter] || ''
+    @filter = params[:filter]
+    @questions = Question.accepted.uniq.includes(answers: :candidate)
     if params[:filter] == 'recent'
-      @questions = Question.accepted.recent.page(page)
+      @questions = @questions.recent.page(page)
     elsif params[:filter] == 'top'
-      @questions = Question.accepted.top.page(page)
-    elsif params[:filter] == 'answered'
-      @questions = Question.accepted.answered.page(page)
-    else
-      @questions = Question.page(page)
+      @questions = @questions.unanswered.top.page(page)
+    elsif params[:filter] == 'all'
+      @questions = @questions.recent.page(page)
+    else #if params[:filter] == 'answered'
+      @questions = @questions.answered.recent.page(page)
     end
     if params[:q]
       @questions = @questions.search_scope(params[:q])
@@ -102,38 +103,20 @@ class QuestionsController < ApplicationController
 
   def like
     puts "I like!"
-    @question.increment # if store_to_session(params[:id])
+    @question.increment
     head :accepted
   end
 
   def unlike
     puts "I no like!"
-    @question.decrement # if clear_from_session(params[:id])
+    @question.decrement
     head :accepted
   end
 
   private
 
-  def store_to_session(question_id)
-    session[:questions] ||= []
-    #if question is in session return false
-    return false if session[:questions].include? question_id
-    # append to session, return true
-    session[:questions] << question_id
-    true
-  end
-
-  def clear_from_session(question_id)
-    session[:questions] ||= []
-    #if question is NOT in session return false
-    return false unless session[:questions].include? question_id
-    # append to session, return true
-    session[:questions].delete(question_id)
-    true
-  end
-
   def fetch_question
-    @question = Question.find(params[:id])
+    @question = Question.includes(answers: :candidate).find(params[:id])
   end
 
   def fetch_answers
