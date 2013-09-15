@@ -4,7 +4,7 @@ module QuestionsHelper
   end
 
   def facebook_button(object)
-    content_tag(:div, "", class: "fb-like", data: {href: facebook_link(object), width: 100, layout: :button_count, 'show-faces' => false, send: true})
+    content_tag(:div, "", class: "fb-like", data: {'like-url' => like_question_path(object), href: facebook_link(object), width: 100, layout: :button_count, 'show-faces' => false, send: true})
   end
 
   def facebook_link(question)

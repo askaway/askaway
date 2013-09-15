@@ -5,6 +5,10 @@ Askaway::Application.routes.draw do
   ActiveAdmin.routes(self)
 
   resources :questions do
+    member do
+      post   'like'
+      delete 'like', to: "questions#unlike"
+    end
     # resources :answers, only: [:index, :show], shallow: true
   end
 
