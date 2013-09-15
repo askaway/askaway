@@ -87,6 +87,8 @@ Question.accepted.each do |question|
       question.answers.create! do |answer|
         answer.body = "By importing more #{Faker::Commerce.product_name.pluralize(10)}"
         answer.candidate_id = (i + 1)
+
+        #answer.body = answer.body.to_derp if answer.candidate_id == 3
       end
     end
   else
