@@ -1,0 +1,20 @@
+%div
+  %br/
+  %h4 Question of the day:
+  .row-fluid
+    #QOTD.span9
+      %h2= featured_question.body
+      %p.muted
+        =asked_by(featured_question)
+      =facebook_button(featured_question)
+
+      %br/
+      %h4 Answers from the candidates:
+      .row-fluid
+        =render partial: 'questions/candidate_answer', collection: featured_question.answers
+
+    = render 'questions/recently_asked_sidebar'
+  .inline-message
+    = link_to "See all the questions", questions_path, role: "button", class: "btn btn-primary btn-large"
+    Or, if you've got your own question
+    %a.btn.btn-ask.btn-large{"data-toggle" => "modal", :href => "#ask-modal", :role => "button"} Ask a Question
