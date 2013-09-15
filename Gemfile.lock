@@ -135,12 +135,9 @@ GEM
       activerecord (~> 3.1)
       activesupport (~> 3.1)
       polyamorous (~> 0.5.0)
-    metaclass (0.0.1)
     method_source (0.8.2)
     mime-types (1.25)
     mini_portile (0.5.1)
-    mocha (0.14.0)
-      metaclass (~> 0.0.1)
     multi_json (1.8.0)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
@@ -254,7 +251,6 @@ DEPENDENCIES
   jquery-ui-rails
   kaminari
   launchy
-  mocha
   pg
   poltergeist
   pry-byebug
