@@ -34,7 +34,7 @@ class Question < ActiveRecord::Base
   scope :answered, -> { joins(:answers) }
   scope :recent, -> { order("created_at DESC") }
   scope :top, -> { order("likes_count DESC") }
-  scope :search_scope, -> (query) { where(Question.arel_table[:body].matches("%#{query}%")) }
+  scope :search_scope, ->(query) { where(Question.arel_table[:body].matches("%#{query}%")) }
 
   def first_name
     name.split(' ',).first
