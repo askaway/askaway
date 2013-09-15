@@ -8,12 +8,18 @@ class QuestionsController < ApplicationController
   # GET /questions.json
   def index
     page = params[:page] || 1
+    @filter = params[:filter] || ''
     if params[:filter] == 'recent'
       @questions = Question.accepted.recent.page(page)
+    elsif params[:filter] == 'top'
+      @questions = Question.accepted.top.page(page)
     elsif params[:filter] == 'answered'
       @questions = Question.accepted.answered.page(page)
     else
-      @questions = Question.accepted.page(page)
+      @questions = Question.page(page)
+    end
+    if params[:q]
+      @questions = @questions.search(params[:q])
     end
 
     respond_to do |format|
