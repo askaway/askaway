@@ -1,0 +1,12 @@
+.answers
+  .profile-pic.span2
+    =image_tag answer.candidate_avatar
+  .bubble-left.span4
+    %p
+      %strong= answer.candidate_name
+      =answer.body
+    %p.muted= answer.candidate_authorisation
+    %i.icon-thumbs-up
+    Like
+    - unless @hide_see_comments
+      = link_to "See comments", answer_path(answer), class: 'pull-right'
