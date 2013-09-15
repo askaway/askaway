@@ -56,6 +56,9 @@ class Question < ActiveRecord::Base
   def decrement
     self.likes_count = self.likes_count - 1
     save
+
+  def needs_voting_reminder?
+    answers.count < 3
   end
 
   private
