@@ -59,9 +59,11 @@
           <a class="brand" href="/">Ask Away</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active"><a href="/styles">Styles</a></li>
-              <li><a href="/">Home</a></li>
-              <li><a href="/questions">All Questions</a></li>
+              <% if Rails.env.development? %>
+                <li class="<%= "active" if params[:action] == "styles" %>"><a href="/styles">Styles</a></li>
+              <% end %>
+              <li class="<%= "active" if params[:action] == "another_page" %>"><a href="/">Home</a></li>
+              <li class="<%= "active" if params[:controller] == "questions" %>"><a href="/questions">All Questions</a></li>
               <li><a href="#about-bg">About</a></li>
             </ul>
             <div id="share">
