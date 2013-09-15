@@ -12,8 +12,11 @@
       %h4 Answers from the candidates:
       .candidate-picker
         - featured_question.answers.each do |a|
-          .candidate{id: "candidate-picker-#{a.id}"}
+          .candidate{id: "candidate-picker-#{a.candidate.id}"}
             = image_tag a.candidate_avatar
+        - featured_question.candidates_with_no_answer.each do |c|
+          .candidate.candidate-with-no-answer{id: "candidate-picker-#{c.id}"}
+            = image_tag c.avatar
       .row-fluid
         =render partial: 'questions/candidate_answer', collection: featured_question.answers
 

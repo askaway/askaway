@@ -83,7 +83,7 @@ end
 Question.accepted.each do |question|
   if question.answers.blank? && Random.rand < 0.7
     puts "Creating answers"
-    6.times do |i|
+    Random.rand(6).times do |i|
       question.answers.create! do |answer|
         answer.body = "By importing more #{Faker::Commerce.product_name.pluralize(10)}"
         answer.candidate_id = (i + 1)
