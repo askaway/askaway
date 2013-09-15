@@ -65,7 +65,7 @@ Askaway::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
-  config.action_mailer.default_url_options = { :host => 'www.askaway.co.nz' }
+  config.action_mailer.default_url_options = { :host => ENV['DEFAULT_URL_HOST'] }
   ActionMailer::Base.smtp_settings = {
     :address        => 'smtp.sendgrid.net',
     :port           => '587',

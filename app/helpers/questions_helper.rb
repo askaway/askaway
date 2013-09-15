@@ -12,7 +12,7 @@ module QuestionsHelper
   end
 
   def facebook_link(question)
-    host = (Rails.env.development?) ? 'example.com' : nil
+    host = (Rails.env.development?) ? 'example.com' : ENV['DEFAULT_URL_HOST']
     url_for question_path(question, host: host, port: nil, only_path: false)
   end
 end
