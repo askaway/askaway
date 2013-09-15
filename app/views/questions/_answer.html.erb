@@ -1,9 +1,0 @@
-<div class="answers">
-  <div class="profile-pic span2"><%=image_tag answer.candidate_avatar %></div>
-  <div class="bubble-left span4">
-      <p><strong><%= answer.candidate_name %> </strong><%= answer.body %></p>
-      <p class='muted'><%= answer.candidate_authorisation %></p>
-      <i class="icon-thumbs-up"></i> Like
-      <%= link_to "See comments", answer_path(answer), class: "pull-right" %>
-  </div>
-</div>
