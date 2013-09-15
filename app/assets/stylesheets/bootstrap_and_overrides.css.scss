@@ -11,12 +11,7 @@
 }
 
 #share {
-  display: none;
   padding-top: 0.75%
-}
-
-.navbar-inverse:hover #share {
-  display: block;
 }
 
 a {
@@ -258,10 +253,7 @@ p {
   opacity: 0.5;
 }
 
-.bubble-left 
-{
-color: #999999;
-font-weight: 200;
+.bubble-left {
 position: relative;
 padding: 2%;
 margin: 0 0 2% 0;
@@ -269,13 +261,14 @@ background: #FFF;
 -webkit-border-radius: 10px;
 -moz-border-radius: 10px;
 border-radius: 10px;
+-moz-box-shadow: 1px 1px 3px rgba(30, 39, 30, 0.1);
+-webkit-box-shadow: 1px 1px 3px rgba(30, 39, 30, 0.1);
+box-shadow: 1px 1px 3px rgba(30, 39, 30, 0.1);
 }
 
-.bubble-left:hover {
-color: #000;
--moz-box-shadow: 1px 1px 2px rgba(30, 39, 30, 0.2);
--webkit-box-shadow: 1px 1px 2px rgba(30, 39, 30, 0.2);
-box-shadow: 1px 1px 3px rgba(30, 39, 30, 0.2);
+.bubble-left p {
+font-size: 22px;
+font-weight: 200;
 }
 
 .bubble-left:hover .profile-pic {
