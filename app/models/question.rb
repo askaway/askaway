@@ -21,7 +21,7 @@ class Question < ActiveRecord::Base
     end
   end
 
-  has_many :answers
+  has_many :answers#, counter_cache: true
 
   validates_presence_of :body, :email, :name
   validates_length_of :body, maximum: 140
@@ -56,6 +56,10 @@ class Question < ActiveRecord::Base
   def decrement
     self.likes_count = self.likes_count - 1
     save
+  end
+
+  def needs_voting_reminder?
+    answers.count < 3
   end
 
   private
