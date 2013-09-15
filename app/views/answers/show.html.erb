@@ -2,20 +2,14 @@
 <div class="container">
   <br>
   <h4><%= "Question: ".html_safe + link_to(@answer.question.body, question_path(@answer.question)) %><h4>
+  <h4>Answer:<h4>
   <div class="row">
-    <div class="span2">
-      <%=image_tag @answer.candidate_avatar %>
-      <p><%= @answer.candidate_name %></p>
+    <div class="span7">
+      <%= render "questions/answer", answer: @answer %>
+      <div class="fb-comments" data-href="<%= facebook_link(@answer) %>" data-width="500"></div>
     </div>
-    <div class="span4">
-      <p><strong> </strong></p>
-      <p><%= @answer.body %></p>
-      <p><%= @answer.candidate_authorisation %></p>
-    </div>
-  </div>
-  <div class="row">
-    <div class="span4">
-      <div class="fb-comments" data-href="<%= facebook_link(@answer) %>" data-width="600"></div>
+    <div class="span3">
+      <%= render partial: 'questions/recently_asked_sidebar' %>
     </div>
   </div>
 </div>
