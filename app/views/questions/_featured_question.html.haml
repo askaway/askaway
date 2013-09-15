@@ -15,7 +15,8 @@
           .candidate{id: "candidate-picker-#{a.id}"}
             = image_tag a.candidate_avatar
       .row-fluid
-        =render partial: 'questions/candidate_answer', collection: featured_question.answers
+        .tab-content
+          =render partial: 'questions/candidate_answer', collection: featured_question.answers
 
     = render 'questions/recently_asked_sidebar'
   .inline-message

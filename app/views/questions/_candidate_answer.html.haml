@@ -1,9 +1,7 @@
-.answer-container
-  .profile-pic.span2{class: "#{last_name_from_answer(candidate_answer).downcase}-img"}
-  .bubble-left.span4
-    %p{class: "#{last_name_from_answer(candidate_answer).downcase}"}
-      %strong= "#{candidate_answer.candidate_name}:"
-      = candidate_answer.body
-    = facebook_button(candidate_answer)
-    = link_to "See comments", answer_path(candidate_answer), { class: "pull-right comments" }
-    %br/
+.answer-container.bubble-top.span12{id: "#{last_name_from_answer(candidate_answer).downcase}"}
+  %p{class: "#{last_name_from_answer(candidate_answer).downcase}"}
+    %strong= "#{candidate_answer.candidate_name}:"
+    = candidate_answer.body
+  = facebook_button(candidate_answer)
+  = link_to "See comments", answer_path(candidate_answer), { class: "pull-right comments" }
+  %br/
