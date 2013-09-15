@@ -32,7 +32,7 @@ class Question < ActiveRecord::Base
   scope :answered, -> { joins(:answers) }
   scope :recent, -> { order("created_at DESC") }
   scope :top, -> { order(:likes_count) }
-  scope :search, -> (query) { where(Question.arel_table[:body].matches("%#{query}%")) }
+  scope :search, ->(query) { where(Question.arel_table[:body].matches("%#{query}%")) }
 
   def first_name
     name.split(' ',).first

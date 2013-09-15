@@ -365,6 +365,9 @@ window.onload = function() {
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-
-
+<script type="text/javascript">
+if ('ontouchstart' in document) {
+    Y.one('body').removeClass('no-touch');
+}
+</script>
 
