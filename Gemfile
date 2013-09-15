@@ -40,7 +40,6 @@ gem 'jquery-rails'
 # gem 'debugger'
 
 gem 'aasm'
-gem 'mocha'
 
 gem 'kaminari'  # pagination
 gem 'share_counts', github: "fourseven/share_counts" # counting shares
