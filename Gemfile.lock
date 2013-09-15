@@ -1,3 +1,13 @@
+GIT
+  remote: git://github.com/fourseven/share_counts.git
+  revision: f25eca8bc55cb3937e20dfed296c9963771e44ef
+  specs:
+    share_counts (0.1.4)
+      json
+      nokogiri
+      redis
+      rest-client
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -178,8 +188,11 @@ GEM
     rake (10.1.0)
     rdoc (3.12.2)
       json (~> 1.4)
+    redis (3.0.4)
     responders (1.0.0.rc)
       railties (>= 3.2, < 5)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
     rspec-core (2.14.5)
     rspec-expectations (2.14.2)
       diff-lcs (>= 1.1.3, < 2.0)
@@ -249,6 +262,7 @@ DEPENDENCIES
   rails (= 3.2.12)
   rspec-rails (~> 2.0)
   sass-rails (~> 3.2.3)
+  share_counts!
   sqlite3
   twitter-bootstrap-rails
   uglifier (>= 1.0.3)

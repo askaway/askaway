@@ -43,6 +43,7 @@ gem 'aasm'
 gem 'mocha'
 
 gem 'kaminari'  # pagination
+gem 'share_counts', github: "fourseven/share_counts" # counting shares
 
 group :development do
   gem 'quiet_assets'
