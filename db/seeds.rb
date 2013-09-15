@@ -81,12 +81,17 @@ Question.any_instance.stub(:set_initial_state)
 end
 
 Question.accepted.each do |question|
-  unless question.answers
+  if question.answers.blank? && Random.rand < 0.7
+    puts "Creating answers"
     6.times do |i|
-      question.answers.create do |answer|
+      question.answers.create! do |answer|
         answer.body = "By importing more #{Faker::Commerce.product_name.pluralize(10)}"
         answer.candidate_id = (i + 1)
+
+        #answer.body = answer.body.to_derp if answer.candidate_id == 3
       end
     end
+  else
+    puts "No accepted questions found"
   end
 end

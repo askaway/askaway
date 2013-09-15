@@ -1,0 +1,15 @@
+
+<div class="container">
+  <br>
+  <h4><%= "Question: ".html_safe + link_to(@answer.question.body, question_path(@answer.question)) %><h4>
+  <h4>Answer:<h4>
+  <div class="row">
+    <div class="span7">
+      <%= render "questions/answer", answer: @answer %>
+      <div class="fb-comments" data-href="<%= facebook_link(@answer) %>" data-width="500"></div>
+    </div>
+    <div class="span3">
+      <%= render partial: 'questions/recently_asked_sidebar' %>
+    </div>
+  </div>
+</div>

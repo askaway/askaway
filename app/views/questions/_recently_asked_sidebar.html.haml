@@ -1,0 +1,10 @@
+.span3
+  = link_to "See all the questions", questions_path, role: "button", class: "btn btn-primary btn-large btn-block"
+  %a.btn.btn-ask.btn-large.btn-block{"data-toggle" => "modal", :href => "#ask-modal", :role => "button"}
+    Ask a Question
+  -unless params[:action] == 'another_page'
+    %a.btn.btn-large.btn-block{"data-toggle" => "modal", :href => "#how-it-works-modal", :role => "button"} How it works
+.box.span3
+  .box-inner
+    %h4 Other recently asked questions
+  = render partial: 'questions/recently_asked', collection: @recently_asked

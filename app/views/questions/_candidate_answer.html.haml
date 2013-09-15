@@ -1,0 +1,11 @@
+.profile-pic.span2{class: "#{last_name_from_answer(candidate_answer).downcase}-img"}
+.bubble-left.span4
+  %p{class: "#{last_name_from_answer(candidate_answer).downcase}"}
+    %strong= "#{candidate_answer.candidate_name}:"
+    = candidate_answer.body
+  =facebook_button(candidate_answer)
+  %a.pull-right.comments{"data-parent" => "#selector", "data-target" => "#answer-#{candidate_answer.id}", "data-toggle" => "collapse"}
+    See comments
+  %br/
+  .collapse{id: "answer-#{candidate_answer.id}"}
+    .fb-comments{"data-href" => facebook_link(candidate_answer), "data-width" => "300"}

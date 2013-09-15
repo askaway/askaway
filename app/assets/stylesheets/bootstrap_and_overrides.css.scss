@@ -1,10 +1,3 @@
-/*
-  =require twitter-bootstrap-static/bootstrap
-
-  Use Font Awesome icons (default)
-  To use Glyphicons sprites instead of Font Awesome, replace with "require twitter-bootstrap-static/sprites"
-  =require twitter-bootstrap-static/fontawesome
-  */
 
 .navbar .brand {
   margin-left: 0;
@@ -120,7 +113,7 @@ footer img {
 }
 .teal {
   color: #FFF;
-  background-color: rgb(38, 178, 170);
+  background-color: $teal;
 }
 .paleteal {
   background-color: $paleteal;
@@ -554,7 +547,7 @@ margin-top: 5px;
 }
 
 #QOTD a {
-  color: rgb(38, 178, 170);
+  color: $teal;
 }
 
 /*-----------ALL QUESTIONS-----------*/
@@ -583,7 +576,7 @@ background-color: #FFF;
 }
 
 .individual-q .box {
-    background-color: rgb(250, 247, 240)
+    background-color: rgb(250, 247, 240);
 }
 
 .question-min {

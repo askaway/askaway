@@ -6,6 +6,8 @@ class PagesController < ApplicationController
 
   def another_page
     @question = Question.new
+    @recently_asked = recently_asked
+    @featured_question = Question.accepted.answered.last
   end
 
     def individual_question
