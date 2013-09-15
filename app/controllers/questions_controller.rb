@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  #respond_to :js
+  respond_to :js
 
   before_filter :fetch_question, only: [:show, :edit, :update, :destroy, :like, :unlike]
   before_filter :fetch_answers, only: :show
@@ -29,15 +29,8 @@ class QuestionsController < ApplicationController
     end
   end
 
-  # GET /questions/1
-  # GET /questions/1.json
   def show
     @recently_asked = recently_asked
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @question }
-    end
   end
 
   # GET /questions/new
