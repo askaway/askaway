@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
   respond_to :js
 
-  before_filter :fetch_question, only: [:show, :edit, :update, :destroy]
+  before_filter :fetch_question, only: [:show, :edit, :update, :destroy, :like, :unlike]
   before_filter :fetch_answers, only: :show
 
   # GET /questions
@@ -19,7 +19,7 @@ class QuestionsController < ApplicationController
       @questions = Question.page(page)
     end
     if params[:q]
-      @questions = @questions.search(params[:q])
+      @questions = @questions.search_scope(params[:q])
     end
 
     respond_to do |format|
@@ -100,7 +100,37 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def like
+    puts "I like!"
+    @question.increment # if store_to_session(params[:id])
+    head :accepted
+  end
+
+  def unlike
+    puts "I no like!"
+    @question.decrement # if clear_from_session(params[:id])
+    head :accepted
+  end
+
   private
+
+  def store_to_session(question_id)
+    session[:questions] ||= []
+    #if question is in session return false
+    return false if session[:questions].include? question_id
+    # append to session, return true
+    session[:questions] << question_id
+    true
+  end
+
+  def clear_from_session(question_id)
+    session[:questions] ||= []
+    #if question is NOT in session return false
+    return false unless session[:questions].include? question_id
+    # append to session, return true
+    session[:questions].delete(question_id)
+    true
+  end
 
   def fetch_question
     @question = Question.find(params[:id])

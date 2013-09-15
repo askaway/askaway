@@ -25,14 +25,16 @@ class Question < ActiveRecord::Base
 
   validates_presence_of :body, :email, :name
   validates_length_of :body, maximum: 140
+  validates_numericality_of :likes_count, greater_than_or_equal_to: 0
 
+  after_initialize :init_count
   before_validation :set_init_defaults
   after_create :email_meg
 
   scope :answered, -> { joins(:answers) }
   scope :recent, -> { order("created_at DESC") }
-  scope :top, -> { order(:likes_count) }
-  scope :search, ->(query) { where(Question.arel_table[:body].matches("%#{query}%")) }
+  scope :top, -> { order("likes_count DESC") }
+  scope :search_scope, ->(query) { where(Question.arel_table[:body].matches("%#{query}%")) }
 
   def first_name
     name.split(' ',).first
@@ -46,7 +48,21 @@ class Question < ActiveRecord::Base
     id.to_s + " - ".html_safe + body
   end
 
+  def increment
+    self.likes_count = self.likes_count + 1
+    save
+  end
+
+  def decrement
+    self.likes_count = self.likes_count - 1
+    save
+  end
+
   private
+
+  def init_count
+    self.likes_count ||= 0
+  end
 
   def set_init_defaults
     self.status ||= "pending"
