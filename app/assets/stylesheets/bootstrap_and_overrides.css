@@ -641,13 +641,14 @@ background-color: #FFF;
   max-height: 100%;
 }
 
-#info {
-  width: 66.667%;
-}
 
 .modal .modal-body {
     max-height: 420px;
     overflow-y: auto;
+}
+
+#info {
+  width: 66.667%;
 }
 
 #buttons-smaller-screen {
@@ -692,8 +693,7 @@ overflow: auto;
   border-radius: 10px;
 }
 
-.bubble-left:after 
-{
+.bubble-left:after {
 
   margin-top: 20px;
   content: "";
@@ -740,6 +740,10 @@ overflow: auto;
   margin-top: 0;
 }
 
+#share {
+  display: inherit;
+}
+}
 
 /* Landscape phone to portrait tablet */
 
@@ -770,10 +774,14 @@ position: fixed;
 width: 15%;
 display: inline-block;
 }
-}
 
 .bubble-left {
   margin-bottom: 30px;
+}
+
+#share {
+  display: inherit;
+}
 }
 
 /* Landscape phones and down */
@@ -793,6 +801,10 @@ display: inline-block;
     margin-left: 0;
 
   }
+
+#share {
+  display: inherit;
+}
 
  .navbar-fixed-top {
   position: fixed;
@@ -917,9 +929,9 @@ margin-bottom: 0;
   width: 60%;
 }
 
-}
-.modal {
-  width: 100% !important;
-}
 
 
+#share {
+  display: inherit;
+}
+}
