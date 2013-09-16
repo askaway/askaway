@@ -8,6 +8,7 @@
     <a href="#ask-modal" role="button" class="btn btn-ask btn-large span3 pull-right" data-toggle="modal">
       Ask a Question
     </a>
+
   </div>
     <br>
     <div class="all-questions">
@@ -50,5 +51,28 @@
         </div>
       <% end %>
     </div>
+  </div>
+</div>
+
+    <div id="ask-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <%= render partial: 'form' %>
+    </div>
+
+    <!--Thank-you messsage -->
+
+
+<div id="thanks-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header green">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h4 id="ask-modalLabel">Ask a question</h4>
+  </div>
+  <div class="modal-body">
+    <p>Thanks for contributing!<br><br>
+  We'll check over your question before we publish it, and won't publish anything offensive or too similar to questions that have already been asked.<br><br>
+  Sit tight, and when your question is live on the site we'll send you a link so that you can share it with your family and friends and get them to vote it up.<br><br>
+  <div class="modal-footer">
+    <button class="btn btn-large" data-dismiss="modal" aria-hidden="true">Close</button>
+</div>
+
   </div>
 </div>

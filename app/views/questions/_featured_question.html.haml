@@ -11,7 +11,7 @@
       %br/
       %h4 Answers from the candidates:
       .row-fluid
-        .candidate-picker
+        .candidate-picker(data-target=".tab-content" data-toggle="collapse")
           - featured_question.answers.each do |a|
             .span2.candidate{id: "candidate-picker-#{a.candidate.id}"}
               = image_tag a.candidate_avatar

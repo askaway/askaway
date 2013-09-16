@@ -145,8 +145,11 @@ footer img {
 }
 
 
-
 /*-----------TYPOGRAPHY-----------*/
+
+.answers .bubble-left p .muted {
+  font-size: 18px;
+}
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Nunito';
@@ -241,9 +244,6 @@ p {
 
 /*-----------SPEECHBUBBLES-----------*/
 
-.profile-pic {
-  opacity: 0.5;
-}
 
 .bubble-left {
 position: relative;
@@ -261,11 +261,6 @@ box-shadow: 1px 1px 3px rgba(30, 39, 30, 0.1);
 .bubble-left p {
 font-size: 22px;
 font-weight: 200;
-}
-
-
-.profile-pic:hover {
-opacity: 1;
 }
 
 .bubble-left:after 

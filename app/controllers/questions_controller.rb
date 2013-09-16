@@ -7,6 +7,7 @@ class QuestionsController < ApplicationController
   # GET /questions
   # GET /questions.json
   def index
+    @question = Question.new
     page = params[:page] || 1
     @filter = params[:filter]
     @questions = Question.accepted.uniq.includes(answers: :candidate)
