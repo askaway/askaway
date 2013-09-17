@@ -20,7 +20,9 @@ ActiveAdmin.register Question do
       end
     end
     column "Featured" do |question|
-      unless question.is_featured?
+      if question.is_featured?
+        content_tag(:strong, "Featured")
+      elsif !question.is_featured? && question.accepted? && question.answered?
         link_to "feature", feature_admin_question_path(question)
       end
     end
