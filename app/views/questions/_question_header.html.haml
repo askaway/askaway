@@ -3,8 +3,7 @@
     %h4 Anonymous question for the mayoral candidates:
   - else
     %h4
-      = question_header.first_name.titleize
-      's question for the mayoral candidates:
+      = "#{question_header.first_name.titleize}'s question for the mayoral candidates:"
   %h3= question_header.body
   %p.muted= asked_by(question_header)
   .inline-block.light.CTA-vote
