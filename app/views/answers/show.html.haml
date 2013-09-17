@@ -7,7 +7,6 @@
       %br/
       = render partial: 'questions/question_header', object: @answer.question
       .bar.tan
-        %h4= "#{@answer.candidate_name} answer:"
         = render "answers/answer", answer: @answer
         %p
           =link_to "See other candidates' answers", question_path(@answer.question)
