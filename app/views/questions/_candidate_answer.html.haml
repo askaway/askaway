@@ -1,4 +1,4 @@
-.answer-container.bubble-top.span12{id: "#{last_name_from_answer(candidate_answer).downcase}"}
+.answer-container.bubble-top.tab-pane{id: "#{last_name_from_answer(candidate_answer).downcase}", class: (index==0) ? "active" : nil}
   %p{class: "#{last_name_from_answer(candidate_answer).downcase}"}
     %strong= "#{candidate_answer.candidate_name}:"
     = candidate_answer.body
