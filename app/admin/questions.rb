@@ -19,6 +19,11 @@ ActiveAdmin.register Question do
         link_to "Accept", accept_admin_question_path(question)
       end
     end
+    column "Featured" do |question|
+      unless question.is_featured?
+        link_to "feature", feature_admin_question_path(question)
+      end
+    end
     default_actions
   end
 
@@ -38,6 +43,16 @@ ActiveAdmin.register Question do
     question.accept!
     flash[:notice] = "Question accepted"
     redirect_to action: :index
+  end
+
+  member_action :feature do
+    Question.update_all(is_featured: false)
+    question = Question.find(params[:id])
+    question.is_featured = true
+    question.save
+    flash[:notice] = "Question featured"
+    redirect_to action: :index
+
   end
 
   member_action :answer do
