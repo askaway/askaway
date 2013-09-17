@@ -11,15 +11,16 @@
       %br/
       %h4 Answers from the candidates:
       .row-fluid
-        .candidate-picker(data-target=".tab-content" data-toggle="collapse")
+        .candidate-picker
           - featured_question.answers.each do |a|
-            .span2.candidate{id: "candidate-picker-#{a.candidate.id}"}
+            %a.span2.candidate{id: "candidate-picker-#{a.candidate.id}", data: {toggle: :tab}, href: "\##{last_name_from_answer(a).downcase}"}
               = image_tag a.candidate_avatar
           - featured_question.candidates_with_no_answer.each do |c|
             .span2.candidate.candidate-with-no-answer{id: "candidate-picker-#{c.id}"}
               = image_tag c.avatar
       .tab-content
-        =render partial: 'questions/candidate_answer', collection: featured_question.answers
+        -featured_question.answers.each_with_index do |a, i|
+          =render partial: 'questions/candidate_answer', object: a, locals: {index: i}
 
     = render 'questions/recently_asked_sidebar'
   .inline-message
