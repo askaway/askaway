@@ -10,6 +10,9 @@ class QuestionsController < ApplicationController
     @question = Question.new
     page = params[:page] || 1
     @filter = params[:filter]
+    if @filter.blank?
+      redirect_to(questions_path({filter: :all})) and return
+    end
     @questions = Question.accepted.uniq.includes(answers: :candidate)
     if params[:filter] == 'recent'
       @questions = @questions.recent.page(page)
