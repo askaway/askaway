@@ -9,7 +9,7 @@
       <%= render partial: 'questions/question_header', object: @answer.question %>
       <div class="bar tan">
         <h4>Answer:</h4>
-        <%= render "questions/answer", answer: @answer %>
+        <%= render "answers/answer", answer: @answer %>
         <div class="fb-comments" data-href="<%= facebook_link(@answer) %>" data-width="500"></div>
       </div>
     </div>
