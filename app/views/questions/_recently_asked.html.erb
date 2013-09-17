@@ -1,6 +1,6 @@
 <%= link_to question_path(recently_asked) do %>
   <div class="question-min">
-    <%= recently_asked.body %><br><br>
+    <%= recently_asked.body %>
     <p class="muted"><%= asked_by(recently_asked) %></p>
     <%= facebook_button(recently_asked) %>
   </div>
