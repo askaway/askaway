@@ -255,7 +255,7 @@ border-radius: 10px;
 box-shadow: 1px 1px 3px rgba(30, 39, 30, 0.1);
 }
 
-.bubble-left:after 
+.bubble-left:after
 {
 content: "";
 position: absolute;
@@ -460,7 +460,7 @@ margin-top: 5px;
 #title p {
   color: #FFF;
   font-size: 30px;
-  font-weight: 200; 
+  font-weight: 200;
   padding-top: 40px;
   padding-bottom: 60px;
 }
@@ -841,15 +841,13 @@ background-color: #FFF;
 
 .candidate-with-no-answer{ opacity: .5 }
 
-  .modal {
-    width: 80%;
-    margin-left: 20px;
-    left: 0;
-  }
+.modal {
+  width: 80%;
+  margin-left: 20px;
+  left: 0;
+}
 
-.answer-container {    
-  margin-lemargin-left: 0;ft: 0;
-margin-left: 0;  
-margin-right: 0;
-  }
+.answer-container {
+  margin-left: 0;
+  margin-right: 0;
 }
