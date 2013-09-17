@@ -6,17 +6,13 @@
   <div class="container container-wide row-fluid">
     <div class="box span9">
       <br>
-      <div class="box-inner">
-        <h4><%= "Question: ".html_safe + link_to(@answer.question.body, question_path(@answer.question)) %></h4>
-      </div>
+      <%= render partial: 'questions/question_header', object: @answer.question %>
       <div class="bar tan">
         <h4>Answer:</h4>
         <%= render "questions/answer", answer: @answer %>
         <div class="fb-comments" data-href="<%= facebook_link(@answer) %>" data-width="500"></div>
       </div>
     </div>
-    <div>
-      <%= render partial: 'questions/recently_asked_sidebar' %>
-    </div>
+    <%= render partial: 'questions/recently_asked_sidebar' %>
   </div>
 </div>

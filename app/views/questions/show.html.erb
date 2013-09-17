@@ -12,32 +12,18 @@
     </div>
     <div class="row-fluid">
       <div class="box span9 individual-q">
-        <div class="box-inner">
-          <% if @question.is_anonymous? %>
-            <h4>Anonymous question for the mayoral candidates:</h4>
+        <%= render partial: 'questions/question_header', object: @question %>
+        <div class="tan bar light">
+          <h4>Answers:</h4>
+          <% if @answers.present? %>
+            <div class='row-fluid'>
+              <% @answers.shuffle.each do |answer| %>
+                <%= render 'answer', answer: answer %>
+              <% end %>
+            </div>
           <% else %>
-            <h4><%= @question.first_name.titleize %>'s question for the mayoral candidates:</h4>
+            <p>None of Wellington's mayoral candidates have answered this question yet. <br><br>If you want it to get answered, like and share the question to show the candidates it's important to you.</p>
           <% end %>
-          <h3><%= @question.body %></h3>
-          <p class="muted"><%= asked_by(@question) %></p>
-          <div class="inline-block light CTA-vote">
-            <%= facebook_button(@question) %>
-            <% if @question.needs_voting_reminder? %>
-              Vote for this question by liking it
-            <% end %>
-          </div>
-        </div>
-          <div class="tan bar light">
-            <h4>Answers:</h4>
-            <% if @answers.present? %>
-              <div class='row-fluid'>
-                <% @answers.shuffle.each do |answer| %>
-                  <%= render 'answer', answer: answer %>
-                <% end %>
-              </div>
-            <% else %>
-              <p>None of Wellington's mayoral candidates have answered this question yet. <br><br>If you want it to get answered, like and share the question to show the candidates it's important to you.</p>
-            <% end %>
         </div>
       </div>
 
