@@ -1,0 +1,15 @@
+- content_for :title, "Ask Away - An answer from #{@answer.candidate_name}"
+- content_for :description, @answer.body
+.tan.all-questions-bg
+  .placeholder
+  .container.container-wide.row-fluid
+    .box.span9
+      %br/
+      = render partial: 'questions/question_header', object: @answer.question
+      .bar.tan
+        %h4= "#{@answer.candidate_name} answer:"
+        = render "answers/answer", answer: @answer
+        %p
+          =link_to "See other candidates' answers", question_path(@answer.question)
+        .fb-comments{"data-href" => facebook_link(@answer), "data-width" => "500"}
+    = render partial: 'questions/recently_asked_sidebar'

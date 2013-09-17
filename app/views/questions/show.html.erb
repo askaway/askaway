@@ -16,11 +16,7 @@
         <div class="tan bar light">
           <h4>Answers:</h4>
           <% if @answers.present? %>
-            <div class='row-fluid'>
-              <% @answers.shuffle.each do |answer| %>
-                <%= render 'answer', answer: answer %>
-              <% end %>
-            </div>
+            <%= render partial: 'questions/featured_question_tab', object: @question %>
           <% else %>
             <p>None of Wellington's mayoral candidates have answered this question yet. <br><br>If you want it to get answered, like and share the question to show the candidates it's important to you.</p>
           <% end %>

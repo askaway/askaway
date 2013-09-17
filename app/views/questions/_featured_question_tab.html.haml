@@ -1,0 +1,12 @@
+- feat_answers = featured_question_tab.answers.shuffled.to_a
+.row-fluid
+  .candidate-picker
+    - feat_answers.each do |a|
+      %a.span2.candidate{id: "candidate-picker-#{a.candidate.id}", data: {toggle: :tab}, href: "\##{last_name_from_answer(a).downcase}"}
+        = image_tag a.candidate_avatar
+    - featured_question_tab.candidates_with_no_answer.each do |c|
+      .span2.candidate.candidate-with-no-answer{id: "candidate-picker-#{c.id}"}
+        = image_tag c.avatar
+.tab-content
+  -feat_answers.each_with_index do |a, i|
+    =render partial: 'questions/candidate_answer', object: a, locals: {index: i}

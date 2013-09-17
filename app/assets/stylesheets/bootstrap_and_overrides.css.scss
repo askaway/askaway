@@ -75,6 +75,10 @@ footer img {
   border-top: 1px solid #e1e1e8;
 }
 
+.bar.tan a {
+  color: #26b2aa;
+}
+
 /*-----------COLOR SWATCHES-----------*/
 
 .salmon-text {
@@ -399,8 +403,7 @@ margin-top: 5px;
 .profile-pic {
   background-size: contain;
   background-repeat: no-repeat;
-  height: 70px;
-
+  height: 100%;
 }
 
 .goulden-img {

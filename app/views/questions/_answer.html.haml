@@ -1,12 +1,11 @@
 .answers
   .profile-pic.span2
     =image_tag answer.candidate_avatar
-  .bubble-left.span4
+  .bubble-left{ class: (params[:controller] == "answers") ? "span10" : "span4"}
     %p
       %strong= answer.candidate_name
       =answer.body
     %p.muted= answer.candidate_authorisation
-    %i.icon-thumbs-up
-    Like
+    = facebook_button(answer)
     - unless @hide_see_comments
       = link_to "See comments", answer_path(answer), class: 'pull-right'

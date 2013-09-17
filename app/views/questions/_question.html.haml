@@ -11,6 +11,6 @@
         %p Answered by:
         .span8
           .row-fluid
-            -question.answers.each do |answer|
+            -question.answers.shuffled.each do |answer|
               .profile-pic.span2
                 = image_tag answer.candidate_avatar
