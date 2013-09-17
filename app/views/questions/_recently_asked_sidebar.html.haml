@@ -5,6 +5,6 @@
   -unless params[:action] == 'another_page'
     %a.btn.btn-large.btn-block{"data-toggle" => "modal", :href => "#how-it-works-modal", :role => "button"} How it works
 .box.span3
-  .box-inner
+  .box-inner.recently-asked
     %h4 Other recently asked questions
   = render partial: 'questions/recently_asked', collection: @recently_asked

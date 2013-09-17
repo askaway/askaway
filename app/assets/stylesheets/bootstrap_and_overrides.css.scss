@@ -147,13 +147,10 @@ footer img {
 
 /*-----------TYPOGRAPHY-----------*/
 
-.answers .bubble-left p .muted {
-  font-size: 18px;
-}
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Nunito';
-  text-shadow: 0.1px 0.1px 0.8px;
+  /*text-shadow: 0.1px 0.1px 0.8px;*/
 
 }
 
@@ -258,12 +255,7 @@ border-radius: 10px;
 box-shadow: 1px 1px 3px rgba(30, 39, 30, 0.1);
 }
 
-.bubble-left p {
-font-size: 22px;
-font-weight: 200;
-}
-
-.bubble-left:after
+.bubble-left:after 
 {
 content: "";
 position: absolute;
@@ -364,6 +356,7 @@ margin-top: 5px;
 
 /*-----------PROFILE PICTURES-----------*/
 
+.candidate-with-no-answer{ opacity: .5 }
 
 .profile-pic {
   background-size: contain;
@@ -461,10 +454,13 @@ margin-top: 5px;
 #title {
   position: static;
   background-color: #000;
+  background-image: url('texture-grey.png');
 }
 
-#title h3 {
+#title p {
   color: #FFF;
+  font-size: 30px;
+  font-weight: 200; 
   padding-top: 40px;
   padding-bottom: 60px;
 }
@@ -494,20 +490,14 @@ margin-top: 5px;
   padding-top: 30px;
 }
 
-#how-it-works {
-  border: 1px solid #e1e1e8;
-}
-
-#how-it-works-modal {
-  width: 66.667%;
-}
 
 #img-q {
   background-image: url('question.png');
   background-size: contain;
   background-repeat: no-repeat;
   height: 100px;
-  display: inline-block;
+  margin-left: 15%;
+  margin-bottom: 20px;
 }
 
 #img-qmany {
@@ -515,7 +505,7 @@ margin-top: 5px;
   background-size: contain;
   background-repeat: no-repeat;
   height: 100px;
-  display: inline-block;
+  margin-bottom: 20px;
 }
 
 #img-a {
@@ -523,8 +513,8 @@ margin-top: 5px;
   background-size: contain;
   background-repeat: no-repeat;
   height: 100px;
-  vertical-align: middle;
-  display: inline-block;
+  margin-left: 15%;
+  margin-bottom: 20px;
 }
 
 
@@ -597,6 +587,10 @@ background-color: #FFF;
   background-color: rgba(255, 99, 71, 0.6);
 }
 
+.box-inner .recently-asked {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
 /*-----------ABOUT-----------*/
 
 #about-bg {
@@ -612,6 +606,10 @@ background-color: #FFF;
   margin-top: 4em;
   margin-left: 60px;
 }
+
+
+
+/*-----------MODAL-----------*/
 
 .modal {
   overflow: scroll;
@@ -630,15 +628,6 @@ background-color: #FFF;
 
 #buttons-smaller-screen {
   display: none;
-}
-
-
-
-/*-----------CANDIDATE PAGES-----------*/
-
-.statement {
-height: 200px;
-overflow: auto;
 }
 
 
@@ -690,9 +679,6 @@ overflow: auto;
   .navbar-fixed-top {
     position: fixed;
   }
-  #QOTD-bg {
-    display: none;
-  }
   #buttons-smaller-screen {
     display: block;
     width: 100%;
@@ -715,9 +701,6 @@ overflow: auto;
     height: 368px;
     background-image: url('type-banner-768.png') !important;
     background-repeat:no-repeat;
-  }
-  #QOTD-bg {
-    display: none;
   }
   #buttons-smaller-screen {
     display: block;
@@ -855,11 +838,18 @@ overflow: auto;
   #share {
     display: inherit;
   }
-}
 
 .candidate-with-no-answer{ opacity: .5 }
 
-.answer-container {
-  margin-left: 0;
-  margin-right: 0;
+  .modal {
+    width: 80%;
+    margin-left: 20px;
+    left: 0;
+  }
+
+.answer-container {    
+  margin-lemargin-left: 0;ft: 0;
+margin-left: 0;  
+margin-right: 0;
+  }
 }
