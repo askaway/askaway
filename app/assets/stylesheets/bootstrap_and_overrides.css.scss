@@ -242,6 +242,57 @@ p {
 /*-----------SPEECHBUBBLES-----------*/
 
 
+
+.bubble-top
+{
+position: relative;
+padding: 2%;
+margin: 30px 2% 2%;
+background: #FFF;
+-webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+border-radius: 10px;
+}
+
+%all-bubbles {
+  content: "";
+  position: absolute;
+  margin-top: 10px;
+  border-style: solid;
+  border-width: 0 15px 15px;
+  border-color: #FFF transparent;
+  display: block;
+  width: 0;
+  z-index: 1;
+  top: -25px;
+}
+
+.bubble0:after {
+  @extend %all-bubbles;
+  left: 5%;
+}
+.bubble1:after {
+  @extend %all-bubbles;
+  left: 22%;
+}
+.bubble2:after {
+  @extend %all-bubbles;
+  left: 39%;
+}
+.bubble3:after {
+  @extend %all-bubbles;
+  left: 56%;
+}
+.bubble4:after {
+  @extend %all-bubbles;
+  left: 73%;
+}
+.bubble5:after {
+  @extend %all-bubbles;
+  left: 90%;
+}
+
+
 .bubble-left {
 position: relative;
 padding: 2%;
@@ -269,30 +320,7 @@ width: 0;
 z-index: 1;
 }
 
-.bubble-top
-{
-position: relative;
-padding: 2%;
-margin: 2%;
-background: #FFF;
--webkit-border-radius: 10px;
--moz-border-radius: 10px;
-border-radius: 10px;
-}
 
-.bubble-top:after
-{
-content: "";
-position: absolute;
-top: -15px;
-left: 41px;
-border-style: solid;
-border-width: 0 15px 15px;
-border-color: #FFF transparent;
-display: block;
-width: 0;
-z-index: 1;
-}
 
 /*-----------AUTHORIZATION STATEMENTS-----------*/
 
@@ -353,6 +381,12 @@ margin-top: 5px;
 
 
 
+
+.bubble0 {
+
+
+
+}
 
 /*-----------PROFILE PICTURES-----------*/
 
@@ -460,6 +494,7 @@ margin-top: 5px;
 #title p {
   color: #FFF;
   font-size: 30px;
+  line-height: 34px;
   font-weight: 200;
   padding-top: 40px;
   padding-bottom: 60px;
@@ -587,9 +622,9 @@ background-color: #FFF;
   background-color: rgba(255, 99, 71, 0.6);
 }
 
-.box-inner .recently-asked {
-  border: solid;
-  background-color: rgba(255, 255, 255, 0.1);
+.box.recently-asked {
+  background-color: rgba(255, 255, 255, 0.5);
+
 }
 
 /*-----------ABOUT-----------*/
@@ -667,6 +702,11 @@ background-color: #FFF;
     width: 0;
     z-index: 1;
   }
+
+.bubble0  {
+
+}
+
   .list-q .profile-pic {
     width: 15%;
     display: inline-block;
