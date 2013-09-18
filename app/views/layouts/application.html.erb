@@ -79,16 +79,19 @@
       </div>
     </div>
     <div class="grey">
-
-          <%= yield %>
+      <% flash.each do |name, msg| -%>
+        <div class="alert-container">
+          <%= content_tag :div, msg, class: 'alert' %>
+        </div>
+      <% end %>
+      <%= yield %>
     </div>
-          <hr>
+    <hr>
     <div class="container">
-          <footer>
-          <%= image_tag 'Massey-logo.jpg' %>
-          <p class="pull-right muted">&copy; Meg Howie 2013</p>
-          </footer>
-
+      <footer>
+      <%= image_tag 'Massey-logo.jpg' %>
+      <p class="pull-right muted">&copy; Meg Howie 2013</p>
+      </footer>
     </div><!-- /container -->
 
     <!-- Le javascript
