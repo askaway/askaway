@@ -7,13 +7,15 @@
   padding-top: 0.75%
 }
 
+
 a {
- color: $teal;
+ color: $salmon;
 }
 
 a:hover {
- color: $teal;
+ color: $salmon;
 }
+
 
 .inline-message {
   margin-top: 30px;
@@ -75,9 +77,6 @@ footer img {
   border-top: 1px solid #e1e1e8;
 }
 
-.bar.tan a {
-  color: #26b2aa;
-}
 
 /*-----------COLOR SWATCHES-----------*/
 
@@ -95,63 +94,9 @@ footer img {
   height: 50px;
 }
 
-.salmon {
-  color: #FFF;
-  background-color: $salmon;
+.grey {
+  background-color: $grey;
 }
-
-.palesalmon {
-  background-color: rgb(255, 224, 218);
-}
-
-.colorswatches .palesalmon:hover {
-  background-color: rgba(255, 99, 71, 0.4);
-}
-.green {
-
-  background-color:$green;
-}
-
-.palegreen {
-  background-color: rgb(240, 240, 212);
-}
-
-.colorswatches .palegreen:hover {
-  background-color: rgba(182, 179, 40, 0.4);
-}
-.teal {
-  color: #FFF;
-  background-color: $teal;
-}
-.paleteal {
-  background-color: $paleteal;
-}
-
-.colorswatches .paleteal:hover {
-  background-color: rgba(38, 178, 170, 0.4);
-}
-
-.purple {
-  color: #FFF;
-  background-color:$purple;
-}
-
-.palepurple {
-  background-color: $palepurple;
-}
-
-.colorswatches .palepurple:hover {
-  background-color:rgba(81, 71, 104, 0.4);
-}
-
-.tan {
-  background-color: rgb(250, 247, 240)
-}
-
-#bg {
-  padding: 3%;
-}
-
 
 /*-----------TYPOGRAPHY-----------*/
 
@@ -220,6 +165,7 @@ p {
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.13);
   -webkit-font-smoothing: antialiased;
 }
+
 
 
 
@@ -398,7 +344,21 @@ margin-top: 5px;
 
 /*-----------PROFILE PICTURES-----------*/
 
+.candidate {
+  opacity: .9;
+  max-width: 15%;
+}
+
+.candidate:hover {
+  opacity: 1
+}
+
+.candidate:active {
+  opacity: 1
+}
+
 .candidate-with-no-answer{ opacity: .5 }
+.candidate-with-no-answer:hover{ opacity: .5 }
 
 .profile-pic {
   background-size: contain;
@@ -432,8 +392,11 @@ margin-top: 5px;
 
 
 
-/*-----------ACCORDION-----------*/
+/*-----------Index-----------*/
 
+.all-questions .box {
+  background-color: rgba(255, 255, 255, 0.5);
+}
 
 
 
@@ -449,11 +412,11 @@ margin-top: 5px;
 }
 
 .list-q:hover {
-  background-color: $tan
+  background-color: #FFF;
 }
 
 .list-q:hover .CTA-vote{
-  background-color: rgba(255, 99, 71, 0.6);
+  background-color: $green;
 }
 
 
@@ -525,7 +488,7 @@ margin-top: 5px;
 }
 
 #QOTD {
-    background: $paleteal;
+    background: $grey;
 }
 
 #home {
@@ -562,28 +525,28 @@ margin-top: 5px;
 
 
 
-/*-----------QUESTION OF THE DAY-----------*/
+/*-----------QUESTION OF THE DAY-----------
 
 #QOTD-bg {
   background-image: url("texture-teal-25.png");
 }
+*/
 
 #QOTD .row {
   margin-left: 40px;
-
 }
 
-#QOTD a {
-  color: $teal;
+#QOTD h2 {
+  color: $salmon;
+  /*font-family: hevetica, arial, sans serif;*/
 }
+
 
 /*-----------ALL QUESTIONS-----------*/
-.all-questions-bg {
-  background-image: url("texture-salmon-50.png");
-}
 
-.all-questions {
-background-color: #FFF;
+#question-index {
+  padding-top: 40px;
+  background-image: url('texture-light-grey.png');
 }
 
 .all-questions .navbar {
@@ -602,6 +565,13 @@ background-color: #FFF;
   text-decoration: none;
 }
 
+.box .answer a {
+  color: $salmon;
+  font-size: 18px;
+  font-weight: 200;
+  text-decoration: none;
+}
+
 .individual-q .box {
     background-color: rgb(250, 247, 240);
 }
@@ -613,7 +583,7 @@ background-color: #FFF;
 }
 
 .question-min:hover {
- background-color: $tan;
+ background-color: $green;
 }
 
 .CTA-vote {
@@ -626,7 +596,7 @@ background-color: #FFF;
 }
 
 .individual-q:hover .CTA-vote {
-  background-color: rgba(255, 99, 71, 0.6);
+  background-color: $green;
 }
 
 .box.recently-asked {
@@ -638,13 +608,22 @@ background-color: #FFF;
 
 #about-bg {
    background-image: url("texture-purple-25.png");
+   background-color: $grey;
 }
 
 #about {
-  background-color: $palepurple;
+  background-color: $grey;
   padding-bottom: 20px;
 }
 
+#enspiral img{
+max-width: 50%;
+}
+
+#rabid img{
+max-width: 70%;
+margin-top: 10px;
+}
 /*-----------MODAL-----------*/
 
 .modal {
@@ -703,9 +682,7 @@ background-color: #FFF;
     z-index: 1;
   }
 
-.bubble0  {
 
-}
 
   .list-q .profile-pic {
     width: 15%;
@@ -770,6 +747,9 @@ background-color: #FFF;
     padding-right: 0;
     padding-left: 0;
   }
+  .small-pics .span2 {
+  width: 100%;
+}
   .navbar-fixed-top,
   .navbar-fixed-bottom,
   .navbar-static-top {
@@ -794,17 +774,16 @@ background-color: #FFF;
   }
   .list-q h3 {
     font-size: 18px;
-    color: $salmon;
   }
   .list-q:hover {
     background-color: #FFF;
   }
   .CTA-vote {
     font-size: 13px;
-    background-color: rgba(255, 99, 71, 0.3);
+    background-color: $tan;
   }
   .list-q:hover .CTA-vote{
-    background-color: rgba(255, 99, 71, 0.3);
+    background-color: $tan;
   }
   .list-q .profile-pic {
     width: 15%;
