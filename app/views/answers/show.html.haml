@@ -5,7 +5,7 @@
   .span9
     .box
       %br/
-      = render partial: 'questions/question_header', object: @answer.question
+      = render partial: 'questions/question_header', object: @answer.question, locals: { on_answer_page: true }
     .box.answer
       = render "answers/answer", answer: @answer
   = render partial: 'questions/recently_asked_sidebar'

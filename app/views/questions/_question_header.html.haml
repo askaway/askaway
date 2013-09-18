@@ -1,3 +1,4 @@
+- on_answer_page ||= false
 .box-inner
   - if question_header.is_anonymous?
     %h4 Anonymous question for the mayoral candidates:
@@ -7,6 +8,7 @@
   %h3.salmon-text= question_header.body
   %p.muted= asked_by(question_header)
   .inline-block.light.CTA-vote
-    = facebook_button(question_header)
+    - unless on_answer_page
+      = facebook_button(question_header)
     - if question_header.needs_voting_reminder?
       Vote for this question by liking it

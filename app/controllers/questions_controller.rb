@@ -36,6 +36,7 @@ class QuestionsController < ApplicationController
   def show
     if @question.status == 'accepted'
       @recently_asked = recently_asked
+      @hide_see_comments = true
       render 'show'
     else
       redirect_to root_path

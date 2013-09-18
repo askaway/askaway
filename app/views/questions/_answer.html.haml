@@ -7,5 +7,3 @@
       =answer.body
     %p.muted= answer.candidate_authorisation
     = facebook_button(answer, true)
-    - unless @hide_see_comments
-      = link_to "See comments", answer_path(answer), class: 'pull-right'
