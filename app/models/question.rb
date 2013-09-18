@@ -42,7 +42,11 @@ class Question < ActiveRecord::Base
   end
 
   def anonymous_name
-    name or 'Anonymous'
+    if is_anonymous?
+      'Anonymous'
+    else
+      name
+    end
   end
 
   def name_and_email
