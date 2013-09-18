@@ -9,10 +9,10 @@
       <p>Your questions for Wellington's mayoral candidates</p>
     </div>
   </div>
-  <div class="paleteal">
+  <div>
   <div id="down"></div>
 </div>
-<div id="QOTD-bg" class="paleteal">
+<div id="QOTD-bg">
 
   <div class="container container-wide">
   <% if @featured_question %>
@@ -27,7 +27,7 @@
 
 <!--  ABOUT  -->
 
-<div id="about-bg" class="palepurple">
+<div id="about-bg">
   <div class="placeholder"></div>
   <div id="about" class="container container-wide">
     <h5>About</h5>
@@ -61,6 +61,17 @@
       <strong>Want to get in touch?</strong><br>
       Shoot us a line at <a href="mailto:info@askaway.co.nz">info@askaway.co.nz</a>
     </p>
+  </div>
+  <div class="row-fluid inline-message">
+    <div class="span4" id="enspiral">
+     <%= link_to image_tag("enspirallogo.jpeg"), "http://www.enspiral.com" %>
+   </div>
+     <div class="span4">
+     <%= link_to image_tag("loomio-new-short-logo-1000x313.png"), "https://www.loomio.org/" %>
+     </div>
+    <div class="span4" id="rabid">
+       <%= link_to image_tag("rabid-logo.png"), "http://www.rabid.co.nz/" %>
+     </div>
   </div>
 </div>
 <div class="placeholder"></div>

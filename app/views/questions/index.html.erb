@@ -1,6 +1,6 @@
 <% content_for :title, "Ask Away - Questions" %>
 <% content_for :description, "Search and browse for questions posted to AskAway" %>
-<div id="question-index" class="tan all-questions-bg">
+<div id="question-index">
   <div class="container">
     <div class="placeholder"></div>
     <div class="row-fluid">
@@ -42,6 +42,7 @@
         <div class="box">
           <%= render partial: 'question', collection: @questions %>
         </div>
+      </div>
         <%= paginate @questions %>
       <% else %>
         <div class="inline-message">
