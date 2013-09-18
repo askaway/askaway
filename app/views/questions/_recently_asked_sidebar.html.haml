@@ -7,3 +7,27 @@
   .box-inner
     %h4 Other recently asked questions
   = render partial: 'questions/recently_asked', collection: @recently_asked
+/ how-it-works
+#how-it-works-modal.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
+  .modal-header.green
+    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+    %h4#ask-modalLabel How it works
+  .modal-body
+    %h3 This is an independent platform designed to make it easier for you to get to know the people standing for mayor in Wellington's local body elections.
+    %br/
+    #how-it-works.row-fluid.box-inner
+      .span4
+        #img-q>
+        %p
+          Anyone can ask a question for the candidates.
+      .span4
+        #img-qmany>
+        %p
+          People add their vote to questions by 'liking' them.
+      .span4
+        #img-a>
+        %p
+          The top question at the end of each day will get answered by the candidates and shown on the site the next day.
+  .modal-footer
+    %button.btn.btn-large{"aria-hidden" => "true", "data-dismiss" => "modal", href: "about"} Learn more
+    %button.btn.btn-large{"aria-hidden" => "true", "data-dismiss" => "modal"} Got it

@@ -10,24 +10,26 @@
       <a href="#how-it-works-modal" role="button" class="btn btn-large" data-toggle="modal">How it works</a>
     </div>
     <div class="row-fluid">
-      <div class="box span9 individual-q">
+      <div class="span9">
+      <div class="box individual-q">
         <%= render partial: 'questions/question_header', object: @question %>
-        <div class="tan bar light">
-          <h4>Answers:</h4>
-          <% if @answers.present? %>
-            <%= render partial: 'questions/featured_question_tab', object: @question %>
-          <% else %>
-            <p>None of Wellington's mayoral candidates have answered this question yet. <br><br>If you want it to get answered, like and share the question to show the candidates it's important to you.</p>
-          <% end %>
-        </div>
       </div>
+      <div class="light">
+        <h4>Answers:</h4>
+        <% if @answers.present? %>
+          <%= render partial: 'questions/featured_question_tab', object: @question %>
+        <% else %>
+          <p>None of Wellington's mayoral candidates have answered this question yet. <br><br>If you want it to get answered, like and share the question to show the candidates it's important to you.</p>
+        <% end %>
+      </div>
+      <div class="box-inner">
+        <h4>What do you think about this question?</h4>
+        <div class="fb-comments row-fluid" data-href="<%= facebook_link(@question) %>" data-width="500"></div>
+      </div>
+    </div>
+    <%= render partial: 'recently_asked_sidebar' %>
+  </div>
 
-      <%= render partial: 'recently_asked_sidebar' %>
-
-        <div class="box-inner">
-          <h4>What do you think about this question?</h4>
-          <div class="fb-comments" data-href="<%= facebook_link(@question) %>" data-width="300"></div>
-        </div>
       <div class="row-fluid">
         <div class="inline-message"><a href="#all-questions-bg" role="button" class="btn btn-primary btn-large">See all the questions</a>  Or, if you've got your own question
           <a href="#ask-modal" role="button" class="btn btn-ask btn-large" data-toggle="modal">Ask a Question</a>
@@ -36,8 +38,10 @@
   </div>
 </div>
 
+      
+
 <div id="how-it-works-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-header purple">
+  <div class="modal-header green">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
     <h4 id="ask-modalLabel">How it works</h4>
   </div>
