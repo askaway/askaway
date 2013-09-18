@@ -34,7 +34,12 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    @recently_asked = recently_asked
+    if @question.status == 'accepted'
+      @recently_asked = recently_asked
+      render 'show'
+    else
+      redirect_to root_path
+    end
   end
 
   # GET /questions/new
