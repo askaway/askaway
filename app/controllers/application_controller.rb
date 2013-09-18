@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   def recently_asked
-    Question.unanswered.accepted.limit(3)
+    Question.unanswered.accepted.order('created_at DESC').limit(3)
   end
 
   def featured_question
