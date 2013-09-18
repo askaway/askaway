@@ -3,7 +3,7 @@
     %h3= question.body
     .row-fluid#answered-by
       %p.muted= asked_by(question)
-      .light.span7.CTA-vote
+      .light.CTA-vote
         = facebook_button(question)
         Vote for this question by liking it
     -unless question.answers_count == 0
@@ -11,6 +11,6 @@
         %p Answered by:
         .span8
           .row-fluid
-            -question.answers.each do |answer|
+            -question.answers.shuffled.each do |answer|
               .profile-pic.span2
                 = image_tag answer.candidate_avatar

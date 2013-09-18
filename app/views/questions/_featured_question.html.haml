@@ -10,8 +10,7 @@
 
       %br/
       %h4 Answers from the candidates:
-      .row-fluid
-        =render partial: 'questions/candidate_answer', collection: featured_question.answers
+      =render partial: 'questions/featured_question_tab', object: featured_question
 
     = render 'questions/recently_asked_sidebar'
   .inline-message

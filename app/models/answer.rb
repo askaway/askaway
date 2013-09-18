@@ -9,6 +9,14 @@ class Answer < ActiveRecord::Base
   validates_presence_of :body
   validates_uniqueness_of :candidate_id, scope: [:question_id]
 
+  def self.shuffled
+    if ActiveRecord::Base.connection.adapter_name == "mysql"
+      order("RAND()")
+    else
+      order("RANDOM()")
+    end
+  end
+
   def candidate_name
     candidate.name
   end

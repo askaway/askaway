@@ -7,8 +7,12 @@ class QuestionsController < ApplicationController
   # GET /questions
   # GET /questions.json
   def index
+    @question = Question.new
     page = params[:page] || 1
     @filter = params[:filter]
+    if @filter.blank?
+      redirect_to(questions_path({filter: :all})) and return
+    end
     @questions = Question.accepted.uniq.includes(answers: :candidate)
     if params[:filter] == 'recent'
       @questions = @questions.recent.page(page)
@@ -29,15 +33,8 @@ class QuestionsController < ApplicationController
     end
   end
 
-  # GET /questions/1
-  # GET /questions/1.json
   def show
     @recently_asked = recently_asked
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @question }
-    end
   end
 
   # GET /questions/new

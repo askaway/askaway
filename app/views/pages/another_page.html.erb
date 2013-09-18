@@ -1,4 +1,4 @@
-
+<% content_for :description, "An independent platform designed to make it easier for you to get to know the people standing for mayor in Wellington's local body elections." %>
 <div id="title">
 <div id="banner"></div>
 
@@ -6,7 +6,7 @@
 <!-- QUESTION OF THE DAY -->
 
     <div class="container container-wide">
-      <h3>Questions for Wellington's mayoral candidates</h3>
+      <p>Your questions for Wellington's mayoral candidates</p>
     </div>
   </div>
   <div class="paleteal">
@@ -15,7 +15,10 @@
 <div id="QOTD-bg" class="paleteal">
 
   <div class="container container-wide">
-  <%= render partial: 'questions/featured_question', object: @featured_question %>
+  <% if @featured_question %>
+    <%= render partial: 'questions/featured_question', object: @featured_question %>
+  <% end %>
+
   <!--container -->
 </div>
 </div>
@@ -26,7 +29,7 @@
 
 <div id="about-bg" class="palepurple">
   <div class="placeholder"></div>
-  <div id="about" class="container">
+  <div id="about" class="container container-wide">
     <h5>About</h5>
         <div id="info">
           <h2>This is an independent platform designed to make it easier for you to get to know the people standing for mayor in Wellington's local body elections.</h2><br>
@@ -39,27 +42,24 @@
 
       <div class="palepurple">
           <p>Every day the candidates will answer the question with the most votes. See what people have been asking, and up-vote the questions that are important to you.</p>
-          <p>If no one’s asked what you want to know, ask if for yourself!</p><br>
+          <p>If no one’s asked what you want to know, ask if for yourself!</p><br><br>
 
           <div class="row-fluid">
-            <button class="btn btn-large">When</button>
-            <p class="span3"><strong>When:</strong> The voting for the day finishes at 7pm, and the candidates answers will be on the site by 8am the following morning.
+            <p class="span6"><strong>When:</strong> The voting for the day finishes at 7pm, and the candidates answers will be on the site by 8am the following morning.<br>
             Questions will be answered Monday to Friday, until voting closes on the 12th October.</p>
+            <p class="span6" id="who"><strong>Who:</strong> This is the honours project of Meg Howie at Massey University’s School of Design. She hopes to expand the site to facilitate ongoing public engagement at local, regional and national levels of government.</p>
+          </div>
 
-            <button class="btn btn-large">Who</button>
-            <p class="span3"><strong>Who:</strong> This is the honours project of Meg Howie at Massey University’s School of Design. She hopes to expand the site to facilitate ongoing public engagement at local, regional and national levels of government.</p>
-
-            <p class="span3">A huge thanks to the lovely people who programmed the site. <br><br>
-            This project is supervised by Patricia Thomas. Contact her at p.thomas@massey.ac.nz.
+            <p >A huge thanks to the lovely people who programmed the site. <br><br>
+            This project is supervised by Patricia Thomas. Contact her at p.a.thomas@massey.ac.nz.
           </p>
-        </div>
     </div>
   </div>
   <div class="container">
     <div id="contact" class="inline-message">
     <p>
       <strong>Want to get in touch?</strong><br>
-      Shoot us a line at <a>info@askaway.co.nz</a>
+      Shoot us a line at <a href="mailto:info@askaway.co.nz">info@askaway.co.nz</a>
     </p>
   </div>
 </div>
@@ -95,6 +95,9 @@
 
   </div>
 </div>
+
+
+
 
 <script type="text/javascript">
 $(function() {

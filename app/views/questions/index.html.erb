@@ -1,3 +1,5 @@
+<% content_for :title, "Ask Away - Questions" %>
+<% content_for :description, "Search and browse for questions posted to AskAway" %>
 <div id="question-index" class="tan all-questions-bg">
   <div class="container">
     <div class="placeholder"></div>
@@ -6,24 +8,25 @@
     <a href="#ask-modal" role="button" class="btn btn-ask btn-large span3 pull-right" data-toggle="modal">
       Ask a Question
     </a>
+
   </div>
     <br>
     <div class="all-questions">
       <div class="row-fluid">
-        <div class="navbar">
+        <div class="navbar navbar-inverse">
           <div class="navbar-inner">
             <div class="container">
-              <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+              <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".search-menu">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
               <a class="brand">Sort questions by:</a>
-              <div class="nav-collapse collapse">
+              <div class="nav-collapse collapse search-menu">
                 <ul class="nav">
-                  <li class=""><a href="?filter=answered">Answered</a></li>
-                  <li><a href="?filter=top">Top</a></li>
-                  <li><a href="?filter=all">All</a></li>
+                  <li class="<%= ('answered' == @filter) ? 'active' : ''%>"><a href="?filter=answered">Answered</a></li>
+                  <li class="<%= ('top' == @filter) ? 'active' : ''%>"><a href="?filter=top">Top</a></li>
+                  <li class="<%= ('all' == @filter) ? 'active' : ''%>"><a href="?filter=all">All</a></li>
                 </ul>
                 <form class="navbar-search pull-right">
                   <%= hidden_field_tag :filter, params[:filter] %>
@@ -43,10 +46,33 @@
       <% else %>
         <div class="inline-message">
           <p>
-            Wowee! You are one of the first people to visit Ask Away. There are no answers from the candidates yet, but start asking, and we will have some answers up shortly.
+            Wowee! You have found something that nobody has asked yet, why don't you ask it?
           </p>
         </div>
       <% end %>
     </div>
+  </div>
+</div>
+
+    <div id="ask-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <%= render partial: 'form' %>
+    </div>
+
+    <!--Thank-you messsage -->
+
+
+<div id="thanks-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header green">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h4 id="ask-modalLabel">Ask a question</h4>
+  </div>
+  <div class="modal-body">
+    <p>Thanks for contributing!<br><br>
+  We'll check over your question before we publish it, and won't publish anything offensive or too similar to questions that have already been asked.<br><br>
+  Sit tight, and when your question is live on the site we'll send you a link so that you can share it with your family and friends and get them to vote it up.<br><br>
+  <div class="modal-footer">
+    <button class="btn btn-large" data-dismiss="modal" aria-hidden="true">Close</button>
+</div>
+
   </div>
 </div>

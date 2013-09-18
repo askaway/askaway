@@ -1,0 +1,12 @@
+.answers
+  .row-fluid
+    .profile-pic.pull-right.span3
+      =image_tag answer.candidate_avatar
+    %h4= "#{@answer.candidate_name}'s answer:"
+    %h3.salmon-text.span8
+      %strong= answer.body
+  %p.muted= answer.candidate_authorisation
+  %i.icon-thumbs-up
+  Like
+  - unless @hide_see_comments
+    = link_to "See comments", answer_path(answer), class: 'pull-right'
