@@ -7,6 +7,9 @@
   padding-top: 0.75%
 }
 
+.fb-comments, .fb-comments span, .fb-comments.fb_iframe_widget span iframe {
+    width: 100% !important;
+}
 
 a {
  color: $salmon;
@@ -15,7 +18,6 @@ a {
 a:hover {
  color: $salmon;
 }
-
 
 .inline-message {
   margin-top: 30px;
@@ -96,6 +98,10 @@ footer img {
 
 .grey {
   background-color: $grey;
+}
+
+.green {
+  background-color: $green
 }
 
 /*-----------TYPOGRAPHY-----------*/
@@ -416,7 +422,7 @@ margin-top: 5px;
 }
 
 .list-q:hover .CTA-vote{
-  background-color: $green;
+  background-color: rgba(235, 235, 235, 0.7);
 }
 
 
@@ -501,7 +507,7 @@ margin-top: 5px;
   background-size: contain;
   background-repeat: no-repeat;
   height: 100px;
-  margin-left: 15%;
+  margin-left: 20%;
   margin-bottom: 20px;
 }
 
@@ -511,6 +517,7 @@ margin-top: 5px;
   background-repeat: no-repeat;
   height: 100px;
   margin-bottom: 20px;
+  margin-left: 20%;
 }
 
 #img-a {
@@ -518,7 +525,7 @@ margin-top: 5px;
   background-size: contain;
   background-repeat: no-repeat;
   height: 100px;
-  margin-left: 15%;
+  margin-left: 20%;
   margin-bottom: 20px;
 }
 
@@ -572,6 +579,15 @@ margin-top: 5px;
   text-decoration: none;
 }
 
+.answers a {
+  color: $salmon;
+}
+
+.answers {
+  padding-right: 5%;
+  padding-bottom: 10px;
+}
+
 .individual-q .box {
     background-color: rgb(250, 247, 240);
 }
@@ -587,7 +603,6 @@ margin-top: 5px;
 }
 
 .CTA-vote {
-  background-color: $tan;
   padding: 1% 3% 1% 1%;
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
@@ -596,7 +611,7 @@ margin-top: 5px;
 }
 
 .individual-q:hover .CTA-vote {
-  background-color: $green;
+  background-color: rgba(235, 235, 235, 0.7);
 }
 
 .box.recently-asked {
@@ -641,8 +656,8 @@ margin-top: 10px;
   width: 66.667%;
 }
 
-#buttons-smaller-screen {
-  display: none;
+#how-it-works-modal {
+  overflow-x: hidden;
 }
 
 
@@ -780,10 +795,6 @@ margin-top: 10px;
   }
   .CTA-vote {
     font-size: 13px;
-    background-color: $tan;
-  }
-  .list-q:hover .CTA-vote{
-    background-color: $tan;
   }
   .list-q .profile-pic {
     width: 15%;
@@ -794,7 +805,7 @@ margin-top: 10px;
     display: inline-block;
   }
   .answers img {
-    width: 30%;
+    width: 15%;
     display: inline-block;
   }
   #banner {
