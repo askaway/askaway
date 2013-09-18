@@ -79,8 +79,12 @@
       </div>
     </div>
 <div class="grey">
-
-      <%= yield %>
+  <% flash.each do |name, msg| -%>
+    <div class="alert-container">
+      <%= content_tag :div, msg, class: 'alert' %>
+    </div>
+  <% end %>
+  <%= yield %>
 </div>
       <hr>
 <div class="container">

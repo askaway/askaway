@@ -7,6 +7,8 @@
   padding-top: 0.75%
 }
 
+.alert-container { padding-top: 3em; }
+.alert { margin-top: 0; }
 
 a {
  color: $salmon;
@@ -738,6 +740,12 @@ margin-top: 10px;
   #share {
     display: inherit;
   }
+  [class*="span"],
+  .uneditable-input[class*="span"],
+  .row-fluid [class*="span"] {
+    float: left;
+  }
+
 }
 
 /* Landscape phones and down */
