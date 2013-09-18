@@ -16,4 +16,4 @@
   .inline-message
     = link_to "See all the questions", questions_path, role: "button", class: "btn btn-primary btn-large"
     Or, if you've got your own question
-    %a.btn.btn-ask.btn-large{"data-toggle" => "modal", :href => "#ask-modal", :role => "button"} Ask a Question
+    = link_to "Ask a Question", new_question_path, class: "btn btn-ask btn-large"

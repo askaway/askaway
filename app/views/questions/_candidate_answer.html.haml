@@ -3,5 +3,6 @@
     %strong= "#{candidate_answer.candidate_name}:"
     = candidate_answer.body
   = facebook_button(candidate_answer)
-  = link_to "See comments", answer_path(candidate_answer), { class: "pull-right comments" }
+  - unless @hide_see_comments
+    = link_to "See comments", question_path(candidate_answer.question), { class: "pull-right comments" }
   %br/

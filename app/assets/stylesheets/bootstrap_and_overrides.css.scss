@@ -3,9 +3,18 @@
   margin-left: 0;
 }
 
+.fb_edge_widget_with_comment { vertical-align: top; }
+
+.grey {
+  min-height: 400px;
+}
+
 #share {
   padding-top: 0.75%
 }
+
+.alert-container { padding-top: 3em; }
+.alert { margin-top: 0; }
 
 .fb-comments, .fb-comments span, .fb-comments.fb_iframe_widget span iframe {
     width: 100% !important;
@@ -647,6 +656,7 @@ margin-top: 10px;
   .candidate {
   opacity: 1;
   }
+  .candidate.candidate-with-no-answer{ opacity: .3 }
   .all-questions .box {
   background-color: rgba(255, 255, 255, 1);
   }
@@ -677,6 +687,12 @@ margin-top: 10px;
   width: 50%;
   padding-bottom: 20px;
   }
+  [class*="span"],
+  .uneditable-input[class*="span"],
+  .row-fluid [class*="span"] {
+    float: left;
+  }
+
 }
 
 /* Landscape phones and down */

@@ -14,7 +14,4 @@
         %h3
           %strong= answer.body
         %p.muted= answer.candidate_authorisation
-        %i.icon-thumbs-up
-        Like
-    - unless @hide_see_comments
-      = link_to "See comments", answer_path(answer), class: 'pull-right'
+        = facebook_button(answer, true)

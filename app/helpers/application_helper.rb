@@ -5,7 +5,7 @@ module ApplicationHelper
   end
 
   def facebook_link(obj)
-    host = (Rails.env.development?) ? 'example.com' : ENV['DEFAULT_URL_HOST']
+    host = (Rails.env.development?) ? 'example.com' : ENV['CANONICAL_URL']
     # url_for polymorphic_path(obj, host: host, port: nil, format: :html, only_path: false)
     url_for polymorphic_path(obj, host: host, only_path: false)
   end
