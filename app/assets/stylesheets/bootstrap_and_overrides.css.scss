@@ -44,6 +44,7 @@ a:hover {
 footer img {
   width: 30%;
   padding-bottom: 20px;
+  background-color: #FFF;
 }
 
 .container {
@@ -479,12 +480,9 @@ margin-top: 5px;
 
 
 
-/*-----------QUESTION OF THE DAY-----------
+/*-----------QUESTION OF THE DAY-----------*/
 
-#QOTD-bg {
-  background-image: url("texture-teal-25.png");
-}
-*/
+
 
 #QOTD .row {
   margin-left: 40px;
@@ -648,7 +646,10 @@ margin-top: 10px;
   }
   .candidate {
   opacity: 1;
-}
+  }
+  .all-questions .box {
+  background-color: rgba(255, 255, 255, 1);
+  }
 }
 
 /* Landscape phone to portrait tablet */
@@ -713,9 +714,6 @@ margin-top: 10px;
   .list-q h3 {
     font-size: 18px;
   }
-  .list-q:hover {
-    background-color: #FFF;
-  }
   .CTA-vote {
     font-size: 13px;
   }
@@ -744,7 +742,6 @@ margin-top: 10px;
   }
   #QOTD-bg .box {
     width: 100%;
-      background: $paleteal;
       border: none;
   }
   #QOTD-bg .profile-pic {
