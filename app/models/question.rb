@@ -41,6 +41,14 @@ class Question < ActiveRecord::Base
     name.split(' ',).first
   end
 
+  def anonymous_name
+    if is_anonymous?
+      'Anonymous'
+    else
+      name
+    end
+  end
+
   def name_and_email
     "#{h name} <#{h email}>".html_safe
   end

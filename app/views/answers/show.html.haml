@@ -1,4 +1,4 @@
-- content_for :title, "Ask Away - An answer from #{@answer.candidate_name}"
+- content_for :title, "#{@answer.candidate_name}'s answer to \"#{@answer.question.body}\" | Ask Away"
 - content_for :description, @answer.body
 .tan.all-questions-bg
   .placeholder
