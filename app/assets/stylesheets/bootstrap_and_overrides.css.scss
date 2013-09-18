@@ -3,9 +3,16 @@
   margin-left: 0;
 }
 
+.grey {
+  min-height: 400px;
+}
+
 #share {
   padding-top: 0.75%
 }
+
+.alert-container { padding-top: 3em; }
+.alert { margin-top: 0; }
 
 .fb-comments, .fb-comments span, .fb-comments.fb_iframe_widget span iframe {
     width: 100% !important;
@@ -750,6 +757,12 @@ margin-top: 10px;
   #share {
     display: inherit;
   }
+  [class*="span"],
+  .uneditable-input[class*="span"],
+  .row-fluid [class*="span"] {
+    float: left;
+  }
+
 }
 
 /* Landscape phones and down */

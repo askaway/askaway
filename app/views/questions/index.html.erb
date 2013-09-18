@@ -5,10 +5,7 @@
     <div class="placeholder"></div>
     <div class="row-fluid">
     <h4 class="span6">All the questions you've asked so far:</h4>
-    <a href="#ask-modal" role="button" class="btn btn-ask btn-large span3 pull-right" data-toggle="modal">
-      Ask a Question
-    </a>
-
+    <%= link_to "Ask Question", new_question_path, class: "btn btn-ask btn-large span3 pull-right" %>
   </div>
     <br>
     <div class="all-questions">
