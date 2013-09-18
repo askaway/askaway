@@ -42,7 +42,8 @@ a:hover {
 }
 
 footer img {
-  max-width: 20%;
+  width: 30%;
+  padding-bottom: 20px;
 }
 
 .container {
@@ -206,7 +207,7 @@ p {
 .bubble-top
 {
 position: relative;
-padding: 2%;
+padding: 4%;
 margin: 30px 2% 2%;
 background: #FFF;
 -webkit-border-radius: 10px;
@@ -250,34 +251,6 @@ border-radius: 10px;
 .bubble5:after {
   @extend %all-bubbles;
   left: 90%;
-}
-
-
-.bubble-left {
-position: relative;
-padding: 2%;
-margin: 0 0 2% 0;
-background: #FFF;
--webkit-border-radius: 10px;
--moz-border-radius: 10px;
-border-radius: 10px;
--moz-box-shadow: 1px 1px 3px rgba(30, 39, 30, 0.1);
--webkit-box-shadow: 1px 1px 3px rgba(30, 39, 30, 0.1);
-box-shadow: 1px 1px 3px rgba(30, 39, 30, 0.1);
-}
-
-.bubble-left:after
-{
-content: "";
-position: absolute;
-top: 24px;
-left: -15px;
-border-style: solid;
-border-width: 15px 15px 15px 0;
-border-color: transparent #FFF;
-display: block;
-width: 0;
-z-index: 1;
 }
 
 
@@ -339,14 +312,6 @@ line-height: 16px;
 margin-top: 5px;
 }
 
-
-
-
-.bubble0 {
-
-
-
-}
 
 /*-----------PROFILE PICTURES-----------*/
 
@@ -469,19 +434,6 @@ margin-top: 5px;
   font-weight: 200;
   padding-top: 40px;
   padding-bottom: 60px;
-}
-
-#down {
-  position: relative;
-  display: inline-block;
-  margin-top: -450px;
-  margin-left: 47%;
-  height: 60px;
-  width: 60px;
-  background-color: #000;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  border-radius: 50%;
 }
 
 #QOTD-bg {
@@ -669,33 +621,6 @@ margin-top: 10px;
     background-image: url('type-banner-940.png');
     background-repeat:no-repeat;
   }
-  .bubble-left {
-
-    position: relative;
-    top: 15px;
-    padding: 4%;
-    margin: 2%;
-    background: #FFF;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    border-radius: 10px;
-  }
-  .bubble-left:after {
-    margin-top: 20px;
-    content: "";
-    position: absolute;
-    top: -35px;
-    left: 20px;
-    border-style: solid;
-    border-width: 0 15px 15px;
-    border-color: #FFF transparent;
-    display: block;
-    width: 0;
-    z-index: 1;
-  }
-
-
-
   .list-q .profile-pic {
     width: 15%;
     display: inline-block;
@@ -721,6 +646,9 @@ margin-top: 10px;
   #share {
     display: inherit;
   }
+  .candidate {
+  opacity: 1;
+}
 }
 
 /* Landscape phone to portrait tablet */
@@ -744,11 +672,9 @@ margin-top: 10px;
   width: 15%;
   display: inline-block;
   }
-  .bubble-left {
-    margin-bottom: 30px;
-  }
-  #share {
-    display: inherit;
+  footer img {
+  width: 50%;
+  padding-bottom: 20px;
   }
 }
 
@@ -821,28 +747,6 @@ margin-top: 10px;
       background: $paleteal;
       border: none;
   }
-  .bubble-left {
-    position: relative;
-    top: 35px;
-    padding: 4%;
-    background: #FFF;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    border-radius: 10px;
-    margin-bottom: 50px;
-  }
-  .bubble-left:after
-  {
-    content: "";
-    position: absolute;
-    left: 20px;
-    border-style: solid;
-    border-width: 0 15px 15px;
-    border-color: #FFF transparent;
-    display: block;
-    width: 0;
-    z-index: 1;
-  }
   #QOTD-bg .profile-pic {
     margin-top: 30px;
     margin-bottom: 10px;
@@ -861,9 +765,6 @@ margin-top: 10px;
   }
   #buttons-smaller-screen {
     width: 60%;
-  }
-  #share {
-    display: inherit;
   }
 }
 
