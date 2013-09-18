@@ -1,44 +1,42 @@
-<div class="modal-header green">
-  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-  <h4 id="ask-modalLabel">Ask a question</h4>
-</div>
-<%= form_for(@question, remote: true) do |f| %>
-  <div class="modal-body light">
-    <p>Go ahead and ask, there are no right or wrong questions, and you might find that everyone else is wondering the same thing!</p>
-  </div>
-  <% if @question.errors.any? %>
-    <div id="error_explanation" class="alert">
-      <p><%= pluralize(@question.errors.count, "error") %> prohibited this question from being saved:</p>
+<div class="container">
+  <div class="placeholder"></div>
+  <h4 id="ask-modalLabel">Ask a new question</h4>
 
-      <ul>
-      <% @question.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+  <%= form_for(@question) do |f| %>
+    <div class="modal-body light">
+      <p>Go ahead and ask, there are no right or wrong questions, and you might find that everyone else is wondering the same thing!</p>
     </div>
-  <% end %>
+    <% if @question.errors.any? %>
+      <div id="error_explanation" class="alert">
+        <p><%= pluralize(@question.errors.count, "error") %> prohibited this question from being saved:</p>
 
-  <fieldset>
+        <ul>
+        <% @question.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
 
-    <%= f.text_area :body, rows: 5, placeholder: "What would you like to ask the mayoral candidates?", maxlength: 140 %>
-    <span id="js-body-count"></span>
-    <br>
-    <label><h5>Name</h5></label>
-    <%= f.text_field :name, id: "inputName" %>
-    <br>
-    <label><h5>Email</h5></label>
-    <%= f.email_field :email, id: "inputEmail" %>
-    <br>
-    <label class="checkbox">
-      <%= f.check_box :is_anonymous %> Want your question to appear anonymous?
-    </label>
-  </fieldset>
+    <fieldset>
 
-  <div class="modal-footer">
+      <%= f.text_area :body, rows: 5, placeholder: "What would you like to ask the mayoral candidates?", maxlength: 140 %>
+      <span id="js-body-count"></span>
+      <br>
+      <label><h5>Name</h5></label>
+      <%= f.text_field :name, id: "inputName" %>
+      <br>
+      <label><h5>Email</h5></label>
+      <%= f.email_field :email, id: "inputEmail" %>
+      <br>
+      <label class="checkbox">
+        <%= f.check_box :is_anonymous %> Want your question to appear anonymous?
+      </label>
+    </fieldset>
+
     <!-- <button class="btn btn-large" data-dismiss="modal" aria-hidden="true">Close</button> -->
     <%= f.submit "Ask", class: "btn btn-ask btn-large", "data" => { "disable-with" => "Ask" } %>
     <!-- <button type="submit" class="btn btn-ask btn-large" href="#thanks-modal" role="button" class="btn btn-ask btn-large" data-toggle="modal">Ask</button> -->
-  </div>
-<% end %>
-
+  <% end %>
+</div>
 
