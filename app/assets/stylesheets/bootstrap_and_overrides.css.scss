@@ -355,16 +355,11 @@ margin-top: 5px;
   max-width: 15%;
 }
 
-.candidate:hover {
-  opacity: 1
-}
+.candidate:hover { opacity: 1 }
+.candidate:active { opacity: 1 }
 
-.candidate:active {
-  opacity: 1
-}
-
-.candidate-with-no-answer{ opacity: .5 }
-.candidate-with-no-answer:hover{ opacity: .5 }
+.candidate-with-no-answer{ opacity: .3 }
+.candidate-with-no-answer:hover{ opacity: .3 }
 
 .profile-pic {
   background-size: contain;
@@ -571,6 +566,8 @@ margin-top: 5px;
   font-weight: 200;
   text-decoration: none;
 }
+
+.box, .answer { padding: 8px 15px; }
 
 .box .answer a {
   color: $salmon;
@@ -870,8 +867,6 @@ margin-top: 10px;
   }
 }
 
-.candidate-with-no-answer{ opacity: .5 }
-
 .modal {
   width: 80%;
   margin-left: 20px;
@@ -882,3 +877,6 @@ margin-top: 10px;
   margin-left: 0;
   margin-right: 0;
 }
+
+.tab-content { overflow: visible; }
+
