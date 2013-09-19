@@ -36,7 +36,7 @@
           </div>
         </div>
       </div>
-      <% if @questions.any? %>
+      <% if @questions.length > 0 %>
         <div class="box">
           <%= render partial: 'question', collection: @questions %>
         </div>

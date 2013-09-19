@@ -13,7 +13,7 @@ class QuestionsController < ApplicationController
     if @filter.blank?
       redirect_to(questions_path({filter: :all})) and return
     end
-    @questions = Question.accepted.uniq.includes(answers: :candidate)
+    @questions = Question.ai
     if params[:filter] == 'recent'
       @questions = @questions.recent.page(page)
     elsif params[:filter] == 'top'

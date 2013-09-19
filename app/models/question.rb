@@ -36,6 +36,7 @@ class Question < ActiveRecord::Base
   scope :recent, -> { order("questions.updated_at DESC") }
   scope :top, -> { order("questions.likes_count DESC") }
   scope :search_scope, ->(query) { where(Question.arel_table[:body].matches("%#{query}%")) }
+  scope :ai, -> { accepted.uniq.includes(answers: :candidate) }
 
   def first_name
     name.split(' ',).first
