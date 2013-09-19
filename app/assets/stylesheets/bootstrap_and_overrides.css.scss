@@ -1,13 +1,9 @@
-
 .navbar .brand {
   margin-left: 0;
 }
 
 .fb_edge_widget_with_comment { vertical-align: top; }
 
-.grey {
-  min-height: 400px;
-}
 
 #share {
   padding-top: 0.75%
@@ -52,6 +48,11 @@ a:hover {
 footer {
   background-color: #FFF;
   width: 100%;
+  border: none;
+}
+
+#footers {
+  background-color: #FFF;
 }
 
 footer img {
@@ -79,7 +80,7 @@ footer img {
 
 .box {
     background-color: #FFF;
-    border: 1px solid #e1e1e8;
+    /*border: 1px solid #e1e1e8;*/
     -webkit-border-radius: 6px;
     -moz-border-radius: 6px;
     margin-bottom: 20px;
@@ -454,10 +455,6 @@ margin-top: 5px;
   padding-top: 40px;
 }
 
-#QOTD {
-    background: $grey;
-}
-
 #home {
   padding-top: 30px;
 }
@@ -491,11 +488,11 @@ margin-top: 5px;
 }
 
 
-
-
 /*-----------QUESTION OF THE DAY-----------*/
 
-
+#recent-buttons {
+  margin-left: 2.5%;
+}
 
 #QOTD .row {
   margin-left: 40px;
@@ -519,7 +516,7 @@ margin-top: 5px;
 }
 
 
-#ask-modal fieldset {
+#ask fieldset {
   padding: 15px;
 }
 
@@ -551,7 +548,7 @@ margin-top: 5px;
 }
 
 .question-min {
-    font-size: 14px;
+  font-size: 14px;
   padding: 8px 15px;
   border-top: 1px solid #e1e1e8;
 }
@@ -579,14 +576,12 @@ margin-top: 5px;
 
 /*-----------ABOUT-----------*/
 
-#about-bg {
-   background-image: url("texture-purple-25.png");
-   background-color: $grey;
+.texture {
+  background-image: url("texture-purple-25.png");
 }
 
-#about {
-  background-color: $grey;
-  padding-bottom: 20px;
+#contact {
+  margin-left: 0;
 }
 
 #enspiral img{
@@ -597,27 +592,18 @@ max-width: 50%;
 max-width: 70%;
 margin-top: 10px;
 }
+
 /*-----------MODAL-----------*/
 
 .modal {
   overflow: scroll;
   max-height: 100%;
 }
-
-
 .modal .modal-body {
     max-height: 420px;
     overflow-y: auto;
+    overflow-x: hidden;
 }
-
-#info {
-  width: 66.667%;
-}
-
-#how-it-works-modal {
-  overflow-x: hidden;
-}
-
 
 /*-----------MEDIA QUERIES-----------*/
 
@@ -662,6 +648,15 @@ margin-top: 10px;
   .all-questions .box {
   background-color: rgba(255, 255, 255, 1);
   }
+  #encouragement {
+  padding-left: 45px;
+  }
+  .question-min:{
+   background-color: #000;
+  }
+  .question-min:hover {
+   background-color: #000;
+  }
 }
 
 /* Landscape phone to portrait tablet */
@@ -694,7 +689,9 @@ margin-top: 10px;
   .row-fluid [class*="span"] {
     float: left;
   }
-
+  #encouragement {
+  padding-left: 0;
+  }
 }
 
 /* Landscape phones and down */
@@ -706,7 +703,10 @@ margin-top: 10px;
   }
   .small-pics .span2 {
   width: 100%;
-}
+  }
+  #recent {
+    display: none;
+  }
   .navbar-fixed-top,
   .navbar-fixed-bottom,
   .navbar-static-top {
@@ -762,18 +762,11 @@ margin-top: 10px;
     width: 100%;
       border: none;
   }
-  #QOTD-bg .profile-pic {
-    margin-top: 30px;
-    margin-bottom: 10px;
-  }
   #about h2 {
     font-size: 18px;
   }
   #contact {
     width: 80%;
-  }
-  .fb-comments {
-    width: 300px;
   }
   #about-bg .inline-message {
     margin-left: 0;
@@ -782,13 +775,6 @@ margin-top: 10px;
     width: 60%;
   }
 }
-
-.modal {
-  width: 80%;
-  margin-left: 20px;
-  left: 0;
-}
-
 .answer-container {
   margin-left: 0;
   margin-right: 0;

@@ -68,7 +68,7 @@
               <% end %>
               <li class="<%= "active" if params[:action] == "another_page" %>"><a href="/">Home</a></li>
               <li class="<%= "active" if params[:controller] == "questions" %>"><a href="/questions">All Questions</a></li>
-              <li><a href="#about-bg">About</a></li>
+              <li class="<%= "active" if params[:action] == "/#about-bg" %>"><a href="/#about-bg">About</a></li>
             </ul>
             <div id="share">
               <div class="fb-like pull-right" data-href="http://www.askaway.co.nz" data-width="450" data-colorscheme="dark" data-layout="button_count" data-show-faces="false" data-send="false"></div>
@@ -86,15 +86,17 @@
       <% end %>
       <%= yield %>
     </div>
-    <hr>
+  <div id="footers">
     <div class="container">
-          <footer>
-            <div id="massey">
-              <%= image_tag 'Massey-logo.jpg' %> 
-            </div>
-            This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/deed.en_US">Creative Commons Attribution-NonCommercial 3.0 Unported License</a>.
-          </footer>
+      <footer>
+        <div class="placeholder"></div>
+        <div id="massey">
+          <%= image_tag 'Massey-logo.jpg' %> 
+        </div><br>
+        <p class="light">This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/deed.en_US">Creative Commons Attribution-NonCommercial 3.0 Unported License</a>.</p>
+      </footer>
     </div><!-- /container -->
+  </div>
 
     <!-- Le javascript
     ================================================== -->

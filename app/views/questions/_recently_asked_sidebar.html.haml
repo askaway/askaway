@@ -1,4 +1,4 @@
-.span3
+.span3#recent-buttons
   = link_to "See all the questions", questions_path, role: "button", class: "btn btn-primary btn-large btn-block"
   = link_to "Ask a Question", new_question_path, class: "btn btn-ask btn-large btn-block"
   -unless params[:action] == 'another_page'
@@ -19,7 +19,7 @@
       .span4
         #img-q>
         %p
-          Anyone can ask a question for the candidates.
+          Anyone can ask a question for all of the six mayoral candidates.
       .span4
         #img-qmany>
         %p
@@ -29,5 +29,5 @@
         %p
           The top question at the end of each day will get answered by the candidates and shown on the site the next day.
   .modal-footer
-    %button.btn.btn-large{"aria-hidden" => "true", "data-dismiss" => "modal", href: "about"} Learn more
-    %button.btn.btn-large{"aria-hidden" => "true", "data-dismiss" => "modal"} Got it
+    %a.btn.btn-large{href: "/#about-bg"} Learn more
+    %a.btn.btn-large{"aria-hidden" => "true", "data-dismiss" => "modal"} Got it
