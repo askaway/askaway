@@ -14,6 +14,9 @@
     <meta property="og:url" content="<%= request.original_url %>"/>
     <meta property="og:description" content="<%= yield(:description) %>"/>
     <meta property="og:image" content="<%= image_url 'square-logo.png' %>"/>
+    <% if params[:controller] == "questions" && params[:action] == "index" %>
+      <link rel="canonical" href="<%= questions_url %>" />
+    <% end %>
 
     <%= csrf_meta_tags %>
 
