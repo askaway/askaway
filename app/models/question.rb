@@ -33,7 +33,7 @@ class Question < ActiveRecord::Base
 
   scope :answered, -> { joins(:answers) }
   scope :unanswered, -> { joins('LEFT OUTER JOIN answers ON questions.id = answers.question_id').where('answers.question_id IS NULL') }
-  scope :recent, -> { order("questions.updated_at DESC") }
+  scope :recent, -> { order("questions.created_at DESC") }
   scope :top, -> { order("questions.likes_count DESC") }
   scope :search_scope, ->(query) { where(Question.arel_table[:body].matches("%#{query}%")) }
   scope :ai, -> { accepted.uniq.includes(answers: :candidate) }

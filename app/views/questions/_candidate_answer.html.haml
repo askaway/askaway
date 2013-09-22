@@ -2,7 +2,7 @@
   %p{class: "#{last_name_from_answer(candidate_answer).downcase}"}
     %strong= "#{candidate_answer.candidate_name}:"
     = candidate_answer.body
-  = facebook_button(candidate_answer)
+  = facebook_button(candidate_answer, true)
   - unless @hide_see_comments
     = link_to "See comments", question_path(candidate_answer.question), { class: "pull-right comments" }
   %br/
