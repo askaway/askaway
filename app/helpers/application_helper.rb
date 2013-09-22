@@ -1,7 +1,7 @@
 module ApplicationHelper
 
-  def facebook_button(question, send=false)
-    content_tag(:div, "", class: "fb-like", data: {'like-url' => like_question_path(question), href: facebook_link(question), width: 100, layout: :button_count, 'show-faces' => false, send: send})
+  def facebook_button(question, send_btn=false)
+    content_tag(:div, "", class: "fb-like", data: {'like-url' => like_question_path(question), href: facebook_link(question), width: 100, layout: :button_count, 'show-faces' => false, send: send_btn})
   end
 
   def facebook_link(obj)
