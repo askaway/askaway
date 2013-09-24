@@ -7,11 +7,11 @@ namespace :likes do
     include ActionDispatch::Routing::UrlFor
     include Rails.application.routes.url_helpers
 
-    host = args[:host] || "example.com"
+    host = "www.askaway.co.nz" #args[:host] || "example.com"
 
     default_url_options[:host] = host
 
-    query_string = "SELECT url, total_count FROM link_stat WHERE url IN ( "
+    query_string = "SELECT url, total_count, comment_count FROM link_stat WHERE url IN ( "
     Question.all.each do |q|
       query_string += "'#{url_for(q)}',"
     end
@@ -38,6 +38,7 @@ namespace :likes do
       question_id = r["url"].match('questions/(\d+)')[1]
       q = Question.find(question_id)
       q.likes_count = r["total_count"]
+      q.comments_count = r["comment_count"]
       q.save
     end
   end
