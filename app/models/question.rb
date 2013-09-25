@@ -31,8 +31,8 @@ class Question < ActiveRecord::Base
   before_validation :set_init_defaults
   after_create :email_meg
 
-  scope :answered, -> { joins(:answers) }
-  scope :unanswered, -> { joins('LEFT OUTER JOIN answers ON questions.id = answers.question_id').where('answers.question_id IS NULL') }
+  scope :answered, -> { joins(:answers).order('questions.answers_count DESC') }
+  scope :unanswered, -> { where('questions.answers_count < 4') }
   scope :recent, -> { order("questions.created_at DESC") }
   scope :top, -> { order("questions.likes_count DESC") }
   scope :search_scope, ->(query) { where(Question.arel_table[:body].matches("%#{query}%")) }
