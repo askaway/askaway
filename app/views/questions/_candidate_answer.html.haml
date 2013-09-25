@@ -4,5 +4,13 @@
     = candidate_answer.body
   = facebook_button(candidate_answer, true)
   - unless @hide_see_comments
-    = link_to "See comments", question_path(candidate_answer.question), { class: "pull-right comments" }
+
+    .comment-count
+      -comments_count = candidate_answer.question.comments_count
+      - if comments_count == 0
+        -comment_text = Comment on this question
+      -else
+        -comment_text = 'See '+ pluralize( comments_count, 'comment')
+
+    = link_to comment_text, question_path(candidate_answer.question), { class: "pull-right comments" }
   %br/

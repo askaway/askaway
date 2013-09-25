@@ -7,7 +7,7 @@ namespace :likes do
     include ActionDispatch::Routing::UrlFor
     include Rails.application.routes.url_helpers
 
-    host = "www.askaway.co.nz" #args[:host] || "example.com"
+    host = args[:host] || "example.com"
 
     default_url_options[:host] = host
 

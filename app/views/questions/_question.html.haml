@@ -6,6 +6,13 @@
       .light.CTA-vote
         = facebook_button(question)
         Vote for this question by liking it
+      .comment-count
+        -comments_count = question.comments_count
+        - if comments_count == 0
+          Comment on this question
+        -else
+          = pluralize( comments_count, 'comment')
+
     -unless question.answers_count == 0
       .row-fluid
         %p Answered by:

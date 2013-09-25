@@ -7,7 +7,12 @@
       %p.muted
         =asked_by(featured_question)
       =facebook_button(featured_question)
-
+      .comment-count
+        -comments_count = featured_question.comments_count
+        - if comments_count == 0
+          Comment on this question
+        -else
+          = pluralize( comments_count, 'comment')
       %br/
       %h4 Answers from the candidates:
       =render partial: 'questions/featured_question_tab', object: featured_question

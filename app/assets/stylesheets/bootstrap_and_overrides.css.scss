@@ -782,3 +782,8 @@ margin-top: 10px;
 
 .tab-content { overflow: visible; }
 
+.comment-count {
+  font-size: 14px;
+  &:hover { text-decoration: underline; }
+}
+
