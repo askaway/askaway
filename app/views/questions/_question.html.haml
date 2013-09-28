@@ -3,7 +3,7 @@
     %h3= question.body
     .light.CTA-vote
       = facebook_button(question)
-      - if queation.answers_count < 6
+      - if question.answers_count < 6
         Vote for this question by liking it
 
     .row-fluid#answered-by
