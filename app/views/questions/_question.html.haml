@@ -3,7 +3,8 @@
     %h3= question.body
     .light.CTA-vote
       = facebook_button(question)
-      Vote for this question by liking it
+      - if queation.answers_count < 6
+        Vote for this question by liking it
 
     .row-fluid#answered-by
       %p.muted.span4= asked_by(question)
