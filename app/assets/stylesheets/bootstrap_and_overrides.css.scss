@@ -16,6 +16,14 @@
     width: 100% !important;
 }
 
+.search-query {
+  width: 50%;
+}
+
+.all-questions .navbar-inner {
+  padding-right: 0;
+}
+
 a {
  color: $salmon;
 }
@@ -424,7 +432,7 @@ margin-top: 5px;
 
 
 #banner {
-  background-image: url('type-banner-1440.png');
+  background-image: url('type-banner-1440b.jpg');
   background-size: 100%;
   background-repeat: no-repeat;
   display: block;
@@ -613,7 +621,7 @@ margin-top: 10px;
 @media (max-width: 940px) {
   #banner {
     height: 368px;
-    background-image: url('type-banner-940.png');
+    background-image: url('type-banner-940.jpg');
     background-repeat:no-repeat;
   }
   .list-q .profile-pic {
@@ -664,7 +672,7 @@ margin-top: 10px;
 @media (max-width: 768px) {
   #banner {
     height: 368px;
-    background-image: url('type-banner-768.png') !important;
+    background-image: url('type-banner-768.jpg') !important;
     background-repeat:no-repeat;
   }
   #buttons-smaller-screen {
@@ -752,7 +760,7 @@ margin-top: 10px;
   }
   #banner {
     height: 343px;
-    background-image: url('type-banner-480.png') !important;
+    background-image: url('type-banner-480.jpg') !important;
     background-repeat:no-repeat;
   }
   .navbar-fixed-top {
