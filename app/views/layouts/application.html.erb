@@ -32,6 +32,7 @@
     <%= javascript_include_tag "application" %>
 
     <!-- fonts added by meg-->
+    <link href='http://fonts.googleapis.com/css?family=Crete+Round' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Nunito' rel='stylesheet' type='text/css'>
 
     <!-- Fav and touch icons -->
@@ -58,10 +59,11 @@
           <a class="brand" href="/">Ask Away</a>
           <div class="nav-collapse main-menu">
             <ul class="nav">
+              <li class="<%= "active" if params[:controller] == "landing_page" %>"><a href="/landing_page">Home</a></li>
               <% if Rails.env.development? %>
                 <li class="<%= "active" if params[:action] == "styles" %>"><a href="/styles">Styles</a></li>
               <% end %>
-              <li class="<%= "active" if params[:action] == "another_page" %>"><a href="/">Home</a></li>
+              <li class="<%= "active" if params[:action] == "another_page" %>"><a href="/">2013</a></li>
               <li class="<%= "active" if params[:controller] == "questions" %>"><a href="/questions">All Questions</a></li>
               <li class="<%= "active" if params[:action] == "/#about-bg" %>"><a href="/#about-bg">About</a></li>
             </ul>

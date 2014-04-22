@@ -22,4 +22,5 @@ Askaway::Application.routes.draw do
   get 'another_page', to: 'pages#another_page'
   get 'styles', to: 'pages#styles'
   get 'about', to: redirect('/')
+  get 'landing_page', to: 'pages#landing_page'
 end
