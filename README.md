@@ -1,4 +1,6 @@
-== git instructions!
+[![Build Status](https://travis-ci.org/askaway/askaway.svg)](https://travis-ci.org/askaway/askaway)
+
+## git instructions!
 
 here's how to pull down other people's changes from github:
 
@@ -20,7 +22,7 @@ to undo changes to a file:
 
     git checkout <file_name>
 
-== Welcome to Rails
+## Welcome to Rails
 
 Rails is a web-application framework that includes everything needed to create
 database-backed web applications according to the Model-View-Control pattern.
@@ -48,13 +50,13 @@ Rails. You can read more about Action Pack in
 link:files/vendor/rails/actionpack/README.html.
 
 
-== Getting Started
+## Getting Started
 
 1. At the command prompt, create a new Rails application:
-       <tt>rails new myapp</tt> (where <tt>myapp</tt> is the application name)
+       ``rails new myapp`` (where ``myapp`` is the application name)
 
-2. Change directory to <tt>myapp</tt> and start the web server:
-       <tt>cd myapp; rails server</tt> (run with --help for options)
+2. Change directory to ``myapp`` and start the web server:
+       ``cd myapp; rails server`` (run with --help for options)
 
 3. Go to http://localhost:3000/ and you'll see:
        "Welcome aboard: You're riding Ruby on Rails!"
@@ -66,7 +68,7 @@ the following resources handy:
 * Ruby on Rails Tutorial Book: http://www.railstutorial.org/
 
 
-== Debugging Rails
+## Debugging Rails
 
 Sometimes your application goes wrong. Fortunately there are a lot of tools that
 will help you debug it and get it back on the rails.
@@ -79,6 +81,7 @@ shown in the browser on requests from 127.0.0.1.
 You can also log your own messages directly into the log file from your code
 using the Ruby logger class from inside your controllers. Example:
 
+```ruby
   class WeblogController < ActionController::Base
     def destroy
       @weblog = Weblog.find(params[:id])
@@ -86,6 +89,7 @@ using the Ruby logger class from inside your controllers. Example:
       logger.info("#{Time.now} Destroyed Weblog ID ##{@weblog.id}!")
     end
   end
+```
 
 The result will be a message in your log file along the lines of:
 
@@ -103,13 +107,13 @@ These two books will bring you up to speed on the Ruby language and also on
 programming in general.
 
 
-== Debugger
+## Debugger
 
 Debugger support is available through the debugger command when you start your
 Mongrel or WEBrick server with --debugger. This means that you can break out of
 execution at any point in the code, investigate and change the model, and then,
 resume execution! You need to install ruby-debug to run the server in debugging
-mode. With gems, use <tt>sudo gem install ruby-debug</tt>. Example:
+mode. With gems, use ``sudo gem install ruby-debug``. Example:
 
   class WeblogController < ActionController::Base
     def index
@@ -139,7 +143,7 @@ with a IRB prompt in the server window. Here you can do things like:
 Finally, when you're ready to resume execution, you can enter "cont".
 
 
-== Console
+## Console
 
 The console is a Ruby shell, which allows you to interact with your
 application's domain model. Here you'll have all parts of the application
@@ -147,33 +151,33 @@ configured, just like it is when the application is running. You can inspect
 domain models, change values, and save to the database. Starting the script
 without arguments will launch it in the development environment.
 
-To start the console, run <tt>rails console</tt> from the application
+To start the console, run ``rails console`` from the application
 directory.
 
 Options:
 
-* Passing the <tt>-s, --sandbox</tt> argument will rollback any modifications
+* Passing the ``-s, --sandbox`` argument will rollback any modifications
   made to the database.
 * Passing an environment name as an argument will load the corresponding
-  environment. Example: <tt>rails console production</tt>.
+  environment. Example: ``rails console production``.
 
 To reload your controllers and models after launching the console run
-<tt>reload!</tt>
+``reload!``
 
 More information about irb can be found at:
 link:http://www.rubycentral.org/pickaxe/irb.html
 
 
-== dbconsole
+## dbconsole
 
-You can go to the command line of your database directly through <tt>rails
-dbconsole</tt>. You would be connected to the database with the credentials
+You can go to the command line of your database directly through ``rails
+dbconsole``. You would be connected to the database with the credentials
 defined in database.yml. Starting the script without arguments will connect you
 to the development database. Passing an argument will connect you to a different
-database, like <tt>rails dbconsole production</tt>. Currently works for MySQL,
+database, like ``rails dbconsole production``. Currently works for MySQL,
 PostgreSQL and SQLite 3.
 
-== Description of Contents
+## Description of Contents
 
 The default directory structure of a generated Ruby on Rails application:
 
@@ -238,7 +242,7 @@ app/views
 app/views/layouts
   Holds the template files for layouts to be used with views. This models the
   common header/footer method of wrapping views. In your views, define a layout
-  using the <tt>layout :default</tt> and create a file named default.html.erb.
+  using the ``layout :default`` and create a file named default.html.erb.
   Inside default.html.erb, call <% yield %> to render the view using this
   layout.
 
@@ -257,7 +261,7 @@ db
 
 doc
   This directory is where your application documentation will be stored when
-  generated using <tt>rake doc:app</tt>
+  generated using ``rake doc:app``
 
 lib
   Application specific libraries. Basically, any kind of custom code that
