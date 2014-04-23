@@ -82,6 +82,7 @@ GEM
       execjs
     coffee-script-source (1.6.3)
     columnize (0.3.6)
+    database_cleaner (1.2.0)
     debugger (1.6.1)
       columnize (>= 0.3.1)
       debugger-linecache (~> 1.2.0)
@@ -97,10 +98,10 @@ GEM
     diff-lcs (1.2.4)
     erubis (2.7.0)
     execjs (2.0.1)
-    factory_girl (4.2.0)
+    factory_girl (4.4.0)
       activesupport (>= 3.0.0)
-    factory_girl_rails (4.2.1)
-      factory_girl (~> 4.2.0)
+    factory_girl_rails (4.4.1)
+      factory_girl (~> 4.4.0)
       railties (>= 3.0.0)
     faker (1.2.0)
       i18n (~> 0.5)
@@ -243,8 +244,9 @@ DEPENDENCIES
   byebug
   capybara
   coffee-rails (~> 3.2.1)
+  database_cleaner
   debugger
-  factory_girl_rails
+  factory_girl_rails (~> 4.4.0)
   faker
   haml
   jquery-rails
