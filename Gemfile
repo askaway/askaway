@@ -44,6 +44,9 @@ gem 'aasm'
 
 gem 'kaminari'  # pagination
 gem 'share_counts', github: "fourseven/share_counts" # counting shares
+
+gem "annotate"
+
 #gem 'derp', "1.0.2"
 
 group :development do
