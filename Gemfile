@@ -61,9 +61,13 @@ group :development, :test do
   gem 'capybara'
   gem 'poltergeist'
   gem 'faker'
-  gem 'factory_girl_rails'
+  gem 'factory_girl_rails', '~> 4.4.0'
   gem 'launchy'
   gem 'pry-rails'
+end
+
+group :test do
+  gem 'database_cleaner'
 end
 
 group :production do

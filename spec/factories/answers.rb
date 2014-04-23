@@ -14,8 +14,8 @@
 
 FactoryGirl.define do
   factory :answer do
-    body { Faker::Lorem.characters(120) }
     candidate
     question
+    body { Faker::Lorem.characters(120) }
   end
 end
