@@ -1,5 +1,4 @@
 class PagesController < ApplicationController
-  # layout 'test1'
 
   def styles
   end
@@ -10,6 +9,6 @@ class PagesController < ApplicationController
     @featured_question = featured_question
   end
 
-    def individual_question
+  def individual_question
   end
 end
