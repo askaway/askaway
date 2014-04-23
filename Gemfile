@@ -45,8 +45,6 @@ gem 'aasm'
 gem 'kaminari'  # pagination
 gem 'share_counts', github: "fourseven/share_counts" # counting shares
 
-gem "annotate"
-
 #gem 'derp', "1.0.2"
 
 group :development do
@@ -54,6 +52,7 @@ group :development do
   gem "debugger", :platforms => [:mingw_19, :ruby_19]
   gem 'byebug', :platforms => [:mingw_20, :ruby_20]
   gem 'pry-byebug', :platforms => [:mingw_20, :ruby_20]
+  gem "annotate"
 end
 
 group :development, :test do
