@@ -10,6 +10,9 @@ gem 'devise'
 gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'rack-canonical-host'
 
+gem 'devise', '~> 3.2.4'
+gem 'jquery-ui-rails'
+
 # Gems used only for assets and not required
 # in production environments by default.
 
