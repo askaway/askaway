@@ -1,6 +1,4 @@
 ActiveAdmin.register Question do
-  scope :pending, default: true
-  scope :accepted
   scope :all
 
   index do
