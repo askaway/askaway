@@ -1,5 +1,4 @@
 class PagesController < ApplicationController
-  # layout 'test1'
 
   def styles
   end
