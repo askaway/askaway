@@ -47,6 +47,7 @@ gem 'share_counts', github: "fourseven/share_counts" # counting shares
 #gem 'derp', "1.0.2"
 
 group :development do
+  gem 'thin' # Webrick can't handle chunked responses
   gem 'quiet_assets'
   gem "debugger", :platforms => [:mingw_19, :ruby_19]
   gem 'byebug', :platforms => [:mingw_20, :ruby_20]
