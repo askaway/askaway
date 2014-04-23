@@ -59,12 +59,12 @@ class Question < ActiveRecord::Base
   end
 
   def increment!
-    likes_count += 1
+    self.likes_count += 1
     save
   end
 
   def decrement!
-    likes_count -= 1
+    self.likes_count -= 1
     save
   end
 
