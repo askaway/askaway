@@ -80,14 +80,12 @@ class QuestionsController < ApplicationController
   end
 
   def like
-    puts "I like!"
-    @question.increment
+    @question.increment!
     head :accepted
   end
 
   def unlike
-    puts "I no like!"
-    @question.decrement
+    @question.decrement!
     head :accepted
   end
 

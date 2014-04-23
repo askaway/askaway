@@ -58,13 +58,13 @@ class Question < ActiveRecord::Base
     id.to_s + " - ".html_safe + body
   end
 
-  def increment
-    self.likes_count = self.likes_count + 1
+  def increment!
+    likes_count += 1
     save
   end
 
-  def decrement
-    self.likes_count = self.likes_count - 1
+  def decrement!
+    likes_count -= 1
     save
   end
 
