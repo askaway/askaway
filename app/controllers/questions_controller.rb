@@ -83,7 +83,7 @@ class QuestionsController < ApplicationController
     @question.increment!
     respond_to do |format|
       format.json {
-        render json: { vote_count: @question.likes_count }
+        render json: { vote_count: @question.vote_count }
       }
     end
   end

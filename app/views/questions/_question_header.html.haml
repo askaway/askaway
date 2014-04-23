@@ -9,6 +9,6 @@
   %p.muted= asked_by(question_header)
   .inline-block.light.CTA-vote
     - unless on_answer_page
-      %span.vote-count.label.label-info #{question_header.likes_count} votes
+      %span.vote-count.label.label-info #{question_header.vote_count} votes
     - if question_header.needs_voting_reminder?
       =link_to "Vote for this question", vote_for_question_path(question_header), :class => "btn", :data => { :action => "vote" }

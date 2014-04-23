@@ -2,7 +2,7 @@
   %a{:href => question_path(question)}
     %h3= question.body
     .light.CTA-vote
-      %span.vote-count.label.label-info #{question.likes_count} votes
+      %span.vote-count.label.label-info #{question.vote_count} votes
       =link_to "Vote for this question", vote_for_question_path(question), :class => "btn", :data => { :action => "vote" }
 
     .row-fluid#answered-by
