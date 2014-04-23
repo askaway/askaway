@@ -4,20 +4,20 @@ class Question < ActiveRecord::Base
   attr_accessible :body, :email, :name, :is_anonymous
 
   aasm column: "status", whiny_transitions: false do
-    state :pending, initial: true
-    state :accepted
+    state :accepted, initial: true
     state :declined
-
-    event :accept do
-      after do
-        QuestionMailer.question_accepted(self).deliver
-      end
-
-      transitions from: :pending, to: :accepted
-    end
+    state :flagged
 
     event :decline do
-      transitions from: :pending, to: :declined
+      transitions from: [:accepted, :flagged], to: :declined
+    end
+
+    event :flagged do
+      transitions from: :accepted, to: :flagged
+    end
+
+    event :accepted do
+      transitions from: [:declined, :flagged], to: :accepted
     end
   end
 
@@ -87,7 +87,7 @@ class Question < ActiveRecord::Base
   end
 
   def set_init_defaults
-    self.status ||= "pending"
+    self.status ||= "accepted"
   end
 
   def email_meg
