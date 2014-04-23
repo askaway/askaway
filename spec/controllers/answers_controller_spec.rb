@@ -2,11 +2,11 @@ require 'spec_helper'
 
 describe AnswersController do
 
-  let(:question) { create :question }
+  let(:answer) { create :answer }
 
   describe 'GET #show' do
     it 'response successfully' do
-      expect(get :show, question).to be_successful
+      expect(get :show, id: answer.id).to be_successful
     end
   end
 

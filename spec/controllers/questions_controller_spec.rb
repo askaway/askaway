@@ -1,14 +1,14 @@
 require 'spec_helper'
 
 describe QuestionsController do
-  
+
+  let(:question) { create :question }
+
   describe "GET index" do
-    it "succeeds" do
-      question = FactoryGirl.build_stubbed :question
+    it "redirects with an empty filter" do
       Question.stub accepted: [question]
       get :index
-      response.should be_successful
-      expect(assigns(:questions)).to include(question)
+      expect(response).to redirect_to questions_path({filter: :all})
     end
 
     context "when ordered by created date" do
