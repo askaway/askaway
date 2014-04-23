@@ -62,6 +62,10 @@ group :development, :test do
   gem 'launchy'
 end
 
+group :test do
+  gem 'database_cleaner'
+end
+
 group :production do
   gem 'pg'
 end
