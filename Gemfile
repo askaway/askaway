@@ -52,8 +52,8 @@ group :development do
   gem 'debugger', :platforms => [:mingw_19, :ruby_19]
   gem 'byebug', :platforms => [:mingw_20, :ruby_20]
   gem 'pry-byebug', :platforms => [:mingw_20, :ruby_20]
-  gem 'sqlite3'
   gem 'guard-rspec'
+  gem 'annotate'
 end
 
 group :development, :test do
