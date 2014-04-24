@@ -1,0 +1,812 @@
+body {
+  background-color: rgb(35, 35, 35);
+}
+
+.share {
+  padding: 5px;
+}
+
+.sides {
+  max-width: 1440px;
+  margin: auto;
+}
+
+.navbar .brand {
+  margin-left: 0;
+}
+
+.fb_edge_widget_with_comment { vertical-align: top; }
+
+.alert-container { padding-top: 3em; }
+.alert { margin-top: 0; }
+
+.fb-comments, .fb-comments span, .fb-comments.fb_iframe_widget span iframe {
+    width: 100% !important;
+}
+
+.search-query {
+  width: 50%;
+}
+
+.all-questions .navbar-inner {
+  padding-right: 0;
+}
+
+#final-hack {
+  margin-left: 0;
+}
+
+a {
+ color: $salmon;
+}
+
+a:hover {
+ color: $salmon;
+}
+
+.inline-message {
+  margin-top: 30px;
+  padding: 60px;
+  margin-bottom: 30px;
+  font-size: 18px;
+  font-weight: 200;
+  line-height: 30px;
+  background-color: #FFF;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.inline-message .btn {
+  margin-left: 7px;
+}
+
+.inline-block {
+  display: inline-block;
+}
+footer {
+  background-color: #FFF;
+  width: 100%;
+  border: none;
+}
+
+#footers {
+  background-color: #FFF;
+}
+
+footer img {
+  width: 30%;
+  padding-bottom: 20px;
+  background-color: #FFF;
+}
+
+.container {
+  width: 66.6667%;
+}
+
+.container-wide {
+  width: 80%;
+}
+
+.placeholder {
+  height: 60px;
+}
+
+.outline {
+  border: 1px solid #e1e1e8;
+  padding: 2%;
+}
+
+.box {
+    background-color: #FFF;
+    /*border: 1px solid #e1e1e8;*/
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    margin-bottom: 20px;
+}
+
+.box-inner{
+      padding: 8px 15px;
+}
+
+.bar {
+  padding: 8px 15px;
+  border-top: 1px solid #e1e1e8;
+}
+
+
+/*-----------COLOR SWATCHES-----------*/
+
+.salmon-text {
+  color: $salmon;
+}
+
+.colorswatches {
+  height: 160px;
+}
+
+.colorswatches .span2{
+  padding: 1%;
+  font-size: 18px;
+  height: 50px;
+}
+
+.grey {
+  background-color: $grey;
+}
+
+.green {
+  background-color: $green
+}
+
+/*-----------TYPOGRAPHY-----------*/
+
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Nunito';
+  /*text-shadow: 0.1px 0.1px 0.8px;*/
+
+}
+
+p {
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.muted {
+  color: #999999;
+  font-size: 13px;
+  line-height: 16px;
+  margin-top: 5px;
+}
+
+.light {
+  font-size: 18px;
+  font-weight: 200;
+}
+
+/*-----------BUTTONS-----------*/
+.btn {
+  margin-bottom: 5px;
+}
+
+.btn {
+  .btn-custom {
+  background-color: hsl(32, 13%, 88%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#e8e5e2", endColorstr="#e4e0dc");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#e8e5e2), to(#e4e0dc));
+  background-image: -moz-linear-gradient(top, #e8e5e2, #e4e0dc);
+  background-image: -ms-linear-gradient(top, #e8e5e2, #e4e0dc);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e8e5e2), color-stop(100%, #e4e0dc));
+  background-image: -webkit-linear-gradient(top, #e8e5e2, #e4e0dc);
+  background-image: -o-linear-gradient(top, #e8e5e2, #e4e0dc);
+  background-image: linear-gradient(#e8e5e2, #e4e0dc);
+  border-color: #e4e0dc #e4e0dc hsl(32, 13%, 87.5%);
+  color: #333 !important;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.03);
+  -webkit-font-smoothing: antialiased;
+}
+
+}
+
+.btn-primary {
+  background-color: hsl(14, 94%, 65%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#fa9779", endColorstr="#f97951");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#fa9779), to(#f97951));
+  background-image: -moz-linear-gradient(top, #fa9779, #f97951);
+  background-image: -ms-linear-gradient(top, #fa9779, #f97951);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fa9779), color-stop(100%, #f97951));
+  background-image: -webkit-linear-gradient(top, #fa9779, #f97951);
+  background-image: -o-linear-gradient(top, #fa9779, #f97951);
+  background-image: linear-gradient(#fa9779, #f97951);
+  border-color: #f97951 #f97951 hsl(14, 94%, 63%);
+  color: #333 !important;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.13);
+  -webkit-font-smoothing: antialiased;
+}
+
+
+
+
+.btn-ask {
+  background-color: hsl(60, 67%, 48%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#d8d83b", endColorstr="#cccc28");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#d8d83b), to(#cccc28));
+  background-image: -moz-linear-gradient(top, #d8d83b, #cccc28);
+  background-image: -ms-linear-gradient(top, #d8d83b, #cccc28);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #d8d83b), color-stop(100%, #cccc28));
+  background-image: -webkit-linear-gradient(top, #d8d83b, #cccc28);
+  background-image: -o-linear-gradient(top, #d8d83b, #cccc28);
+  background-image: linear-gradient(#d8d83b, #cccc28);
+  border-color: #cccc28 #cccc28 hsl(60, 67%, 46.5%);
+  color: #333 !important;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.09);
+  -webkit-font-smoothing: antialiased;
+}
+
+
+#extra-buttons-768 {
+  display: none;
+
+}
+
+
+/*-----------SPEECHBUBBLES-----------*/
+
+
+
+.bubble-top
+{
+position: relative;
+padding: 4%;
+margin: 30px 2% 2%;
+background: #FFF;
+-webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+border-radius: 10px;
+}
+
+%all-bubbles {
+  content: "";
+  position: absolute;
+  margin-top: 10px;
+  border-style: solid;
+  border-width: 0 15px 15px;
+  border-color: #FFF transparent;
+  display: block;
+  width: 0;
+  z-index: 1;
+  top: -25px;
+}
+
+.bubble0:after {
+  @extend %all-bubbles;
+  left: 5%;
+}
+.bubble1:after {
+  @extend %all-bubbles;
+  left: 22%;
+}
+.bubble2:after {
+  @extend %all-bubbles;
+  left: 39%;
+}
+.bubble3:after {
+  @extend %all-bubbles;
+  left: 56%;
+}
+.bubble4:after {
+  @extend %all-bubbles;
+  left: 73%;
+}
+.bubble5:after {
+  @extend %all-bubbles;
+  left: 90%;
+}
+
+
+
+/*-----------AUTHORIZATION STATEMENTS-----------*/
+
+.goulden:after {
+content: "Authorised by Rob Goulden, 14 Kauri Street, Miramar, Wellington";
+display: block;
+color: #999999;
+font-size: 13px;
+line-height: 16px;
+margin-top: 5px;
+}
+
+.morrison:after {
+content: "Authorised by John Morrison, Level 5, 93 Boulcott Street, Wellington";
+display: block;
+color: #999999;
+font-size: 13px;
+line-height: 16px;
+margin-top: 5px;
+}
+
+.muthu:after {
+content: "Authorised by Karunanidhi Muthu of Suite 239, 32 Salamanca Road, Kelburn, Wellington 6012";
+display: block;
+color: #999999;
+font-size: 13px;
+line-height: 16px;
+margin-top: 5px;
+}
+
+.wade-brown:after {
+content: "Authorised by Celia Wade-Brown of 101 Wakefield Street, Wellington";
+display: block;
+color: #999999;
+font-size: 13px;
+line-height: 16px;
+margin-top: 5px;
+}
+
+.yan:after {
+content: "Authorised by C. Johnston of 35-8 Cambridge Terrace, Wellington 6011";
+display: block;
+color: #999999;
+font-size: 13px;
+line-height: 16px;
+margin-top:5px;
+}
+
+
+.young:after {
+content: "Authorised by Nicola Young of B44/10 Ebor Street, Te Aro, Wellington 6011";
+display: block;
+color: #999999;
+font-size: 13px;
+line-height: 16px;
+margin-top: 5px;
+}
+
+
+/*-----------PROFILE PICTURES-----------*/
+
+.candidate {
+  opacity: .9;
+  max-width: 15%;
+}
+
+.candidate:hover { opacity: 1 }
+.candidate:active { opacity: 1 }
+
+.candidate-with-no-answer{ opacity: .3 }
+.candidate-with-no-answer:hover{ opacity: .3 }
+
+.profile-pic {
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 100%;
+}
+
+.goulden-img {
+  background-image: url('Rob-Goulden.png');
+}
+
+.morrison-img {
+  background-image: url('John-Morrison.png');
+}
+
+.muthu-img {
+  background-image: url('Karunanidhi-Muthu.png');
+}
+
+.wade-brown-img {
+  background-image: url('Celia-Wade-Brown.png');
+}
+
+.yan-img {
+  background-image: url('Jack-Yan.png');
+}
+
+.young-img {
+  background-image: url('Nicola-Young.png');
+}
+
+
+
+/*-----------Index-----------*/
+
+.all-questions .box {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+
+
+.list-q {
+  font-size: 17.5px;
+  line-height: 22px;
+  padding: 16px 30px;
+  border-bottom: 1px solid #e1e1e8;
+}
+
+.list-q h3 {
+  color: $salmon;
+}
+
+.list-q:hover {
+  background-color: #FFF;
+}
+
+.list-q:hover .CTA-vote{
+  background-color: rgba(235, 235, 235, 0.7);
+}
+
+
+
+/*----Styling for individual question-----*/
+
+
+.individual-q .muted {
+color: #999999;
+font-size: 13px;
+line-height: 16px;
+margin-top: 5px;
+}
+
+.individual-q .btn {
+  padding: 8px 15px;
+}
+
+.individual-q h3 {
+  color: $salmon;
+}
+
+/*-----------HOME-----------*/
+
+
+#banner {
+  background-image: url('type-banner-1440b.jpg');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  display: block;
+  min-height: 80px;
+  height: 395px;
+  margin: 0 auto;
+  position: top center;
+  margin-top: 15px;
+}
+
+
+#title {
+  position: static;
+  background-color: #000;
+  background-image: url('texture-grey.png');
+}
+
+#title p {
+  color: #FFF;
+  font-size: 30px;
+  line-height: 34px;
+  font-weight: 200;
+  padding-top: 40px;
+  padding-bottom: 60px;
+}
+
+#QOTD-bg {
+  padding-top: 40px;
+}
+
+#home {
+  padding-top: 30px;
+}
+
+
+#img-q {
+  background-image: url('question.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 100px;
+  margin-left: 20%;
+  margin-bottom: 20px;
+}
+
+#img-qmany {
+  background-image: url('many-questions.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 100px;
+  margin-bottom: 20px;
+  margin-left: 20%;
+}
+
+#img-a {
+  background-image: url('answer.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 100px;
+  margin-left: 20%;
+  margin-bottom: 20px;
+}
+
+
+/*-----------QUESTION OF THE DAY-----------*/
+
+#recent-buttons {
+  margin-left: 2.5%;
+}
+
+#QOTD .row {
+  margin-left: 40px;
+}
+
+#QOTD h2 {
+  color: $salmon;
+  /*font-family: hevetica, arial, sans serif;*/
+}
+
+
+/*-----------ALL QUESTIONS-----------*/
+
+#question-index {
+  padding-top: 40px;
+  background-image: url('texture-light-grey.png');
+}
+
+.all-questions .navbar {
+  margin-bottom: 0;
+}
+
+
+#ask fieldset {
+  padding: 15px;
+}
+
+.box a {
+  color: #000;
+  font-size: 18px;
+  font-weight: 200;
+  text-decoration: none;
+}
+
+.box .answer a {
+  color: $salmon;
+  font-size: 18px;
+  font-weight: 200;
+  text-decoration: none;
+}
+
+.answers a {
+  color: $salmon;
+}
+
+.answers {
+  padding-right: 5%;
+  padding-bottom: 10px;
+}
+
+.individual-q .box {
+    background-color: rgb(250, 247, 240);
+}
+
+.question-min {
+  font-size: 14px;
+  padding: 8px 15px;
+  border-top: 1px solid #e1e1e8;
+}
+
+.question-min:hover {
+ background-color: $green;
+}
+
+.CTA-vote {
+  padding: 1% 3% 1% 1%;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  margin-bottom: 30px;
+}
+
+.individual-q:hover .CTA-vote {
+  background-color: rgba(235, 235, 235, 0.7);
+}
+
+.box.recently-asked {
+  background-color: rgba(255, 255, 255, 0.5);
+
+}
+
+/*-----------ABOUT-----------*/
+
+.texture {
+  background-image: url("texture-purple-25.png");
+}
+
+#contact {
+  margin-left: 0;
+}
+
+#enspiral img{
+max-width: 50%;
+}
+
+#rabid img{
+max-width: 70%;
+margin-top: 10px;
+}
+
+/*-----------MODAL-----------*/
+
+.modal {
+  overflow: scroll;
+  max-height: 100%;
+}
+.modal .modal-body {
+    max-height: 420px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/*-----------MEDIA QUERIES-----------*/
+
+
+/* Portrait tablet to landscape and desktop */
+
+@media (max-width: 940px) {
+  #banner {
+    height: 368px;
+    background-image: url('type-banner-940.jpg');
+    background-repeat:no-repeat;
+  }
+  .list-q .profile-pic {
+    width: 15%;
+    display: inline-block;
+  }
+  .navbar-fixed-top,
+  .navbar-fixed-bottom,
+  .navbar-static-top {
+    margin-right: 0;
+    margin-left: 0;
+  }
+  .navbar-fixed-top {
+    position: fixed;
+  }
+  #buttons-smaller-screen {
+    display: block;
+  }
+  #info {
+    width: 100%;
+  }
+  #about-bg .inline-message {
+    margin-top: 0;
+  }
+  .candidate {
+  opacity: 1;
+  }
+  .candidate.candidate-with-no-answer{ opacity: .3 }
+  .all-questions .box {
+  background-color: rgba(255, 255, 255, 1);
+  }
+  #encouragement {
+  padding-left: 45px;
+  }
+  .question-min{
+   background-color: #000;
+  }
+  .question-min:hover {
+   background-color: #000;
+  }
+}
+
+/* Landscape phone to portrait tablet */
+
+@media (max-width: 768px) {
+  #banner {
+    height: 368px;
+    background-image: url('type-banner-768.jpg') !important;
+    background-repeat:no-repeat;
+  }
+  #buttons-smaller-screen {
+    display: block;
+  }
+  #extra-buttons-768 {
+    display: block;
+  }
+  .navbar-fixed-top {
+  position: fixed;
+  }
+  .answers img {
+  width: 15%;
+  display: inline-block;
+  }
+  footer img {
+  width: 50%;
+  padding-bottom: 20px;
+  }
+  [class*="span"],
+  .uneditable-input[class*="span"],
+  .row-fluid [class*="span"] {
+    float: left;
+  }
+  #encouragement {
+  padding-left: 0;
+  }
+  .comment-count {
+  display: none;
+  }
+}
+
+/* Landscape phones and down */
+
+@media (max-width: 480px) {
+  body {
+    padding-right: 0;
+    padding-left: 0;
+  }
+  .small-pics .span2 {
+  width: 100%;
+  }
+  #recent {
+    display: none;
+  }
+  .navbar-fixed-top,
+  .navbar-fixed-bottom,
+  .navbar-static-top {
+    margin-right: 0;
+    margin-left: 0;
+  }
+ .navbar-fixed-top {
+  position: fixed;
+  }
+  #extra-buttons-768 {
+    display: none;
+  }
+  .list-q {
+    font-size: 17.5px;
+    line-height: 22px;
+    color: $salmon;
+    padding: 16px 30px;
+    border-bottom: 1px solid #e1e1e8;
+  }
+  .list-q h3 {
+    font-size: 18px;
+  }
+  .CTA-vote {
+    font-size: 13px;
+  }
+  .list-q .profile-pic {
+    width: 15%;
+    display: inline-block;
+  }
+  .list-q .profile-pic {
+    width: 15%;
+    display: inline-block;
+  }
+  .answers img {
+    width: 15%;
+    display: inline-block;
+  }
+  #banner {
+    height: 343px;
+    background-image: url('type-banner-480.jpg') !important;
+    background-repeat:no-repeat;
+  }
+  .navbar-fixed-top {
+  margin-bottom: 0;
+  }
+  .container {
+    width: 90%;
+  }
+  #QOTD-bg .box {
+    width: 100%;
+      border: none;
+  }
+  #about h2 {
+    font-size: 18px;
+  }
+  #contact {
+    width: 80%;
+  }
+  #about-bg .inline-message {
+    margin-left: 0;
+  }
+  #buttons-smaller-screen {
+    width: 60%;
+  }
+}
+
+.answer-container {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.tab-content { overflow: visible; }
+
+.comment-count {
+  font-size: 13px;
+  color: grey;
+  margin-top: 2px;
+  &:hover { text-decoration: underline;
+  }
+}
+
+
+
