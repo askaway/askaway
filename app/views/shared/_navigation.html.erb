@@ -25,7 +25,11 @@
           </li>
           <% if current_user %>
             <li>
-              <% current_user.email %> </li>
+              <a>
+                You logged as
+                <%= current_user.email %>
+              </a>
+            </li>
             <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
           <% else %>
             <li><a href="#loginModal" role="button" data-toggle="modal">Login</a></li>
