@@ -56,6 +56,10 @@
       <% end %>
       <%= yield %>
     </div>
+    <% unless current_user %>
+      <%= render 'users/sessions/new_modal' %>
+      <%= render 'users/registrations/new_modal' %>
+    <% end %>
     <%= render 'shared/footer' %>
     <!-- Le javascript
     ================================================== -->
