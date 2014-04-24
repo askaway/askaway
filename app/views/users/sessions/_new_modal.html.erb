@@ -1,0 +1,20 @@
+<div id="loginModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Modal header</h3>
+  </div>
+  <div class="modal-body">
+    <%= form_for(:user, url: user_session_path) do |f| %>
+      <div><%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true %></div>
+
+      <div><%= f.label :password %><br />
+        <%= f.password_field :password, autocomplete: "off" %></div>
+        <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+      <div><%= f.submit "Sign in" %></div>
+    <% end %>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+  </div>
+</div>

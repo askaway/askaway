@@ -19,7 +19,14 @@
         <ul class="nav pull-right">
           <li><div class="fb-like" data-href="http://www.askaway.co.nz" data-width="450" data-colorscheme="dark" data-layout="button_count" data-show-faces="false" data-send="false"></div></li>
           <li><a href="http://www.askaway.co.nz" data-url="http://www.askaway.co.nz" class="twitter-share-button" data-text="Got a question for Wellington's mayoral candidates?" data-via="AskAwayNZ">Tweet</a></li>
-          <li><a>Login</a></li>
+          <% if current_user %>
+            <li><% current_user.email %> </li>
+            <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
+          <% else %>
+            <li><a href="#loginModal" role="button" data-toggle="modal">Login</a></li>
+            <li><a href="#registrationModal" role="button" data-toggle="modal">Registration</a></li>
+          <% end %>
+
         </ul>
         </div>
       </div><!--/.nav-collapse -->
