@@ -58,9 +58,10 @@ group :development do
 end
 
 group :development, :test do
+  gem 'sqlite3'
   gem 'rspec-rails', '~> 2.0'
   gem 'capybara'
-  gem 'poltergeist'
+  gem 'capybara-webkit'
   gem 'faker'
   gem 'factory_girl_rails', '~> 4.4.0'
   gem 'launchy'
