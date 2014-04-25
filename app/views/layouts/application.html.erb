@@ -47,32 +47,7 @@
   </head>
 
   <body data-spy="scroll" data-target=".navbar">
-    <div class="navbar navbar-fixed-top navbar-inverse">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".main-menu">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="/">Ask Away</a>
-          <div class="nav-collapse main-menu">
-            <ul class="nav">
-              <% if Rails.env.development? %>
-                <li class="<%= "active" if params[:action] == "styles" %>"><a href="/styles">Styles</a></li>
-              <% end %>
-              <li class="<%= "active" if params[:action] == "another_page" %>"><a href="/">Home</a></li>
-              <li class="<%= "active" if params[:controller] == "questions" %>"><a href="/questions">All Questions</a></li>
-              <li class="<%= "active" if params[:action] == "/#about-bg" %>"><a href="/#about-bg">About</a></li>
-            </ul>
-            <div id="share">
-              <div class="fb-like pull-right" data-href="http://www.askaway.co.nz" data-width="450" data-colorscheme="dark" data-layout="button_count" data-show-faces="false" data-send="false"></div>
-              <a href="http://www.askaway.co.nz" data-url="http://www.askaway.co.nz" class="twitter-share-button pull-right" data-text="Got a question for Wellington's mayoral candidates?" data-via="AskAwayNZ">Tweet</a>
-            </div>
-          </div><!--/.nav-collapse -->
-        </div>
-      </div>
-    </div>
+    <%= render 'shared/navigation' %>
     <div class="grey sides">
       <% flash.each do |name, msg| -%>
         <div class="alert-container">
@@ -81,19 +56,11 @@
       <% end %>
       <%= yield %>
     </div>
-  <div id="footers" class="sides">
-    <div class="container">
-      <footer>
-        <div class="placeholder"></div>
-        <div id="massey">
-          <%= image_tag 'Massey-logo.jpg' %>
-        </div><br>
-        <p class="light">This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/deed.en_US" target="_blank">Creative Commons Attribution-NonCommercial 3.0 Unported License</a>.</p>
-        <div class="placeholder"></div>
-      </footer>
-    </div><!-- /container -->
-  </div>
-
+    <% unless current_user %>
+      <%= render 'users/sessions/new_modal' %>
+      <%= render 'users/registrations/new_modal' %>
+    <% end %>
+    <%= render 'shared/footer' %>
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
