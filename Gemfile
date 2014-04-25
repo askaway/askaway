@@ -6,7 +6,6 @@ gem 'rails', '4.0.5'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'devise'
 gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'rack-canonical-host'
 
@@ -34,9 +33,10 @@ group :development do
 end
 
 group :development, :test do
+  gem 'sqlite3'
   gem 'rspec-rails', '~> 2.0'
   gem 'capybara'
-  gem 'poltergeist'
+  gem 'capybara-webkit'
   gem 'faker'
   gem 'factory_girl_rails', '~> 4.4.0'
   gem 'launchy'
