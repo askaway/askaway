@@ -62,7 +62,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 2.0'
   gem 'capybara'
   gem 'capybara-webkit'
-  gem 'faker'
+  gem 'faker', '~> 1.3.0'
   gem 'factory_girl_rails', '~> 4.4.0'
   gem 'launchy'
   gem 'pry-rails'
