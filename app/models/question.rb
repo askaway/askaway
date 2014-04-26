@@ -9,12 +9,15 @@
 #  is_anonymous  :boolean
 #  created_at    :datetime
 #  updated_at    :datetime
-#  vote_count    :integer          default(0)
+#  status        :string(255)
+#  likes_count   :integer          default(0)
 #  answers_count :integer          default(0)
+#  is_featured   :boolean          default(FALSE)
 #
 
 class Question < ActiveRecord::Base
   has_many :answers, inverse_of: :question
+  belongs_to :topic
 
   validates_presence_of :body, :email, :name
   validates_length_of :body, maximum: 140
