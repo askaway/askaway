@@ -288,6 +288,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   database_cleaner
   debugger
+  devise
   factory_girl_rails (~> 4.4.0)
   faker
   guard-rspec
