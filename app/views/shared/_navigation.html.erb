@@ -1,0 +1,43 @@
+<div class="navbar navbar-fixed-top navbar-inverse">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".main-menu">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="/">Ask Away</a>
+      <div class="nav-collapse main-menu">
+        <ul class="nav">
+          <% if Rails.env.development? %>
+            <li><a href="/styles">Styles</a></li>
+          <% end %>
+          <li><a href="/">Home</a></li>
+          <li class="<%= 'active' if params[:controller] == 'questions' %>"><a href="/questions">All Questions</a></li>
+          <li><a href="/#about-bg">About</a></li>
+        </ul>
+        <ul class="nav pull-right">
+          <li>
+            <div class="fb-like" data-href="http://www.askaway.co.nz" data-width="450" data-colorscheme="dark" data-layout="button_count" data-show-faces="false" data-send="false"></div>
+          </li>
+          <li>
+            <a href="http://www.askaway.co.nz" data-url="http://www.askaway.co.nz" class="twitter-share-button" data-text="Got a question for Wellington's mayoral candidates?" data-via="AskAwayNZ">Tweet</a>
+          </li>
+          <% if current_user %>
+            <li>
+              <a>
+                You logged as
+                <%= current_user.email %>
+              </a>
+            </li>
+            <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
+          <% else %>
+            <li><a href="#loginModal" role="button" data-toggle="modal">Login</a></li>
+            <li><a href="#registrationModal" role="button" data-toggle="modal">Registration</a></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

@@ -7,6 +7,7 @@ gem 'rails', '3.2.17'
 
 
 gem 'activeadmin'
+gem 'devise', '~> 3.2.4'
 gem 'jquery-ui-rails'
 
 # Gems used only for assets and not required
@@ -24,8 +25,6 @@ end
 
 gem 'jquery-rails'
 gem 'haml'
-
-gem 'devise'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -60,9 +59,9 @@ end
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'
-  gem 'capybara'
-  gem 'poltergeist'
-  gem 'faker'
+  gem 'capybara', '~> 2.1'
+  gem 'capybara-webkit', '~> 1.1.1'
+  gem 'faker', '~> 1.3.0'
   gem 'factory_girl_rails', '~> 4.4.0'
   gem 'launchy'
   gem 'pry-rails'

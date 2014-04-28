@@ -2,6 +2,10 @@ body {
   background-color: rgb(35, 35, 35);
 }
 
+.share {
+  padding: 5px;
+}
+
 .sides {
   max-width: 1440px;
   margin: auto;
@@ -12,11 +16,6 @@ body {
 }
 
 .fb_edge_widget_with_comment { vertical-align: top; }
-
-
-#share {
-  padding-top: 0.75%
-}
 
 .alert-container { padding-top: 3em; }
 .alert { margin-top: 0; }
@@ -659,9 +658,6 @@ margin-top: 10px;
   #about-bg .inline-message {
     margin-top: 0;
   }
-  #share {
-    display: inherit;
-  }
   .candidate {
   opacity: 1;
   }
@@ -672,7 +668,7 @@ margin-top: 10px;
   #encouragement {
   padding-left: 45px;
   }
-  .question-min:{
+  .question-min{
    background-color: #000;
   }
   .question-min:hover {
@@ -736,9 +732,6 @@ margin-top: 10px;
   .navbar-static-top {
     margin-right: 0;
     margin-left: 0;
-  }
-  #share {
-    display: inherit;
   }
  .navbar-fixed-top {
   position: fixed;
