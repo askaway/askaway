@@ -19,7 +19,9 @@
 class Question < ActiveRecord::Base
   include ERB::Util
   include AASM
-  attr_accessible :body, :email, :name, :is_anonymous
+  # FIXME does adding status here mean *anyone* can add it? As in,
+  # will rails just let people smash in whatever they like?
+  attr_accessible :body, :email, :name, :status, :is_anonymous
 
   aasm column: "status", whiny_transitions: false do
     state :pending, initial: true
