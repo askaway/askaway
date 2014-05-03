@@ -34,8 +34,14 @@ ActiveAdmin.register Question do
   end
 
   form do |f|
-    #TODO make status a dropdown
-    f.inputs :body, :name, :email, :status
+    f.inputs "Question details" do
+      f.input :body
+      f.input :name
+      f.input :email
+      #TODO can I generate this collection instead of having to define it?
+      #     (maybe by making the db column an enum?)
+      f.input :status, as: :select, collection: [:pending, :accepted, :declined, :flagged]
+    end
     f.actions
   end
 
