@@ -34,7 +34,7 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    if @question.status == 'accepted'
+    if @question.accepted? || @question.pending?
       @recently_asked = recently_asked
       @hide_see_comments = true
       render 'show'
