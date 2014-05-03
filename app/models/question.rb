@@ -22,20 +22,21 @@ class Question < ActiveRecord::Base
   attr_accessible :body, :email, :name, :is_anonymous
 
   aasm column: "status", whiny_transitions: false do
-    state :accepted, initial: true
+    state :pending, initial: true
+    state :accepted
     state :declined
     state :flagged
 
+    event :accept do
+      transitions from: [:pending, :flagged], to: :accepted
+    end
+
     event :decline do
-      transitions from: [:accepted, :flagged], to: :declined
+      transitions from: [:pending, :flagged], to: :declined
     end
 
-    event :flagged do
-      transitions from: :accepted, to: :flagged
-    end
-
-    event :accepted do
-      transitions from: [:declined, :flagged], to: :accepted
+    event :flag do
+      transitions from: [:pending, :accepted], to: :flagged
     end
   end
 
