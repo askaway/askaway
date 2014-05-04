@@ -1,4 +1,6 @@
 Askaway::Application.routes.draw do
+  devise_for :users
+
   get "answers/show"
 
   root to: 'pages#another_page'

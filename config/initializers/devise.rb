@@ -1,11 +1,21 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
+  # The secret key used by Devise. Devise uses this key to generate
+  # random tokens. Changing this key will render invalid all existing
+  # confirmation, reset password and unlock tokens in the database.
+
+  if Rails.env.production?
+    config.secret_key = ENV['DEVISE_SECRET']
+  else
+    config.secret_key = '9a4a25a6109e7c9693004b17afa04032c989346121804131bb279d0c1fb945e2e435fda2bf5dd82327fbd9057691d250b33c54000c310d3307946799548f219b'
+  end
+
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
+  config.mailer_sender = 'admin@askaway.org.nz'
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
@@ -93,7 +103,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 10
 
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = '6dc4e47ebe34f1f1495b15ac1e74a504de79e176e1db1e92423eb23ae6693a7e541f455335ed195cce44fa462e7d66944ae37ee0be7155ea8b5ea9da223cc5b2'
+  # config.pepper = '657a63f741b2ed81aac1bfdde464b25c3c4f4f20f4463233f5d71984ff6c3b1ff089be7c8e4fa6175aaf9b3417e876c7a9e62093ed34ee725de4f84b0859871b'
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
@@ -250,13 +260,4 @@ Devise.setup do |config|
   # When using omniauth, Devise cannot automatically set Omniauth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
-
-  # The secret key used by Devise. Devise uses this key to generate
-  # random tokens. Changing this key will render invalid all existing
-  # confirmation, reset password and unlock tokens in the database.
-  if Rails.env.production?
-    config.secret_key = ENV['DEVISE_SECRET']
-  else
-    config.secret_key = 'zxcvbnmasdfghjklqwertyuiop1234567890!@#$%^&*()QWERTYUIOPASDFGHJKLZXCVBNM'
-  end
 end
