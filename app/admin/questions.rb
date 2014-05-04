@@ -1,5 +1,5 @@
 ActiveAdmin.register Question do
-  permit_params :body, :email, :name, :is_anonymous
+  permit_params :body, :email, :name, :is_anonymous, :topic_id
 
   index do
     selectable_column
@@ -13,7 +13,7 @@ ActiveAdmin.register Question do
   end
 
   form do |f|
-    f.inputs :body, :name, :email
+    f.inputs :body, :name, :email, :topic
     f.actions
   end
 end
