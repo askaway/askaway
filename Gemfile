@@ -46,6 +46,8 @@ gem 'kaminari'  # pagination
 gem 'share_counts', github: 'fourseven/share_counts' # counting shares
 #gem 'derp', "1.0.2"
 
+gem 'pg'
+
 group :development do
   gem 'thin' # Webrick can't handle chunked responses
   gem 'quiet_assets'
@@ -71,5 +73,4 @@ group :test do
 end
 
 group :production do
-  gem 'pg'
 end
