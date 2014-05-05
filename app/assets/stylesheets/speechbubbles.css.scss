@@ -1,0 +1,48 @@
+.bubble-top
+{
+position: relative;
+padding: 4%;
+margin: 30px 2% 2%;
+background: #F1F1F1;
+-webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+border-radius: 10px;
+}
+
+%all-bubbles {
+  content: "";
+  position: absolute;
+  margin-top: 10px;
+  border-style: solid;
+  border-width: 0 15px 15px;
+  border-color: #F1F1F1 transparent;
+  display: block;
+  width: 0;
+  z-index: 1;
+  top: -25px;
+}
+
+.bubble0:after {
+  @extend %all-bubbles;
+  left: 5%;
+}
+.bubble1:after {
+  @extend %all-bubbles;
+  left: 22%;
+}
+.bubble2:after {
+  @extend %all-bubbles;
+  left: 39%;
+}
+.bubble3:after {
+  @extend %all-bubbles;
+  left: 56%;
+}
+.bubble4:after {
+  @extend %all-bubbles;
+  left: 73%;
+}
+.bubble5:after {
+  @extend %all-bubbles;
+  left: 90%;
+}

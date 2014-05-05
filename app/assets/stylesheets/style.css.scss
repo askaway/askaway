@@ -1,0 +1,40 @@
+.container-wide {
+  width: 80%;
+}
+
+.all-questions {
+  width: 70%;
+  margin: auto;
+}
+
+/*-----------PROFILE PICTURES-----------*/
+
+.candidate {
+  opacity: .9;
+  max-width: 15%;
+}
+
+.candidate:hover { opacity: 1 }
+.candidate:active { opacity: 1 }
+
+.candidate-with-no-answer{ opacity: .3 }
+.candidate-with-no-answer:hover{ opacity: .3 }
+
+/*-----------MEDIA QUERIES-----------*/
+
+
+/* Portrait tablet to landscape and desktop */
+
+@media (max-width: 940px) {
+  .list-q .profile-pic {
+    width: 15%;
+    display: inline-block;
+  }
+  .answers img {
+  width: 15%;
+  display: inline-block;
+  }
+}
+
+
+
