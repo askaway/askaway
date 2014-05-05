@@ -1,0 +1,93 @@
+.landing-page {
+  .banner {
+    background-color: rgb(225, 230, 76);
+    height: 350px;
+  }
+  .banner {
+    //font-family: 'Crete Round', serif;
+    text-align: center;
+    color: #000;
+    font-size: 60px;
+    line-height: 68px;
+    font-weight: 800;
+    padding-top: 80px;
+    text-shadow: 0.2px 0.2px 0.5px rgba(0, 0, 0, .1);
+  }
+  .logo {
+    background: url('trial-aa-logo-black.png') no-repeat;
+    background-size: contain;
+    width: 150px;
+    height: 150px;
+    margin: auto;
+    padding-bottom: 20px;
+  }
+  h1, h2, h3, h4 {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+  h3 {
+    font-weight: 200;
+  }
+  .container {
+    padding-bottom: 60px;
+  }
+  #launching-in {
+    color: white;
+    background: #000;
+    padding: 5px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+  }
+  #launching-in h4 {
+    font-weight: 200;
+  }
+  .collect-email {
+    padding: 20px;
+    width: 80%;
+    margin: auto;
+    input {
+      height: 35px;
+      margin: 0 5px 4px; 
+    }
+  }
+  .sign-up {
+    display: inline-block;
+  }
+
+  .share {
+    margin: auto;
+    width: 50%;
+  }
+  .share-btns {
+    color: white;
+    width: 40%;
+    height: 35px;
+    padding: 10px;
+    display: inline-block;
+  }
+  .FB-box{
+    background: #43609C;
+  }
+  .facebook {
+    background: url('FB-icon.png') no-repeat;
+    font-size: 18px;
+    height: 30px;
+    padding-left: 27px;
+    margin-left: 10px;
+    padding-top: 7px;
+  }
+  .Tw-box{
+    background: #55ACEE;
+  }
+  .twitter {
+    background: url('twitter-icon.png') no-repeat;
+    background-position: 0% 32%;
+    font-size: 18px;
+    height: 30px;
+    padding-left: 44px;
+    margin-left: 5px;
+    padding-top: 7px;
+  }
+}
+
+
