@@ -19,23 +19,26 @@
 class Question < ActiveRecord::Base
   include ERB::Util
   include AASM
-  attr_accessible :body, :email, :name, :is_anonymous
+  # FIXME does adding status here mean *anyone* can add it? As in,
+  # will rails just let people smash in whatever they like?
+  attr_accessible :body, :email, :name, :status, :is_anonymous
 
   aasm column: "status", whiny_transitions: false do
     state :pending, initial: true
     state :accepted
     state :declined
+    state :flagged
 
     event :accept do
-      after do
-        QuestionMailer.question_accepted(self).deliver
-      end
-
-      transitions from: :pending, to: :accepted
+      transitions from: [:pending, :flagged], to: :accepted
     end
 
     event :decline do
-      transitions from: :pending, to: :declined
+      transitions from: [:pending, :flagged], to: :declined
+    end
+
+    event :flag do
+      transitions from: [:pending, :accepted], to: :flagged
     end
   end
 
@@ -54,7 +57,7 @@ class Question < ActiveRecord::Base
   scope :recent, -> { order("questions.created_at DESC") }
   scope :top, -> { order("questions.likes_count DESC") }
   scope :search_scope, ->(query) { where(Question.arel_table[:body].matches("%#{query}%")) }
-  scope :ai, -> { accepted.uniq.includes(answers: :candidate) }
+  scope :ai, -> { where(status: [:pending, :accepted]).uniq.includes(answers: :candidate) }
 
   def first_name
     name.split(' ',).first
@@ -105,7 +108,7 @@ class Question < ActiveRecord::Base
   end
 
   def set_init_defaults
-    self.status ||= "pending"
+    self.status ||= "accepted"
   end
 
   def email_meg

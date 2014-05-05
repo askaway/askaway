@@ -34,7 +34,7 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    if @question.status == 'accepted'
+    if @question.accepted? || @question.pending?
       @recently_asked = recently_asked
       @hide_see_comments = true
       render 'show'
@@ -65,7 +65,7 @@ class QuestionsController < ApplicationController
 
     respond_to do |format|
       if @question.save
-        format.html { redirect_to thanks_questions_path, notice: 'Question was successfully created.' }
+        format.html { redirect_to @question, notice: 'Question was successfully created.' }
         format.json { render json: @question, status: :created, location: @question }
         format.js do
           @question = Question.new

@@ -1,24 +1,20 @@
 ActiveAdmin.register Question do
-  scope :pending, default: true
-  scope :accepted
+  scope :flagged, default: true
+  scope :pending
   scope :all
 
   index do
     selectable_column
-    column :body
-    column "Answer" do |question|
-      if question.accepted?
-        link_to "Answer", new_admin_answer_path(question_id: question.id)
-      end
-    end
-    column :name
-    column :email
+    column :created_at
     column :status
-    column "Accept" do |question|
-      unless question.accepted?
-        link_to "Accept", accept_admin_question_path(question)
+    column "Action" do |question|
+      if question.pending? || question.flagged?
+        link_to("Accept", accept_admin_question_path(question)) +
+        " " +
+        link_to("Decline", decline_admin_question_path(question))
       end
     end
+    column "Question" do |question| question.body end
     column "Featured" do |question|
       if question.is_featured?
         content_tag(:strong, "Featured")
@@ -26,6 +22,8 @@ ActiveAdmin.register Question do
         link_to "feature", feature_admin_question_path(question)
       end
     end
+    column :name
+    column :email
     default_actions
   end
 
@@ -36,7 +34,14 @@ ActiveAdmin.register Question do
   end
 
   form do |f|
-    f.inputs :body, :name, :email
+    f.inputs "Question details" do
+      f.input :body
+      f.input :name
+      f.input :email
+      #TODO can I generate this collection instead of having to define it?
+      #     (maybe by making the db column an enum?)
+      f.input :status, as: :select, collection: [:pending, :accepted, :declined, :flagged]
+    end
     f.actions
   end
 
@@ -44,7 +49,14 @@ ActiveAdmin.register Question do
     question = Question.find(params[:id])
     question.accept!
     flash[:notice] = "Question accepted"
-    redirect_to action: :index
+    redirect_to :back
+  end
+
+  member_action :decline do
+    question = Question.find(params[:id])
+    question.decline!
+    flash[:notice] = "Question declined"
+    redirect_to :back
   end
 
   member_action :feature do
@@ -53,14 +65,14 @@ ActiveAdmin.register Question do
     question.is_featured = true
     question.save
     flash[:notice] = "Question featured"
-    redirect_to action: :index
-
+    redirect_to :back
   end
 
-  member_action :answer do
+  # FIXME Do we want this here? The public won't hit this 'endpoing' right?
+  member_action :flag do
     question = Question.find(params[:id])
-    question.accept!
-    flash[:notice] = "Question accepted"
-    redirect_to action: :index
+    question.flag!
+    flash[:notice] = "Question flagged"
+    redirect_to :back
   end
 end
