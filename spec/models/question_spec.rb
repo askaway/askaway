@@ -39,11 +39,6 @@ describe Question do
       question.reload
       question.should be_accepted
     end
-    it "sends an email to the asker" do
-      QuestionMailer.stub(question_accepted: mailer)
-      mailer.should_receive(:deliver)
-      question.accept!
-    end
     it "does not do anything if already accepted" do
       question.accept!
       question.should_not_receive(:update_attribute)
