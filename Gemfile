@@ -46,6 +46,8 @@ gem 'kaminari'  # pagination
 gem 'share_counts', github: "fourseven/share_counts" # counting shares
 #gem 'derp', "1.0.2"
 
+gem 'pg'
+
 group :development do
   gem 'quiet_assets'
   gem "debugger", :platforms => [:mingw_19, :ruby_19]
@@ -61,8 +63,4 @@ group :development, :test do
   gem 'faker'
   gem 'factory_girl_rails'
   gem 'launchy'
-end
-
-group :production do
-  gem 'pg'
 end
