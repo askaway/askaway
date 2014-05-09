@@ -42,7 +42,7 @@
     font-weight: 200;
   }
   .collect-email {
-    padding: 20px;
+    padding: 2%;
     width: 80%;
     margin: auto;
     input {
@@ -60,10 +60,11 @@
   }
   .share-btns {
     color: white;
-    width: 40%;
-    height: 35px;
+    width: 49%;
     padding: 10px;
     display: inline-block;
+    box-sizing:border-box;
+    -moz-box-sizing:border-box; /* Firefox */
   }
   .FB-box{
     background: #43609C;
