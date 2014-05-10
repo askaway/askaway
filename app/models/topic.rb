@@ -9,5 +9,6 @@
 #
 
 class Topic < ActiveRecord::Base
-  has_many :questions
+  has_many :questions, inverse_of: :topic
+  validates_presence_of :name
 end

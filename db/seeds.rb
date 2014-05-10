@@ -58,12 +58,14 @@ candidates.each do |candidate_details|
 end
 
 
+general_topic = FactoryGirl.create(:topic, name: "General")
 
 FactoryGirl.define do
   factory :seed_question, class: Question do
     body { "How will you #{Faker::Company.bs.split[0]} the role of #{Faker::Name.title.split[0..1].join(' ')} to make Wellington a more #{Faker::Commerce.fetch('commerce.product_name.adjective').downcase} place?" }
     name { Faker::Name.name }
     email { Faker::Internet.email }
+    topic general_topic
   end
   # factory :seed_answer, class: Answer do
   #   body { "By importing more #{Faker::Commerce.product_name.pluralize(10)}" }
@@ -72,6 +74,7 @@ end
 
 require "rspec/mocks/standalone"
 Question.any_instance.stub(:set_initial_state)
+
 
 100.times do |i|
   FactoryGirl.create(:seed_question)
