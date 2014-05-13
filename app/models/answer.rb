@@ -11,7 +11,7 @@
 #
 
 class Answer < ActiveRecord::Base
-  attr_accessible :question_id, :candidate_id, :body
+  # attr_accessible :question_id, :candidate_id, :body
 
   belongs_to :candidate
   belongs_to :question, inverse_of: :answers, touch: true, counter_cache: true

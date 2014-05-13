@@ -19,7 +19,7 @@
 class Question < ActiveRecord::Base
   include ERB::Util
   include AASM
-  attr_accessible :body, :email, :name, :is_anonymous
+  # attr_accessible :body, :email, :name, :is_anonymous
 
   aasm column: "status", whiny_transitions: false do
     state :pending, initial: true

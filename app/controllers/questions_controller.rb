@@ -61,7 +61,7 @@ class QuestionsController < ApplicationController
   # POST /questions
   # POST /questions.json
   def create
-    @question = Question.new(params[:question])
+    @question = Question.new(question_params)
 
     respond_to do |format|
       if @question.save
@@ -93,6 +93,10 @@ class QuestionsController < ApplicationController
 
   private
 
+  def question_params
+    params.require(:question).permit(:body, :email, :name, :is_anonymous)
+  end
+
   def fetch_question
     @question = Question.includes(answers: :candidate).find(params[:id])
   end
@@ -100,4 +104,6 @@ class QuestionsController < ApplicationController
   def fetch_answers
     @answers = @question.answers
   end
+
+
 end

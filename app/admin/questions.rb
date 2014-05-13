@@ -1,4 +1,5 @@
 ActiveAdmin.register Question do
+  permit_params :body, :email, :name, :is_anonymous
   scope :pending, default: true
   scope :accepted
   scope :all
