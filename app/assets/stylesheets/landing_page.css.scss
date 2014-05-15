@@ -4,7 +4,6 @@
     height: 350px;
   }
   .banner {
-    //font-family: 'Crete Round', serif;
     text-align: center;
     color: #000;
     font-size: 60px;
@@ -21,25 +20,16 @@
     margin: auto;
     padding-bottom: 20px;
   }
+  //h1 {font-family: 'Crete Round', serif;}
   h1, h2, h3, h4 {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: 'Lato', sans-serif;
   }
-  h3 {
+
+  h3, h4 {
     font-weight: 200;
   }
   .container {
     padding-bottom: 60px;
-  }
-  #launching-in {
-    color: white;
-    background: #000;
-    padding: 5px;
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-  }
-  #launching-in h4 {
-    font-weight: 200;
   }
   .collect-email {
     padding: 2%;
@@ -52,6 +42,12 @@
   }
   .sign-up {
     display: inline-block;
+    width: 34%;
+  }
+  .collect {
+    display: inline-block;
+    vertical-align: top;
+    padding-top: 6px;
   }
 
   .share {
