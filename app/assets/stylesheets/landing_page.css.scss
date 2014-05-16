@@ -1,5 +1,6 @@
 .landing-page {
   background: url('blurred.png') no-repeat;
+  //background-size: contain;
   //h1 {font-family: 'Crete Round', serif;}
   h1, h2, h3, h4 {
     font-family: 'Lato', sans-serif;
@@ -10,10 +11,10 @@
   }
   .logo {
     display: inline-block;
-    background: url('mark-logo.png') no-repeat;
+    background: url('trial-aa-logo-white.png') no-repeat;
     background-size: contain;
-    width: 100px;
-    height: 70px;
+    width: 150px;
+    height: 150px;
   }
   .logotype {
     display: inline-block;
@@ -27,6 +28,7 @@
   .main-content {
     color: white;
     margin-top: 100px;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.1);
   }
   .cta {
     margin-top: 20px;
@@ -36,14 +38,29 @@
     input {
       height: 37px;
       margin: 0 0 1px; 
-      min-width: 80%;
+      min-width: 78%;
+      padding-left: 10px;
     }
-    ::-webkit-input-placeholder,:-moz-placeholder,::-moz-placeholder,:-ms-input-placeholder {
-      font-style: italic;
-      padding-left: 6px;
-    }
-
+    ::-webkit-input-placeholder {
+    font-style: italic;
+    //padding-left: 6px;
   }
+
+  :-moz-placeholder { /* Firefox 18- */
+      font-style: italic;
+      padding-left: 6px; 
+  }
+
+  ::-moz-placeholder {  /* Firefox 19+ */
+    font-style: italic;
+    padding-left: 6px; 
+  }
+
+  :-ms-input-placeholder {
+    font-style: italic;
+    padding-left: 6px;  
+  }
+}
   .collect-email {
     display: inline-block;
     vertical-align: top;
@@ -60,6 +77,7 @@
     font-size: 18px;
     height: 23px;
     margin-left: -5px;
+    cursor: pointer;
    }
   .share-btns {
     color: white;
@@ -69,6 +87,7 @@
     display: inline-block;
     box-sizing:border-box;
     -moz-box-sizing:border-box; /* Firefox */
+    cursor: pointer;
   }
   .FB-box{
     background: #43609C;
