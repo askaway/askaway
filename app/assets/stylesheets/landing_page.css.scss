@@ -1,25 +1,5 @@
 .landing-page {
-  .banner {
-    background-color: rgb(225, 230, 76);
-    height: 350px;
-  }
-  .banner {
-    text-align: center;
-    color: #000;
-    font-size: 60px;
-    line-height: 68px;
-    font-weight: 800;
-    padding-top: 80px;
-    text-shadow: 0.2px 0.2px 0.5px rgba(0, 0, 0, .1);
-  }
-  .logo {
-    background: url('trial-aa-logo-black.png') no-repeat;
-    background-size: contain;
-    width: 150px;
-    height: 150px;
-    margin: auto;
-    padding-bottom: 20px;
-  }
+  background: url('blurred.png') no-repeat;
   //h1 {font-family: 'Crete Round', serif;}
   h1, h2, h3, h4 {
     font-family: 'Lato', sans-serif;
@@ -28,42 +8,71 @@
   h3, h4 {
     font-weight: 200;
   }
+  .logo {
+    display: inline-block;
+    background: url('mark-logo.png') no-repeat;
+    background-size: contain;
+    width: 100px;
+    height: 70px;
+  }
+  .logotype {
+    display: inline-block;
+    font-weight: 900;
+    color: white;
+  }
   .container {
-    padding-bottom: 60px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+  .main-content {
+    color: white;
+    margin-top: 100px;
+  }
+  .cta {
+    margin-top: 20px;
+    background: rgba(0, 0, 0, 0.55);
+    width: 51%;
+    padding: 2%;
+    input {
+      height: 37px;
+      margin: 0 0 1px; 
+      min-width: 80%;
+    }
+    ::-webkit-input-placeholder,:-moz-placeholder,::-moz-placeholder,:-ms-input-placeholder {
+      font-style: italic;
+      padding-left: 6px;
+    }
+
   }
   .collect-email {
-    padding: 2%;
-    width: 80%;
-    margin: auto;
-    input {
-      height: 35px;
-      margin: 0 5px 4px; 
-    }
-  }
-  .sign-up {
-    display: inline-block;
-    width: 34%;
-  }
-  .collect {
     display: inline-block;
     vertical-align: top;
-    padding-top: 6px;
+    padding-top: 10px;
+    width: 100%;
   }
-
-  .share {
-    margin: auto;
-    width: 50%;
-  }
+   h4.sign-up {
+    margin: 0;
+   }
+   .btn-email {
+    display: inline-block;
+    background-color: #ed5b2a;
+    padding: 10px;
+    font-size: 18px;
+    height: 23px;
+    margin-left: -5px;
+   }
   .share-btns {
     color: white;
     width: 49%;
     padding: 10px;
+    margin-top: 10px;
     display: inline-block;
     box-sizing:border-box;
     -moz-box-sizing:border-box; /* Firefox */
   }
   .FB-box{
     background: #43609C;
+    margin-right: 1%;
   }
   .facebook {
     background: url('FB-icon.png') no-repeat;
