@@ -13,8 +13,8 @@
     display: inline-block;
     background: url('trial-aa-logo-white.png') no-repeat;
     background-size: contain;
-    width: 150px;
-    height: 150px;
+    width: 120px;
+    height: 120px;
   }
   .logotype {
     display: inline-block;
@@ -35,10 +35,12 @@
     background: rgba(0, 0, 0, 0.55);
     width: 51%;
     padding: 2%;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
     input {
       height: 37px;
       margin: 0 0 1px; 
-      min-width: 78%;
+      min-width: 74%;
       padding-left: 10px;
     }
     ::-webkit-input-placeholder {
@@ -74,10 +76,13 @@
     display: inline-block;
     background-color: #ed5b2a;
     padding: 10px;
-    font-size: 18px;
     height: 23px;
     margin-left: -5px;
     cursor: pointer;
+    border-radius: 0 4px 4px 0;
+    -webkit-border-radius: 0 4px 4px 0;
+    width: 15%;
+    text-align: center;
    }
   .share-btns {
     color: white;
@@ -88,24 +93,36 @@
     box-sizing:border-box;
     -moz-box-sizing:border-box; /* Firefox */
     cursor: pointer;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
   }
   .FB-box{
     background: #43609C;
     margin-right: 1%;
   }
-  .facebook {
-    background: url('FB-icon.png') no-repeat;
-    font-size: 18px;
+  .facebook-icon, .twitter-icon {
     height: 30px;
-    padding-left: 27px;
+    width: 30px;
     margin-left: 10px;
+    display: inline-block;
+  }
+  .facebook-icon {
+    background: url('FB-icon.png') no-repeat;
+    background-size: contain;
+  }
+  .twitter-icon {
+    background: url('twitter-icon.png') no-repeat;
+    background-size: contain;
+  }
+  .facebook {
+    font-size: 18px;
     padding-top: 7px;
+    display: inline-block;
   }
   .Tw-box{
     background: #55ACEE;
   }
   .twitter {
-    background: url('twitter-icon.png') no-repeat;
     background-position: 0% 32%;
     font-size: 18px;
     height: 30px;
@@ -113,6 +130,60 @@
     margin-left: 5px;
     padding-top: 7px;
   }
+
+  @media all and (max-width: 768px) {
+    .logo {
+      width: 50px;
+      height: 50px;
+    }
+    .main-content {
+      margin-top: 20px;
+    }
+    .main-content h3 {
+      font-size: 1em;
+      line-height: 1.2em
+    }
+    .cta {
+      width: 100%;
+      input {
+        width: 92%;
+        height: 22px;
+        border-radius: 4px;
+      -webkit-border-radius:4px;
+      }
+      .btn-email {
+        width: 90%;
+        height: 9px;
+        margin-left: 0;
+        border-radius: 4px;
+      -webkit-border-radius:4px;
+      font-size: 14px;
+      line-height: 8px;
+      margin-top: 4px;
+      }
+      .share-btns {
+        width: 48%;
+        height: 30px;
+        border-radius: 4px;
+        -webkit-border-radius:4px;
+        margin-top: 4px;
+        vertical-align: top;
+      }
+      .facebook, .twitter {
+        font-size: 14px;
+        line-height: 8px;
+        padding-top: 0;
+        height: 17px;
+        vertical-align: middle;
+      }
+      .facebook-icon, .twitter-icon {
+        height: 17px;
+        width: 17px;
+      }
+    }
+    .cta h4 {
+      font-size: 1em;
+      line-height: 1.2em
+    }
+  }
 }
-
-
