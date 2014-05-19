@@ -1,5 +1,7 @@
 .landing-page {
-  background: url('blurred.png');
+  background: #222 url('matt-rose-bg-sm2.png') no-repeat;
+  background-size: contain;
+  //background-size: ;
   //background-size: contain;
   //h1 {font-family: 'Crete Round', serif;}
   h1, h2, h3, h4 {
@@ -30,6 +32,10 @@
     text-shadow: 1px 1px rgba(0, 0, 0, 0.1);
   }
   .cta {
+    h3, h4 {
+      font-weight: 200;
+    }
+    color: white;
     margin-top: 20px;
     background: rgba(0, 0, 0, 0.55);
     width: 51%;
@@ -252,5 +258,14 @@
   }
   .btn-email:hover {
     background-color: #db5225;
-   }
+  }
 }
+@media all and (min-width: 480px) {
+  .landing-page {
+    background: url('matt-rose-bg4.png') no-repeat;
+    background-attachment: fixed;
+    background-position: right top;
+    background-size: cover;
+  }
+}
+
