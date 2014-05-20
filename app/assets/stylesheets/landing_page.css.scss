@@ -42,8 +42,8 @@
     padding: 2%;
     border-radius: 4px;
     -webkit-border-radius: 4px;
-    input {
-      height: 37px;
+    .input {
+      height: 38px;
       margin: 0 0 1px; 
       min-width: 74%;
       padding-left: 10px;
@@ -84,15 +84,23 @@
     display: inline-block;
     background-color: #ed5b2a;
     padding: 10px;
-    height: 18px;
+    line-height: 24px;
     margin-left: -5px;
     cursor: pointer;
     border-radius: 0 4px 4px 0;
     -webkit-border-radius: 0 4px 4px 0;
-    width: 15%;
+    width: 20%;
     text-align: center;
+    border: none;
     border-bottom: solid 4px #db5225;
+    color: white;
    }
+  form {
+    margin-bottom: 4px;
+  }
+  .share-btns:hover {
+    text-decoration: none;
+  }
   .share-btns {
     color: white;
     width: 48%;
@@ -191,20 +199,19 @@
     }
     .cta {
       width: 100%;
-      input {
+      .input {
         width: 94%;
         height: 27px;
         border-radius: 4px;
         -webkit-border-radius:4px;
       }
       .btn-email {
-        width: 92%;
-        height: 14px;
+        width: 99%;
         margin-left: 0;
         border-radius: 4px;
         -webkit-border-radius:4px;
         font-size: 14px;
-        line-height: 14px;
+        line-height: 12px;
         margin-top: 4px;
         border-bottom: solid 2px #db5225;
       }

@@ -1,7 +1,7 @@
 Askaway::Application.routes.draw do
   get "answers/show"
 
-  root to: 'pages#another_page'
+  root to: 'pages#landing_page'
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
@@ -19,7 +19,7 @@ Askaway::Application.routes.draw do
   resources :answers, only: :show
 
 
-  get 'another_page', to: 'pages#another_page'
+  get '2013', to: 'pages#another_page'
   get 'styles', to: 'pages#styles'
   get 'about', to: redirect('/')
   get 'landing_page', to: 'pages#landing_page'
