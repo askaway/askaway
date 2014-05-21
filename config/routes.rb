@@ -6,7 +6,7 @@ Askaway::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
-  resources :questions do
+  resources :questions, only: [:index, :show, :like, :unlike] do
     member do
       post   'like'
       delete 'like', to: "questions#unlike"

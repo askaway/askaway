@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
   respond_to :js
 
-  before_filter :fetch_question, only: [:show, :edit, :update, :destroy, :like, :unlike]
+  before_filter :fetch_question, only: [:show, :like, :unlike]
   before_filter :fetch_answers, only: :show
 
   # GET /questions
@@ -40,42 +40,6 @@ class QuestionsController < ApplicationController
       render 'show'
     else
       redirect_to root_path
-    end
-  end
-
-  # GET /questions/new
-  # GET /questions/new.json
-  def new
-    @question = Question.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @question }
-    end
-  end
-
-  # GET /questions/1/edit
-  def edit
-  end
-
-  # POST /questions
-  # POST /questions.json
-  def create
-    @question = Question.new(params[:question])
-
-    respond_to do |format|
-      if @question.save
-        format.html { redirect_to thanks_questions_path, notice: 'Question was successfully created.' }
-        format.json { render json: @question, status: :created, location: @question }
-        format.js do
-          @question = Question.new
-          render :create
-        end
-      else
-        format.html { render action: "new" }
-        format.json { render json: @question.errors, status: :unprocessable_entity }
-        format.js { render :new }
-      end
     end
   end
 
