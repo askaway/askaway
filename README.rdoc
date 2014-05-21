@@ -14,7 +14,7 @@ here's how to push your changes up to github (after you've committed):
 
     git push origin master
 
-extra notes...
+extra notes... 
 
 to undo changes to a file:
 
