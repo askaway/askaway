@@ -805,3 +805,39 @@ margin-top: 10px;
   padding-top: 0;
 }
 
+footer {
+  background-color: #FFF;
+  width: 100%;
+  border: none;
+}
+#footers .light {
+  font-size: 14px;
+}
+
+#footers {
+  background-color: #FFF;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+footer img {
+  padding-bottom: 20px;
+  background-color: #FFF;
+}
+.DandD {
+  display: inline-block;
+  width: 20%;
+  margin-right: 2%;
+}
+.massey {
+  display: inline-block;
+  width: 30%;
+}
+@media all and (max-width: 480px) {
+  .DandD {
+    width: 40%;
+  }
+  .massey {
+    width: 50%;
+  }
+}
