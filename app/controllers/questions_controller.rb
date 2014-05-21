@@ -11,7 +11,7 @@ class QuestionsController < ApplicationController
     page = params[:page] || 1
     @filter = params[:filter]
     if @filter.blank?
-      redirect_to(questions_path({filter: :all})) and return
+      redirect_to(questions_path({filter: :answered})) and return
     end
     @questions = Question.ai
     if params[:filter] == 'recent'
@@ -20,7 +20,7 @@ class QuestionsController < ApplicationController
       @questions = @questions.unanswered.top.page(page)
     elsif params[:filter] == 'all'
       @questions = @questions.recent.page(page)
-    else #if params[:filter] == 'answered'
+    elsif params[:filter] == 'answered'
       @questions = @questions.answered.top.page(page)
     end
     if params[:q].present?
