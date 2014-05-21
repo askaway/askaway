@@ -66,22 +66,7 @@ a:hover {
 .inline-block {
   display: inline-block;
 }
-footer {
-  background-color: #FFF;
-  width: 100%;
-  border: none;
-}
 
-#footers {
-  background-color: #FFF;
-}
-
-footer img {
-  max-width: 40%;
-  padding-bottom: 20px;
-  margin-right: 2%;
-  background-color: #FFF;
-}
 
 .container {
   width: 66.6667%;
@@ -702,10 +687,7 @@ margin-top: 10px;
   width: 15%;
   display: inline-block;
   }
-  footer img {
-  max-width: 47%;
-  padding-bottom: 20px;
-  }
+
   [class*="span"],
   .uneditable-input[class*="span"],
   .row-fluid [class*="span"] {
