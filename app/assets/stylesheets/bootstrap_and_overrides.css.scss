@@ -77,8 +77,9 @@ footer {
 }
 
 footer img {
-  width: 30%;
+  max-width: 40%;
   padding-bottom: 20px;
+  margin-right: 2%;
   background-color: #FFF;
 }
 
@@ -702,7 +703,7 @@ margin-top: 10px;
   display: inline-block;
   }
   footer img {
-  width: 50%;
+  max-width: 47%;
   padding-bottom: 20px;
   }
   [class*="span"],
