@@ -26,11 +26,19 @@ footer img {
   display: inline-block;
   width: 30%;
 }
+.codefor {
+  display: inline-block;
+  width: 20%;
+}
 @media all and (max-width: 480px) {
   .DandD {
     width: 40%;
   }
   .massey {
     width: 50%;
+  }
+  .codefor {
+    display: block;
+    width: 30%;
   }
 }
