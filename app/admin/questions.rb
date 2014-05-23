@@ -27,7 +27,7 @@ ActiveAdmin.register Question do
         link_to "feature", feature_admin_question_path(question)
       end
     end
-    default_actions
+    actions
   end
 
   batch_action :accept do |selection|
