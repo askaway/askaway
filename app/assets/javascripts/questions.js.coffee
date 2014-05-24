@@ -29,17 +29,9 @@ $(document).on 'ready page:change', ->
       error: (data) ->
         callback(data, undefined)
 
-  incrementLikes = (url, callback = ->) ->
-    _secretHelperSender(url, "POST", callback)
-
-  decrementLikes = (url, callback = ->) ->
-    _secretHelperSender(url, "DELETE", callback)
-
-  window.fbAsyncInit = ->
-    FB.Event.subscribe "edge.create", (href, widget) ->
-      url = $(widget).data('like-url')
-      incrementLikes url, (err, data) ->
-
-    FB.Event.subscribe "edge.remove", (href, widget) ->
-      url = $(widget).data('like-url')
-      decrementLikes url, (err, data) ->
+  $(document).on 'click', '[data-action=vote]', ->
+    $this = $(@)
+    _secretHelperSender $this.attr('href'), "POST", (err, data) ->
+      # vote count is "near" the click handler
+      $this.parent().find('.vote-count').html("#{data.vote_count} votes")
+    false # prevent default from click

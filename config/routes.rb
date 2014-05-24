@@ -8,8 +8,7 @@ Askaway::Application.routes.draw do
 
   resources :questions do
     member do
-      post   'like'
-      delete 'like', to: "questions#unlike"
+      post   'vote_for'
     end
     collection do
       get :thanks

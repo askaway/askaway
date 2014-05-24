@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
   respond_to :js
 
-  before_filter :fetch_question, only: [:show, :edit, :update, :destroy, :like, :unlike]
+  before_filter :fetch_question, only: [:show, :edit, :update, :destroy, :vote_for]
   before_filter :fetch_answers, only: :show
 
   # GET /questions
@@ -79,16 +79,13 @@ class QuestionsController < ApplicationController
     end
   end
 
-  def like
-    puts "I like!"
-    @question.increment
-    head :accepted
-  end
-
-  def unlike
-    puts "I no like!"
-    @question.decrement
-    head :accepted
+  def vote_for
+    @question.increment!
+    respond_to do |format|
+      format.json {
+        render json: { vote_count: @question.vote_count }
+      }
+    end
   end
 
   private

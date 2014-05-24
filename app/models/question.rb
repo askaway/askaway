@@ -42,7 +42,7 @@ class Question < ActiveRecord::Base
 
   validates_presence_of :body, :email, :name
   validates_length_of :body, maximum: 140
-  validates_numericality_of :likes_count, greater_than_or_equal_to: 0
+  validates_numericality_of :vote_count, greater_than_or_equal_to: 0
 
   after_initialize :init_count
   before_validation :set_init_defaults
@@ -51,7 +51,7 @@ class Question < ActiveRecord::Base
   scope :answered, -> { joins(:answers).order('questions.answers_count DESC') }
   scope :unanswered, -> { where('questions.answers_count < 4') }
   scope :recent, -> { order("questions.created_at DESC") }
-  scope :top, -> { order("questions.likes_count DESC") }
+  scope :top, -> { order("questions.vote_count DESC") }
   scope :search_scope, ->(query) { where(Question.arel_table[:body].matches("%#{query}%")) }
   scope :ai, -> { accepted.uniq.includes(answers: :candidate) }
 
@@ -75,13 +75,13 @@ class Question < ActiveRecord::Base
     id.to_s + " - ".html_safe + body
   end
 
-  def increment
-    self.likes_count = self.likes_count + 1
+  def increment!
+    self.vote_count += 1
     save
   end
 
-  def decrement
-    self.likes_count = self.likes_count - 1
+  def decrement!
+    self.vote_count -= 1
     save
   end
 
@@ -100,7 +100,7 @@ class Question < ActiveRecord::Base
   private
 
   def init_count
-    likes_count ||= 0
+    vote_count ||= 0
   end
 
   def set_init_defaults

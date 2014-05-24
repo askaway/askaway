@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130924215459) do
+ActiveRecord::Schema.define(:version => 20140423101244) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(:version => 20130924215459) do
     t.datetime "created_at",                        :null => false
     t.datetime "updated_at",                        :null => false
     t.string   "status"
-    t.integer  "likes_count",    :default => 0
+    t.integer  "vote_count",     :default => 0
     t.integer  "answers_count",  :default => 0
     t.boolean  "is_featured",    :default => false
     t.integer  "comments_count", :default => 0
@@ -81,8 +81,8 @@ ActiveRecord::Schema.define(:version => 20130924215459) do
   add_index "questions", ["comments_count"], :name => "index_questions_on_comments_count"
   add_index "questions", ["email"], :name => "index_questions_on_email"
   add_index "questions", ["is_featured"], :name => "index_questions_on_is_featured"
-  add_index "questions", ["likes_count"], :name => "index_questions_on_likes_count"
   add_index "questions", ["name"], :name => "index_questions_on_name"
   add_index "questions", ["status"], :name => "index_questions_on_status"
+  add_index "questions", ["vote_count"], :name => "index_questions_on_likes_count"
 
 end
