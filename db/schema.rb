@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130924215459) do
+ActiveRecord::Schema.define(version: 20140526055344) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(version: 20130924215459) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "status"
-    t.integer  "likes_count",    default: 0
+    t.integer  "vote_count",     default: 0
     t.integer  "answers_count",  default: 0
     t.boolean  "is_featured",    default: false
     t.integer  "comments_count", default: 0
@@ -84,8 +84,8 @@ ActiveRecord::Schema.define(version: 20130924215459) do
   add_index "questions", ["comments_count"], name: "index_questions_on_comments_count", using: :btree
   add_index "questions", ["email"], name: "index_questions_on_email", using: :btree
   add_index "questions", ["is_featured"], name: "index_questions_on_is_featured", using: :btree
-  add_index "questions", ["likes_count"], name: "index_questions_on_likes_count", using: :btree
   add_index "questions", ["name"], name: "index_questions_on_name", using: :btree
   add_index "questions", ["status"], name: "index_questions_on_status", using: :btree
+  add_index "questions", ["vote_count"], name: "index_questions_on_vote_count", using: :btree
 
 end

@@ -11,10 +11,6 @@
  *= require_self
  */
 
-@import "bootstrap";
-@import "bootstrap-responsive";
-@import "jquery-ui";
-@import "active_admin";
 @import "variables";
-@import "bootstrap_and_overrides";
-@import "questions";
+@import "bootstrap";
+@import "main";
