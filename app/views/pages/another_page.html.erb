@@ -1,98 +1,13 @@
-<% content_for :description, "Ask Away NZ is an independent platform designed to make it easier for you to get to know the people standing for mayor in Wellington's local body elections." %>
-<div id="title">
-<div id="banner"></div>
-
+<% content_for :description, "Ask Away is a question and answer platform for elections" %>
 
 <!-- QUESTION OF THE DAY -->
-
-    <div class="container container-wide">
-      <p>Your questions for Wellington's mayoral candidates</p>
-    </div>
-  </div>
-  <div>
-</div>
-<div id="QOTD-bg">
-
+<div>
   <div class="container container-wide">
-    <!--<div class="alert">
-      <p>The elections are over! You can find the results <a href="http://wellington.govt.nz/have-your-say/elections/election-2013/results-and-voting-documents-returned">here </a></p>
-    </div> -->
-  <% if @featured_question %>
-    <%= render partial: 'questions/featured_question', object: @featured_question %>
-  <% end %>
-
-
-  <!--container -->
-</div>
-</div>
-</div>
-
-
-<!--  ABOUT  -->
-
-<div class="grey texture sides" id="about-bg">
-  <div class="placeholder"></div>
-  <div id="about" class="container container-wide">
-    <!-- <div id="final-hack" class="span6 grey">
-    <h2>That's all folks!</h2>
-    <p>We've finished asking questions at Ask Away. We hope this site was useful for for you, and if you have any feedback, we'd love to hear it.<p><br><br>
-    </div>-->
-      <div class="row-fluid">
-        <div id="info" class="span6 grey">
-            <h4>About</h4>
-            <h2>This is an independent platform designed to make it easier for you to get to know the people standing for mayor in Wellington's local body elections.</h2><br>
-            <p>Every day the candidates will answer the question with the most votes. See what people have been asking, and up-vote the questions that are important to you.</p>
-            <p>If no one’s asked what you want to know, ask it for yourself!</p><br
-          ><h4>The elections are over! You can find the results on the Wellington City Council website.<br>
-        </div>
-        <div id="contact" class="inline-message span5 pull-right">
-          <p>
-            <strong>Want to get in touch?</strong><br>
-            Shoot us a line at <a href="mailto:info@askaway.co.nz">info@askaway.co.nz</a><br> 
-          </p>
-        </div>
-      </div>
-      <div class="row-fluid grey">
-        <div class="span6">
-          <h3>When</h3>
-          <p>The voting for the day finishes at 7pm, and the candidates answers will be on the site by 8am the following morning.<br>
-          Questions will be answered Monday to Friday, but you can still ask and vote over the weekend.</p>
-          <p>Remember to send your voting papers in by the 12th October!</p>
-        </div>
-        <div class="span6">
-          <h3>Who</h3>
-          <p> This is the honours project of Meg Howie at Massey University’s School of Design. She hopes to expand the site to facilitate ongoing civic engagement at local, regional and national levels of government.<br><br>
-          The project is supervised by Patricia Thomas. You can contact her at p.a.thomas@massey.ac.nz.
-        </p><br><br>
-        </div>
-      </div>
-    </div>
-  <div class="container container-wide">
-  <div class="inline-message">
-    <p>An enormous thank you to the generous people who contributed their time and skills to build the site, and provided their advice and encouragement along the way.
-    </p>
-    <p>Many of those people came from the Enspiral Network, a collection of enterprises "working together to create a thriving society". Their support and connections have been invaluable.
-    </p><br>
-    <div class="row-fluid">
-      <div class="span4" id="enspiral">
-       <%= link_to image_tag("enspirallogo.jpeg") %>
-     </div>
-       <div class="span4">
-       <%= link_to image_tag("loomio-new-short-logo-1000x313.png") %>
-       </div>
-      <div class="span4" id="rabid">
-         <%= link_to image_tag("rabid-logo.png") %>
-       </div>
-     </div>
+    <% if @featured_question %>
+      <%= render partial: 'questions/featured_question', object: @featured_question %>
+    <% end %>
   </div>
 </div>
-<div class="placeholder"></div>
-</div>
-
-
-
-
-
 
 
 <!-- Modal -->

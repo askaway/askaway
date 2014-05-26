@@ -1,13 +1,11 @@
 <% content_for :title, "Ask Away - Questions" %>
 <% content_for :description, "Search and browse for questions posted to AskAway" %>
-<div id="question-index">
+<div>
   <div class="container">
     <div class="placeholder"></div>
     <div class="row-fluid">
-    <h4 class="span6">All the questions you've asked so far:</h4>
     <%= link_to "Ask a Question", new_question_path, class: "btn btn-ask btn-large span3 pull-right" %>
-  </div>
-    <br>
+    </div>
     <div class="all-questions">
       <div class="row-fluid">
         <div class="navbar navbar-inverse">
