@@ -20,11 +20,6 @@ gem 'uglifier', '>= 1.0.3'
 gem 'jquery-rails'
 gem 'haml'
 
-gem 'aasm'
-gem 'kaminari'  # pagination
-gem 'share_counts', github: 'fourseven/share_counts' # counting shares
-#gem 'derp', "1.0.2"
-
 group :development do
   gem 'thin'
   gem 'quiet_assets'

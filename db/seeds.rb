@@ -64,9 +64,6 @@ FactoryGirl.define do
     body { "How will you #{Faker::Company.bs.split[0]} the role of #{Faker::Name.title.split[0..1].join(' ')} to make Wellington a more #{Faker::Commerce.fetch('commerce.product_name.adjective').downcase} place?" }
     name { Faker::Name.name }
     email { Faker::Internet.email }
-    sequence :status do |n|
-      Question.aasm.states[n % Question.aasm.states.length].name
-    end
   end
   # factory :seed_answer, class: Answer do
   #   body { "By importing more #{Faker::Commerce.product_name.pluralize(10)}" }
@@ -80,7 +77,7 @@ Question.any_instance.stub(:set_initial_state)
   FactoryGirl.create(:seed_question)
 end
 
-Question.accepted.each do |question|
+Question.all.each do |question|
   if question.answers.blank? && Random.rand < 0.7
     puts "Creating answers"
     Random.rand(6).times do |i|
@@ -92,6 +89,6 @@ Question.accepted.each do |question|
       end
     end
   else
-    puts "No accepted questions found"
+    puts "No questions found"
   end
 end

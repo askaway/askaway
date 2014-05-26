@@ -2,57 +2,29 @@
 #
 # Table name: questions
 #
-#  id             :integer          not null, primary key
-#  body           :text
-#  name           :string(255)
-#  email          :string(255)
-#  is_anonymous   :boolean
-#  created_at     :datetime
-#  updated_at     :datetime
-#  status         :string(255)
-#  vote_count     :integer          default(0)
-#  answers_count  :integer          default(0)
-#  is_featured    :boolean          default(FALSE)
-#  comments_count :integer          default(0)
+#  id            :integer          not null, primary key
+#  body          :text
+#  name          :string(255)
+#  email         :string(255)
+#  is_anonymous  :boolean
+#  created_at    :datetime
+#  updated_at    :datetime
+#  vote_count    :integer          default(0)
+#  answers_count :integer          default(0)
 #
 
 class Question < ActiveRecord::Base
-  include ERB::Util
-  include AASM
-
-  aasm column: "status", whiny_transitions: false do
-    state :pending, initial: true
-    state :accepted
-    state :declined
-
-    event :accept do
-      transitions from: :pending, to: :accepted
-    end
-
-    event :decline do
-      transitions from: :pending, to: :declined
-    end
-  end
-
   has_many :answers, inverse_of: :question
 
   validates_presence_of :body, :email, :name
   validates_length_of :body, maximum: 140
   validates_numericality_of :vote_count, greater_than_or_equal_to: 0
 
-  after_initialize :init_count
-  before_validation :set_init_defaults
-  after_create :email_meg
+  after_initialize :init_vote_count
 
   scope :answered, -> { joins(:answers).order('questions.answers_count DESC') }
   scope :unanswered, -> { where('questions.answers_count < 4') }
-  scope :recent, -> { order("questions.created_at DESC") }
   scope :top, -> { order("questions.vote_count DESC") }
-  scope :search_scope, ->(query) { where(Question.arel_table[:body].matches("%#{query}%")) }
-
-  def first_name
-    name.split(' ',).first
-  end
 
   def anonymous_name
     if is_anonymous?
@@ -62,37 +34,13 @@ class Question < ActiveRecord::Base
     end
   end
 
-  def name_and_email
-    "#{h name} <#{h email}>".html_safe
-  end
-
-  def label
-    id.to_s + " - ".html_safe + body
-  end
-
-  def needs_voting_reminder?
-    answers_count < 3
-  end
-
   def answered?
     answers.any?
   end
 
-  def candidates_with_no_answer
-    Candidate.all-answers.map(&:candidate)
-  end
-
   private
 
-  def init_count
+  def init_vote_count
     vote_count ||= 0
-  end
-
-  def set_init_defaults
-    self.status ||= "pending"
-  end
-
-  def email_meg
-    QuestionMailer.question_asked(self).deliver
   end
 end
