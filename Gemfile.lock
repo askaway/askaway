@@ -1,14 +1,4 @@
 GIT
-  remote: git://github.com/fourseven/share_counts.git
-  revision: f25eca8bc55cb3937e20dfed296c9963771e44ef
-  specs:
-    share_counts (0.1.4)
-      json
-      nokogiri
-      redis
-      rest-client
-
-GIT
   remote: git://github.com/gregbell/active_admin.git
   revision: f65e7cd6425b3d3f2e3fc5885c42ee35978b2eb5
   specs:
@@ -28,7 +18,6 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    aasm (3.2.0)
     actionmailer (4.0.5)
       actionpack (= 4.0.5)
       mail (~> 2.5.4)
@@ -212,11 +201,8 @@ GEM
     rb-fsevent (0.9.4)
     rb-inotify (0.9.4)
       ffi (>= 0.5.0)
-    redis (3.0.7)
     responders (1.0.0)
       railties (>= 3.2, < 5)
-    rest-client (1.6.7)
-      mime-types (>= 1.16)
     rspec (2.14.1)
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
@@ -274,7 +260,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  aasm
   activeadmin!
   annotate
   bootstrap-sass (~> 3.1.1.1)
@@ -289,7 +274,6 @@ DEPENDENCIES
   guard-rspec
   haml
   jquery-rails
-  kaminari
   launchy
   pg
   poltergeist
@@ -300,6 +284,5 @@ DEPENDENCIES
   rails (= 4.0.5)
   rspec-rails (~> 2.0)
   sass-rails (~> 4.0.3)
-  share_counts!
   thin
   uglifier (>= 1.0.3)

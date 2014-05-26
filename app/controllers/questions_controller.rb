@@ -8,12 +8,6 @@ class QuestionsController < ApplicationController
     @questions = Question.top.answered.uniq.limit(20)
   end
 
-  def show
-    unless @question.status == 'accepted'
-      redirect_to root_path
-    end
-  end
-
   # GET /questions/new
   # GET /questions/new.json
   def new
