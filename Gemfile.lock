@@ -61,7 +61,7 @@ GEM
       activesupport (>= 3.0.0)
     arel (4.0.2)
     bcrypt (3.1.7)
-    bootstrap-sass (2.3.2.2)
+    bootstrap-sass (3.1.1.1)
       sass (~> 3.2)
     bourbon (3.2.1)
       sass (~> 3.2)
@@ -277,7 +277,7 @@ DEPENDENCIES
   aasm
   activeadmin!
   annotate
-  bootstrap-sass (~> 2.3.2.1)
+  bootstrap-sass (~> 3.1.1.1)
   byebug
   capybara
   coffee-rails (~> 4.0.1)
@@ -289,7 +289,6 @@ DEPENDENCIES
   guard-rspec
   haml
   jquery-rails
-  jquery-ui-rails
   kaminari
   launchy
   pg

@@ -7,10 +7,10 @@
 #  name           :string(255)
 #  email          :string(255)
 #  is_anonymous   :boolean
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
+#  created_at     :datetime
+#  updated_at     :datetime
 #  status         :string(255)
-#  likes_count    :integer          default(0)
+#  vote_count     :integer          default(0)
 #  answers_count  :integer          default(0)
 #  is_featured    :boolean          default(FALSE)
 #  comments_count :integer          default(0)
@@ -39,15 +39,9 @@ describe Question do
       question.reload
       question.should be_accepted
     end
-    it "sends an email to the asker" do
-      QuestionMailer.stub(question_accepted: mailer)
-      mailer.should_receive(:deliver)
-      question.accept!
-    end
     it "does not do anything if already accepted" do
       question.accept!
       question.should_not_receive(:update_attribute)
-      QuestionMailer.should_not_receive(:question_accepted)
       question.accept!
     end
   end

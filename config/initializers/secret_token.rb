@@ -6,6 +6,8 @@
 # no regular words or you'll be exposed to dictionary attacks.
 if Rails.env.production?
   Askaway::Application.config.secret_token = ENV['SECRET_COOKIE_TOKEN']
+  Askaway::Application.config.secret_key_base = ENV['SECRET_KEY_BASE']
 else
-  Askaway::Application.config.secret_token = "123456789012345678901234567890"
+  Askaway::Application.config.secret_token = '123456789012345678901234567890'
+  Askaway::Application.config.secret_key_base = '123456789012345678901234567890'
 end

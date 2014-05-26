@@ -1,0 +1,6 @@
+%h1 Trending questions
+%ol
+  - @questions.each do |question|
+    %li
+      .question-body= link_to question.body, question
+      .question-asker= asked_by(question)

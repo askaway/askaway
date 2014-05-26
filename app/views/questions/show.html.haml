@@ -1,0 +1,10 @@
+= content_for :title, "#{@question.body} | Questions for New Zealand's political parties - Ask Away"
+= content_for :description, "#{@question.anonymous_name} asked the parties, \"#{@question.body}\" Click to see their answers or ask them your own question."
+
+%h1= @question.body
+= asked_by(@question)
+
+- @answers.each do |answer|
+  %div
+    = answer.candidate.name
+    = answer.body

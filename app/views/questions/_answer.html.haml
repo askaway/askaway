@@ -1,9 +1,0 @@
-.answers
-  .profile-pic.span2
-    =image_tag answer.candidate_avatar
-  .bubble-left{ class: (params[:controller] == "answers") ? "span10" : "span4"}
-    %p
-      %strong= answer.candidate_name
-      =answer.body
-    %p.muted= answer.candidate_authorisation
-    = facebook_button(answer, true)

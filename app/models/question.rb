@@ -7,10 +7,10 @@
 #  name           :string(255)
 #  email          :string(255)
 #  is_anonymous   :boolean
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
+#  created_at     :datetime
+#  updated_at     :datetime
 #  status         :string(255)
-#  likes_count    :integer          default(0)
+#  vote_count     :integer          default(0)
 #  answers_count  :integer          default(0)
 #  is_featured    :boolean          default(FALSE)
 #  comments_count :integer          default(0)
@@ -26,10 +26,6 @@ class Question < ActiveRecord::Base
     state :declined
 
     event :accept do
-      after do
-        QuestionMailer.question_accepted(self).deliver
-      end
-
       transitions from: :pending, to: :accepted
     end
 
@@ -42,7 +38,7 @@ class Question < ActiveRecord::Base
 
   validates_presence_of :body, :email, :name
   validates_length_of :body, maximum: 140
-  validates_numericality_of :likes_count, greater_than_or_equal_to: 0
+  validates_numericality_of :vote_count, greater_than_or_equal_to: 0
 
   after_initialize :init_count
   before_validation :set_init_defaults
@@ -51,9 +47,8 @@ class Question < ActiveRecord::Base
   scope :answered, -> { joins(:answers).order('questions.answers_count DESC') }
   scope :unanswered, -> { where('questions.answers_count < 4') }
   scope :recent, -> { order("questions.created_at DESC") }
-  scope :top, -> { order("questions.likes_count DESC") }
+  scope :top, -> { order("questions.vote_count DESC") }
   scope :search_scope, ->(query) { where(Question.arel_table[:body].matches("%#{query}%")) }
-  scope :ai, -> { accepted.uniq.includes(answers: :candidate) }
 
   def first_name
     name.split(' ',).first
@@ -75,16 +70,6 @@ class Question < ActiveRecord::Base
     id.to_s + " - ".html_safe + body
   end
 
-  def increment
-    self.likes_count = self.likes_count + 1
-    save
-  end
-
-  def decrement
-    self.likes_count = self.likes_count - 1
-    save
-  end
-
   def needs_voting_reminder?
     answers_count < 3
   end
@@ -100,7 +85,7 @@ class Question < ActiveRecord::Base
   private
 
   def init_count
-    likes_count ||= 0
+    vote_count ||= 0
   end
 
   def set_init_defaults
