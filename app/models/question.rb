@@ -15,14 +15,13 @@
 #
 
 class Question < ActiveRecord::Base
-  include ERB::Util
   include AASM
   # FIXME does adding status here mean *anyone* can add it? As in,
   # will rails just let people smash in whatever they like?
   # TODO do I still need this?
-  #attr_accessible :body, :email, :name, :status, :is_anonymous
+  # attr_accessible :body, :email, :name, :status, :is_anonymous
 
-  aasm column: "status", whiny_transitions: false do
+  aasm column: "status" do
     state :pending, initial: true
     state :accepted
     state :declined
@@ -52,7 +51,7 @@ class Question < ActiveRecord::Base
   scope :answered, -> { joins(:answers).order('questions.answers_count DESC') }
   scope :unanswered, -> { where('questions.answers_count < 4') }
   scope :top, -> { order("questions.vote_count DESC") }
-  
+
   # for reference
   #scope :ai, -> { where(status: [:pending, :accepted]).uniq.includes(answers: :candidate) }
 

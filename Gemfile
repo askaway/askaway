@@ -9,6 +9,7 @@ gem 'rails', '4.0.5'
 gem 'devise'
 gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'rack-canonical-host'
+gem 'aasm'
 gem 'pg'
 
 # Gems used only for assets and not required

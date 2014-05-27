@@ -20,6 +20,7 @@ ActiveAdmin.register Question do
     end
     column "Answer" do |question|
       link_to "Answer", new_admin_answer_path(question_id: question.id)
+    end
     column :name
     column :email
     actions

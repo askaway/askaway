@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 20140526103750) do
     t.string   "name"
     t.string   "email"
     t.boolean  "is_anonymous"
+    t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "vote_count",    default: 0
