@@ -3,6 +3,12 @@ require 'spec_helper'
 describe QuestionsController do
   let(:user) { FactoryGirl.create(:user) }
 
+  describe "GET trending" do
+    it "succeeds" do
+      expect(get :trending).to be_successful
+    end
+  end
+
   context 'POST #create' do
     before { sign_in user }
 

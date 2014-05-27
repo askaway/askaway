@@ -28,7 +28,7 @@ class Question < ActiveRecord::Base
 
   scope :answered, -> { joins(:answers).order('questions.answers_count DESC') }
   scope :unanswered, -> { where('questions.answers_count < 4') }
-  scope :top, -> { order("questions.vote_count DESC") }
+  scope :trending, -> { order("ranking(questions.id, questions.vote_count, 1) DESC") }
 
   def user_name
     if is_anonymous?
@@ -40,6 +40,10 @@ class Question < ActiveRecord::Base
 
   def answered?
     answers.any?
+  end
+
+  def hotness
+    (Math.log2(id) + Math.log2([vote_count, 1].max) * 1).round(7)
   end
 
   private
