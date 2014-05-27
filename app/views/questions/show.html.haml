@@ -8,3 +8,9 @@
   %div
     = answer.candidate.name
     = answer.body
+
+%h3= 'Comments'
+- if user_signed_in?
+  = render 'comments/form'
+
+= render partial: 'comments/item', collection: @comments, as: :comment

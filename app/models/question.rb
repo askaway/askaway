@@ -16,6 +16,7 @@
 
 class Question < ActiveRecord::Base
   has_many :answers, inverse_of: :question
+  has_many :comments, inverse_of: :question
   belongs_to :topic
 
   validates_presence_of :body, :email, :name, :topic

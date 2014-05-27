@@ -48,6 +48,7 @@ module Askaway
 
     config.generators do |g|
       g.template_engine :haml
+      g.assets = false
     end
   end
 end

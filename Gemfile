@@ -21,6 +21,8 @@ gem 'jquery-rails'
 gem 'haml'
 gem 'simple_form', git: 'https://github.com/plataformatec/simple_form.git'
 
+gem 'gravtastic'
+
 group :development do
   gem 'thin'
   gem 'quiet_assets'

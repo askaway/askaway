@@ -1,0 +1,3 @@
+= simple_form_for [@question, @comment] do |f|
+  = f.input :body, placeholder: "Write you comment...", label: false
+  = f.button :submit, 'Post Comment', class: "btn btn-primary"
