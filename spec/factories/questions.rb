@@ -9,8 +9,10 @@
 #  is_anonymous  :boolean
 #  created_at    :datetime
 #  updated_at    :datetime
-#  vote_count    :integer          default(0)
+#  status        :string(255)
+#  likes_count   :integer          default(0)
 #  answers_count :integer          default(0)
+#  is_featured   :boolean          default(FALSE)
 #
 
 FactoryGirl.define do
@@ -18,5 +20,6 @@ FactoryGirl.define do
     body { Faker::Lorem.characters(120) }
     name { Faker::Name.name }
     email { Faker::Internet.email }
+    topic
   end
 end
