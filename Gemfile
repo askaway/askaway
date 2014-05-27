@@ -28,9 +28,11 @@ group :development do
   gem 'pry-byebug', :platforms => [:mingw_20, :ruby_20]
   gem 'guard-rspec'
   gem 'guard-cucumber'
+  gem 'guard-livereload', require: false
   gem 'annotate'
   gem "better_errors"
   gem "binding_of_caller"
+  gem "rack-livereload"
 end
 
 group :development, :test do
