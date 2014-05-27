@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140527081031) do
+ActiveRecord::Schema.define(version: 20140527085832) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,11 +83,19 @@ ActiveRecord::Schema.define(version: 20140527081031) do
     t.datetime "updated_at"
     t.integer  "vote_count",    default: 0
     t.integer  "answers_count", default: 0
+    t.integer  "topic_id"
   end
 
   add_index "questions", ["answers_count"], name: "index_questions_on_answers_count", using: :btree
   add_index "questions", ["email"], name: "index_questions_on_email", using: :btree
   add_index "questions", ["name"], name: "index_questions_on_name", using: :btree
+  add_index "questions", ["topic_id"], name: "index_questions_on_topic_id", using: :btree
   add_index "questions", ["vote_count"], name: "index_questions_on_vote_count", using: :btree
+
+  create_table "topics", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
