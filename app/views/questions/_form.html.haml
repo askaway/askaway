@@ -1,0 +1,38 @@
+.container
+  .placeholder
+  %h2 Ask a new question
+  %br/
+  = form_for(@question) do |f|
+    .row-fluid
+      .span5
+        - if @question.errors.any?
+          #error_explanation.alert
+            %p
+              = pluralize(@question.errors.count, "error")
+              prohibited this question from being saved:
+            %ul
+              - @question.errors.full_messages.each do |msg|
+                %li= msg
+        %fieldset
+          = f.text_area :body, rows: 5, placeholder: "What would you like to ask the mayoral candidates?", maxlength: 140
+          %span#js-body-count
+          %br/
+          %label/
+          %h5 Name
+          = f.text_field :name, id: "inputName"
+          %br/
+          %label/
+          %h5 Email
+          = f.email_field :email, id: "inputEmail"
+          %br/
+          %br/
+          %label.checkbox
+            = f.check_box :is_anonymous
+            Want your question to appear anonymous?
+          %br/
+        = f.submit "Ask", class: "btn btn-ask btn-large span5", "data" => { "disable-with" => "Ask" }
+        %br/
+        %br/
+      .grey.light.span5
+    = link_to "Back to the questions", root_path, role: "button", class: "btn"
+    .placeholder

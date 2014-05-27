@@ -2,18 +2,16 @@
 #
 # Table name: questions
 #
-#  id             :integer          not null, primary key
-#  body           :text
-#  name           :string(255)
-#  email          :string(255)
-#  is_anonymous   :boolean
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
+#  id            :integer          not null, primary key
+#  body          :text
+#  name          :string(255)
+#  email         :string(255)
+#  is_anonymous  :boolean
+#  created_at    :datetime
+#  updated_at    :datetime
 #  status         :string(255)
-#  likes_count    :integer          default(0)
-#  answers_count  :integer          default(0)
-#  is_featured    :boolean          default(FALSE)
-#  comments_count :integer          default(0)
+#  vote_count    :integer          default(0)
+#  answers_count :integer          default(0)
 #
 
 class Question < ActiveRecord::Base
@@ -21,7 +19,8 @@ class Question < ActiveRecord::Base
   include AASM
   # FIXME does adding status here mean *anyone* can add it? As in,
   # will rails just let people smash in whatever they like?
-  attr_accessible :body, :email, :name, :status, :is_anonymous
+  # TODO do I still need this?
+  #attr_accessible :body, :email, :name, :status, :is_anonymous
 
   aasm column: "status", whiny_transitions: false do
     state :pending, initial: true
@@ -46,22 +45,16 @@ class Question < ActiveRecord::Base
 
   validates_presence_of :body, :email, :name
   validates_length_of :body, maximum: 140
-  validates_numericality_of :likes_count, greater_than_or_equal_to: 0
+  validates_numericality_of :vote_count, greater_than_or_equal_to: 0
 
-  after_initialize :init_count
-  before_validation :set_init_defaults
-  after_create :email_meg
+  after_initialize :init_vote_count
 
   scope :answered, -> { joins(:answers).order('questions.answers_count DESC') }
   scope :unanswered, -> { where('questions.answers_count < 4') }
-  scope :recent, -> { order("questions.created_at DESC") }
-  scope :top, -> { order("questions.likes_count DESC") }
-  scope :search_scope, ->(query) { where(Question.arel_table[:body].matches("%#{query}%")) }
-  scope :ai, -> { where(status: [:pending, :accepted]).uniq.includes(answers: :candidate) }
-
-  def first_name
-    name.split(' ',).first
-  end
+  scope :top, -> { order("questions.vote_count DESC") }
+  
+  # for reference
+  #scope :ai, -> { where(status: [:pending, :accepted]).uniq.includes(answers: :candidate) }
 
   def anonymous_name
     if is_anonymous?
@@ -71,47 +64,13 @@ class Question < ActiveRecord::Base
     end
   end
 
-  def name_and_email
-    "#{h name} <#{h email}>".html_safe
-  end
-
-  def label
-    id.to_s + " - ".html_safe + body
-  end
-
-  def increment
-    self.likes_count = self.likes_count + 1
-    save
-  end
-
-  def decrement
-    self.likes_count = self.likes_count - 1
-    save
-  end
-
-  def needs_voting_reminder?
-    answers_count < 3
-  end
-
   def answered?
     answers.any?
   end
 
-  def candidates_with_no_answer
-    Candidate.all-answers.map(&:candidate)
-  end
-
   private
 
-  def init_count
-    likes_count ||= 0
-  end
-
-  def set_init_defaults
-    self.status ||= "accepted"
-  end
-
-  def email_meg
-    QuestionMailer.question_asked(self).deliver
+  def init_vote_count
+    vote_count ||= 0
   end
 end

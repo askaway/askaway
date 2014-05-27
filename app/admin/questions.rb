@@ -1,10 +1,14 @@
 ActiveAdmin.register Question do
-  scope :flagged, default: true
-  scope :pending
-  scope :all
+  permit_params :body, :email, :name, :is_anonymous
+
+  # Work out if I care
+  #scope :flagged, default: true
+  #scope :pending
+  #scope :all
 
   index do
     selectable_column
+    column "Question" do |question| question.body end
     column :created_at
     column :status
     column "Action" do |question|
@@ -14,23 +18,11 @@ ActiveAdmin.register Question do
         link_to("Decline", decline_admin_question_path(question))
       end
     end
-    column "Question" do |question| question.body end
-    column "Featured" do |question|
-      if question.is_featured?
-        content_tag(:strong, "Featured")
-      elsif !question.is_featured? && question.accepted? && question.answered?
-        link_to "feature", feature_admin_question_path(question)
-      end
-    end
+    column "Answer" do |question|
+      link_to "Answer", new_admin_answer_path(question_id: question.id)
     column :name
     column :email
-    default_actions
-  end
-
-  batch_action :accept do |selection|
-    Question.find(selection).each do |question|
-      question.accept!
-    end
+    actions
   end
 
   form do |f|
@@ -56,15 +48,6 @@ ActiveAdmin.register Question do
     question = Question.find(params[:id])
     question.decline!
     flash[:notice] = "Question declined"
-    redirect_to :back
-  end
-
-  member_action :feature do
-    Question.update_all(is_featured: false)
-    question = Question.find(params[:id])
-    question.is_featured = true
-    question.save
-    flash[:notice] = "Question featured"
     redirect_to :back
   end
 

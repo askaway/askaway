@@ -15,15 +15,3 @@
 //= require bootstrap
 //= require_tree .
 
-//$('#example').tooltip(options)
-
-  $(".comments").click(function(){
-    var $link = $(this);
-    $link.html("See Less");
-  });
-
-jQuery(function() {
-	$("a[rel~=popover], .has-popover").popover();
-  $("a[rel~=tooltip], .has-tooltip").tooltip();
-});
-  

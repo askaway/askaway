@@ -6,12 +6,11 @@
 #  body         :text
 #  candidate_id :integer
 #  question_id  :integer
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
+#  created_at   :datetime
+#  updated_at   :datetime
 #
 
 class Answer < ActiveRecord::Base
-  attr_accessible :question_id, :candidate_id, :body
 
   belongs_to :candidate
   belongs_to :question, inverse_of: :answers, touch: true, counter_cache: true

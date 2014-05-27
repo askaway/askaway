@@ -1,4 +1,5 @@
 ActiveAdmin.register Answer do
+  permit_params :question_id, :candidate_id, :body
 
   member_action :new do
     @answer = Answer.new(question_id: params[:question_id])
