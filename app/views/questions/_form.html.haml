@@ -17,12 +17,13 @@
           = f.text_area :body, rows: 5, placeholder: "What would you like to ask the mayoral candidates?", maxlength: 140
           %span#js-body-count
           %br/
-          %label/
-          %h5 Name
+          %label Topic
+          = f.collection_select :topic_id, Topic.all, :id, :name
+          %br/
+          %label Name
           = f.text_field :name, id: "inputName"
           %br/
-          %label/
-          %h5 Email
+          %label Email
           = f.email_field :email, id: "inputEmail"
           %br/
           %br/

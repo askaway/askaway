@@ -9,10 +9,9 @@
 #  is_anonymous  :boolean
 #  created_at    :datetime
 #  updated_at    :datetime
-#  status        :string(255)
-#  likes_count   :integer          default(0)
+#  vote_count    :integer          default(0)
 #  answers_count :integer          default(0)
-#  is_featured   :boolean          default(FALSE)
+#  topic_id      :integer
 #
 
 class Question < ActiveRecord::Base
@@ -23,7 +22,7 @@ class Question < ActiveRecord::Base
   validates_length_of :body, maximum: 140
   validates_numericality_of :vote_count, greater_than_or_equal_to: 0
 
-  after_initialize :init_vote_count
+  after_initialize :init_topic
 
   scope :answered, -> { joins(:answers).order('questions.answers_count DESC') }
   scope :unanswered, -> { where('questions.answers_count < 4') }
@@ -43,7 +42,7 @@ class Question < ActiveRecord::Base
 
   private
 
-  def init_vote_count
-    vote_count ||= 0
+  def init_topic
+    self.topic ||= Topic.find_or_create_by(name: 'General')
   end
 end

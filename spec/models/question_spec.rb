@@ -15,4 +15,9 @@ describe Question do
 
     it { should ensure_length_of(:body).is_at_most(140) }
   end
+
+  it 'topic defaults to general' do
+    question = Question.new
+    question.topic.name.should == 'General'
+  end
 end
