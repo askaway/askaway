@@ -22,21 +22,21 @@ class Question < ActiveRecord::Base
   # attr_accessible :body, :email, :name, :status, :is_anonymous
 
   aasm column: "status" do
-    state :pending, initial: true
-    state :accepted
+    state :default, initial: true
+    state :approved
     state :declined
     state :flagged
 
-    event :accept do
-      transitions from: [:pending, :flagged], to: :accepted
+    event :approve do
+      transitions from: [:default, :flagged], to: :approved
     end
 
     event :decline do
-      transitions from: [:pending, :flagged], to: :declined
+      transitions from: [:default, :flagged], to: :declined
     end
 
     event :flag do
-      transitions from: [:pending, :accepted], to: :flagged
+      transitions from: [:default, :approved], to: :flagged
     end
   end
 
@@ -53,7 +53,7 @@ class Question < ActiveRecord::Base
   scope :top, -> { order("questions.vote_count DESC") }
 
   # for reference
-  #scope :ai, -> { where(status: [:pending, :accepted]).uniq.includes(answers: :candidate) }
+  #scope :ai, -> { where(status: [:default, :approved]).uniq.includes(answers: :candidate) }
 
   def anonymous_name
     if is_anonymous?

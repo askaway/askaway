@@ -3,7 +3,7 @@ ActiveAdmin.register Question do
 
   # Work out if I care
   #scope :flagged, default: true
-  #scope :pending
+  #scope :default
   #scope :all
 
   index do
@@ -33,12 +33,12 @@ ActiveAdmin.register Question do
       f.input :email
       #TODO can I generate this collection instead of having to define it?
       #     (maybe by making the db column an enum?)
-      f.input :status, as: :select, collection: [:pending, :accepted, :declined, :flagged]
+      f.input :status, as: :select, collection: [:default, :approved, :declined, :flagged]
     end
     f.actions
   end
 
-  member_action :accept do
+  member_action :approve do
     question = Question.find(params[:id])
     question.accept!
     flash[:notice] = "Question accepted"
@@ -52,7 +52,7 @@ ActiveAdmin.register Question do
     redirect_to :back
   end
 
-  # FIXME Do we want this here? The public won't hit this 'endpoing' right?
+  # FIXME Do we want this here? The public won't hit this 'endpoint' right?
   member_action :flag do
     question = Question.find(params[:id])
     question.flag!
