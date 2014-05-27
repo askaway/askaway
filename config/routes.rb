@@ -13,4 +13,6 @@ Askaway::Application.routes.draw do
   end
 
   get 'about', to: redirect('/')
+  get 'new_questions', to: 'questions#new_questions'
+
 end

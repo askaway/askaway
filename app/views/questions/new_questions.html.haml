@@ -1,8 +1,8 @@
-%h1 Trending questions
+%h1 New questions
 %ol
  
   - @questions.each do |question|
   
     %li
       .question-body= link_to question.body, question
-      .question-asker= asked_by(question)
+      .question-asker= asked_by_at_time_ago(question)
