@@ -36,12 +36,10 @@
           %a.navbar-brand{:href => "/"} Ask Away
         .collapse.navbar-collapse
           %ul.nav.navbar-nav
+            %li 
+              = link_to 'New questions', new_questions_path
             %li
               = link_to 'Ask a question', new_question_path
-            %li
-              %a{:href => "#about"} About
-            %li 
-              = link_to 'New Questions', new_questions_path
 
     .container
       - flash.each do |name, msg|
