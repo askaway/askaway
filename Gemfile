@@ -27,6 +27,7 @@ group :development do
   gem 'byebug', :platforms => [:mingw_20, :ruby_20]
   gem 'pry-byebug', :platforms => [:mingw_20, :ruby_20]
   gem 'guard-rspec'
+  gem 'guard-cucumber'
   gem 'annotate'
 end
 
