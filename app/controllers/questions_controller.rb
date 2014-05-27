@@ -8,6 +8,10 @@ class QuestionsController < ApplicationController
     @questions = Question.top.answered.uniq.limit(20)
   end
 
+  def new_questions
+    @questions = Question.order(created_at: :desc).uniq.limit(20)
+  end
+
   # GET /questions/new
   # GET /questions/new.json
   def new

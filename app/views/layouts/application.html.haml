@@ -40,6 +40,8 @@
               = link_to 'Ask a question', new_question_path
             %li
               %a{:href => "#about"} About
+            %li 
+              = link_to 'New Questions', new_questions_path
 
     .container
       - flash.each do |name, msg|
