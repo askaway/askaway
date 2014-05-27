@@ -29,6 +29,8 @@ group :development do
   gem 'guard-rspec'
   gem 'guard-cucumber'
   gem 'annotate'
+  gem "better_errors"
+  gem "binding_of_caller"
 end
 
 group :development, :test do
