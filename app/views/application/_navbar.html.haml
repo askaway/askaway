@@ -11,7 +11,13 @@
       %ul.nav.navbar-nav
         %li 
           = link_to 'Newest', new_questions_path
-      = link_to 'Ask a question', new_question_path, class: 'btn btn-primary navbar-right navbar-btn'
+      = link_to 'Ask a question', new_question_path, class: 'btn btn-primary navbar-right navbar-btn navbar-btn-ask'
+      %ul.nav.navbar-nav.navbar-right
+        %li 
+          - if current_user
+            = link_to 'Logout', destroy_user_session_path, method: :delete
+          - else
+            = link_to 'Login', new_user_session_path
 
 - flash.each do |name, msg|
   - flash_class = 'alert'
