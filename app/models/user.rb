@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: admin_users
+# Table name: users
 #
 #  id                     :integer          not null, primary key
 #  email                  :string(255)      default(""), not null
@@ -15,13 +15,12 @@
 #  last_sign_in_ip        :string(255)
 #  created_at             :datetime
 #  updated_at             :datetime
+#  is_admin               :boolean          default(FALSE)
 #
 
-# Read about factories at https://github.com/thoughtbot/factory_girl
-
-FactoryGirl.define do
-  factory :admin_user do
-    email {  Faker::Internet.email }
-    password "secret more than 8"
-  end
+class User < ActiveRecord::Base
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
 end

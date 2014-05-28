@@ -1,3 +1,13 @@
+Given(/^I am logged in$/) do
+  email = 'meg@howie.com'
+  password = 'password'
+  @user = User.create(email: email, password: password)
+  visit new_user_session_path
+  fill_in 'user_email', with: email
+  fill_in 'user_password', with: password
+  click_on 'Sign in'
+end
+
 When(/^I visit the home page$/) do
   visit '/'
 end
@@ -11,7 +21,7 @@ When(/^I fill out the ask question form$/) do
   fill_in 'question_body', with: @question_body
   fill_in 'question[name]', with: 'Jay Stooo'
   fill_in 'question[email]', with: 'jay@stooo.com'
-  click_on 'Ask'
+  click_on 'Ask question'
 end
 
 Then(/^I should be told that the question was successfully posted$/) do

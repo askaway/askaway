@@ -1,14 +1,9 @@
 Askaway::Application.routes.draw do
-  get "answers/show"
+  devise_for :users
+  ActiveAdmin.routes(self)
 
   root to: 'questions#trending'
 
-  devise_for :admin_users, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
-
   resources :questions, only: [:show, :new, :create]
-
-  get 'about', to: redirect('/')
   get 'new_questions', to: 'questions#new_questions'
-
 end
