@@ -95,3 +95,7 @@ Question.all.each do |question|
     puts "No questions found"
   end
 end
+
+if User.create(email: 'admin@example.com', password: 'password', is_admin: true)
+  puts 'Created admin user. email: admin@example.com, password: password'
+end

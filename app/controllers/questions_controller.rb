@@ -1,6 +1,5 @@
 class QuestionsController < ApplicationController
-  respond_to :js
-
+  before_action :authenticate_user!, only: :new
   before_filter :fetch_question, only: [:show]
   before_filter :fetch_answers, only: [:show]
 
@@ -12,15 +11,8 @@ class QuestionsController < ApplicationController
     @questions = Question.order(created_at: :desc).uniq.limit(20)
   end
 
-  # GET /questions/new
-  # GET /questions/new.json
   def new
     @question = Question.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @question }
-    end
   end
 
   # POST /questions
@@ -28,19 +20,10 @@ class QuestionsController < ApplicationController
   def create
     @question = Question.new(question_params)
 
-    respond_to do |format|
-      if @question.save
-        format.html { redirect_to new_questions_path, notice: 'Your question has been posted.' }
-        format.json { render json: @question, status: :created, location: @question }
-        format.js do
-          @question = Question.new
-          render :create
-        end
-      else
-        format.html { render action: "new" }
-        format.json { render json: @question.errors, status: :unprocessable_entity }
-        format.js { render :new }
-      end
+    if @question.save
+      redirect_to new_questions_path, notice: 'Your question has been posted.'
+    else
+      render action: "new"
     end
   end
 
