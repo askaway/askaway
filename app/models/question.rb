@@ -22,7 +22,7 @@ class Question < ActiveRecord::Base
   validates_length_of :body, maximum: 140
   validates_numericality_of :vote_count, greater_than_or_equal_to: 0
 
-  after_initialize :init_topic
+  before_validation :init_topic
 
   scope :answered, -> { joins(:answers).order('questions.answers_count DESC') }
   scope :unanswered, -> { where('questions.answers_count < 4') }

@@ -14,7 +14,7 @@ $(document).on 'ready page:change', ->
     else
       $counter.text ""
 
-  $body.keyup determineChange
+  $body.keydown determineChange
   $body.keypress (e) ->
     setTimeout ->
       determineChange

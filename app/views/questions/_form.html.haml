@@ -1,39 +1,11 @@
-.container
-  .placeholder
-  %h2 Ask a new question
-  %br/
-  = form_for(@question) do |f|
-    .row-fluid
-      .span5
-        - if @question.errors.any?
-          #error_explanation.alert
-            %p
-              = pluralize(@question.errors.count, "error")
-              prohibited this question from being saved:
-            %ul
-              - @question.errors.full_messages.each do |msg|
-                %li= msg
-        %fieldset
-          = f.text_area :body, rows: 5, placeholder: "What would you like to ask the mayoral candidates?", maxlength: 140
-          %span#js-body-count
-          %br/
-          %label Topic
-          = f.collection_select :topic_id, Topic.all, :id, :name
-          %br/
-          %label Name
-          = f.text_field :name, id: "inputName"
-          %br/
-          %label Email
-          = f.email_field :email, id: "inputEmail"
-          %br/
-          %br/
-          %label.checkbox
-            = f.check_box :is_anonymous
-            Want your question to appear anonymous?
-          %br/
-        = f.submit "Ask", class: "btn btn-ask btn-large span5", "data" => { "disable-with" => "Ask" }
-        %br/
-        %br/
-      .grey.light.span5
-    = link_to "Back to the questions", root_path, role: "button", class: "btn"
-    .placeholder
+.row
+  .col-xs-12
+    %h2 Ask a new question
+    %br/
+    = simple_form_for(@question) do |f|
+      = f.input :body, placeholder: "Write your question...", label_html: {class: 'sr-only'}, input_html: {rows: 3, maxlength: 140}, as: :charlimited
+      = f.association :topic, as: :select, prompt: "Choose a topic", label_html: {class: 'sr-only'}
+      = f.input :name, placeholder: 'Your name', label_html: {class: 'sr-only'}
+      = f.input :email, placeholder: 'Your email', label_html: {class: 'sr-only'}
+      = f.input :is_anonymous, label: false, inline_label: 'Ask question anonymously'
+      = f.submit "Ask question", class: 'btn btn-primary', data: {disable_with: 'Ask question'}

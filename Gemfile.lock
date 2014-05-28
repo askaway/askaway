@@ -15,6 +15,14 @@ GIT
       ransack (~> 1.0)
       sass-rails
 
+GIT
+  remote: https://github.com/plataformatec/simple_form.git
+  revision: f02216793a045a614e5c0ef7e7c2fb25fea7584b
+  specs:
+    simple_form (3.1.0.rc1)
+      actionpack (~> 4.0)
+      activemodel (~> 4.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -327,5 +335,6 @@ DEPENDENCIES
   rspec-rails (~> 2.0)
   sass-rails (~> 4.0.3)
   shoulda-matchers
+  simple_form!
   thin
   uglifier (>= 1.0.3)

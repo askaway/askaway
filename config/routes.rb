@@ -6,11 +6,7 @@ Askaway::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
-  resources :questions, only: [:show, :new, :create] do
-    collection do
-      get :thanks
-    end
-  end
+  resources :questions, only: [:show, :new, :create]
 
   get 'about', to: redirect('/')
   get 'new_questions', to: 'questions#new_questions'
