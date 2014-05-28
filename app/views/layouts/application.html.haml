@@ -24,7 +24,7 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-  %body
+  %body{class: "#{controller.controller_name} #{controller.action_name}"}
     .navbar.navbar-inverse.navbar-fixed-top{:role => "navigation"}
       .container
         .navbar-header
@@ -41,11 +41,16 @@
             %li
               = link_to 'Ask a question', new_question_path
 
-    .container
-      - flash.each do |name, msg|
-        .alert-container
-          = content_tag :div, msg, class: 'alert'
+    - flash.each do |name, msg|
+      - flash_class = 'alert'
+      - flash_class += ' alert-success' if name == :notice
+      .alert-container
+      %div{class: flash_class}
+        %button{type: 'button', class: 'close', :'data-dismiss' => 'alert', :'aria-hidden' => 'true'} &times;
+        .container
+          %div= msg
 
+    .container
       = yield
 
     / JS - placed at end so page loads faster

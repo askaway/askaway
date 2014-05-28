@@ -30,7 +30,7 @@ class QuestionsController < ApplicationController
 
     respond_to do |format|
       if @question.save
-        format.html { redirect_to thanks_questions_path, notice: 'Question was successfully created.' }
+        format.html { redirect_to new_questions_path, notice: 'Your question has been posted.' }
         format.json { render json: @question, status: :created, location: @question }
         format.js do
           @question = Question.new
