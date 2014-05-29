@@ -2,6 +2,14 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :store_location
 
+  def authorize(record)
+    raise NotAuthorizedError unless policy(record).public_send(params[:action] + "?")
+  end
+
+  def policy(record)
+    "#{record.class}Policy".constantize.new(current_user, record)
+  end
+
   private
 
   def store_location
