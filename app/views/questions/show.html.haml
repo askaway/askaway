@@ -9,8 +9,11 @@
     = answer.candidate.name
     = answer.body
 
-%h3= 'Comments'
+%h2= "#{@question.comments_count} COMMENTS"
 - if user_signed_in?
   = render 'comments/form'
+- else
+  = link_to 'Log in', new_user_session_path
+  to comment
 
 = render partial: 'comments/item', collection: @comments, as: :comment

@@ -11,7 +11,7 @@
 #
 
 class Comment < ActiveRecord::Base
-  belongs_to :question, touch: true
+  belongs_to :question, touch: true, dependent: :destroy, counter_cache: true
   belongs_to :user
   validates :body, presence: true
 end

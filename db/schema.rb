@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140528192731) do
+ActiveRecord::Schema.define(version: 20140529035046) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,9 +74,10 @@ ActiveRecord::Schema.define(version: 20140528192731) do
     t.boolean  "is_anonymous"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "vote_count",    default: 0
-    t.integer  "answers_count", default: 0
+    t.integer  "vote_count",     default: 0
+    t.integer  "answers_count",  default: 0
     t.integer  "topic_id"
+    t.integer  "comments_count", default: 0, null: false
   end
 
   add_index "questions", ["answers_count"], name: "index_questions_on_answers_count", using: :btree
