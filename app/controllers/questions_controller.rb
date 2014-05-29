@@ -15,6 +15,11 @@ class QuestionsController < ApplicationController
     @question = Question.new
   end
 
+  def show
+    @comment = Comment.new
+    @comments = @question.comments.includes(:user).order(created_at: :desc)
+  end
+
   # POST /questions
   # POST /questions.json
   def create
