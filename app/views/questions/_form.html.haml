@@ -1,11 +1,8 @@
 .row
   .col-xs-12
-    %h2 Ask a new question
-    %br/
+    %h2 Ask a question
     = simple_form_for(@question) do |f|
       = f.input :body, placeholder: "Write your question...", label_html: {class: 'sr-only'}, input_html: {rows: 3, maxlength: 140}, as: :charlimited
       = f.association :topic, as: :select, prompt: "Choose a topic", label_html: {class: 'sr-only'}
-      = f.input :name, placeholder: 'Your name', label_html: {class: 'sr-only'}
-      = f.input :email, placeholder: 'Your email', label_html: {class: 'sr-only'}
       = f.input :is_anonymous, label: false, inline_label: 'Ask question anonymously'
       = f.submit "Ask question", class: 'btn btn-primary', data: {disable_with: 'Ask question'}

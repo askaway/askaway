@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140529035046) do
+ActiveRecord::Schema.define(version: 20140529062245) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,8 +69,6 @@ ActiveRecord::Schema.define(version: 20140529035046) do
 
   create_table "questions", force: true do |t|
     t.text     "body"
-    t.string   "name"
-    t.string   "email"
     t.boolean  "is_anonymous"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -78,12 +76,12 @@ ActiveRecord::Schema.define(version: 20140529035046) do
     t.integer  "answers_count",  default: 0
     t.integer  "topic_id"
     t.integer  "comments_count", default: 0, null: false
+    t.integer  "user_id",                    null: false
   end
 
   add_index "questions", ["answers_count"], name: "index_questions_on_answers_count", using: :btree
-  add_index "questions", ["email"], name: "index_questions_on_email", using: :btree
-  add_index "questions", ["name"], name: "index_questions_on_name", using: :btree
   add_index "questions", ["topic_id"], name: "index_questions_on_topic_id", using: :btree
+  add_index "questions", ["user_id"], name: "index_questions_on_user_id", using: :btree
   add_index "questions", ["vote_count"], name: "index_questions_on_vote_count", using: :btree
 
   create_table "topics", force: true do |t|
@@ -106,6 +104,7 @@ ActiveRecord::Schema.define(version: 20140529035046) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "is_admin",               default: false
+    t.string   "name",                                   null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

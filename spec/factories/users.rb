@@ -16,12 +16,14 @@
 #  created_at             :datetime
 #  updated_at             :datetime
 #  is_admin               :boolean          default(FALSE)
+#  name                   :string(255)      not null
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
   factory :user do
+    name { Faker::Name.name }
     email { Faker::Internet.email }
     password "secret more than 8"
   end
