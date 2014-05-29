@@ -4,7 +4,7 @@ class QuestionsController < ApplicationController
   before_filter :fetch_answers, only: [:show]
 
   def trending
-    @questions = Question.top.answered.uniq.limit(20)
+    @questions = Question.trending.limit(20)
   end
 
   def new_questions
