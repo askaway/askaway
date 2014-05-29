@@ -1,7 +1,6 @@
 module QuestionsHelper
   def asked_by_at_time_ago(question)
-    result = 'Asked '.html_safe
-    result += time_ago_in_words(question.created_at)
+    result = time_ago_in_words(question.created_at).html_safe
     result += ' ago by '.html_safe
     result += question_linked_user_name(question)
   end

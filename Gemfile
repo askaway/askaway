@@ -22,6 +22,7 @@ gem 'haml-rails'
 gem 'simple_form', git: 'https://github.com/plataformatec/simple_form.git'
 
 gem 'gravtastic'
+gem 'font-awesome-sass'
 
 group :development do
   gem 'thin'
