@@ -1,17 +1,14 @@
 require 'spec_helper'
 
 describe QuestionsController do
+  let(:user) { FactoryGirl.create(:user) }
+
   context 'POST #create' do
-    it 'creates a new question' do
-      expect {
-        post :create, question: FactoryGirl.attributes_for(:question)
-      }.to change(Question, :count).by(1)
-    end
+    before { sign_in user }
 
-    it 'redirects to new questions page' do
-      post :create, question: FactoryGirl.attributes_for(:question)
-      response.should redirect_to(new_questions_path)
-    end
+    let(:request) { post :create, question: FactoryGirl.attributes_for(:question) }
+
+    it { expect{request}.to change(Question, :count).by(1) }
+    it { expect(request).to redirect_to(new_questions_path) }
   end
-
 end

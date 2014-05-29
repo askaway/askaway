@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  before_action :authenticate_user!, only: :new
+  before_action :authenticate_user!, only: [:new, :create]
   before_filter :fetch_question, only: [:show]
   before_filter :fetch_answers, only: [:show]
 
@@ -25,6 +25,7 @@ class QuestionsController < ApplicationController
   def create
     @question = Question.new(question_params)
 
+    @question.user = current_user
     if @question.save
       redirect_to new_questions_path, notice: 'Your question has been posted.'
     else
@@ -35,7 +36,7 @@ class QuestionsController < ApplicationController
   private
 
   def question_params
-    params.require(:question).permit(:body, :email, :name, :is_anonymous)
+    params.require(:question).permit(:body, :topic_id, :is_anonymous)
   end
 
   def fetch_question

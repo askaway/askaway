@@ -5,11 +5,14 @@ describe Question do
 
   describe 'relations' do
     it { should have_many :answers }
-    it { should belong_to :topic }
+
+    [:topic, :user].each do |attr|
+      it { should belong_to attr }
+    end
   end
 
   describe 'validations' do
-    [:body, :email, :name].each do |attr|
+    [:body, :user].each do |attr|
       it { should validate_presence_of attr }
     end
 

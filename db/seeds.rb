@@ -63,8 +63,7 @@ general_topic = FactoryGirl.create(:topic, name: "General")
 FactoryGirl.define do
   factory :seed_question, class: Question do
     body { "How will you #{Faker::Company.bs.split[0]} the role of #{Faker::Name.title.split[0..1].join(' ')} to make Wellington a more #{Faker::Commerce.fetch('commerce.product_name.adjective').downcase} place?" }
-    name { Faker::Name.name }
-    email { Faker::Internet.email }
+    user
     topic general_topic
   end
   # factory :seed_answer, class: Answer do
@@ -96,6 +95,6 @@ Question.all.each do |question|
   end
 end
 
-if User.create(email: 'admin@example.com', password: 'password', is_admin: true)
+if User.create(name: 'Admin User', email: 'admin@example.com', password: 'password', is_admin: true)
   puts 'Created admin user. email: admin@example.com, password: password'
 end

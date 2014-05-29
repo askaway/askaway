@@ -16,6 +16,7 @@
 #  created_at             :datetime
 #  updated_at             :datetime
 #  is_admin               :boolean          default(FALSE)
+#  name                   :string(255)      not null
 #
 
 class User < ActiveRecord::Base
@@ -25,4 +26,6 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  validates_presence_of :name
 end

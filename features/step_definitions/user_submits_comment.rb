@@ -6,7 +6,7 @@ end
 When(/^I fill out the comment form$/) do
   @comment_body = Faker::Lorem.paragraph
   fill_in 'comment_body', with: @comment_body
-  click_on 'Post Comment'
+  click_on 'Post comment'
 end
 
 Then(/^I should see my comment at the top of the list$/) do
