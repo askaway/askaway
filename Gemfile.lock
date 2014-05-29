@@ -156,6 +156,11 @@ GEM
       rspec (>= 2.14, < 4.0)
     haml (4.0.5)
       tilt
+    haml-rails (0.5.3)
+      actionpack (>= 4.0.1)
+      activesupport (>= 4.0.1)
+      haml (>= 3.1, < 5.0)
+      railties (>= 4.0.1)
     has_scope (0.6.0.rc)
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
@@ -323,7 +328,7 @@ DEPENDENCIES
   guard-cucumber
   guard-livereload
   guard-rspec
-  haml
+  haml-rails
   jquery-rails
   launchy
   pg

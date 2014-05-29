@@ -18,7 +18,7 @@ gem 'coffee-rails', '~> 4.0.1'
 gem 'bootstrap-sass', '~> 3.1.1.1'
 gem 'uglifier', '>= 1.0.3'
 gem 'jquery-rails'
-gem 'haml'
+gem 'haml-rails'
 gem 'simple_form', git: 'https://github.com/plataformatec/simple_form.git'
 
 gem 'gravtastic'

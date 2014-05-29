@@ -2,7 +2,7 @@
 = content_for :description, "#{@question.user_name} asked the parties, \"#{@question.body}\" Click to see their answers or ask them your own question."
 
 %h1= @question.body
-= asked_by(@question)
+= asked_by_at_time_ago(@question)
 
 - @answers.each do |answer|
   %div

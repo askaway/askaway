@@ -47,7 +47,6 @@ module Askaway
     config.assets.initialize_on_precompile = false
 
     config.generators do |g|
-      g.template_engine :haml
       g.assets = false
     end
   end
