@@ -3,5 +3,5 @@
 - if @user.questions.count > 0
   %h2= "#{@user.name}'s questions"
   %ul
-    - @user.questions.each do |question|
+    - @user.questions.not_anonymous.each do |question|
       %li= link_to question.body, question
