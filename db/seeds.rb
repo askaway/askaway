@@ -39,6 +39,8 @@ candidates = [
   }
 ]
 
+users = []
+5.times { users << FactoryGirl.create(:user) }
 
 def create_or_update_candidate( details = {} )
   name          = details[:name]
@@ -63,7 +65,7 @@ general_topic = FactoryGirl.create(:topic, name: "General")
 FactoryGirl.define do
   factory :seed_question, class: Question do
     body { "How will you #{Faker::Company.bs.split[0]} the role of #{Faker::Name.title.split[0..1].join(' ')} to make Wellington a more #{Faker::Commerce.fetch('commerce.product_name.adjective').downcase} place?" }
-    user
+    user { users.sample }
     topic general_topic
   end
   # factory :seed_answer, class: Answer do
