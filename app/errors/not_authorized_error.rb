@@ -1,1 +1,0 @@
-class NotAuthorizedError < StandardError; end

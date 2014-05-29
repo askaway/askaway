@@ -16,9 +16,10 @@ Askaway::Application.routes.draw do
   end
   get 'new_questions', to: 'questions#new_questions'
 
-  resources :users, only: [:update] do
+  resources :users, only: [] do
     collection do
       get :edit
+      patch :update
     end
   end
 end
