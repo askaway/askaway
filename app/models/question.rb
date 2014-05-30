@@ -29,7 +29,7 @@ class Question < ActiveRecord::Base
   scope :answered, -> { joins(:answers).order('questions.answers_count DESC') }
   scope :unanswered, -> { where('questions.answers_count < 4') }
   scope :trending, -> { order("ranking(questions.created_at, questions.vote_count) DESC") }
-  scope :not_anonymous, -> { where(is_anonymous: false) }
+  scope :not_anonymous, -> { where('is_anonymous IS NOT TRUE') }
 
   def user_name
     if is_anonymous?
