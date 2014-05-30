@@ -44,7 +44,7 @@ class Question < ActiveRecord::Base
   end
 
   def hotness
-    (Math.log2(id) + Math.log2([vote_count, 1].max) * 1).round(7)
+    (Math.log2([vote_count, 1].max) + (created_at.to_i - Time.new(2014, 1, 1).to_i) / 450000).round(7)
   end
 
   private
