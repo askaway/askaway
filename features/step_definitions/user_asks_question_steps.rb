@@ -5,7 +5,7 @@ Given(/^I am logged in$/) do
   visit new_user_session_path
   fill_in 'user_email', with: email
   fill_in 'user_password', with: password
-  click_on 'Sign in'
+  click_on 'log-in-btn'
 end
 
 When(/^I visit the home page$/) do
