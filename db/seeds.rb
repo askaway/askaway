@@ -59,6 +59,13 @@ candidates.each do |candidate_details|
   create_or_update_candidate( candidate_details )
 end
 
+def rand_time(from, to=Time.now)
+  Time.at(rand_in_range(from.to_f, to.to_f))
+end
+
+def rand_in_range(from, to)
+  rand * (to - from) + from
+end
 
 general_topic = FactoryGirl.create(:topic, name: "General")
 
@@ -67,6 +74,8 @@ FactoryGirl.define do
     body { "How will you #{Faker::Company.bs.split[0]} the role of #{Faker::Name.title.split[0..1].join(' ')} to make Wellington a more #{Faker::Commerce.fetch('commerce.product_name.adjective').downcase} place?" }
     user { users.sample }
     topic general_topic
+    vote_count { Random.rand(300) }
+    created_at { rand_time(4.months.ago) }
   end
   # factory :seed_answer, class: Answer do
   #   body { "By importing more #{Faker::Commerce.product_name.pluralize(10)}" }
