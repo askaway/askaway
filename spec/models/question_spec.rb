@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Question do
-  let(:question) { FactoryGirl.build :question, :id => 1 }
+  let(:question) { FactoryGirl.build :question, :id => 1, :created_at => Time.new(2014, 1, 1) }
 
   describe 'relations' do
     it { should have_many :answers }
@@ -41,10 +41,10 @@ describe Question do
       expect(question.hotness).to eq(6)
     end
 
-    it 'has 12 hotness with 64 votes and id 64' do
+    it 'has 12 hotness with 64 votes and created_at 4.5 million seconds' do
       question.vote_count = 64
-      question.id = 64
-      expect(question.hotness).to eq(12)
+      question.created_at += 10 * 450000
+      expect(question.hotness).to eq(16)
     end
   end
 end
