@@ -6,13 +6,13 @@ describe UsersController do
   describe 'GET #edit' do
     let(:response) { get :edit }
 
-    context 'signed in' do
+    context 'logged in' do
       before { sign_in user }
 
       it { expect(response).to render_template(:edit) }
     end
 
-    context 'signed out' do
+    context 'logged out' do
       it { expect(response).to redirect_to(new_user_session_url) }
     end
   end
@@ -21,7 +21,7 @@ describe UsersController do
     let(:response) { patch :update, user: attrs }
     let(:attrs) { { name: 'new name', email: 'new@email.com' } }
 
-    context 'signed in' do
+    context 'logged in' do
       before do
         sign_in user
         response
@@ -34,7 +34,7 @@ describe UsersController do
       it { expect(flash[:notice]).to eq('Your profile has been updated.') }
     end
 
-    context 'signed out' do
+    context 'logged out' do
       it { expect(response).to redirect_to(new_user_session_url) }
     end
   end
