@@ -28,7 +28,7 @@ class Question < ActiveRecord::Base
 
   scope :answered, -> { joins(:answers).order('questions.answers_count DESC') }
   scope :unanswered, -> { where('questions.answers_count < 4') }
-  scope :top, -> { order("questions.vote_count DESC") }
+  scope :trending, -> { order("ranking(questions.created_at, questions.vote_count) DESC") }
   scope :not_anonymous, -> { where(is_anonymous: false) }
 
   def user_name
@@ -41,6 +41,10 @@ class Question < ActiveRecord::Base
 
   def answered?
     answers.any?
+  end
+
+  def hotness
+    (Math.log2([vote_count, 1].max) + (created_at.to_i - Time.new(2014, 1, 1).to_i) / 450000).round(7)
   end
 
   private
