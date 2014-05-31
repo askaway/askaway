@@ -1,7 +1,11 @@
 require 'spec_helper'
 
 describe Question do
-  let(:question) { FactoryGirl.build :question, :id => 1, :created_at => Time.new(2014, 1, 1) }
+  let(:question) { FactoryGirl.build :question }
+  #FIXME is there a better way of adding 4.5million seconds? from http://stackoverflow.com/questions/10056066/time-manipulation-in-ruby
+  let(:hot_q) { FactoryGirl.create :question, :created_at => DateTime.new(2014, 1, 1) + Rational(10 * 450000, 86400), :vote_count => 64 }
+  let(:cool_q) { FactoryGirl.create :question, :created_at => DateTime.new(2014, 1, 1), :vote_count => 64 }
+  let(:cold_q) { FactoryGirl.create :question, :created_at => DateTime.new(2014, 1, 1), :vote_count => 0 }
 
   describe 'relations' do
     it { should have_many :answers }
@@ -33,18 +37,15 @@ describe Question do
 
   describe "hotness" do
     it 'has 0 hotness with no votes' do
-      expect(question.hotness).to eq(0)
+      expect(cold_q.hotness).to eq(0)
     end
 
     it 'has 6 hotness with 64 votes' do
-      question.vote_count = 64
-      expect(question.hotness).to eq(6)
+      expect(cool_q.hotness).to eq(6)
     end
 
     it 'has 12 hotness with 64 votes and created_at 4.5 million seconds' do
-      question.vote_count = 64
-      question.created_at += 10 * 450000
-      expect(question.hotness).to eq(16)
+      expect(hot_q.hotness).to eq(16)
     end
   end
 end
