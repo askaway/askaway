@@ -44,7 +44,12 @@ class Question < ActiveRecord::Base
   end
 
   def hotness
-    (Math.log2([vote_count, 1].max) + (created_at.to_i - Time.new(2014, 1, 1).to_i) / 450000).round(7)
+    record = ActiveRecord::Base.connection.execute("SELECT ranking(questions.created_at, questions.vote_count) FROM questions WHERE id = #{id}").first
+    if record.nil?
+      0
+    else
+      record["ranking"].to_f
+    end
   end
 
   private
