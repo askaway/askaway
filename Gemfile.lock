@@ -236,6 +236,11 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.0.5)
       sprockets-rails (~> 2.0.0)
+    rails_12factor (0.0.2)
+      rails_serve_static_assets
+      rails_stdout_logging
+    rails_serve_static_assets (0.0.2)
+    rails_stdout_logging (0.0.3)
     railties (4.0.5)
       actionpack (= 4.0.5)
       activesupport (= 4.0.5)
@@ -342,6 +347,7 @@ DEPENDENCIES
   rack-canonical-host
   rack-livereload
   rails (= 4.0.5)
+  rails_12factor
   rspec-rails (~> 2.0)
   sass-rails (~> 4.0.3)
   shoulda-matchers
