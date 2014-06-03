@@ -1,3 +1,8 @@
+.heading {
+ color: $gray-light;
+ font-size: 20px;
+}
+
 .questions {
   list-style: none;
 }
@@ -33,8 +38,10 @@
 }
 .question-asker {
   margin: 10px 0;
+  font-weight: 300;
+  color: $gray-light;
   a {
-    font-weight: 500;
+    color: $gray-light;
   }
 }
 .answers {

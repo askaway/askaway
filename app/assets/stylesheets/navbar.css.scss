@@ -2,4 +2,19 @@
   .user-settings-dropdown {
     padding: 9px;
   }
+  font-weight: 400;
+  background-color: white;
+  & .container .navbar-brand {
+    color: #333;
+    margin-left: 20px;
+  }
+  & li a {
+    color: #333;
+  }
+}
+.logo {
+  margin-top: 6px;
+  background: url('logotype.png') no-repeat;
+  background-size: contain;
+  width: 144px;
 }
