@@ -29,10 +29,10 @@ SET search_path = public, pg_catalog;
 -- Name: ranking(timestamp without time zone, integer); Type: FUNCTION; Schema: public; Owner: -
 --
 
-CREATE FUNCTION ranking(created_at timestamp without time zone, vote_count integer) RETURNS numeric
+CREATE FUNCTION ranking(created_at timestamp without time zone, votes_count integer) RETURNS numeric
     LANGUAGE sql IMMUTABLE
     AS $$
-  SELECT ROUND(LOG(2, greatest(vote_count, 1)) + ((EXTRACT(EPOCH FROM created_at) - EXTRACT(EPOCH from timestamp '2014-1-1 0:00')) / 450000)::numeric, 7);
+  SELECT ROUND(LOG(2, greatest(votes_count, 1)) + ((EXTRACT(EPOCH FROM created_at) - EXTRACT(EPOCH from timestamp '2014-1-1 0:00')) / 450000)::numeric, 7);
 $$;
 
 
@@ -219,7 +219,7 @@ CREATE TABLE questions (
     is_anonymous boolean,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    vote_count integer DEFAULT 0,
+    votes_count integer DEFAULT 0,
     answers_count integer DEFAULT 0,
     topic_id integer,
     comments_count integer DEFAULT 0 NOT NULL,
@@ -494,7 +494,7 @@ CREATE INDEX index_questions_on_answers_count ON questions USING btree (answers_
 -- Name: index_questions_on_ranking; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE INDEX index_questions_on_ranking ON questions USING btree (ranking(created_at, vote_count) DESC);
+CREATE INDEX index_questions_on_ranking ON questions USING btree (ranking(created_at, votes_count) DESC);
 
 
 --
@@ -512,10 +512,10 @@ CREATE INDEX index_questions_on_user_id ON questions USING btree (user_id);
 
 
 --
--- Name: index_questions_on_vote_count; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_questions_on_votes_count; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE INDEX index_questions_on_vote_count ON questions USING btree (vote_count);
+CREATE INDEX index_questions_on_votes_count ON questions USING btree (votes_count);
 
 
 --
@@ -600,3 +600,5 @@ INSERT INTO schema_migrations (version) VALUES ('20140529060555');
 INSERT INTO schema_migrations (version) VALUES ('20140529062245');
 
 INSERT INTO schema_migrations (version) VALUES ('20140529104412');
+
+INSERT INTO schema_migrations (version) VALUES ('20140604111130');

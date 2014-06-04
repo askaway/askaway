@@ -7,7 +7,7 @@
 #  is_anonymous   :boolean
 #  created_at     :datetime
 #  updated_at     :datetime
-#  vote_count     :integer          default(0)
+#  votes_count     :integer          default(0)
 #  answers_count  :integer          default(0)
 #  topic_id       :integer
 #  comments_count :integer          default(0), not null

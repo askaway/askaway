@@ -74,7 +74,7 @@ FactoryGirl.define do
     body { "How will you #{Faker::Company.bs.split[0]} the role of #{Faker::Name.title.split[0..1].join(' ')} to make Wellington a more #{Faker::Commerce.fetch('commerce.product_name.adjective').downcase} place?" }
     user { users.sample }
     topic general_topic
-    vote_count { Random.rand(300) }
+    votes_count { Random.rand(300) }
     created_at { rand_time(4.months.ago) }
   end
   # factory :seed_answer, class: Answer do

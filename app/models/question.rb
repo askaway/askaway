@@ -7,7 +7,7 @@
 #  is_anonymous   :boolean
 #  created_at     :datetime
 #  updated_at     :datetime
-#  vote_count     :integer          default(0)
+#  votes_count     :integer          default(0)
 #  answers_count  :integer          default(0)
 #  topic_id       :integer
 #  comments_count :integer          default(0), not null
@@ -22,13 +22,13 @@ class Question < ActiveRecord::Base
 
   validates_presence_of :body, :topic, :user
   validates_length_of :body, maximum: 140
-  validates_numericality_of :vote_count, greater_than_or_equal_to: 0
+  validates_numericality_of :votes_count, greater_than_or_equal_to: 0
 
   before_validation :init_topic
 
   scope :answered, -> { joins(:answers).order('questions.answers_count DESC') }
   scope :unanswered, -> { where('questions.answers_count < 4') }
-  scope :trending, -> { order("ranking(questions.created_at, questions.vote_count) DESC") }
+  scope :trending, -> { order("ranking(questions.created_at, questions.votes_count) DESC") }
   scope :not_anonymous, -> { where('is_anonymous IS NOT TRUE') }
 
   def user_name
@@ -44,7 +44,7 @@ class Question < ActiveRecord::Base
   end
 
   def hotness
-    record = ActiveRecord::Base.connection.execute("SELECT ranking(questions.created_at, questions.vote_count) FROM questions WHERE id = #{id}").first
+    record = ActiveRecord::Base.connection.execute("SELECT ranking(questions.created_at, questions.votes_count) FROM questions WHERE id = #{id}").first
     if record.nil?
       0
     else
