@@ -1,6 +1,8 @@
 .landing-page {
-  background: #222 url('matt-rose-bg-sm2.png') no-repeat;
-  background-size: contain;
+  background: url('matt-rose-bg4.jpg') no-repeat;
+  background-attachment: fixed;
+  background-position: right top;
+  background-size: cover;
   //background-size: ;
   //background-size: contain;
   //h1 {font-family: 'Crete Round', serif;}
@@ -171,7 +173,10 @@
     margin-right: 2%;
   }
 
-
+  @media all and (max-width: 480px) {
+    background: #222 url('matt-rose-bg-sm2.jpg') no-repeat;
+    background-size: contain;
+  }
 
   @media all and (max-width: 768px) {
     .container{
@@ -258,14 +263,6 @@
   }
   .btn-email:hover {
     background-color: #db5225;
-  }
-}
-@media all and (min-width: 480px) {
-  .landing-page {
-    background: url('matt-rose-bg4.png') no-repeat;
-    background-attachment: fixed;
-    background-position: right top;
-    background-size: cover;
   }
 }
 
