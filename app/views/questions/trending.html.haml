@@ -6,7 +6,7 @@
         .col-xs-1.up-vote
           %a
             %i.fa.fa-chevron-up
-          %span.vote-count=question.vote_count
+          %span.vote-count=question.votes_count
         .col-xs-11
           .question-body= link_to question.body, question
           .question-asker= asked_by_at_time_ago(question)
