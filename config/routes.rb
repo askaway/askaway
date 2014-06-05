@@ -11,6 +11,7 @@ Askaway::Application.routes.draw do
 
   resources :questions, only: [:show, :new, :create] do
     resources :comments, only: [:create]
+    resources :votes, only: [:create]
   end
   get 'new_questions', to: 'questions#new_questions'
 

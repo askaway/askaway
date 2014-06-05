@@ -1,4 +1,8 @@
 module QuestionsHelper
+  def current_user_has_voted_for?(question)
+    current_user && current_user.votes.where(question_id: question.id).exists?
+  end
+
   def asked_by_at_time_ago(question)
     result = time_ago_in_words(question.created_at).html_safe
     result += ' ago by '.html_safe

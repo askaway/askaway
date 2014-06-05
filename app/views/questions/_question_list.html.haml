@@ -1,12 +1,14 @@
 %h3.heading= heading
 %ul.list-group
   - questions.each do |question|
-    %li.list-group-item.question
+    %li.list-group-item.question{id: "question-#{question.id}"}
       .row
         .col-xs-1.up-vote
-          %a
-            %i.fa.fa-chevron-up
-          %span.vote-count=question.votes_count
+          = link_to question_votes_path(question), method: :post, id: "vote-for-#{question.id}" do
+            - vote_icon_class = 'fa fa-chevron-up'
+            - vote_icon_class += ' fa-chevron-up-voted' if current_user_has_voted_for?(question)
+            %i{class: vote_icon_class}
+          %span.votes-count=question.votes_count
         .col-xs-11
           .question-body= link_to question.body, question
           .question-asker= asked_by_at_time_ago(question)
