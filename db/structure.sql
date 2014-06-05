@@ -83,7 +83,7 @@ ALTER SEQUENCE active_admin_comments_id_seq OWNED BY active_admin_comments.id;
 CREATE TABLE answers (
     id integer NOT NULL,
     body text,
-    candidate_id integer,
+    rep_id integer,
     question_id integer,
     created_at timestamp without time zone,
     updated_at timestamp without time zone
@@ -107,40 +107,6 @@ CREATE SEQUENCE answers_id_seq
 --
 
 ALTER SEQUENCE answers_id_seq OWNED BY answers.id;
-
-
---
--- Name: candidates; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE candidates (
-    id integer NOT NULL,
-    name character varying(255),
-    email character varying(255),
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone,
-    authorisation character varying(255),
-    avatar character varying(255)
-);
-
-
---
--- Name: candidates_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE candidates_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: candidates_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE candidates_id_seq OWNED BY candidates.id;
 
 
 --
@@ -244,6 +210,40 @@ CREATE SEQUENCE questions_id_seq
 --
 
 ALTER SEQUENCE questions_id_seq OWNED BY questions.id;
+
+
+--
+-- Name: reps; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE reps (
+    id integer NOT NULL,
+    name character varying(255),
+    email character varying(255),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    authorisation character varying(255),
+    avatar character varying(255)
+);
+
+
+--
+-- Name: reps_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE reps_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: reps_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE reps_id_seq OWNED BY reps.id;
 
 
 --
@@ -378,13 +378,6 @@ ALTER TABLE ONLY answers ALTER COLUMN id SET DEFAULT nextval('answers_id_seq'::r
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY candidates ALTER COLUMN id SET DEFAULT nextval('candidates_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY comments ALTER COLUMN id SET DEFAULT nextval('comments_id_seq'::regclass);
 
 
@@ -400,6 +393,13 @@ ALTER TABLE ONLY parties ALTER COLUMN id SET DEFAULT nextval('parties_id_seq'::r
 --
 
 ALTER TABLE ONLY questions ALTER COLUMN id SET DEFAULT nextval('questions_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY reps ALTER COLUMN id SET DEFAULT nextval('reps_id_seq'::regclass);
 
 
 --
@@ -443,7 +443,7 @@ ALTER TABLE ONLY answers
 -- Name: candidates_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
-ALTER TABLE ONLY candidates
+ALTER TABLE ONLY reps
     ADD CONSTRAINT candidates_pkey PRIMARY KEY (id);
 
 
@@ -665,3 +665,5 @@ INSERT INTO schema_migrations (version) VALUES ('20140529104412');
 INSERT INTO schema_migrations (version) VALUES ('20140604111130');
 
 INSERT INTO schema_migrations (version) VALUES ('20140605033507');
+
+INSERT INTO schema_migrations (version) VALUES ('20140605060458');

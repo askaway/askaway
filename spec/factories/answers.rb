@@ -4,7 +4,7 @@
 #
 #  id           :integer          not null, primary key
 #  body         :text
-#  candidate_id :integer
+#  rep_id :integer
 #  question_id  :integer
 #  created_at   :datetime
 #  updated_at   :datetime
@@ -14,7 +14,7 @@
 
 FactoryGirl.define do
   factory :answer do
-    candidate
+    rep
     question
     body { Faker::Lorem.characters(120) }
   end

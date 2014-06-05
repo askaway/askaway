@@ -1,6 +1,6 @@
 Feature: User asks question
   As a user
-  I want to ask the candidates a question
+  I want to ask the reps a question
   So that I can find out if they care about the same things as me
 
   Scenario: User asks question

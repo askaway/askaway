@@ -4,7 +4,7 @@
 #
 #  id           :integer          not null, primary key
 #  body         :text
-#  candidate_id :integer
+#  rep_id :integer
 #  question_id  :integer
 #  created_at   :datetime
 #  updated_at   :datetime
@@ -12,13 +12,13 @@
 
 class Answer < ActiveRecord::Base
 
-  belongs_to :candidate
+  belongs_to :rep
   belongs_to :question, inverse_of: :answers, touch: true, counter_cache: true
 
-  validates_presence_of :candidate
+  validates_presence_of :rep
   validates_presence_of :question
   validates_presence_of :body
-  validates_uniqueness_of :candidate_id, scope: [:question_id]
+  validates_uniqueness_of :rep_id, scope: [:question_id]
 
   def self.shuffled
     if ActiveRecord::Base.connection.adapter_name == "mysql"
@@ -28,15 +28,15 @@ class Answer < ActiveRecord::Base
     end
   end
 
-  def candidate_name
-    candidate.name
+  def rep_name
+    rep.name
   end
 
-  def candidate_avatar
-    candidate.avatar
+  def rep_avatar
+    rep.avatar
   end
 
-  def candidate_authorisation
-    candidate.authorisation
+  def rep_authorisation
+    rep.authorisation
   end
 end

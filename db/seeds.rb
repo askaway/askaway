@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-candidates = [
+reps = [
   {
     name: 'Celia Wade-Brown',
     email: '',
@@ -42,21 +42,21 @@ candidates = [
 users = []
 5.times { users << FactoryGirl.create(:user) }
 
-def create_or_update_candidate( details = {} )
+def create_or_update_rep( details = {} )
   name          = details[:name]
   email         = details[:email]
   authorisation = details[:authorisation]
   avatar        = details[:name].gsub(' ','-') + '.png'
-  if c = Candidate.find_by_name(name)
+  if c = Rep.find_by_name(name)
     c.update_attributes(email: email, authorisation: authorisation, avatar: avatar)
   else
-    c = Candidate.create(name: name, email: email, authorisation: authorisation, avatar: avatar)
+    c = Rep.create(name: name, email: email, authorisation: authorisation, avatar: avatar)
   end
   p c
 end
 
-candidates.each do |candidate_details|
-  create_or_update_candidate( candidate_details )
+reps.each do |rep_details|
+  create_or_update_rep( rep_details )
 end
 
 def rand_time(from, to=Time.now)
@@ -96,9 +96,9 @@ Question.all.each do |question|
     Random.rand(6).times do |i|
       question.answers.create! do |answer|
         answer.body = "By importing more #{Faker::Commerce.product_name.pluralize(10)}"
-        answer.candidate_id = (i + 1)
+        answer.rep_id = (i + 1)
 
-        #answer.body = answer.body.to_derp if answer.candidate_id == 3
+        #answer.body = answer.body.to_derp if answer.rep_id == 3
       end
     end
   else
