@@ -24,11 +24,14 @@
   a {
     font-size: $font-size-large;
   }
-  .vote-count {
+  .votes-count {
     min-width: 17px;
     display: inline-block;
     color: $gray-light;
     font-size: $font-size-large;
+  }
+  .fa-chevron-up-voted {
+    color: #FE7A15;
   }
 }
 .question-body {
