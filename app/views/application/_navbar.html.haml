@@ -23,8 +23,10 @@
               %li= link_to 'Log out', destroy_user_session_path, method: :delete
         - else
           %li
-            = link_to 'Log in', new_user_session_path
-      = link_to 'Ask a question', new_question_path, class: 'btn btn-primary navbar-right navbar-btn navbar-btn-ask'
+            %button.btn.btn-default.navbar-btn{:'data-toggle' => 'modal', :'data-target' => '#loginModal'} Log in
+        %li
+          %div
+            = link_to 'Ask a question', new_question_path, class: 'btn btn-primary navbar-btn'
 
 - flash.each do |name, msg|
   - flash_class = 'alert'

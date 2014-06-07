@@ -1,10 +1,16 @@
 .navbar {
+  background-color: white;
+
   .user-settings-dropdown {
     padding: 9px;
   }
-  background-color: white;
   .navbar-brand {
     padding: 10px;
+  }
+  .btn-default {
+    background-color: transparent;
+    border-color: transparent;
+    color: white;
   }
   .navbar-brand-img {
     max-width: 100%;
