@@ -1,30 +1,32 @@
-%h3.heading= heading
-%ul.list-group
-  - questions.each do |question|
-    %li.list-group-item.question{id: "question-#{question.id}"}
-      .row
-        .col-xs-1.up-vote
-          = link_to question_votes_path(question), method: :post, id: "vote-for-#{question.id}" do
-            - vote_icon_class = 'fa fa-chevron-up'
-            - vote_icon_class += ' fa-chevron-up-voted' if current_user_has_voted_for?(question)
-            %i{class: vote_icon_class}
-          %span.votes-count=question.votes_count
-        .col-xs-11
-          .question-body= link_to question.body, question
-          .question-asker= asked_by_at_time_ago(question)
-          - if question.answers_count > 0
-            .answers
-              .answer-count=pluralize(question.answers_count, "answer")
-              %ul.list-inline.answer-list
-                - question.answers.each do |answer|
-                  %li.answer
-          .row.share
-            .col-xs-4
-              %i.fa.fa-comment
-              =question.comments_count
-            .col-xs-4
-              %i.fa.fa-facebook
-              Share
-            .col-xs-4
-              %i.fa.fa-twitter
-              Tweet
+.row
+  .col-xs-12.col-md-8.col-md-offset-2
+    %h3.heading= heading
+    %ul.list-group
+      - questions.each do |question|
+        %li.list-group-item.question{id: "question-#{question.id}"}
+          .row
+            .col-xs-1.question__up-vote
+              = link_to question_votes_path(question), method: :post, id: "vote-for-#{question.id}" do
+                - vote_icon_class = 'fa fa-chevron-up'
+                - vote_icon_class += ' fa-chevron-up-voted' if current_user_has_voted_for?(question)
+                %i{class: vote_icon_class}
+              %span.question__votes-count=question.votes_count
+            .col-xs-11
+              .question__body= link_to question.body, question
+              .question__asker= asked_by_at_time_ago(question)
+              - if question.answers_count > 0
+                .answers
+                  .answers__count=pluralize(question.answers_count, "answer")
+                  %ul.list-inline.answers__list
+                    - question.answers.each do |answer|
+                      %li.answers__rep-pic
+              .row.question__share
+                .col-xs-4
+                  %i.fa.fa-comment
+                  =question.comments_count
+                .col-xs-4
+                  %i.fa.fa-facebook
+                  Share
+                .col-xs-4
+                  %i.fa.fa-twitter
+                  Tweet
