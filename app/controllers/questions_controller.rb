@@ -40,7 +40,7 @@ class QuestionsController < ApplicationController
   end
 
   def fetch_question
-    @question = Question.includes(answers: :candidate).find(params[:id])
+    @question = Question.includes(answers: :rep).find(params[:id])
   end
 
   def fetch_answers

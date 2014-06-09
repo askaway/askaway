@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: candidates
+# Table name: reps
 #
 #  id            :integer          not null, primary key
 #  name          :string(255)
@@ -11,8 +11,9 @@
 #  avatar        :string(255)
 #
 
-class Candidate < ActiveRecord::Base
+# Read about factories at https://github.com/thoughtbot/factory_girl
 
-  has_many :answers
-  has_many :questions, through: :answers
+FactoryGirl.define do
+  factory :rep do
+  end
 end
