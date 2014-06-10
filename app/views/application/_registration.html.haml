@@ -1,0 +1,16 @@
+.modal-dialog
+  .modal-content
+    .modal-header
+      %button.close{:type => 'button', 'data-dismiss' => 'modal'}
+        x
+      %h4.modal-title Create an account to post a question
+    .modal-body
+      = simple_form_for(resource, as: :user, url: registration_path(:user)) do |f|
+        = f.error_notification
+        = f.input :name, required: true, autofocus: true
+        = f.input :email, required: true, autofocus: true
+        = f.input :password, required: true
+        = f.input :password_confirmation, required: true
+        = f.button :submit, 'Create account', data: { disable_with: 'Create account' }, class: 'btn btn-lg btn-primary'
+      Already have an account?
+      %a{:href => '', 'data-dismiss' => 'modal', 'data-target' => '#login-modal', 'data-toggle' => 'modal'} Log in

@@ -1,0 +1,12 @@
+.modal-body {
+  font-size: $font-size-large;
+}
+
+.modal {
+  // Fade-in instead of slide (sliding is bootstrap default)
+  &.fade .modal-dialog {
+    @include translate(0, 0);
+    @include transition-transform(0.3s ease-out);
+  }
+  &.in .modal-dialog { @include translate(0, 0) }
+}
