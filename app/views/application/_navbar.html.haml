@@ -14,6 +14,9 @@
           = link_to 'Newest', new_questions_path
       %ul.nav.navbar-nav.navbar-right
         - if current_user
+          %li
+            %div
+              = render 'ask_question_button'
           %li.dropdown
             %a.user-settings-dropdown.dropdown-toggle{href: '#', :'data-toggle' => 'dropdown'}
               %img{src: current_user.gravatar_url(size: 32)}
@@ -23,8 +26,10 @@
               %li= link_to 'Log out', destroy_user_session_path, method: :delete
         - else
           %li
-            = link_to 'Log in', new_user_session_path
-      = link_to 'Ask a question', new_question_path, class: 'btn btn-primary navbar-right navbar-btn navbar-btn-ask'
+            %button.btn.btn-link.navbar-btn{:'data-toggle' => 'modal', :'data-target' => '#login-modal', :'type' => 'button'} Log in
+          %li
+            %div
+              = render 'ask_question_button'
 
 - flash.each do |name, msg|
   - flash_class = 'alert'
