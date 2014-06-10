@@ -7,13 +7,19 @@
   .navbar-brand {
     padding: 10px;
   }
-  .btn-default {
-    background-color: transparent;
-    border-color: transparent;
-    color: white;
-  }
   .navbar-brand-img {
     max-width: 100%;
     max-height: 100%;
+  }
+}
+
+.navbar-btn-ask {
+  color: white;
+  background-color: $teal;
+  border-color: $teal;
+  margin-left: 15px;
+  &:hover {
+    background-color: $teal-dark;
+    border-color: $teal-dark;
   }
 }

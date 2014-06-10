@@ -29,10 +29,12 @@
 
     .container
       = yield
-    #loginModal.modal.fade
-      = render 'login'
-    #registrationModal.modal.fade
-      = render 'registration'
+
+    - unless user_signed_in?
+      #login-modal.modal.fade
+        = render 'login'
+      #registration-modal.modal.fade
+        = render 'registration'
 
     / JS - placed at end so page loads faster
     = javascript_include_tag "application"

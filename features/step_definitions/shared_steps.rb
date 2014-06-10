@@ -1,10 +1,10 @@
 Given(/^I am logged in$/) do
   email = 'meg@howie.com'
   password = 'password'
-  @user = User.create(name: 'Meg Howie', email: email, password: password)
+  @user = User.create!(name: 'Meg Howie', email: email, password: password)
   visit new_user_session_path
-  fill_in 'user_email', with: email
-  fill_in 'user_password', with: password
+  find('.simple_form.user').fill_in 'user_email', with: email
+  find('.simple_form.user').fill_in 'user_password', with: password
   click_on 'log-in-btn'
 end
 

@@ -4,9 +4,13 @@
 $salmon: rgb(255, 109, 46);
 $green: rgb(225, 230, 76);
 $grey: rgb(235, 235, 235);
+$teal: #4AADB4;
+$teal-dark: #3f999e;
 
 // Grid breakpoint
 $container-tablet: 620px;
 $screen-sm-min: 640px;
-$teal: #4AADB4;
-$teal-dark: #3f999e;
+
+// Fonts
+$font-size-base: 16px;
+$font-family-sans-serif: 'Lato', Helvetica, Arial, sans-serif;
