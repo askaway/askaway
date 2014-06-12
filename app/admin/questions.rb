@@ -4,16 +4,15 @@ ActiveAdmin.register Question do
   index do
     selectable_column
     column :body
+    column :user
     column "Answer" do |question|
       link_to "Answer", new_admin_answer_path(question_id: question.id)
     end
-    column :name
-    column :email
     actions
   end
 
   form do |f|
-    f.inputs :body, :name, :email, :topic
+    f.inputs :body, :user, :topic
     f.actions
   end
 end
