@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe UsersController do
+describe UsersController, :type => :controller do
   let(:user) { FactoryGirl.create(:user) }
 
   describe 'GET #edit' do

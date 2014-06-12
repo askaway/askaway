@@ -10,5 +10,5 @@ When(/^I fill out the comment form$/) do
 end
 
 Then(/^I should see my comment at the top of the list$/) do
-  page.should have_content(@comment_body)
+  expect(page).to have_content(@comment_body)
 end
