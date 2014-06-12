@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe User do
-  it { should validate_presence_of :name }
-  it { should have_many :questions }
+describe User, :type => :model do
+  it { is_expected.to validate_presence_of :name }
+  it { is_expected.to have_many :questions }
 end

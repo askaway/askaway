@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe CommentsController do
+describe CommentsController, :type => :controller do
   let!(:user) { FactoryGirl.create(:user) }
   let!(:question) { FactoryGirl.create(:question) }
   let(:comment_attrs) do

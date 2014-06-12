@@ -8,7 +8,7 @@ describe QuestionVoter do
 
   describe '#execute!' do
     it 'creates a vote' do
-      Vote.should_receive(:create!).with(question: question, user: user)
+      expect(Vote).to receive(:create!).with(question: question, user: user)
       question_voter.execute!
     end
   end

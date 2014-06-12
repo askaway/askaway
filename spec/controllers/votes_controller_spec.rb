@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe VotesController do
+describe VotesController, :type => :controller do
   let(:question) { FactoryGirl.build_stubbed(:question) }
   let(:user) { FactoryGirl.create(:user) }
   let(:question_voter) { double(:question_voter) }
@@ -10,9 +10,9 @@ describe VotesController do
 
     before do
       sign_in user
-      Question.stub(:find).and_return(question)
-      QuestionVoter.stub(:new).with(question, user).and_return(question_voter)
-      question_voter.stub(:execute!)
+      allow(Question).to receive(:find).and_return(question)
+      allow(QuestionVoter).to receive(:new).with(question, user).and_return(question_voter)
+      allow(question_voter).to receive(:execute!)
       request
     end
 

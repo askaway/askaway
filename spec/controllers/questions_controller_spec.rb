@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe QuestionsController do
+describe QuestionsController, :type => :controller do
   let(:user) { FactoryGirl.create(:user) }
 
   describe "GET trending" do
