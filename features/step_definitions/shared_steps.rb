@@ -9,7 +9,7 @@ Given(/^I am logged in$/) do
 end
 
 Then(/^I should be asked to log in$/) do
-  page.should have_css('body.sessions.new')
+  expect(page).to have_css('body.sessions.new')
 end
 
 Given(/^I am on the home page$/) do

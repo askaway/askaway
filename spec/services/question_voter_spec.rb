@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe QuestionVoter do
   class Vote; end

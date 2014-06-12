@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe QuestionsController, :type => :controller do
   let(:user) { FactoryGirl.create(:user) }

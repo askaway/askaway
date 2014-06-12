@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Topic, :type => :model do
   it { is_expected.to have_many :questions }

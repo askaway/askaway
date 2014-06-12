@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe VotesController, :type => :controller do
   let(:question) { FactoryGirl.build_stubbed(:question) }

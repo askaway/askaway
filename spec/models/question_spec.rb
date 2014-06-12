@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Question, :type => :model do
   let(:question) { FactoryGirl.build :question }
