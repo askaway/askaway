@@ -1,10 +1,13 @@
 class ApplicationController < ActionController::Base
   include Pundit
+
   protect_from_forgery
 
   before_filter :store_location
   before_filter :check_for_invitation
   before_filter :update_sanitized_params, if: :devise_controller?
+
+  after_action :verify_authorized, :except => :index
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
@@ -31,9 +34,7 @@ class ApplicationController < ActionController::Base
   end
 
   def check_for_invitation
-    if session[:invitation_token].present? &&
-        (controller_name != 'invitations') &&
-        (controller_name != 'registrations')
+    if session[:invitation_token].present? && !inside_devise? && !inside_invitations?
       redirect_to(invitation_path(session[:invitation_token]))
     end
   end
@@ -41,5 +42,17 @@ class ApplicationController < ActionController::Base
   def user_not_authorized
     flash[:error] = "Sorry, looks like you don't have permission to do that."
     redirect_to(request.referrer || root_path)
+  end
+
+  def verify_authorized
+    super unless (inside_devise? || inside_invitations?)
+  end
+
+  def inside_devise?
+    (controller_name == 'registrations') || (controller_name == 'sessions')
+  end
+
+  def inside_invitations?
+    controller_name == 'invitations'
   end
 end

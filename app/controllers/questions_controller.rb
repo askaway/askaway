@@ -4,18 +4,22 @@ class QuestionsController < ApplicationController
   before_filter :fetch_answers, only: [:show]
 
   def trending
+    authorize Question
     @questions = Question.trending.limit(20)
   end
 
   def new_questions
+    authorize Question
     @questions = Question.order(created_at: :desc).uniq.limit(20)
   end
 
   def new
+    authorize Question
     @question = Question.new
   end
 
   def show
+    authorize @question
     @comment = Comment.new
     @comments = @question.comments.includes(:user).order(created_at: :desc)
   end
@@ -24,6 +28,7 @@ class QuestionsController < ApplicationController
   # POST /questions.json
   def create
     @question = Question.new(question_params)
+    authorize @question
 
     @question.user = current_user
     if @question.save

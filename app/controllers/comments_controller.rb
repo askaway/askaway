@@ -5,6 +5,7 @@ class CommentsController < ApplicationController
   def create
     @comment = @question.comments.new(comment_params)
     @comment.user = current_user
+    authorize @comment
     if @comment.save
       redirect_to @question
     else
