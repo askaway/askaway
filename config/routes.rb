@@ -29,6 +29,7 @@ Askaway::Application.routes.draw do
   resources :votes, only: :destroy
 
   get 'new_questions', to: 'questions#new_questions'
+  get 'trending', to: 'questions#trending'
 
   resources :parties, only: :show do
     member do

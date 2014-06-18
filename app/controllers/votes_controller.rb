@@ -5,14 +5,14 @@ class VotesController < ApplicationController
   def create
     authorize Vote
     question = Question.find(params[:question_id])
-    QuestionVoter.new(question, current_user).execute!
-    redirect_to(root_url)
+    vote = QuestionVoter.new(question, current_user).execute!
+    render json: vote
   end
 
   def destroy
     authorize @vote
     @vote.destroy!
-    redirect_to(root_url)
+    render json: @vote
   end
 
   private
