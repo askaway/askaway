@@ -23,6 +23,9 @@ gem 'simple_form', git: 'https://github.com/plataformatec/simple_form.git'
 
 gem 'gravtastic'
 gem 'font-awesome-sass'
+gem 'sidekiq'
+gem 'sinatra', '>= 1.3.0', :require => nil
+gem 'pundit'
 
 group :development do
   gem 'thin'
@@ -42,6 +45,7 @@ end
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'capybara'
+  gem 'capybara-email'
   gem 'poltergeist'
   gem 'faker'
   gem 'factory_girl_rails', '~> 4.4.0'

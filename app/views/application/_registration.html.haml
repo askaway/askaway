@@ -3,7 +3,7 @@
     .modal-header
       %button.close{:type => 'button', 'data-dismiss' => 'modal'}
         x
-      %h4.modal-title Create an account to post a question
+      %h4.modal-title= create_account_title
     .modal-body
       = simple_form_for(resource, as: :user, url: registration_path(:user)) do |f|
         = f.error_notification

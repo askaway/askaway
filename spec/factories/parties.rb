@@ -13,8 +13,8 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :party do
-    name "MyString"
+  factory :party, aliases: [:invitable] do
+    name { Faker::Name.name }
     auth_statement "MyString"
     description "MyText"
   end

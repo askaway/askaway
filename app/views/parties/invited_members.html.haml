@@ -1,0 +1,18 @@
+%h1= link_to @party.name, @party
+%h2= "#{@party.invitations.count} invited members"
+%p.reminder Feel free to copy and paste the invitation link and email it to the person if they are having trouble finding their original invitation email.
+%table.table.table-striped.table-responsive#invited-members-list
+  %thead
+    %tr
+      %th Name
+      %th Email
+      %th Invitation link
+      %th Sent
+  %tbody
+    - @party.invitations.each do |invitation|
+      %tr
+        %td= invitation.name
+        %td= invitation.email
+        %td
+          = text_field_tag :invitation_link, invitation_url(invitation), :onclick => 'this.select();', class: 'form-control'
+        %td= time_ago_in_words(invitation.created_at) + ' ago'
