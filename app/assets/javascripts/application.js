@@ -15,3 +15,6 @@
 //= require bootstrap
 //= require_tree .
 
+angular.module( 'askaway', [
+  'askaway.questions'
+]);
