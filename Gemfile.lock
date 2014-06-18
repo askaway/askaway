@@ -51,6 +51,7 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
     addressable (2.3.6)
+    angularjs-rails (1.2.18)
     annotate (2.6.3)
       activerecord (>= 2.3.0)
       rake (>= 0.8.7)
@@ -343,6 +344,7 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin!
+  angularjs-rails
   annotate
   better_errors
   binding_of_caller
