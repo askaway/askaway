@@ -27,6 +27,7 @@ describe VotesController, :type => :controller do
     before do
       sign_in user
       allow(Vote).to receive(:find).and_return(vote)
+      allow(vote).to receive(:user_id).and_return(user.id)
       allow(vote).to receive(:destroy!)
       request
     end
