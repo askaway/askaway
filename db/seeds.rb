@@ -75,7 +75,7 @@ FactoryGirl.define do
     user { users.sample }
     topic general_topic
     votes_count { Random.rand(300) }
-    created_at { rand_time(4.months.ago) }
+    created_at { rand_time(1.months.ago) }
   end
   # factory :seed_answer, class: Answer do
   #   body { "By importing more #{Faker::Commerce.product_name.pluralize(10)}" }
@@ -86,7 +86,7 @@ require "rspec/mocks/standalone"
 Question.any_instance.stub(:set_initial_state)
 
 
-100.times do |i|
+50.times do |i|
   FactoryGirl.create(:seed_question)
 end
 

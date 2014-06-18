@@ -14,4 +14,15 @@ class Party < ActiveRecord::Base
   validates_presence_of :name
   validates_uniqueness_of :name
   validates_presence_of :auth_statement
+
+  has_many :memberships
+  has_many :members, through: :memberships, source: :user
+
+  def invitations
+    Invitation.to_join_party(self)
+  end
+
+  def full_name
+    "The #{name}"
+  end
 end
