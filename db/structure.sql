@@ -182,38 +182,6 @@ ALTER SEQUENCE invitations_id_seq OWNED BY invitations.id;
 
 
 --
--- Name: memberships; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE memberships (
-    id integer NOT NULL,
-    user_id integer,
-    party_id integer,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
-);
-
-
---
--- Name: memberships_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE memberships_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: memberships_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE memberships_id_seq OWNED BY memberships.id;
-
-
---
 -- Name: parties; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -289,12 +257,10 @@ ALTER SEQUENCE questions_id_seq OWNED BY questions.id;
 
 CREATE TABLE reps (
     id integer NOT NULL,
-    name character varying(255),
-    email character varying(255),
+    user_id integer,
+    party_id integer,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone,
-    authorisation character varying(255),
-    avatar character varying(255)
+    updated_at timestamp without time zone
 );
 
 
@@ -463,13 +429,6 @@ ALTER TABLE ONLY invitations ALTER COLUMN id SET DEFAULT nextval('invitations_id
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY memberships ALTER COLUMN id SET DEFAULT nextval('memberships_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY parties ALTER COLUMN id SET DEFAULT nextval('parties_id_seq'::regclass);
 
 
@@ -525,14 +484,6 @@ ALTER TABLE ONLY answers
 
 
 --
--- Name: candidates_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY reps
-    ADD CONSTRAINT candidates_pkey PRIMARY KEY (id);
-
-
---
 -- Name: comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -552,7 +503,7 @@ ALTER TABLE ONLY invitations
 -- Name: memberships_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
-ALTER TABLE ONLY memberships
+ALTER TABLE ONLY reps
     ADD CONSTRAINT memberships_pkey PRIMARY KEY (id);
 
 
@@ -660,20 +611,6 @@ CREATE INDEX index_invitations_on_token ON invitations USING btree (token);
 
 
 --
--- Name: index_memberships_on_party_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_memberships_on_party_id ON memberships USING btree (party_id);
-
-
---
--- Name: index_memberships_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_memberships_on_user_id ON memberships USING btree (user_id);
-
-
---
 -- Name: index_questions_on_answers_count; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -706,6 +643,20 @@ CREATE INDEX index_questions_on_user_id ON questions USING btree (user_id);
 --
 
 CREATE INDEX index_questions_on_votes_count ON questions USING btree (votes_count);
+
+
+--
+-- Name: index_reps_on_party_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_reps_on_party_id ON reps USING btree (party_id);
+
+
+--
+-- Name: index_reps_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_reps_on_user_id ON reps USING btree (user_id);
 
 
 --
@@ -814,3 +765,7 @@ INSERT INTO schema_migrations (version) VALUES ('20140605060458');
 INSERT INTO schema_migrations (version) VALUES ('20140611044129');
 
 INSERT INTO schema_migrations (version) VALUES ('20140617051140');
+
+INSERT INTO schema_migrations (version) VALUES ('20140618030340');
+
+INSERT INTO schema_migrations (version) VALUES ('20140618031355');

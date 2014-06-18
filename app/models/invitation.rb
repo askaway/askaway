@@ -50,7 +50,7 @@ class Invitation < ActiveRecord::Base
   end
 
   def accept!(acceptor)
-    Membership.create!(party: invitable, user: acceptor)
+    Rep.create!(party: invitable, user: acceptor)
     update_attributes(accepted_at: Time.zone.now,
                       acceptor_id: acceptor.id)
   rescue ActiveRecord::RecordInvalid

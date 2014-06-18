@@ -16,7 +16,7 @@ describe PartyPolicy do
       context 'member' do
         let(:party) { FactoryGirl.create(:party) }
         let(:user) { FactoryGirl.create(:user) }
-        before { Membership.create(user: user, party: party) }
+        before { Rep.create(user: user, party: party) }
 
         it { expect(subject).to permit(user, party) }
       end

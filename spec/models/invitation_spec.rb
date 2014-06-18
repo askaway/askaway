@@ -29,8 +29,8 @@ describe Invitation, :type => :model do
       it { expect(invitation.invitable.members).to include(acceptor) }
     end
 
-    context 'acceptor is already a party member' do
-      before { FactoryGirl.create(:membership, user: acceptor, party: party) }
+    context 'acceptor is already a party rep' do
+      before { FactoryGirl.create(:rep, user: acceptor, party: party) }
 
       it { expect(invitation.accept!(acceptor)).to eq(false) }
 
