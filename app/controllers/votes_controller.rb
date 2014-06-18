@@ -10,7 +10,7 @@ class VotesController < ApplicationController
   end
 
   def destroy
-    authorize Vote
+    authorize @vote
     @vote.destroy!
     redirect_to(root_url)
   end
