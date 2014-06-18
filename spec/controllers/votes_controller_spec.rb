@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe VotesController, :type => :controller do
   let(:question) { FactoryGirl.build_stubbed(:question) }
+  let(:vote) { FactoryGirl.build_stubbed(:vote) }
   let(:user) { FactoryGirl.create(:user) }
   let(:question_voter) { double(:question_voter) }
 
@@ -17,6 +18,20 @@ describe VotesController, :type => :controller do
     end
 
     it { expect(question_voter).to have_received(:execute!) }
+    it { expect(response).to redirect_to(root_path) }
+  end
+
+  describe "DELETE #destroy" do
+    let(:request) { delete :destroy, id: vote.id }
+
+    before do
+      sign_in user
+      allow(Vote).to receive(:find).and_return(vote)
+      allow(vote).to receive(:destroy!)
+      request
+    end
+
+    it { expect(vote).to have_received(:destroy!) }
     it { expect(response).to redirect_to(root_path) }
   end
 end

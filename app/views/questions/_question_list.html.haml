@@ -6,10 +6,12 @@
         %li.list-group-item.question{id: "question-#{question.id}"}
           .row
             .col-xs-1.question__up-vote
-              = link_to question_votes_path(question), method: :post, id: "vote-for-#{question.id}" do
-                - vote_icon_class = 'fa fa-chevron-up'
-                - vote_icon_class += ' fa-chevron-up-voted' if current_user_has_voted_for?(question)
-                %i{class: vote_icon_class}
+              - if current_user_has_voted_for?(question)
+                = link_to current_user_vote_for(question), method: :delete, id: "vote-for-#{question.id}" do
+                  %i.fa.fa-chevron-up.fa-chevron-up-voted
+              - else
+                = link_to question_votes_path(question), method: :post, id: "vote-for-#{question.id}" do
+                  %i.fa.fa-chevron-up
               %span.question__votes-count=question.votes_count
             .col-xs-11
               .question__body= link_to question.body, question
