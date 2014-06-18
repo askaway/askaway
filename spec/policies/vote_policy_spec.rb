@@ -5,24 +5,15 @@ describe VotePolicy do
   let(:user) { FactoryGirl.create(:user) }
   let(:different_user) { FactoryGirl.create(:user) }
 
-  [:destroy?].each do |action|
-    permissions action do
-      context 'owner' do
-        let(:vote) { FactoryGirl.create(:vote, :user => user) }
+  permissions :destroy? do
+    it 'permits user to destroy their own comment' do
+      vote = FactoryGirl.create(:vote, :user => user)
+      expect(subject).to permit(user, vote)
+    end
 
-        it { expect(subject).to permit(user, vote) }
-      end
-
-      context 'non-owner' do
-        let(:vote) { FactoryGirl.create(:vote, :user => different_user) }
-
-        it { expect(subject).not_to permit(user, vote) }
-      end
-
-      context 'visitor' do
-        let(:vote) { FactoryGirl.create(:vote, :user => different_user ) }
-        it { expect(subject).not_to permit(nil, vote) }
-      end
+    it "does not permit user to destroy another user's comment" do
+      vote = FactoryGirl.create(:vote, :user => different_user)
+      expect(subject).not_to permit(user, vote)
     end
   end
 end
