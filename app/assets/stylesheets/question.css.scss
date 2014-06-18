@@ -1,0 +1,35 @@
+.question {
+  border-top-width: 0;
+  border-left-width: 0;
+  border-right-width: 0;
+  margin-bottom: 0;
+  a {
+    color: $gray-dark;
+  }
+}
+.question__up-vote {
+  text-align: center;
+  padding-top: 5px;
+  a {
+  }
+  .question__votes-count {
+    min-width: 17px;
+    display: inline-block;
+    color: $gray-light;
+  }
+  .fa-chevron-up-voted {
+    color: #FE7A15;
+  }
+}
+.question__body {
+  font-size: 20px;
+  font-weight: 200;
+  line-height: 1.4;
+  a:hover {
+    text-decoration: none;
+    }
+}
+.question__share {
+  margin-top: 10px;
+  color: $gray-light;
+}

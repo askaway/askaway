@@ -1,0 +1,25 @@
+// Styles relating to the individual question block are in question.css.scss
+// Styles below relate to answer count and thumbnails on the question list
+
+.ql__heading {
+ color: $gray-light;
+ font-size: $font-size-medium-large;
+}
+
+.ql__answers__count {
+  display: inline-block;
+  vertical-align: top;
+}
+.ql__answers__list {
+  border-left: 1px solid $gray-light;
+  padding-left: 10px;
+  margin-left: 10px;
+  display: inline-block;
+}
+.ql__answers__rep-pic {
+  border: 1px solid black;
+  border-radius: 50%;
+  width: $font-size-large + 7;
+  height: $font-size-large + 7;
+  margin: 0 3px;
+}

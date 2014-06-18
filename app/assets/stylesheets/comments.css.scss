@@ -1,0 +1,24 @@
+.comments__count {
+  margin-top: 14px;
+  color: $gray-light;
+  font-size: $font-size-small;
+  border-top: thin lightgrey solid;
+  border-bottom: thin lightgrey solid;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.comments__input {
+  padding-top: 15px;
+  padding-bottom: 5px;
+}
+
+.comment__user-name {
+  font-size: $font-size-small;
+  font-weight: 600;
+}
+
+.comment__body {
+  font-size: $font-size-small;
+  font-weight: 200;
+}

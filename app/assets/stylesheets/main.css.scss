@@ -1,6 +1,16 @@
 body {
-  background: #EEE url('');
+  background: #EEE;
   padding-top: 50px;
+}
+
+.btn-ask {
+  color: white;
+  background-color: $teal;
+  border-color: $teal;
+  &:hover {
+    background-color: $teal-dark;
+    border-color: $teal-dark;
+  }
 }
 
 /* For when we start including background images */

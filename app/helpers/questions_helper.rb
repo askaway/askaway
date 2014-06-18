@@ -17,7 +17,7 @@ module QuestionsHelper
     if question.is_anonymous?
       "Anonymous"
     else
-      link_to question.user_name, question.user
+      link_to question.user_name, question.user, class: 'emphasized'
     end
   end
 end

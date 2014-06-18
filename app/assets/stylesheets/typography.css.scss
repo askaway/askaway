@@ -14,3 +14,15 @@ h3, h4, h5, h6 {
   font-size: $font-size-large + 4;
 }
 
+.text-detail {
+  color: $gray-light;
+  font-size: 85%;
+  line-height: 1.5em;
+  font-weight: 300;
+  a {
+    color: $gray-light;
+  }
+  .emphasized {
+    font-weight: 400;
+  }
+}
