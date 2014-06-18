@@ -29,9 +29,9 @@ Askaway::Application.routes.draw do
 
   resources :parties, only: :show do
     member do
-      get :new_members
-      post :invite_members
-      get :invited_members
+      get :new_reps
+      post :invite_reps
+      get :invited_reps
       get :walkthrough
     end
   end

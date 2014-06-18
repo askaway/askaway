@@ -16,7 +16,7 @@ class Party < ActiveRecord::Base
   validates_presence_of :auth_statement
 
   has_many :reps
-  has_many :members, through: :reps, source: :user
+  has_many :rep_users, through: :reps, source: :user
 
   def invitations
     Invitation.to_join_party(self)
