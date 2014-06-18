@@ -8,34 +8,20 @@
 
 reps = [
   {
-    name: 'Celia Wade-Brown',
-    email: '',
-    authorisation: 'Authorised by Celia Wade-Brown of 101 Wakefield Street, Wellington',
+    name: 'Bill English',
+    party: 'National Party'
   },
   {
-    name: 'Jack Yan',
-    email: '',
-    authorisation: 'Authorised by C. Johnston of 35-8 Cambridge Terrace, Wellington 6011',
+    name: 'Laila Harre',
+    party: 'Internet Party'
   },
   {
-    name: 'John Morrison',
-    email: '',
-    authorisation: 'Authorised by John Morrison, Level 5, 93 Boulcott Street, Wellington',
+    name: 'Metiria Turei',
+    party: 'Green Party'
   },
   {
-    name: 'Karunanidhi Muthu',
-    email: '',
-    authorisation: 'Authorised by Karunanidhi Muthu of Suite 239, 32 Salamanca Road, Kelburn, Wellington 6012',
-  },
-  {
-    name: 'Nicola Young',
-    email: '',
-    authorisation: 'Authorised by Nicola Young of B44/10 Ebor Street, Te Aro, Wellington 6011',
-  },
-  {
-    name: 'Rob Goulden',
-    email: '',
-    authorisation: 'Authorised by Rob Goulden, 14 Kauri Street, Miramar, Wellington',
+    name: 'David Cunliffe',
+    party: 'Labour Party'
   }
 ]
 
@@ -43,16 +29,17 @@ users = []
 5.times { users << FactoryGirl.create(:user) }
 
 def create_or_update_rep( details = {} )
-  name          = details[:name]
-  email         = details[:email]
-  authorisation = details[:authorisation]
-  avatar        = details[:name].gsub(' ','-') + '.png'
-  if c = Rep.find_by_name(name)
-    c.update_attributes(email: email, authorisation: authorisation, avatar: avatar)
-  else
-    c = Rep.create(name: name, email: email, authorisation: authorisation, avatar: avatar)
+  name = details[:name]
+  party_name = details[:party]
+  unless party = Party.find_by_name(party_name)
+    party = FactoryGirl.create(:party, name: party_name)
   end
-  p c
+  unless user = User.find_by_name(name)
+    user = FactoryGirl.create(:user, name: name)
+  end
+  unless party.rep_users.exists?(id: user.id)
+    rep = Rep.create(user: user, party: party)
+  end
 end
 
 reps.each do |rep_details|
@@ -93,7 +80,7 @@ end
 Question.all.each do |question|
   if question.answers.blank? && Random.rand < 0.7
     puts "Creating answers"
-    Random.rand(6).times do |i|
+    Random.rand(4).times do |i|
       question.answers.create! do |answer|
         answer.body = "By importing more #{Faker::Commerce.product_name.pluralize(10)}"
         answer.rep_id = (i + 1)

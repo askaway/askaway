@@ -1,7 +1,7 @@
 %h1= link_to @party.name, @party
-%h2= "#{@party.invitations.count} invited members"
+%h2= "#{@party.invitations.count} invited reps"
 %p.reminder Feel free to copy and paste the invitation link and email it to the person if they are having trouble finding their original invitation email.
-%table.table.table-striped.table-responsive#invited-members-list
+%table.table.table-striped.table-responsive#invited-reps-list
   %thead
     %tr
       %th Name

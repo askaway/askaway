@@ -26,11 +26,11 @@ describe Invitation, :type => :model do
 
       it { expect(invitation.reload.accepted_at).to_not be_nil }
       it { expect(invitation.reload.acceptor_id).to eq(acceptor.id) }
-      it { expect(invitation.invitable.members).to include(acceptor) }
+      it { expect(invitation.invitable.rep_users).to include(acceptor) }
     end
 
-    context 'acceptor is already a party member' do
-      before { FactoryGirl.create(:membership, user: acceptor, party: party) }
+    context 'acceptor is already a party rep' do
+      before { FactoryGirl.create(:rep, user: acceptor, party: party) }
 
       it { expect(invitation.accept!(acceptor)).to eq(false) }
 
@@ -82,7 +82,7 @@ describe Invitation, :type => :model do
       allow(InvitationMailer).to receive(:delay).and_return(mailer)
     end
 
-    it 'emails members' do
+    it 'emails reps' do
       expect(InvitationMailer).to receive(:delay)
       expect(mailer).to receive(:to_join_party).with(invitation)
       invite!

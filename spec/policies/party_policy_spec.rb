@@ -5,7 +5,7 @@ describe PartyPolicy do
   let(:user) { User.new }
   let(:party) { Party.new }
 
-  [:new_members?, :invite_members?, :invited_members?, :walkthrough?].each do |action|
+  [:new_reps?, :invite_reps?, :invited_reps?, :walkthrough?].each do |action|
     permissions action do
       context 'admin' do
         before { user.is_admin = true }
@@ -16,7 +16,7 @@ describe PartyPolicy do
       context 'member' do
         let(:party) { FactoryGirl.create(:party) }
         let(:user) { FactoryGirl.create(:user) }
-        before { Membership.create(user: user, party: party) }
+        before { Rep.create(user: user, party: party) }
 
         it { expect(subject).to permit(user, party) }
       end

@@ -1,3 +1,21 @@
+# == Schema Information
+#
+# Table name: invitations
+#
+#  id             :integer          not null, primary key
+#  email          :string(255)
+#  name           :string(255)
+#  inviter_id     :string(255)
+#  intent         :string(255)
+#  invitable_id   :integer
+#  invitable_type :string(255)
+#  acceptor_id    :integer
+#  accepted_at    :datetime
+#  token          :string(255)      not null
+#  created_at     :datetime
+#  updated_at     :datetime
+#
+
 class Invitation < ActiveRecord::Base
   class InvitationAlreadyAccepted < StandardError; end
 
@@ -50,7 +68,7 @@ class Invitation < ActiveRecord::Base
   end
 
   def accept!(acceptor)
-    Membership.create!(party: invitable, user: acceptor)
+    Rep.create!(party: invitable, user: acceptor)
     update_attributes(accepted_at: Time.zone.now,
                       acceptor_id: acceptor.id)
   rescue ActiveRecord::RecordInvalid

@@ -17,16 +17,16 @@ describe PartiesController, :type => :controller do
     it { expect(assigns(:party)).to eq(party)}
   end
 
-  describe "GET #new_members" do
-    before{ get :new_members, id: party.id }
+  describe "GET #new_reps" do
+    before{ get :new_reps, id: party.id }
 
-    it { expect(response).to render_template(:new_members) }
+    it { expect(response).to render_template(:new_reps) }
   end
 
-  describe "GET #invited_members" do
-    before{ get :invited_members, id: party.id }
+  describe "GET #invited_reps" do
+    before{ get :invited_reps, id: party.id }
 
-    it { expect(response).to render_template(:invited_members) }
+    it { expect(response).to render_template(:invited_reps) }
   end
 
   describe "GET #walkthrough" do
@@ -35,11 +35,11 @@ describe PartiesController, :type => :controller do
     it { expect(response).to render_template(:walkthrough) }
   end
 
-  describe "POST #invite_members" do
+  describe "POST #invite_reps" do
     let(:emails) { 'jo@example.org, "Meg Howie" <meg@askaway.org.nz>' }
     let(:inviter) { FactoryGirl.build_stubbed(:inviter) }
-    let(:response) { post :invite_members, id: party.id,
-                          invite_members_form: { emails: emails } }
+    let(:response) { post :invite_reps, id: party.id,
+                          invite_reps_form: { emails: emails } }
 
     before do
       allow(Invitation).to receive(:batch_invite!)

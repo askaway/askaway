@@ -5,25 +5,25 @@ class PartyPolicy < ApplicationPolicy
     end
   end
 
-  def new_members?
-    user && (user.is_admin? || user_is_member?)
+  def new_reps?
+    user && (user.is_admin? || user_is_rep?)
   end
 
-  def invite_members?
-    new_members?
+  def invite_reps?
+    new_reps?
   end
 
-  def invited_members?
-    new_members?
+  def invited_reps?
+    new_reps?
   end
 
   def walkthrough?
-    new_members?
+    new_reps?
   end
 
   private
 
-  def user_is_member?
-    @record.members.exists?(id: user.id)
+  def user_is_rep?
+    @record.rep_users.exists?(id: user.id)
   end
 end

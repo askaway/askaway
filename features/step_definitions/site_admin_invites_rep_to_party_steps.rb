@@ -9,22 +9,22 @@ end
 When(/^I fill in the new member form$/) do
   @emails = %w(gibby@example.com jon@example.com me@woah.com)
   @invitation_emails = "\"Gibby Jibbly\" <#{@emails[0]}>, #{@emails[1]}, #{@emails[2]}"
-  fill_in 'invite_members_form_emails', with: @invitation_emails
+  fill_in 'invite_reps_form_emails', with: @invitation_emails
   click_on 'invite-btn'
 end
 
-Then(/^I should see a message telling me members have been invited$/) do
-  expect(page).to have_content('Members invited.')
+Then(/^I should see a message telling me reps have been invited$/) do
+  expect(page).to have_content('Reps invited.')
 end
 
-Then(/^emails should be sent to the members I invited$/) do
+Then(/^emails should be sent to the reps I invited$/) do
   @emails.each do |email|
     open_email(email)
     expect(current_email).not_to be_nil
   end
 end
 
-Then(/^I should see their emails in a list of invited members$/) do
+Then(/^I should see their emails in a list of invited reps$/) do
   expect(page).to have_content('3 invitations sent')
 end
 
@@ -67,16 +67,16 @@ Then(/^I should see the party page$/) do
   expect(page).to have_css('body.party.show')
 end
 
-Then(/^I should see my name under the list of members$/) do
-  find('.party-members').should have_content(@name)
+Then(/^I should see my name under the list of reps$/) do
+  find('.party-reps').should have_content(@name)
 end
 
-When(/^I visit the party new members page$/) do
-  visit new_members_party_path(@party)
+When(/^I visit the party new reps page$/) do
+  visit new_reps_party_path(@party)
 end
 
 Then(/^I should be added to the party$/) do
-  expect(@party.reload.members).to include(User.last)
+  expect(@party.reload.rep_users).to include(User.last)
 end
 
 Then(/^I should see party walkthrough page$/) do
