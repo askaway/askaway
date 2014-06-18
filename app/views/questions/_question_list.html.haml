@@ -32,3 +32,5 @@
                 .col-xs-4
                   %i.fa.fa-twitter
                   Tweet
+    .pagination-outer-container{style: 'text-align: center'}
+      = will_paginate @questions, renderer: BootstrapPagination::Rails

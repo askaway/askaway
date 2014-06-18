@@ -5,12 +5,13 @@ class QuestionsController < ApplicationController
 
   def trending
     authorize Question
-    @questions = Question.trending.limit(20)
+    @questions = Question.trending.paginate(page: params[:page])
   end
 
   def new_questions
     authorize Question
-    @questions = Question.order(created_at: :desc).uniq.limit(20)
+    @questions = Question.order(created_at: :desc).uniq.
+                 paginate(page: params[:page])
   end
 
   def new
