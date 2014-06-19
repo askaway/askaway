@@ -1,19 +1,35 @@
 = content_for :title, "#{@question.body} | Questions for New Zealand's political parties - Ask Away"
 = content_for :description, "#{@question.user_name} asked the parties, \"#{@question.body}\" Click to see their answers or ask them your own question."
 
-%h1= @question.body
-= asked_by_at_time_ago(@question)
+.row
+  .col-xs-12.col-md-8.col-md-offset-2
+    .panel.panel-default.big-top-margin
+      .panel-body.question
+        .row
+          .col-xs-1.question-up-vote
+            = render 'question_up_vote', question: @question
+          .col-xs-11
+            .question-body= @question.body
+            .text-detail= asked_by_at_time_ago(@question)
 
-- @answers.each do |answer|
-  %div
-    = answer.rep.user_name
-    = answer.body
+      %ul.list-group
+        %li.list-group-item.comments-count= "#{@answers.count} ANSWERS"
+        - @answers.each do |answer|
+          %li.list-group-item
+            %div.media
+              %span.pull-left
+                %img.media-object{src: answer.rep.user.gravatar_url }
+              %div.media-body
+                .list-group-item-heading= answer.rep.user_name
+                .list-group-item-text.comment-body= answer.body
+        %li.list-group-item.comments-count= "#{@question.comments_count} COMMENTS"
+      .panel-body
+        .row.comments
+          .col-xs-12.comments-input
+            - if user_signed_in?
+              = render 'comments/form'
+            - else
+              = link_to 'Log in', new_user_session_path
+              to comment
 
-%h2= "#{@question.comments_count} comments"
-- if user_signed_in?
-  = render 'comments/form'
-- else
-  = link_to 'Log in', new_user_session_path
-  to comment
-
-= render partial: 'comments/item', collection: @comments, as: :comment
+            = render partial: 'comments/item', collection: @comments, as: :comment

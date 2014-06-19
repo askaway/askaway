@@ -2,6 +2,8 @@
   %span.pull-left
     %img.media-object{src: comment.user.gravatar_url }
   %div.media-body
-    = comment.body
-    %p.text-muted
+    .comment-user-name= comment.user.name
+    .text-detail
       %small= time_ago_in_words(comment.created_at)
+    %p.comment-body= comment.body
+

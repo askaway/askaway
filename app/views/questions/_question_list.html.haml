@@ -1,36 +1,25 @@
 .row
   .col-xs-12.col-md-8.col-md-offset-2
-    %h3.heading= heading
-    %ul.list-group
-      - questions.each do |question|
-        %li.list-group-item.question{id: "question-#{question.id}"}
+    %h3.page-heading= heading
+    %ul.list-group.question-list{ng_controller: 'QuestionsCtrl'}
+      - @questions.each do |question|
+        %li.question.list-group-item.list-group-item-clickable{id: "question-#{question.id}", onclick: "location.href='#{question_path(question)}';"}
           .row
-            .col-xs-1.question__up-vote
-              - if current_user_has_voted_for?(question)
-                = link_to current_user_vote_for(question), method: :delete, id: "vote-for-#{question.id}" do
-                  %i.fa.fa-chevron-up.fa-chevron-up-voted
-              - else
-                = link_to question_votes_path(question), method: :post, id: "vote-for-#{question.id}" do
-                  %i.fa.fa-chevron-up
-              %span.question__votes-count=question.votes_count
+            .col-xs-1.question-up-vote
+              = render 'question_up_vote', question: question
             .col-xs-11
-              .question__body= link_to question.body, question
-              .question__asker= asked_by_at_time_ago(question)
-              - if question.answers_count > 0
-                .answers
-                  .answers__count=pluralize(question.answers_count, "answer")
-                  %ul.list-inline.answers__list
+              %a.list-group-item-clickable-header{href: question_path(question)}= question.body
+              .text-detail= asked_by_at_time_ago(question)
+
+          - if question.answers_count > 0
+            .row
+              .col-xs-11.col-xs-offset-1
+                .answers-preview
+                  .answers-preview-count.text-detail=pluralize(question.answers_count, "answer")
+                  %ul.list-inline.answers-preview-avatars
                     - question.answers.each do |answer|
-                      %li.answers__rep-pic
-              .row.question__share
-                .col-xs-4
-                  %i.fa.fa-comment
-                  =question.comments_count
-                .col-xs-4
-                  %i.fa.fa-facebook
-                  Share
-                .col-xs-4
-                  %i.fa.fa-twitter
-                  Tweet
+                      %li.answers-preview-avatar
+
     .pagination-outer-container{style: 'text-align: center'}
       = will_paginate @questions, renderer: BootstrapPagination::Rails
+

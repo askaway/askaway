@@ -1,0 +1,22 @@
+.answers-preview {
+  @include clearfix();
+  padding-top: 8px;
+  margin-bottom: -3px;
+}
+.answers-preview-count {
+  float: left;
+}
+.answers-preview-count.text-detail {
+  line-height: 2em;
+}
+.answers-preview-avatars {
+  float: left;
+  margin-left: 5px;
+}
+.answers-preview-avatar {
+  border: 1px solid black;
+  border-radius: 50%;
+  width: $font-size-large + 7;
+  height: $font-size-large + 7;
+  margin: 0 3px;
+}
