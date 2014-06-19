@@ -1,4 +1,5 @@
-angular.module( 'askaway.questions', [] )
-  .controller( 'QuestionsCtrl', function( $scope ) {})
+askaway.controller('QuestionsCtrl', ['$scope', function( $scope ) {
+}]);
 
-  .controller( 'QuestionFormCtrl', function( $scope ) {})
+askaway.controller( 'QuestionFormCtrl', ['$scope', function( $scope ) {
+}]);
