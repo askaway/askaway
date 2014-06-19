@@ -3,7 +3,7 @@
     %h3.page-heading= heading
     %ul.list-group.question-list{ng_controller: 'QuestionsCtrl'}
       - @questions.each do |question|
-        %li.question.list-group-item.list-group-item-clickable{id: "question-list-question-#{question.id}", onclick: "location.href='#{question_path(question)}';"}
+        %li.question.list-group-item.list-group-item-clickable{id: "question-#{question.id}", onclick: "location.href='#{question_path(question)}';"}
           .row
             .col-xs-1.question-up-vote
               = render 'question_up_vote', question: question
