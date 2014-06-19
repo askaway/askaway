@@ -13,8 +13,5 @@
 //= require jquery_ujs
 //= require angular
 //= require bootstrap
-//= require_tree .
-
-angular.module( 'askaway', [
-  'askaway.questions'
-]);
+//= require main
+//= require controllers/questions
