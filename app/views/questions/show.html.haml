@@ -3,27 +3,29 @@
 
 .row
   .col-xs-12.col-md-8.col-md-offset-2
-    %ul.list-group.list-group--question-page
-      %li.list-group-item.question
+    .panel.panel-default.big-top-margin
+      .panel-body.question
         .row
-          .col-xs-1.question__up-vote
-            = link_to question_votes_path(@question), method: :post, id: "vote-for-#{@question.id}" do
-              - vote_icon_class = 'fa fa-chevron-up'
-              - vote_icon_class += ' fa-chevron-up-voted' if current_user_has_voted_for?(@question)
-              %i{class: vote_icon_class}
-            %span.question__votes-count=@question.votes_count
+          .col-xs-1.question-up-vote
+            = render 'question_up_vote', question: @question
           .col-xs-11
-            .question__body= @question.body
+            .question-body= @question.body
             .text-detail= asked_by_at_time_ago(@question)
 
-            - @answers.each do |answer|
-              %div
-                = answer.rep.user_name
-                = answer.body
+      %ul.list-group
+        %li.list-group-item.comments-count= "#{@answers.count} ANSWERS"
+        - @answers.each do |answer|
+          %li.list-group-item
+            %div.media
+              %span.pull-left
+                %img.media-object{src: answer.rep.user.gravatar_url }
+              %div.media-body
+                .list-group-item-heading= answer.rep.user_name
+                .list-group-item-text.comment-body= answer.body
+        %li.list-group-item.comments-count= "#{@question.comments_count} COMMENTS"
+      .panel-body
         .row.comments
-          .col-xs-12.comments__count
-            = "#{@question.comments_count} COMMENTS"
-          .col-xs-12.comments__input 
+          .col-xs-12.comments-input
             - if user_signed_in?
               = render 'comments/form'
             - else

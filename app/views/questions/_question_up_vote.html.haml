@@ -1,0 +1,5 @@
+= link_to question_votes_path(question), method: :post, id: "vote-for-#{question.id}" do
+  - vote_icon_class = 'fa fa-chevron-up'
+  - vote_icon_class += ' fa-chevron-up-voted' if current_user_has_voted_for?(question)
+  %i{class: vote_icon_class}
+.question-up-vote-count=question.votes_count

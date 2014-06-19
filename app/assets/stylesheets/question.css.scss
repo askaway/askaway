@@ -1,35 +1,26 @@
 .question {
-  border-top-width: 0;
-  border-left-width: 0;
-  border-right-width: 0;
-  margin-bottom: 0;
-  a {
-    color: $gray-dark;
-  }
 }
-.question__up-vote {
+.question-up-vote {
   text-align: center;
-  padding-top: 5px;
-  a {
-  }
-  .question__votes-count {
-    min-width: 17px;
-    display: inline-block;
-    color: $gray-light;
-  }
-  .fa-chevron-up-voted {
-    color: #FE7A15;
-  }
+  padding: 5px 0 0 12px;
 }
-.question__body {
+.question-up-vote a .fa-chevron-up {
+  color: #888;
+}
+.question-up-vote a .fa-chevron-up:hover {
+  color: #333;
+}
+.question-up-vote a .fa-chevron-up.fa-chevron-up-voted {
+  color: #FE7A15;
+}
+.question-up-vote-count {
+  color: $gray-light;
+}
+.question-body {
   font-size: 20px;
   font-weight: 200;
   line-height: 1.4;
   a:hover {
     text-decoration: none;
     }
-}
-.question__share {
-  margin-top: 10px;
-  color: $gray-light;
 }
