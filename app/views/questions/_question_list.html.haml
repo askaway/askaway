@@ -20,6 +20,6 @@
                     - question.answers.each do |answer|
                       %li.answers-preview-avatar
 
-    .pagination-outer-container{style: 'text-align: center'}
-      = will_paginate @questions, renderer: BootstrapPagination::Rails
+    .text-center
+      = paginate @questions, theme: 'twitter-bootstrap-3'
 

@@ -27,8 +27,8 @@ gem 'font-awesome-sass'
 gem 'sidekiq'
 gem 'sinatra', '>= 1.3.0', :require => nil
 gem 'pundit'
-gem 'will_paginate', '~> 3.0'
-gem 'will_paginate-bootstrap'
+gem 'kaminari'
+gem 'bootstrap-kaminari-views'
 
 group :development do
   gem 'thin'

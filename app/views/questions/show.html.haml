@@ -20,7 +20,9 @@
               %span.pull-left
                 %img.media-object{src: answer.rep.user.gravatar_url }
               %div.media-body
-                .list-group-item-heading= answer.rep.user_name
+                .list-group-item-heading
+                  = link_to(answer.rep.user_name, answer.rep.user)
+                  = link_to("(#{answer.rep.party.name})", answer.rep.party)
                 .list-group-item-text.comment-body= answer.body
         %li.list-group-item.comments-count= "#{@question.comments_count} COMMENTS"
       .panel-body

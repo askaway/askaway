@@ -31,8 +31,6 @@ class Question < ActiveRecord::Base
   scope :trending, -> { order("ranking(questions.created_at, questions.votes_count) DESC") }
   scope :not_anonymous, -> { where('is_anonymous IS NOT TRUE') }
 
-  self.per_page = 20
-
   def user_name
     if is_anonymous?
       'Anonymous'
