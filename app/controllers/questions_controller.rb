@@ -23,6 +23,9 @@ class QuestionsController < ApplicationController
     authorize @question
     @comment = Comment.new
     @comments = @question.comments.includes(:user).order(created_at: :desc)
+    if show_answer_form?
+      @new_answer = Answer.new
+    end
   end
 
   # POST /questions
@@ -51,5 +54,18 @@ class QuestionsController < ApplicationController
 
   def fetch_answers
     @answers = @question.answers
+  end
+
+  def show_answer_form?
+    user_is_rep? && !party_has_already_answered?
+  end
+  helper_method :show_answer_form?
+
+  def user_is_rep?
+    Rep.exists?(user_id: current_user.try(:id))
+  end
+
+  def party_has_already_answered?
+    QuestionQueries.has_answer_from_party?(@question, current_user.rep.party)
   end
 end

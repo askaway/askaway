@@ -5,7 +5,7 @@ class AddAnswersCounterToQuestion < ActiveRecord::Migration
 
     Question.reset_column_information
     Question.find_each do |q|
-      q.update_attribute(:answers_count, q.answers.count)
+      q.update_attribute(:answers_count, q.answers_count)
     end
   end
 end

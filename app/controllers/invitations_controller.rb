@@ -12,7 +12,7 @@ class InvitationsController < ApplicationController
       if invitation.accept!(current_user)
         redirect_to(walkthrough_party_path(invitation.invitable))
       else
-        flash[:alert] = "Could not accept invitation. Looks like you may already be a member of #{invitation.invitable.name}."
+        flash[:alert] = "Could not accept invitation. You might already be a member of #{invitation.invitable.name}."
         redirect_to(root_path)
       end
     else

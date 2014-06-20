@@ -12,6 +12,7 @@
 class Rep < ActiveRecord::Base
   belongs_to :user
   belongs_to :party
+  has_many :answers
 
   validates_uniqueness_of :user_id
 

@@ -6,7 +6,7 @@ class PartyPolicy < ApplicationPolicy
   end
 
   def new_reps?
-    user && (user.is_admin? || user_is_rep?)
+    user && (user.is_admin? || user_is_party_rep?)
   end
 
   def invite_reps?
@@ -23,7 +23,7 @@ class PartyPolicy < ApplicationPolicy
 
   private
 
-  def user_is_rep?
+  def user_is_party_rep?
     @record.rep_users.exists?(id: user.id)
   end
 end
