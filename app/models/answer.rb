@@ -10,14 +10,6 @@
 #  updated_at  :datetime
 #
 
-class AlreadyAnsweredValidator < ActiveModel::Validator
-  def validate(record)
-    if Question.has_answer_from_party?(record.question, record.rep.party)
-      record.errors[:base] << "This question has already been answered by the party."
-    end
-  end
-end
-
 class Answer < ActiveRecord::Base
 
   belongs_to :rep
@@ -27,7 +19,7 @@ class Answer < ActiveRecord::Base
   validates_presence_of :question
   validates_presence_of :body
   validates_uniqueness_of :rep_id, scope: [:question_id]
-  validates_with AlreadyAnsweredValidator
+  validate :one_answer_per_party
 
   def rep_name
     rep.name
@@ -40,4 +32,11 @@ class Answer < ActiveRecord::Base
   def rep_authorisation
     rep.authorisation
   end
+
+  private
+    def one_answer_per_party
+      if Question.has_answer_from_party?(question, rep.party)
+        errors.add(:rep, "This question has already been answered by the party.")
+      end
+    end
 end
