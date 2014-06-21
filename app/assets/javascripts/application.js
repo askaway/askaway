@@ -13,5 +13,6 @@
 //= require jquery_ujs
 //= require angular
 //= require bootstrap
+//= require ng-infinite-scroll.min
 //= require main
 //= require controllers/questions
