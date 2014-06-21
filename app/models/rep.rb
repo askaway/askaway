@@ -17,4 +17,5 @@ class Rep < ActiveRecord::Base
   validates_uniqueness_of :user_id
 
   delegate :name, to: :user, prefix: :user
+  delegate :name, to: :user
 end

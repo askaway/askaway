@@ -57,15 +57,8 @@ class QuestionsController < ApplicationController
   end
 
   def show_answer_form?
-    user_is_rep? && !party_has_already_answered?
+    current_user.is_rep? &&
+      !Question.has_answer_from_party?(@question, current_user.party)
   end
   helper_method :show_answer_form?
-
-  def user_is_rep?
-    Rep.exists?(user_id: current_user.try(:id))
-  end
-
-  def party_has_already_answered?
-    QuestionQueries.has_answer_from_party?(@question, current_user.rep.party)
-  end
 end

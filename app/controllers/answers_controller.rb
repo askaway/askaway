@@ -10,7 +10,7 @@ class AnswersController < ApplicationController
     if answer.save
       flash[:notice] = 'Answer posted.'
     else
-      flash[:alert] = 'Could not post answer.'
+      flash[:alert] = 'Could not post answer. It may have already been answered by someone from your party.'
     end
     redirect_to question
   end
