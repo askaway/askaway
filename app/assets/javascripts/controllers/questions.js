@@ -8,12 +8,12 @@ askaway.controller('QuestionsCtrl', ['$scope', '$http', function( $scope, $http 
 
     if (question.vote_id) {
       $http.delete('/votes/' + question.vote_id).success(function(vote) {
-        question.vote_count--;
+        question.votes_count--;
         question.vote_id = undefined;
       });
     } else {
       $http.post('/questions/' + question.id + '/votes').success(function(vote) {
-        question.vote_count++;
+        question.votes_count++;
         question.vote_id = vote.id;
       });
     }
