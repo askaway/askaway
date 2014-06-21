@@ -5,7 +5,7 @@
       %li.question.list-group-item.list-group-item-clickable(ng-repeat="question in questionList")
         .row
           .col-xs-1.question-up-vote
-            %i.fa.fa-chevron-up(ng-class="{'fa-chevron-up-voted': question.vote_id}" ng-click="toggleVote()")
+            %i.fa.fa-chevron-up(id="vote-for-{{question.id}}" ng-class="{'fa-chevron-up-voted': question.vote_id}" ng-click="toggleVote()")
             .question-up-vote-count {{question.votes_count}}
           .col-xs-11
             %a.list-group-item-clickable-header(href="/questions/{{question.id}}") {{question.body}}
