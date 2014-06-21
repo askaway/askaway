@@ -1,5 +1,17 @@
 collection @questions
 attributes :answers_count, :body, :comments_count, :id, :is_anonymous, :votes_count, :user_id
+child(:answers) { 
+  attributes :body
+  node(:created_at) { |answer|
+    time_ago_in_words(answer.created_at)
+  }
+  node(:rep) { |answer|
+    answer.rep.user_name
+  }
+  node(:party) { |answer|
+    answer.rep.party.name
+  }
+}
 node(:user) { |question| 
   if question.is_anonymous? 
     "Anonymous"
