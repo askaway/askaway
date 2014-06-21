@@ -24,7 +24,9 @@ Askaway::Application.routes.draw do
   resources :questions, only: [:show, :new, :create] do
     resources :comments, only: :create
     resources :votes, only: :create
+    resources :answers, only: :create
   end
+
 
   resources :votes, only: :destroy
 

@@ -31,6 +31,16 @@ class Question < ActiveRecord::Base
   scope :trending, -> { order("ranking(questions.created_at, questions.votes_count) DESC") }
   scope :not_anonymous, -> { where('is_anonymous IS NOT TRUE') }
 
+  class << self
+    def has_answer_from_party?(question, party)
+      question.answers.joins(:rep).where("reps.party_id = ?", party.id).exists?
+    end
+  end
+
+  def name
+    body
+  end
+
   def user_name
     if is_anonymous?
       'Anonymous'

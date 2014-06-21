@@ -12,8 +12,10 @@
 class Rep < ActiveRecord::Base
   belongs_to :user
   belongs_to :party
+  has_many :answers
 
   validates_uniqueness_of :user_id
 
   delegate :name, to: :user, prefix: :user
+  delegate :name, to: :user
 end

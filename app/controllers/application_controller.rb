@@ -40,12 +40,12 @@ class ApplicationController < ActionController::Base
   end
 
   def user_not_authorized
-    flash[:error] = "Sorry, looks like you don't have permission to do that."
+    flash[:alert] = "Sorry, looks like you don't have permission to do that."
     redirect_to(request.referrer || root_path)
   end
 
   def verify_authorized
-    super unless (inside_devise? || inside_invitations?)
+    super unless (inside_devise? || inside_invitations? || inside_active_admin?)
   end
 
   def inside_devise?
@@ -54,5 +54,9 @@ class ApplicationController < ActionController::Base
 
   def inside_invitations?
     controller_name == 'invitations'
+  end
+
+  def inside_active_admin?
+    self.class.superclass.superclass.name == 'ActiveAdmin::BaseController'
   end
 end

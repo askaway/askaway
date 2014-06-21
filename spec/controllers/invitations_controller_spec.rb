@@ -30,7 +30,7 @@ RSpec.describe InvitationsController, :type => :controller do
             get :show, id: invitation.token
           end
           it { expect(response).to redirect_to(root_path) }
-          it { expect(flash[:alert]).to match("Could not accept invitation. Looks like you may already be a member of #{invitation.invitable.name}") }
+          it { expect(flash[:alert]).to match("Could not accept invitation. You might already be a member of #{invitation.invitable.name}") }
         end
       end
     end

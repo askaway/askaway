@@ -10,8 +10,10 @@
         = image_tag "logotype.png", alt: 'Ask Away', class: 'navbar-brand-img'
     .collapse.navbar-collapse
       %ul.nav.navbar-nav
-        %li
-          = link_to 'Newest', new_questions_path
+        %li= link_to 'Trending', root_path
+        %li= link_to 'Newest', new_questions_path
+        - if current_user.try(:is_rep?)
+          %li= link_to current_user.rep.party.name, current_user.rep.party
       %ul.nav.navbar-nav.navbar-right
         - if current_user
           %li

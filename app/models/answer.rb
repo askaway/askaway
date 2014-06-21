@@ -10,6 +10,14 @@
 #  updated_at  :datetime
 #
 
+class AlreadyAnsweredValidator < ActiveModel::Validator
+  def validate(record)
+    if Question.has_answer_from_party?(record.question, record.rep.party)
+      record.errors[:base] << "This question has already been answered by the party."
+    end
+  end
+end
+
 class Answer < ActiveRecord::Base
 
   belongs_to :rep
@@ -19,14 +27,7 @@ class Answer < ActiveRecord::Base
   validates_presence_of :question
   validates_presence_of :body
   validates_uniqueness_of :rep_id, scope: [:question_id]
-
-  def self.shuffled
-    if ActiveRecord::Base.connection.adapter_name == "mysql"
-      order("RAND()")
-    else
-      order("RANDOM()")
-    end
-  end
+  validates_with AlreadyAnsweredValidator
 
   def rep_name
     rep.name

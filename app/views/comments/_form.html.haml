@@ -1,3 +1,7 @@
-= simple_form_for [@question, @comment] do |f|
-  = f.input :body, placeholder: "Join the conversation...", label: false
-  = f.button :submit, 'Post comment', class: "btn btn-primary btn-ask", data: {disable_with: 'Post comment'}
+%div.media
+  %span.pull-left
+    %img.media-object{src: current_user.gravatar_url }
+  %div.media-body
+    = simple_form_for [@question, @comment] do |f|
+      = f.input :body, placeholder: "Join the conversation...", label: false
+      = f.button :submit, 'Post comment', class: "btn btn-primary", data: {disable_with: 'Post comment'}
