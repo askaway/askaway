@@ -31,7 +31,7 @@ askaway.controller('QuestionsCtrl', ['$scope', '$http', function( $scope, $http 
   };
 
   $scope.toggleQuestion = function(e) {
-    if (e.target.nodeName !== 'A') {
+    if ($(e.target).closest('a').length === 0) {
       this.question.expanded = !this.question.expanded;
     }
   };
