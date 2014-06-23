@@ -1,18 +1,17 @@
 ActiveAdmin.register Question do
-  permit_params :body, :email, :name, :is_anonymous, :topic_id
+  permit_params :body, :topic_id
 
   index do
     selectable_column
     column :body
-    column :user
-    column "Answer" do |question|
-      link_to "Answer", new_admin_answer_path(question_id: question.id)
+    column :user do |question|
+      link_to question.user.name, question.user
     end
     actions
   end
 
   form do |f|
-    f.inputs :body, :user, :topic
+    f.inputs :body, :topic
     f.actions
   end
 end

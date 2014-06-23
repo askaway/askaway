@@ -12,7 +12,7 @@
 
 class Answer < ActiveRecord::Base
 
-  belongs_to :rep
+  belongs_to :rep, inverse_of: :answers
   belongs_to :question, inverse_of: :answers, touch: true, counter_cache: true
 
   validates_presence_of :rep
