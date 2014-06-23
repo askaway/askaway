@@ -3,7 +3,7 @@ Given(/^there is a question$/) do
 end
 
 When(/^I click on the vote arrow$/) do
-  click_on "vote-for-#{@question.id}"
+  find("#vote-for-#{@question.id}").click
 end
 
 Then(/^I should see the vote number increase by one$/) do

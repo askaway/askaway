@@ -1,17 +1,15 @@
-.question {
-}
 .question-up-vote {
   text-align: center;
   padding: 5px 0 0 12px;
-}
-.question-up-vote a .fa-chevron-up {
-  color: #888;
-}
-.question-up-vote a .fa-chevron-up:hover {
-  color: #333;
-}
-.question-up-vote a .fa-chevron-up.fa-chevron-up-voted {
-  color: #FE7A15;
+  .fa-chevron-up {
+    color: #888;
+    &:hover {
+      color: #333;
+    }
+    &.fa-chevron-up-voted {
+      color: #FE7A15;
+    }
+  }
 }
 .question-up-vote-count {
   color: $gray-light;
@@ -22,5 +20,5 @@
   line-height: 1.4;
   a:hover {
     text-decoration: none;
-    }
+  }
 }

@@ -18,7 +18,7 @@ describe VotesController, :type => :controller do
     end
 
     it { expect(question_voter).to have_received(:execute!) }
-    it { expect(response).to redirect_to(root_path) }
+    it { expect(response).to be_successful }
   end
 
   describe "DELETE #destroy" do
@@ -33,6 +33,6 @@ describe VotesController, :type => :controller do
     end
 
     it { expect(vote).to have_received(:destroy!) }
-    it { expect(response).to redirect_to(root_path) }
+    it { expect(response).to be_successful }
   end
 end

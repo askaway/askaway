@@ -29,6 +29,7 @@ gem 'sinatra', '>= 1.3.0', :require => nil
 gem 'pundit'
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
+gem 'rabl'
 
 group :development do
   gem 'thin'
