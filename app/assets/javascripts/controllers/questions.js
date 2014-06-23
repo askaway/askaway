@@ -12,10 +12,16 @@ askaway.controller('QuestionsCtrl', ['$scope', '$http', function( $scope, $http 
         question.vote_id = undefined;
       });
     } else {
-      $http.post('/questions/' + question.id + '/votes').success(function(vote) {
-        question.votes_count++;
-        question.vote_id = vote.id;
-      });
+      $http.post('/questions/' + question.id + '/votes.json')
+        .success(function(vote) {
+          question.votes_count++;
+          question.vote_id = vote.id;
+        })
+        .error(function(data, status) {
+          if (status === 401) {
+            $('#login-modal').modal('show');
+          }
+        });
     }
   };
 }]);
