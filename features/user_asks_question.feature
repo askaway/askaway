@@ -3,6 +3,7 @@ Feature: User asks question
   I want to ask the reps a question
   So that I can find out if they care about the same things as me
 
+  @javascript
   Scenario: User asks question
     Given I am logged in
     When I visit the home page

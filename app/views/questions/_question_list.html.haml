@@ -2,7 +2,7 @@
   .col-xs-12.col-md-8.col-md-offset-2
     %h3.page-heading= heading
     %ul.list-group.question-list{ng_controller: 'QuestionsCtrl'}
-      %li.question.list-group-item.list-group-item-clickable(ng-repeat="question in questionList")
+      %li.question.list-group-item.list-group-item-clickable(ng-repeat="question in questionList" id="question-{{question.id}}")
         .row
           = render 'question_up_vote'
           .col-xs-11
