@@ -8,6 +8,12 @@ child(:answers) {
   node(:rep) { |answer|
     answer.rep.user_name
   }
+  node(:user_id) { |answer|
+    answer.rep.user.id
+  }
+  node(:rep_gravatar) { |answer|
+    answer.rep.user.gravatar_url
+  }
   node(:party) { |answer|
     answer.rep.party.name
   }

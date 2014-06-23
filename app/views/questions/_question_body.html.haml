@@ -1,0 +1,6 @@
+.col-xs-10.form-group
+  .list-group-item-clickable-header {{question.body}}
+  .text-detail 
+    {{question.created_at}} ago by 
+    %span(ng-show="question.is_anonymous") {{question.user}}
+    %a.emphasized(ng-hide="question.is_anonymous" href="/users/{{question.user_id}}") {{question.user}}

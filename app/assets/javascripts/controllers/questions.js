@@ -29,6 +29,12 @@ askaway.controller('QuestionsCtrl', ['$scope', '$http', function( $scope, $http 
         });
     }
   };
+
+  $scope.toggleQuestion = function(e) {
+    if (e.target.nodeName !== 'A') {
+      this.question.expanded = !this.question.expanded;
+    }
+  };
 }]);
 
 askaway.controller( 'QuestionFormCtrl', ['$scope', function( $scope ) {

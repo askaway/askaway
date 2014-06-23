@@ -1,0 +1,16 @@
+.row(ng-show="question.answers_count > 0")
+  .col-xs-11.col-xs-offset-1(ng-hide="question.expanded")
+    .answers-preview
+      .answers-preview-count.text-detail(count="question.answers_count" when="{ '1': '1 answer'}, 'other': '{} answers'")
+      %ul.list-inline.answers-preview-avatars
+        %li.answers-preview-avatar(ng-repeat="answer in question.answers")
+  .col-xs-11.col-xs-offset-1(ng-show="question.expanded")
+    %ul.list-group
+      %li.list-group-item(ng-repeat="answer in question.answers")
+        %div.media
+          %span.pull-left
+            %img.media-object(ng-src="{{answer.rep_gravatar}}")
+          .media-body
+            .list-group-item-heading
+              %a(href="/user/{{answer.user_id}}") {{answer.rep}}
+            .list-group-item-text.comment-body {{answer.body}}
