@@ -32,4 +32,10 @@ class User < ActiveRecord::Base
   has_many :questions
   has_many :votes
   has_one :rep
+
+  delegate :party, to: :rep, prefix: false
+
+  def is_rep?
+    Rep.exists?(user_id: id)
+  end
 end

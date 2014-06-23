@@ -19,14 +19,7 @@ class Answer < ActiveRecord::Base
   validates_presence_of :question
   validates_presence_of :body
   validates_uniqueness_of :rep_id, scope: [:question_id]
-
-  def self.shuffled
-    if ActiveRecord::Base.connection.adapter_name == "mysql"
-      order("RAND()")
-    else
-      order("RANDOM()")
-    end
-  end
+  validate :one_answer_per_party
 
   def rep_name
     rep.name
@@ -39,4 +32,11 @@ class Answer < ActiveRecord::Base
   def rep_authorisation
     rep.authorisation
   end
+
+  private
+    def one_answer_per_party
+      if Question.has_answer_from_party?(question, rep.party)
+        errors.add(:rep, "This question has already been answered by the party.")
+      end
+    end
 end

@@ -23,6 +23,9 @@ class QuestionsController < ApplicationController
     authorize @question
     @comment = Comment.new
     @comments = @question.comments.includes(:user).order(created_at: :desc)
+    if show_answer_form?
+      @new_answer = Answer.new
+    end
   end
 
   # POST /questions
@@ -52,4 +55,10 @@ class QuestionsController < ApplicationController
   def fetch_answers
     @answers = @question.answers
   end
+
+  def show_answer_form?
+    current_user.is_rep? &&
+      !Question.has_answer_from_party?(@question, current_user.party)
+  end
+  helper_method :show_answer_form?
 end

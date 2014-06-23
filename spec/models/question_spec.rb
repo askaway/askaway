@@ -23,6 +23,21 @@ describe Question, :type => :model do
     it { is_expected.to ensure_length_of(:body).is_at_most(140) }
   end
 
+  describe ".has_answer_from_party?(question, party)" do
+    let(:rep) { FactoryGirl.create(:rep) }
+    let(:question) { FactoryGirl.create(:question) }
+
+    it 'returns false if no rep from the party has answered the question' do
+      expect(Question.has_answer_from_party?(question, rep.party)).to eq(false)
+    end
+
+    it 'returns true if a rep from the party has answered the question' do
+      rep2 = FactoryGirl.create(:rep, party: rep.party)
+      answer = FactoryGirl.create(:answer, question: question, rep: rep2)
+      expect(Question.has_answer_from_party?(question, rep.party)).to eq(true)
+    end
+  end
+
   describe "topic" do
     it 'defaults to nil' do
       expect(question.topic).to eq(nil)
