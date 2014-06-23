@@ -21,6 +21,7 @@ askaway.controller('QuestionsCtrl', ['$scope', '$http', function( $scope, $http 
           if (status === 401) {
             $('#login-modal').modal('show');
           }
+          // FIXME handle other error statuses ... message box?
         });
     }
   };
