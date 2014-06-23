@@ -32,10 +32,9 @@ askaway.controller('QuestionsCtrl', ['$scope', '$http', function( $scope, $http 
 
   $scope.loadQuestions = function() {
     $scope.loadingQuestions = true;
-    $http.get('/trending.json?page=' + $scope.page).success(function(data) {
+    $http.get('/trending.json?page=' + $scope.page++).success(function(data) {
       var i = 0;
 
-      $scope.page++;
       $scope.loadingQuestions = false;
       for (; i < data.length; i++) {
         $scope.questionList.push(data[i]);
