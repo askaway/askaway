@@ -16,7 +16,7 @@ Given(/^I am logged in as an admin$/) do
 end
 
 Then(/^I should be asked to log in$/) do
-  expect(page).to have_css('body.sessions.new')
+  expect(page).to have_css('#login-modal.modal.in')
 end
 
 Given(/^I am on the home page$/) do
