@@ -15,10 +15,11 @@
 #
 
 class Question < ActiveRecord::Base
-  has_many :answers, inverse_of: :question
-  has_many :comments, inverse_of: :question
-  belongs_to :topic
-  belongs_to :user
+  has_many :answers, inverse_of: :question, dependent: :destroy
+  has_many :comments, inverse_of: :question, dependent: :destroy
+  has_many :votes, inverse_of: :question, dependent: :destroy
+  belongs_to :topic, inverse_of: :questions
+  belongs_to :user, inverse_of: :questions
 
   validates_presence_of :body, :topic, :user
   validates_length_of :body, maximum: 140

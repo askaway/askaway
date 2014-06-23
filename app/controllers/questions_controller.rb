@@ -3,6 +3,8 @@ class QuestionsController < ApplicationController
   before_filter :fetch_question, only: [:show]
   before_filter :fetch_answers, only: [:show]
 
+  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+
   def trending
     authorize Question
     @questions = Question.trending.page(params[:page])
@@ -43,22 +45,26 @@ class QuestionsController < ApplicationController
   end
 
   private
+    def question_params
+      params.require(:question).permit(:body, :topic_id, :is_anonymous)
+    end
 
-  def question_params
-    params.require(:question).permit(:body, :topic_id, :is_anonymous)
-  end
+    def fetch_question
+      @question = Question.includes(answers: :rep).find(params[:id])
+    end
 
-  def fetch_question
-    @question = Question.includes(answers: :rep).find(params[:id])
-  end
+    def fetch_answers
+      @answers = @question.answers
+    end
 
-  def fetch_answers
-    @answers = @question.answers
-  end
+    def show_answer_form?
+      current_user.is_rep? &&
+        !Question.has_answer_from_party?(@question, current_user.party)
+    end
+    helper_method :show_answer_form?
 
-  def show_answer_form?
-    current_user.is_rep? &&
-      !Question.has_answer_from_party?(@question, current_user.party)
-  end
-  helper_method :show_answer_form?
+    def record_not_found
+      flash[:alert] = 'Could not find question.'
+      redirect_to(root_path)
+    end
 end

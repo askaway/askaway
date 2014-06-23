@@ -7,6 +7,16 @@ describe Question, :type => :model do
   let(:cool_q) { FactoryGirl.create :question, :created_at => DateTime.new(2014, 1, 1), :votes_count => 64 }
   let(:cold_q) { FactoryGirl.create :question, :created_at => DateTime.new(2014, 1, 1), :votes_count => 0 }
 
+  describe '#destroy' do
+    [:answer, :comment, :vote].each do |association|
+      it "destroys #{association}s" do
+        association = FactoryGirl.create(association)
+        association.question.destroy
+        expect{association.reload}.to raise_error(ActiveRecord::RecordNotFound)
+      end
+    end
+  end
+
   describe 'relations' do
     it { is_expected.to have_many :answers }
 
