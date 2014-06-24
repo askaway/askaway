@@ -1,7 +1,7 @@
 askaway.controller('QuestionsCtrl', ['$scope', '$http', function( $scope, $http ) {
-  $http.get('/trending.json').success(function(data) {
-    $scope.questionList = data;
-  });
+  $scope.loadingQuestions = false;
+  $scope.questionList = [];
+  $scope.page = 1;
 
   $scope.toggleVote = function() {
     var question = this.question;
@@ -28,6 +28,18 @@ askaway.controller('QuestionsCtrl', ['$scope', '$http', function( $scope, $http 
           // FIXME handle other error statuses ... message box?
         });
     }
+  };
+
+  $scope.loadQuestions = function() {
+    $scope.loadingQuestions = true;
+    $http.get('/trending.json?page=' + $scope.page++).success(function(data) {
+      var i = 0;
+
+      $scope.loadingQuestions = false;
+      for (; i < data.length; i++) {
+        $scope.questionList.push(data[i]);
+      }
+    });
   };
 }]);
 

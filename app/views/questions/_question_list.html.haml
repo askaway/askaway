@@ -1,7 +1,7 @@
 .row
   .col-xs-12.col-md-8.col-md-offset-2
     %h3.page-heading= heading
-    %ul.list-group.question-list{ng_controller: 'QuestionsCtrl'}
+    %ul.list-group.question-list(ng-controller="QuestionsCtrl" infinite-scroll="loadQuestions()" infinite-scroll-disabled="loadingQuestions")
       %li.question.list-group-item.list-group-item-clickable(ng-repeat="question in questionList" id="question-{{question.id}}")
         .row
           = render 'question_up_vote'
@@ -17,6 +17,5 @@
               .answers-preview-count.text-detail(count="question.answers_count" when="{ '1': '1 answer'}, 'other': '{} answers'")
               %ul.list-inline.answers-preview-avatars
                 %li.answers-preview-avatar(ng-repeat="answer in question.answers")
-
-    .text-center
-      = paginate @questions, theme: 'twitter-bootstrap-3'
+    .text-center(ng-show="loadingQuestions")
+      Loading more...
