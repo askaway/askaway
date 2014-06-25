@@ -1,7 +1,7 @@
 .row
   .col-xs-12.col-md-8.col-md-offset-2
     %h3.page-heading= heading
-    %ul.list-group.question-list{ng_controller: 'QuestionsCtrl'}
+    %ul.list-group.question-list(ng-controller='QuestionsCtrl' infinite-scroll="loadQuestions()" infinite-scroll-disabled="loadingQuestions")
       %li.question.list-group-item.list-group-item-clickable(ng-repeat="question in questionList" id="question-{{question.id}}" ng-class="{'question-expanded': question.expanded}" ng-click="toggleQuestion($event)")
         .row
           .col-xs-1
@@ -9,5 +9,5 @@
           = render 'question_body'
         = render 'asker'
         = render 'answers'
-    .text-center
-      = paginate @questions, theme: 'twitter-bootstrap-3'
+    .text-center(ng-show="loadingQuestions")
+      Loading more...
