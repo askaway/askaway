@@ -2,8 +2,8 @@
   %span.pull-left
     %img.media-object{src: comment.user.gravatar_url }
   %div.media-body
-    .comment-user-name= comment.user.name
+    .comment-user-name= link_to comment.user.name, comment.user
     .text-detail
-      %small= time_ago_in_words(comment.created_at)
+      %small= time_ago_in_words(comment.created_at) + " ago"
     %p.comment-body= comment.body
 

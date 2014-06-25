@@ -1,6 +1,6 @@
-.col-xs-11
-  .list-group-item-clickable-header {{question.body}}
-  .text-detail
-    {{question.created_at}} ago by
-    %span(ng-show="question.is_anonymous") {{question.user}}
-    %a.emphasized(ng-hide="question.is_anonymous" href="/users/{{question.user_id}}") {{question.user}}
+.col-xs-1
+  %a.question-asker-avatar(ng-href='{{question.user_path}}')
+    %img(ng-src="{{question.user_avatar}}")
+.col-xs-10
+  .question-body
+    .list-group-item-clickable-header {{question.body}}

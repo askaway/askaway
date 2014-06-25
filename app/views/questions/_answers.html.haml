@@ -1,25 +1,35 @@
 .row(ng-show="question.answers_count > 0")
-  .answers-preview
-    .col-xs-8.col-xs-offset-1
-      .answers-preview-count
-        %span.answers-preview-count-number
-          {{ question.answers_count }}
-        %span.answers-preview-count-text
-          {{ (question.answers_count == 1) ? 'Answer' : 'Answers' }}
-      %ul.list-inline.answers-preview-avatars
-        %li.answers-preview-avatar(ng-repeat="answer in question.answers")
-          %img(ng-src="{{answer.rep_gravatar}}")
-    .col-xs-3.answers-preview-expand.text-detail
-      %a.fake-link.answers-preview-expand-inner
-        {{ (question.expanded) ? 'Collapse' : 'Expand' }}
+  .col-xs-10.col-xs-offset-2
+    .question-footer
+      .row
+        .col-xs-10
+          .answers-preview
+            .answers-preview-count
+              %span.answers-preview-count-number
+                {{question.answers_count}}
+              %span.answers-preview-count-text
+                {{(question.answers_count == 1) ? 'Answer' : 'Answers'}}
+            %ul.list-inline.answers-preview-avatars
+              %li.answers-preview-avatar(ng-repeat="answer in question.answers")
+                %img(ng-src="{{answer.rep_avatar}}")
+        .col-xs-2.answers-preview-expand.text-detail
+          %a.fake-link.answers-preview-expand-inner
+            {{(question.expanded) ? 'Collapse' : 'Expand'}}
 
-  .col-xs-11.col-xs-offset-1(ng-show="question.expanded")
-    %ul.list-group
-      %li.list-group-item(ng-repeat="answer in question.answers")
+  .col-xs-offset-1.col-xs-11(ng-show="question.expanded")
+    %ul.answers-expanded
+      %li.answers-expanded-item(ng-repeat="answer in question.answers")
         %div.media
           %span.pull-left
-            %img.media-object(ng-src="{{answer.rep_gravatar}}")
+            %img.media-object.answers-expanded-item-avatar(ng-src="{{answer.rep_avatar}}")
           .media-body
             .list-group-item-heading
-              %a(href="/users/{{answer.user_id}}") {{answer.rep}}
-            .list-group-item-text.comment-body {{answer.body}}
+              %a(ng-href="{{answer.user_path}}") {{answer.rep}}
+              %a(ng-href="{{answer.party_path}}") ({{answer.party}})
+            .list-group-item-text {{answer.body}}
+
+  .col-xs-12
+    %a.btn.btn-info.btn-xs.btn-block(href="/questions/{{question.id}}" ng-show="question.expanded")
+      %i.fa.fa-arrow-circle-right
+      More
+

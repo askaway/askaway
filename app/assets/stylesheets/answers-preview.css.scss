@@ -30,7 +30,7 @@ $answers-preview-height: 30px;
   line-height: $answers-preview-height;
 }
 .answers-preview-avatar img {
-  border-radius: 50%;
+  border-radius: $avatar-radius;
   width: $answers-preview-height;
   height: $answers-preview-height;
   margin: 0 3px;
@@ -44,4 +44,8 @@ $answers-preview-height: 30px;
   bottom: 0px;
   right: 15px;
 }
+.list-group-item-clickable:hover .answers-preview-expand-inner {
+  color: $link-color;
+}
+
 

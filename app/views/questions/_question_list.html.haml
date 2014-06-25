@@ -2,13 +2,12 @@
   .col-xs-12.col-md-8.col-md-offset-2
     %h3.page-heading= heading
     %ul.list-group.question-list{ng_controller: 'QuestionsCtrl'}
-      %li.question.list-group-item.list-group-item-clickable(ng-repeat="question in questionList" id="question-{{question.id}}" ng-click="toggleQuestion($event)")
+      %li.question.list-group-item.list-group-item-clickable(ng-repeat="question in questionList" id="question-{{question.id}}" ng-class="{'question-expanded': question.expanded}" ng-click="toggleQuestion($event)")
         .row
-          = render 'question_up_vote'
+          .col-xs-1
+            = render 'question_up_vote'
           = render 'question_body'
+        = render 'asker'
         = render 'answers'
-        %a.btn.btn-info.btn-xs.btn-block(href="/questions/{{question.id}}" ng-show="question.expanded")
-          %i.fa.fa-arrow-circle-right
-          More
     .text-center
       = paginate @questions, theme: 'twitter-bootstrap-3'

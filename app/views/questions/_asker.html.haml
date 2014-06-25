@@ -1,0 +1,9 @@
+.row
+  .col-xs-offset-2.col-xs-10
+    .text-detail
+      asked by
+      %span(ng-show="question.is_anonymous") {{question.user}}
+      %a.emphasized(ng-hide="question.is_anonymous" ng-href="{{question.user_path}}")
+        {{question.user}}
+      {{question.created_at}} ago ·
+      %a(ng-href="{{question.path}}") {{question.comments_count}} comments

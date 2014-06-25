@@ -1,0 +1,24 @@
+ul.answers-expanded {
+  padding-top: 20px;
+  padding-left: 0px
+}
+.answers-expanded-item {
+  padding-bottom: 20px;
+}
+.answers-expanded-item-avatar {
+  margin-top: 3px;
+  border-radius: $avatar-radius;
+  height: 40px;
+  width: 40px;
+}
+.answers-expanded {
+  .list-group-item-heading, .list-group-item-text {
+    font-size: $font-size-small;
+  }
+  .list-group-item-heading {
+    font-weight: 500;
+  }
+  .list-group-item-text {
+    font-weight: 300;
+  }
+}

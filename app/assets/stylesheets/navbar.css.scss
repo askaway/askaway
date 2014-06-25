@@ -2,7 +2,13 @@
   background-color: white;
 
   .user-settings-dropdown {
-    padding: 9px;
+    padding: 6px;
+    padding-left: 8px;
+    img {
+      border-radius: 4px;
+      width: 38px;
+      height: 38px;
+    }
   }
   .navbar-brand {
     padding: 10px;

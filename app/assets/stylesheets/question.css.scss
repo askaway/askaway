@@ -1,3 +1,6 @@
+.question {
+  font-family: $font-family-helvetica;
+}
 .question-up-vote {
   text-align: center;
   padding: 5px 0 0 12px;
@@ -14,14 +17,29 @@
 .question-up-vote-count {
   color: $gray-light;
 }
-.question-body {
-  font-size: $font-size-medium-large;
-  font-weight: 200;
-  line-height: 1.4;
-  a:hover {
-    text-decoration: none;
+.question-asker-avatar {
+  display: inline-block;
+  margin-top: 6px;
+  img {
+    border-radius: $avatar-radius;
+    width: 40px;
+    height: 40px;
   }
 }
+.question-body {
+  font-size: $font-size-medium-large;
+  font-weight: 300;
+  line-height: 1.4;
+}
 .question.list-group-item {
-  padding: 20px 20px 20px 15px;
+  padding: 20px 20px 16px 15px;
+}
+.question-expanded {
+  &.list-group-item-clickable:hover {
+    background-color: white;
+  }
+  .question-footer {
+    border-bottom: 1px solid $gray-extra-light;
+    padding-bottom: 16px;
+  }
 }
