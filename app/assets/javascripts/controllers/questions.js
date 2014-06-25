@@ -31,7 +31,8 @@ askaway.controller('QuestionsCtrl', ['$scope', '$http', function( $scope, $http 
   };
 
   $scope.toggleQuestion = function(e) {
-    if ($(e.target).closest('a').length === 0) {
+    link = $(e.target).closest('a')
+    if ((link.length === 0) || link.hasClass('fake-link')) {
       this.question.expanded = !this.question.expanded;
     }
   };

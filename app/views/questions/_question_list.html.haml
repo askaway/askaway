@@ -6,9 +6,8 @@
         .row
           = render 'question_up_vote'
           = render 'question_body'
-          %i.fa( ng-class="{'fa-chevron-right': !question.expanded, 'fa-chevron-down': question.expanded}")
         = render 'answers'
-        %a.btn.btn-info.btn-xs.btn-block(href="/questions/{{question.id}}" ng-show="question.expanded") 
+        %a.btn.btn-info.btn-xs.btn-block(href="/questions/{{question.id}}" ng-show="question.expanded")
           %i.fa.fa-arrow-circle-right
           More
     .text-center

@@ -1,3 +1,5 @@
+$answers-preview-height: 30px;
+
 .answers-preview {
   @include clearfix();
   padding-top: 8px;
@@ -7,9 +9,8 @@
   float: left;
   padding-right: 10px;
   border-right: 1px solid $gray-extra-light;
-  line-height: 31px;
-  height: 36px;
-  margin-bottom: 4px;
+  line-height: $answers-preview-height + 1px;
+  height: $answers-preview-height + 6px;
 }
 .answers-preview-count-number {
   vertical-align: middle;
@@ -26,11 +27,21 @@
 .answers-preview-avatars {
   float: left;
   margin-left: 5px;
-  line-height: 30px;
+  line-height: $answers-preview-height;
 }
 .answers-preview-avatar img {
   border-radius: 50%;
-  width: 30px;
-  height: 30px;
+  width: $answers-preview-height;
+  height: $answers-preview-height;
   margin: 0 3px;
 }
+.answers-preview-expand {
+  text-align: right;
+  height: $answers-preview-height + 10px;
+}
+.answers-preview-expand-inner {
+  position: absolute;
+  bottom: 0px;
+  right: 15px;
+}
+

@@ -1,6 +1,6 @@
 .row(ng-show="question.answers_count > 0")
-  .col-xs-11.col-xs-offset-1(ng-hide="question.expanded")
-    .answers-preview
+  .answers-preview
+    .col-xs-8.col-xs-offset-1
       .answers-preview-count
         %span.answers-preview-count-number
           {{ question.answers_count }}
@@ -9,6 +9,10 @@
       %ul.list-inline.answers-preview-avatars
         %li.answers-preview-avatar(ng-repeat="answer in question.answers")
           %img(ng-src="{{answer.rep_gravatar}}")
+    .col-xs-3.answers-preview-expand.text-detail
+      %a.fake-link.answers-preview-expand-inner
+        {{ (question.expanded) ? 'Collapse' : 'Expand' }}
+
   .col-xs-11.col-xs-offset-1(ng-show="question.expanded")
     %ul.list-group
       %li.list-group-item(ng-repeat="answer in question.answers")
