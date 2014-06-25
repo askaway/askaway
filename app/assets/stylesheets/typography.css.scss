@@ -16,7 +16,7 @@ h3, h4, h5, h6 {
 
 .text-detail {
   color: $gray-light;
-  font-size: 85%;
+  font-size: $font-size-small;
   line-height: 1.5em;
   font-weight: 300;
   a {

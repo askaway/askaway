@@ -5,18 +5,32 @@
 }
 .answers-preview-count {
   float: left;
+  padding-right: 10px;
+  border-right: 1px solid $gray-extra-light;
+  line-height: 31px;
+  height: 36px;
+  margin-bottom: 4px;
 }
-.answers-preview-count.text-detail {
-  line-height: 2em;
+.answers-preview-count-number {
+  vertical-align: middle;
+  font-size: $font-size-medium-large;
+  font-weight: 300;
+}
+.answers-preview-count-text {
+  vertical-align: middle;
+  padding-left: 2px;
+  font-size: $font-size-extra-small;
+  color: $gray-light;
+  font-weight: 300;
 }
 .answers-preview-avatars {
   float: left;
   margin-left: 5px;
+  line-height: 30px;
 }
-.answers-preview-avatar {
-  border: 1px solid black;
+.answers-preview-avatar img {
   border-radius: 50%;
-  width: $font-size-large + 7;
-  height: $font-size-large + 7;
+  width: 30px;
+  height: 30px;
   margin: 0 3px;
 }
