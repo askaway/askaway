@@ -25,7 +25,7 @@
                   = f.submit 'Post answer', id: 'post-answer-btn', class: 'btn btn-primary', data: { disable_with: 'Post answer' }
         - @answers.each do |answer|
           %li.list-group-item
-            %div.media
+            %div.media.answer
               %span.pull-left
                 %img.media-object{src: answer.rep.user.gravatar_url }
               %div.media-body

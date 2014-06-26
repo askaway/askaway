@@ -1,3 +1,5 @@
+$answers-preview-height: 30px;
+
 .answers-preview {
   @include clearfix();
   padding-top: 8px;
@@ -5,18 +7,45 @@
 }
 .answers-preview-count {
   float: left;
+  padding-right: 10px;
+  border-right: 1px solid $gray-extra-light;
+  line-height: $answers-preview-height + 1px;
+  height: $answers-preview-height + 6px;
 }
-.answers-preview-count.text-detail {
-  line-height: 2em;
+.answers-preview-count-number {
+  vertical-align: middle;
+  font-size: $font-size-medium-large;
+  font-weight: 300;
+}
+.answers-preview-count-text {
+  vertical-align: middle;
+  padding-left: 2px;
+  font-size: $font-size-extra-small;
+  color: $gray-light;
+  font-weight: 300;
 }
 .answers-preview-avatars {
   float: left;
   margin-left: 5px;
+  line-height: $answers-preview-height;
 }
-.answers-preview-avatar {
-  border: 1px solid black;
-  border-radius: 50%;
-  width: $font-size-large + 7;
-  height: $font-size-large + 7;
+.answers-preview-avatar img {
+  border-radius: $avatar-radius;
+  width: $answers-preview-height;
+  height: $answers-preview-height;
   margin: 0 3px;
 }
+.answers-preview-expand {
+  text-align: right;
+  height: $answers-preview-height + 10px;
+}
+.answers-preview-expand-inner {
+  position: absolute;
+  bottom: 0px;
+  right: 15px;
+}
+.list-group-item-clickable:hover .answers-preview-expand-inner {
+  color: $link-color;
+}
+
+

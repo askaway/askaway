@@ -21,6 +21,7 @@
 
 class User < ActiveRecord::Base
   include Gravtastic
+  # gravtastic size: 64, default: 'http://lorempixel.com/output/cats-q-c-64-64-3.jpg'
   gravtastic size: 64, default: :identicon
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

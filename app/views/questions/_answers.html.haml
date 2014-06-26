@@ -1,0 +1,41 @@
+%div(ng-show="question.answers_count > 0")
+  .row
+    .col-xs-10.col-xs-offset-2
+      .question-footer
+        .row
+          .col-xs-10
+            .answers-preview
+              .answers-preview-count
+                %span.answers-preview-count-number
+                  {{question.answers_count}}
+                %span.answers-preview-count-text
+                  {{(question.answers_count == 1) ? 'Answer' : 'Answers'}}
+              %ul.list-inline.answers-preview-avatars
+                %li.answers-preview-avatar(ng-repeat="answer in question.answers")
+                  %img(ng-src="{{answer.rep_avatar}}")
+          .col-xs-2.answers-preview-expand.text-detail
+            %a.question-toggle.answers-preview-expand-inner
+              {{(question.expanded) ? 'Collapse' : 'Expand'}}
+
+  .answers-expanded-container.slide-down(ng-show="question.expanded")
+    .row
+      .col-xs-offset-2.col-xs-10
+        %hr
+    .row
+      .col-xs-offset-1.col-xs-11
+        %ul.answers-expanded
+          %li.answers-expanded-item(ng-repeat="answer in question.answers")
+            %div.media
+              %span.pull-left
+                %img.media-object.answers-expanded-item-avatar(ng-src="{{answer.rep_avatar}}")
+              .media-body
+                .list-group-item-heading
+                  %a(ng-href="{{answer.user_path}}") {{answer.rep}}
+                  %a(ng-href="{{answer.party_path}}") ({{answer.party}})
+                .list-group-item-text {{answer.body}}
+
+      .col-xs-12
+        %a.btn.btn-info.btn-xs.btn-block(href="/questions/{{question.id}}")
+          %i.fa.fa-arrow-circle-right
+          More
+

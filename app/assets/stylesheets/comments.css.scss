@@ -1,3 +1,6 @@
+.comments {
+  font-family: $font-family-helvetica;
+}
 .comments-count {
   color: $gray-light;
   font-size: $font-size-small;
@@ -10,7 +13,7 @@
 
 .comment-user-name {
   font-size: $font-size-small;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .comment-body {
