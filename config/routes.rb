@@ -27,7 +27,7 @@ Askaway::Application.routes.draw do
     resources :answers, only: :create
   end
 
-
+  resources :comments, only: :destroy
   resources :votes, only: :destroy
 
   get 'new_questions', to: 'questions#new_questions'

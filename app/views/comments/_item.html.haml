@@ -4,6 +4,10 @@
   %div.media-body
     .comment-user-name= link_to comment.user.name, comment.user
     .text-detail
-      %small= time_ago_in_words(comment.created_at) + " ago"
+      %small
+        = time_ago_in_words(comment.created_at) + " ago"
+        - if current_user.try(:is_admin?)
+          ·
+          = link_to "Delete", comment, method: :delete
     %p.comment-body= comment.body
 

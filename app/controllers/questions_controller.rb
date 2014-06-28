@@ -58,7 +58,7 @@ class QuestionsController < ApplicationController
     end
 
     def show_answer_form?
-      current_user.is_rep? &&
+      current_user.try(:is_rep?) &&
         !Question.has_answer_from_party?(@question, current_user.party)
     end
     helper_method :show_answer_form?
