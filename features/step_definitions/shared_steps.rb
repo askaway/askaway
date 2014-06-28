@@ -47,3 +47,9 @@ Then(/^I should be redirected to the home page and told I don't have priviledges
   expect(current_path).to eq(root_path)
   expect(page).to have_content("Sorry, looks like you don't have permission to do that.")
 end
+
+Given(/^there is a question$/) do
+  @question = FactoryGirl.create(:question)
+end
+
+

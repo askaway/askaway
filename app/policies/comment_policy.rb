@@ -8,4 +8,8 @@ class CommentPolicy < ApplicationPolicy
   def create?
     true
   end
+
+  def destroy?
+    user.try(:is_admin?)
+  end
 end

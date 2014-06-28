@@ -13,6 +13,15 @@ class CommentsController < ApplicationController
     end
   end
 
+  def destroy
+    comment = Comment.find(params[:id])
+    question = comment.question
+    authorize comment
+    comment.destroy!
+    flash[:notice] = 'Comment deleted.'
+    redirect_to question
+  end
+
   private
 
   def fetch_question

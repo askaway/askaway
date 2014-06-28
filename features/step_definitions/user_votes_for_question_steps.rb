@@ -1,7 +1,3 @@
-Given(/^there is a question$/) do
-  @question = FactoryGirl.create(:question)
-end
-
 When(/^I click on the vote arrow$/) do
   find("#vote-for-#{@question.id}").click
 end
