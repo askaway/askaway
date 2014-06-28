@@ -15,17 +15,17 @@
 #
 
 class Question < ActiveRecord::Base
+  BODY_MAX_LENGTH = 140
+
   has_many :answers, inverse_of: :question, dependent: :destroy
   has_many :comments, inverse_of: :question, dependent: :destroy
   has_many :votes, inverse_of: :question, dependent: :destroy
   belongs_to :topic, inverse_of: :questions
   belongs_to :user, inverse_of: :questions
 
-  validates_presence_of :body, :topic, :user
-  validates_length_of :body, maximum: 140
+  validates_presence_of :body, :user
+  validates_length_of :body, maximum: BODY_MAX_LENGTH
   validates_numericality_of :votes_count, greater_than_or_equal_to: 0
-
-  before_validation :init_topic
 
   scope :answered, -> { joins(:answers).order('questions.answers_count DESC') }
   scope :unanswered, -> { where('questions.answers_count < 4') }
@@ -61,11 +61,5 @@ class Question < ActiveRecord::Base
     else
       record["ranking"].to_f
     end
-  end
-
-  private
-
-  def init_topic
-    self.topic ||= Topic.find_or_create_by(name: 'General')
   end
 end

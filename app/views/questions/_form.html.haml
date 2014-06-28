@@ -1,7 +1,6 @@
 %h2 Ask a question
 = simple_form_for(@question, html: { ng_controller: 'QuestionFormCtrl' } ) do |f|
   = f.input :body, placeholder: "Write your question...", label_html: {class: 'sr-only'},
-    input_html: { rows: 3, maxlength: 140, ng_model: 'question' }, as: :charlimited
-  = f.association :topic, as: :select, prompt: "Choose a topic", label_html: {class: 'sr-only'}
+    input_html: { rows: 3 }, as: :charlimited
   = f.input :is_anonymous, label: false, inline_label: 'Ask question anonymously'
   = f.submit "Ask question", class: 'btn btn-primary', data: {disable_with: 'Ask question'}

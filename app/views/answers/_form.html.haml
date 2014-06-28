@@ -1,0 +1,3 @@
+= simple_form_for([question, answer]) do |f|
+  = f.input :body, placeholder: 'Write your answer...', label_html: {class: 'sr-only'}, as: :charlimited
+  = f.submit 'Post answer', id: 'post-answer-btn', class: 'btn btn-primary', data: { disable_with: 'Post answer' }
