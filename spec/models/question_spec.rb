@@ -48,18 +48,6 @@ describe Question, :type => :model do
     end
   end
 
-  describe "topic" do
-    it 'defaults to nil' do
-      expect(question.topic).to eq(nil)
-    end
-
-    it 'is set to General if none is chosen' do
-      question.topic = nil
-      question.save
-      expect(question.topic.name).to eq('General')
-    end
-  end
-
   describe "hotness" do
     it 'has 0 hotness with no votes' do
       expect(cold_q.hotness).to eq(0)

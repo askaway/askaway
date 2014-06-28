@@ -20,9 +20,7 @@
               %span.pull-left
                 %img.media-object{src: current_user.gravatar_url }
               %div.media-body
-                = simple_form_for([@question, @new_answer]) do |f|
-                  = f.input :body, placeholder: 'Write your answer...', label_html: {class: 'sr-only'}
-                  = f.submit 'Post answer', id: 'post-answer-btn', class: 'btn btn-primary', data: { disable_with: 'Post answer' }
+                = render 'answers/form', question: @question, answer: @new_answer
         - @answers.each do |answer|
           %li.list-group-item
             %div.media.answer

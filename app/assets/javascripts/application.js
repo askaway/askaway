@@ -17,4 +17,5 @@
 //= require ng-infinite-scroll.min
 //= require main
 //= require animations
+//= require directives/charcounter
 //= require controllers/questions
