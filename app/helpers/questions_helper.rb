@@ -1,10 +1,23 @@
 module QuestionsHelper
   def current_user_has_voted_for?(question)
-    current_user && current_user.votes.where(question_id: question.id).exists?
+    if current_user
+      current_user.votes.where(question_id: question.id).exists?
+    else
+      votes = session[:votes]
+      votes ||= {}
+      votes.includes?(question.id)
+    end
   end
 
-  def current_user_vote_for(question)
-    current_user && current_user.votes.find_by(question_id: question.id)
+  def current_user_vote_id_for(question)
+    if current_user
+      vote = current_user.votes.find_by(question_id: question.id)
+      vote.id if vote
+    else
+      votes = session[:votes]
+      votes ||= {}
+      votes[question.id] if votes.include?(question.id)
+    end
   end
 
   def asked_by_at_time_ago(question)

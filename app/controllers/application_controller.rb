@@ -29,6 +29,13 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
+    if session[:votes]
+      session[:votes].each{|question_id, vote_id|
+        vote = Vote.find(vote_id)
+        vote.update_attribute(:user, current_user) if vote and !vote.user
+      }
+      session[:votes] = nil
+    end
     session[:previous_url] || root_path
   end
 

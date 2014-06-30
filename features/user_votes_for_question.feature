@@ -16,4 +16,11 @@ Feature: User votes for question
     Given there is a question
     And I am on the home page
     When I click on the vote arrow
+    Then I should see the vote number increase by one
+
+  @javascript
+  Scenario: Guest tries to vote for question from same ip
+    Given there is a question already voted for
+    And I am on the home page
+    When I click on the vote arrow
     Then I should be asked to log in
