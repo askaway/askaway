@@ -25,7 +25,7 @@ class CommentsController < ApplicationController
   private
 
   def fetch_question
-    @question = Question.includes(answers: :rep).find(params[:question_id])
+    @question = Question.includes(answers: :rep).friendly.find(params[:question_id])
     @answers = @question.answers
   end
 

@@ -2,7 +2,7 @@ class AnswersController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    question = Question.find(params[:question_id])
+    question = Question.friendly.find(params[:question_id])
     answer = Answer.new(body: params[:answer][:body],
                         question: question,
                         rep: current_user.rep)
