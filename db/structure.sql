@@ -262,7 +262,8 @@ CREATE TABLE questions (
     answers_count integer DEFAULT 0,
     topic_id integer,
     comments_count integer DEFAULT 0 NOT NULL,
-    user_id integer NOT NULL
+    user_id integer NOT NULL,
+    slug character varying(255)
 );
 
 
@@ -709,6 +710,13 @@ CREATE INDEX index_questions_on_ranking ON questions USING btree (ranking(create
 
 
 --
+-- Name: index_questions_on_slug; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_questions_on_slug ON questions USING btree (slug);
+
+
+--
 -- Name: index_questions_on_topic_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -857,3 +865,5 @@ INSERT INTO schema_migrations (version) VALUES ('20140618031355');
 INSERT INTO schema_migrations (version) VALUES ('20140630052106');
 
 INSERT INTO schema_migrations (version) VALUES ('20140630052945');
+
+INSERT INTO schema_migrations (version) VALUES ('20140630060143');

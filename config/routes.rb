@@ -21,7 +21,7 @@ Askaway::Application.routes.draw do
     end
   end
 
-  resources :questions, only: [:show, :new, :create] do
+  resources :questions, path: 'q', only: [:show, :new, :create] do
     resources :comments, only: :create
     resources :votes, only: :create
     resources :answers, only: :create
