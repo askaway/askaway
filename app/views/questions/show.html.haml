@@ -13,7 +13,7 @@
             .text-detail= asked_by_at_time_ago(@question)
 
       %ul.list-group
-        %li.list-group-item.comments-count= "#{@answers_count} ANSWERS"
+        %li.list-group-item.comments-count= "#{@question.answers_count} ANSWERS"
         - if show_answer_form?
           %li.list-group-item
             %div.media
