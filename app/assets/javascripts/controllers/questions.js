@@ -12,7 +12,7 @@ askaway.controller('QuestionsCtrl', ['$scope', '$http', function( $scope, $http 
         question.vote_id = undefined;
       });
     } else {
-      $http.post('/questions/' + question.id + '/votes', null, {
+      $http.post(question.path + '/votes', null, {
         headers: {
           Accept: 'application/json'
         }

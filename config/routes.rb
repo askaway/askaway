@@ -21,7 +21,7 @@ Askaway::Application.routes.draw do
     end
   end
 
-  resources :questions, only: [:show, :new, :create] do
+  resources :questions, path: 'q', only: [:show, :new, :create] do
     resources :comments, only: :create
     resources :votes, only: :create
     resources :answers, only: :create
@@ -33,7 +33,7 @@ Askaway::Application.routes.draw do
   get 'new_questions', to: 'questions#new_questions'
   get 'trending', to: 'questions#trending'
 
-  resources :parties, only: :show do
+  resources :parties, only: :show, path: 'p' do
     member do
       get :new_reps
       post :invite_reps

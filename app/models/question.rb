@@ -17,6 +17,10 @@
 class Question < ActiveRecord::Base
   BODY_MAX_LENGTH = 140
 
+  include FriendlyId
+  friendly_id :body, :use => [:slugged, :history]
+  include FriendlyIdHelper
+
   has_many :answers, inverse_of: :question, dependent: :destroy
   has_many :comments, inverse_of: :question, dependent: :destroy
   has_many :votes, inverse_of: :question, dependent: :destroy

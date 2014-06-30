@@ -143,6 +143,39 @@ ALTER SEQUENCE comments_id_seq OWNED BY comments.id;
 
 
 --
+-- Name: friendly_id_slugs; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE friendly_id_slugs (
+    id integer NOT NULL,
+    slug character varying(255) NOT NULL,
+    sluggable_id integer NOT NULL,
+    sluggable_type character varying(50),
+    scope character varying(255),
+    created_at timestamp without time zone
+);
+
+
+--
+-- Name: friendly_id_slugs_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE friendly_id_slugs_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: friendly_id_slugs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE friendly_id_slugs_id_seq OWNED BY friendly_id_slugs.id;
+
+
+--
 -- Name: invitations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -191,7 +224,8 @@ CREATE TABLE parties (
     auth_statement character varying(255),
     description text,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    slug character varying(255)
 );
 
 
@@ -228,7 +262,8 @@ CREATE TABLE questions (
     answers_count integer DEFAULT 0,
     topic_id integer,
     comments_count integer DEFAULT 0 NOT NULL,
-    user_id integer NOT NULL
+    user_id integer NOT NULL,
+    slug character varying(255)
 );
 
 
@@ -422,6 +457,13 @@ ALTER TABLE ONLY comments ALTER COLUMN id SET DEFAULT nextval('comments_id_seq':
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY friendly_id_slugs ALTER COLUMN id SET DEFAULT nextval('friendly_id_slugs_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY invitations ALTER COLUMN id SET DEFAULT nextval('invitations_id_seq'::regclass);
 
 
@@ -468,11 +510,11 @@ ALTER TABLE ONLY votes ALTER COLUMN id SET DEFAULT nextval('votes_id_seq'::regcl
 
 
 --
--- Name: admin_notes_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: active_admin_comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY active_admin_comments
-    ADD CONSTRAINT admin_notes_pkey PRIMARY KEY (id);
+    ADD CONSTRAINT active_admin_comments_pkey PRIMARY KEY (id);
 
 
 --
@@ -489,6 +531,14 @@ ALTER TABLE ONLY answers
 
 ALTER TABLE ONLY comments
     ADD CONSTRAINT comments_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: friendly_id_slugs_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY friendly_id_slugs
+    ADD CONSTRAINT friendly_id_slugs_pkey PRIMARY KEY (id);
 
 
 --
@@ -583,6 +633,34 @@ CREATE INDEX index_comments_on_user_id ON comments USING btree (user_id);
 
 
 --
+-- Name: index_friendly_id_slugs_on_slug_and_sluggable_type; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_friendly_id_slugs_on_slug_and_sluggable_type ON friendly_id_slugs USING btree (slug, sluggable_type);
+
+
+--
+-- Name: index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope ON friendly_id_slugs USING btree (slug, sluggable_type, scope);
+
+
+--
+-- Name: index_friendly_id_slugs_on_sluggable_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_friendly_id_slugs_on_sluggable_id ON friendly_id_slugs USING btree (sluggable_id);
+
+
+--
+-- Name: index_friendly_id_slugs_on_sluggable_type; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_friendly_id_slugs_on_sluggable_type ON friendly_id_slugs USING btree (sluggable_type);
+
+
+--
 -- Name: index_invitations_on_email; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -611,6 +689,13 @@ CREATE INDEX index_invitations_on_token ON invitations USING btree (token);
 
 
 --
+-- Name: index_parties_on_slug; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_parties_on_slug ON parties USING btree (slug);
+
+
+--
 -- Name: index_questions_on_answers_count; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -622,6 +707,13 @@ CREATE INDEX index_questions_on_answers_count ON questions USING btree (answers_
 --
 
 CREATE INDEX index_questions_on_ranking ON questions USING btree (ranking(created_at, votes_count) DESC);
+
+
+--
+-- Name: index_questions_on_slug; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_questions_on_slug ON questions USING btree (slug);
 
 
 --
@@ -769,3 +861,9 @@ INSERT INTO schema_migrations (version) VALUES ('20140617051140');
 INSERT INTO schema_migrations (version) VALUES ('20140618030340');
 
 INSERT INTO schema_migrations (version) VALUES ('20140618031355');
+
+INSERT INTO schema_migrations (version) VALUES ('20140630052106');
+
+INSERT INTO schema_migrations (version) VALUES ('20140630052945');
+
+INSERT INTO schema_migrations (version) VALUES ('20140630060143');

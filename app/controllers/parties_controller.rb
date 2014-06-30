@@ -1,7 +1,11 @@
 class PartiesController < ApplicationController
   before_filter :fetch_party_and_authorize
 
-  def show; end
+  def show
+    if request.path != party_path(@party)
+      redirect_to @party, status: :moved_permanently
+    end
+  end
 
   def new_reps
     @invite_reps_form = InviteRepsForm.new
@@ -26,7 +30,7 @@ class PartiesController < ApplicationController
   private
 
   def fetch_party_and_authorize
-    @party ||= Party.find(params[:id])
+    @party ||= Party.friendly.find(params[:id])
     authorize @party
   end
 end

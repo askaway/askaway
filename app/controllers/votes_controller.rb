@@ -4,7 +4,7 @@ class VotesController < ApplicationController
 
   def create
     authorize Vote
-    question = Question.find(params[:question_id])
+    question = Question.friendly.find(params[:question_id])
     vote = QuestionVoter.new(question, current_user).execute!
     render json: vote
   end
