@@ -11,6 +11,9 @@
 #
 
 class Party < ActiveRecord::Base
+  include FriendlyId
+  friendly_id :name, :use => [:slugged]
+
   validates_presence_of :name
   validates_uniqueness_of :name
   validates_presence_of :auth_statement
