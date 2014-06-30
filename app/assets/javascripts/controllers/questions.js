@@ -38,8 +38,11 @@ askaway.controller('QuestionsCtrl', ['$scope', '$http', function( $scope, $http 
   };
 
   $scope.loadQuestions = function() {
+    var url = getUrl();
+
     $scope.loadingQuestions = true;
-    $http.get('/trending.json?page=' + $scope.page++).success(function(data) {
+
+    $http.get(url).success(function(data) {
       var i = 0;
 
       $scope.loadingQuestions = false;
@@ -48,6 +51,16 @@ askaway.controller('QuestionsCtrl', ['$scope', '$http', function( $scope, $http 
       }
     });
   };
+
+  function getUrl() {
+    var resource = window.location.pathname;
+
+    if (resource === '/') {
+      resource = '/trending';
+    }
+
+    return resource + '.json?page=' + $scope.page++;
+  }
 }]);
 
 askaway.controller( 'QuestionFormCtrl', ['$scope', function( $scope ) {
