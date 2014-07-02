@@ -39,4 +39,8 @@ class User < ActiveRecord::Base
   def is_rep?
     Rep.exists?(user_id: id)
   end
+
+  def name_and_email
+    "#{name} <#{email}>"
+  end
 end

@@ -4,7 +4,7 @@ class InvitationMailer < ActionMailer::Base
   def to_join_party(invitation)
     @invitation = invitation
     mail(to: invitation.email,
-         from: invitation.inviter.name,
+         from: invitation.inviter.name_and_email,
          subject: "#{invitation.inviter.name} has invited you to Ask Away")
   end
 end
