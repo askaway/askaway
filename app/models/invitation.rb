@@ -46,7 +46,7 @@ class Invitation < ActiveRecord::Base
                          intent: intent,
                          invitable: invitable,
                          inviter: inviter)
-    InvitationMailer.delay.send(intent, invitation)
+    InvitationMailer.send(intent, invitation).deliver
     invitation
   end
 
