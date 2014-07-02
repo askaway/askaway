@@ -31,6 +31,8 @@ gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 gem 'rabl'
 gem 'friendly_id', '~> 5.0.0'
+gem 'obscenity'
+gem 'workflow'
 
 group :development do
   gem 'thin'
@@ -62,6 +64,7 @@ group :test do
   gem 'database_cleaner'
   gem 'cucumber-rails', :require => false
   gem 'shoulda-matchers'
+  gem 'timecop'
 end
 
 group :production do
