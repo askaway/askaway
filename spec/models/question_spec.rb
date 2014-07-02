@@ -61,4 +61,46 @@ describe Question, :type => :model do
       expect(hot_q.hotness).to eq(16)
     end
   end
+
+  describe "profanity filter" do
+    let(:dirty_q) { FactoryGirl.create(:question,
+                    body: "Yo! What the fuck? This shit is krayyy!!") }
+    let(:clean_q) { FactoryGirl.create(:question,
+                    body: "I like rainbows. Do you? Meowww!!") }
+
+    it "is marked as awaiting_review if it has profane words" do
+      expect(dirty_q).to be_awaiting_review
+    end
+
+    it 'is marked as default if no profane words' do
+      expect(clean_q).to be_default
+      expect(clean_q).not_to be_awaiting_review
+    end
+  end
+
+  context 'awaiting_review' do
+    before do
+      @question = FactoryGirl.create(:question)
+      @question.flag_for_review!
+    end
+
+    it 'can be accepted' do
+      @question.accept!
+      expect(@question).to be_accepted
+    end
+
+    it 'updates created_at after being accepted' do
+      Timecop.freeze(Date.today + 1)
+      question2 = FactoryGirl.create(:question)
+      Timecop.freeze(Date.today + 2)
+      @question.accept!
+      Timecop.return
+      expect(@question.reload.created_at).to be > question2.created_at
+    end
+
+    it 'can be rejected' do
+      @question.reject!
+      expect(@question).to be_rejected
+    end
+  end
 end

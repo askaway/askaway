@@ -29,5 +29,13 @@ describe "FriendlyIdHelper" do
       expect(q.slug).to eq("hey-there-what-s-up-this-is-going-to-be-a-very-long-question")
       expect(q2.slug).to eq("hey-there-what-s-up-this-belklsafjslkfjslafjaslkfjsadflakssfaljslkdfjasdflkadjs")
     end
+
+    it 'changes slug if body changes' do
+      body = 'hey there'
+      q = FactoryGirl.create(:question, body: body)
+      q.body = 'hey there again'
+      q.save
+      expect(q.slug).to eq('hey-there-again')
+    end
   end
 end

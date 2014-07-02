@@ -17,4 +17,8 @@ module FriendlyIdHelper
     end while self.class.exists?(slug: new_id)
     new_id
   end
+
+  def should_generate_new_friendly_id?
+    slug.blank? || eval(self.class.slug_candidate.to_s + "_changed?")
+  end
 end

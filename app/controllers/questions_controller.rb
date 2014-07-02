@@ -2,17 +2,16 @@ class QuestionsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
   before_filter :fetch_question, only: [:show]
   before_filter :fetch_answers, only: [:show]
+  after_action :verify_authorized, :except => [:trending, :new_questions]
 
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
   def trending
-    authorize Question
-    @questions = Question.trending.page(params[:page])
+    @questions = policy_scope(Question).trending.page(params[:page])
   end
 
   def new_questions
-    authorize Question
-    @questions = Question.order(created_at: :desc).uniq.
+    @questions = policy_scope(Question).order(created_at: :desc).uniq.
                  page(params[:page])
   end
 
@@ -38,7 +37,12 @@ class QuestionsController < ApplicationController
 
     @question.user = current_user
     if @question.save
-      redirect_to new_questions_path, notice: 'Your question has been posted.'
+      if @question.awaiting_review?
+        flash[:notice] = 'Thanks! Your question will be reviewed and posted shortly.'
+      else
+        flash[:notice] = 'Thanks! Your question has been posted.'
+      end
+      redirect_to new_questions_path
     else
       render action: "new"
     end

@@ -1,7 +1,7 @@
 class QuestionPolicy < ApplicationPolicy
   class Scope < Struct.new(:user, :scope)
     def resolve
-      scope
+      scope.visible_to_public
     end
   end
 
