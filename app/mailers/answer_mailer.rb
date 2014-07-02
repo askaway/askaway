@@ -3,8 +3,11 @@ class AnswerMailer < ActionMailer::Base
 
   def asker_notification(answer)
     @answer = answer
-    @user = answer.question.user
+    @question = @answer.question
+    @user = @question.user
+    @rep = @answer.rep
+    @party = @rep.party
     mail(to: @user.email,
-      subject: "Your question has been answered by the #{@answer.rep.party.name}")
+      subject: "Your question has been answered by the #{@party.name}")
   end
 end
