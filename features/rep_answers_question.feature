@@ -10,3 +10,4 @@ Feature: Rep answers question
     When I visit the question
     And I fill in and submit the answer form
     Then my answer should be posted and it should appear on the question
+    And an email should be sent to who asked the question

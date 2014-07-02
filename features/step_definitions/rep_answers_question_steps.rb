@@ -15,3 +15,9 @@ end
 Then(/^my answer should be posted and it should appear on the question$/) do
   expect(@question.reload.answers_count).to eq(@answer_count + 1)
 end
+
+Then(/^an email should be sent to who asked the question$/) do
+  open_email(@question.user.email)
+  expect(current_email).not_to be_nil
+  expect(current_email.subject).to eq("Your question has been answered by the #{@rep.party.name}")
+end

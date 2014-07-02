@@ -16,6 +16,8 @@ class Answer < ActiveRecord::Base
   belongs_to :rep, inverse_of: :answers
   belongs_to :question, inverse_of: :answers, touch: true, counter_cache: true
 
+  after_create :notify_asker
+
   validates_presence_of :rep
   validates_presence_of :question
   validates_presence_of :body
@@ -41,4 +43,8 @@ class Answer < ActiveRecord::Base
         errors.add(:rep, "This question has already been answered by the party.")
       end
     end
+
+  def notify_asker
+    AnswerMailer.asker_notification(self).deliver
+  end
 end
