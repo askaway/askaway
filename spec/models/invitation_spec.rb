@@ -3,7 +3,7 @@ require 'rails_helper'
 describe Invitation, :type => :model do
   let(:party) { FactoryGirl.build_stubbed(:party) }
   let(:inviter) { FactoryGirl.build_stubbed(:user) }
-  let(:mailer) { double(:mailer, to_join_party: true) }
+  let(:mailer) { double(:mailer, deliver: true) }
 
   it { is_expected.to belong_to(:inviter) }
   it { is_expected.to belong_to(:invitable) }
@@ -79,12 +79,11 @@ describe Invitation, :type => :model do
 
     before do
       allow(Invitation).to receive(:create!).and_return(invitation)
-      allow(InvitationMailer).to receive(:delay).and_return(mailer)
+      allow(InvitationMailer).to receive(:to_join_party).and_return(mailer)
     end
 
     it 'emails reps' do
-      expect(InvitationMailer).to receive(:delay)
-      expect(mailer).to receive(:to_join_party).with(invitation)
+      expect(InvitationMailer).to receive(:to_join_party).with(invitation)
       invite!
     end
 
@@ -101,7 +100,7 @@ describe Invitation, :type => :model do
 
     before do
       allow(Invitation).to receive(:create!).and_return(invitation)
-      allow(InvitationMailer).to receive(:delay).and_return(mailer)
+      allow(InvitationMailer).to receive(:to_join_party).and_return(mailer)
     end
 
     context 'given valid emails' do

@@ -23,7 +23,6 @@ gem 'simple_form', git: 'https://github.com/plataformatec/simple_form.git'
 
 gem 'gravtastic'
 gem 'font-awesome-sass'
-gem 'sidekiq'
 gem 'sinatra', '>= 1.3.0', :require => nil
 gem 'pundit'
 gem 'kaminari'

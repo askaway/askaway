@@ -9,11 +9,6 @@ Askaway::Application.routes.draw do
   end
   ActiveAdmin.routes(self)
 
-  require 'sidekiq/web'
-  authenticate :user, lambda { |u| u.is_admin? } do
-    mount Sidekiq::Web => '/sidekiq'
-  end
-
   resources :users, only: :show do
     collection do
       get :edit
