@@ -32,6 +32,7 @@ gem 'friendly_id', '~> 5.0.0'
 gem 'obscenity'
 gem 'workflow'
 gem 'raygun4ruby'
+gem 'newrelic_rpm'
 
 group :development do
   gem 'thin'
