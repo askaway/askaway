@@ -8,6 +8,6 @@ class AnswerMailer < ActionMailer::Base
     @rep = @answer.rep
     @party = @rep.party
     mail(to: @user.email,
-      subject: "Your question has been answered by the #{@party.name}")
+      subject: "#{@party.name} has answered your question!")
   end
 end

@@ -1,15 +1,12 @@
-%p= "Hi #{@user.name}"
+%p= "Hi #{@user.name}!"
 
 %p
-  We're just letting you know that a representative from the #{@party.name} has
-  answered your question
+  #{@party.name} has answered your question
   %em "#{@question.name}"
 
 %p
-  #{@rep.name} says
+  #{@rep.name} (#{@party.name}) said:
   %blockquote #{@answer.body}
 
 %p
-  = link_to "Click here", question_url(@question)
-  to see your question
-  
+  = link_to "Click here to see your question", question_url(@question)
