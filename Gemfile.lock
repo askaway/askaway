@@ -177,6 +177,9 @@ GEM
       activesupport (>= 3.2, < 5)
     hike (1.2.3)
     http_parser.rb (0.6.0)
+    httparty (0.13.1)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.6.9)
     inherited_resources (1.4.1)
       has_scope (~> 0.6.0.rc)
@@ -206,6 +209,8 @@ GEM
     minitest (4.7.5)
     multi_json (1.10.1)
     multi_test (0.1.1)
+    multi_xml (0.5.5)
+    newrelic_rpm (3.9.0.229)
     nokogiri (1.6.2.1)
       mini_portile (= 0.6.0)
     obscenity (1.0.2)
@@ -269,6 +274,10 @@ GEM
       activesupport (>= 3.0)
       i18n
       polyamorous (~> 1.0.0)
+    raygun4ruby (1.1.2)
+      httparty (~> 0.11)
+      json
+      rack
     rb-fsevent (0.9.4)
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
@@ -370,6 +379,7 @@ DEPENDENCIES
   jquery-rails
   kaminari
   launchy
+  newrelic_rpm
   obscenity
   pg
   poltergeist
@@ -382,6 +392,7 @@ DEPENDENCIES
   rack-livereload
   rails (= 4.0.5)
   rails_12factor
+  raygun4ruby
   rspec-rails (~> 3.0)
   sass-rails (~> 4.0.3)
   shoulda-matchers
