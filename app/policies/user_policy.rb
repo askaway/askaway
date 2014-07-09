@@ -5,6 +5,10 @@ class UserPolicy < ApplicationPolicy
     end
   end
 
+  def finish_signup?
+    true
+  end
+
   def update?
     true
   end

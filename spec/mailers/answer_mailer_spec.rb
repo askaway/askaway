@@ -8,7 +8,7 @@ RSpec.describe AnswerMailer, :type => :mailer do
 
   describe '#asker_notification' do
     subject { AnswerMailer.asker_notification(answer) }
-    it { expect(subject.subject).to eq("Your question has been answered by the #{rep.party.name}") }
+    it { expect(subject.subject).to eq("#{rep.party.name} answered your question!") }
     it { expect(subject.body.encoded).to include("Hi #{asker.name}")}
   end
 end

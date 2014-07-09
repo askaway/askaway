@@ -19,5 +19,5 @@ end
 Then(/^an email should be sent to who asked the question$/) do
   open_email(@question.user.email)
   expect(current_email).not_to be_nil
-  expect(current_email.subject).to eq("Your question has been answered by the #{@rep.party.name}")
+  expect(current_email.subject).to eq("#{@rep.party.name} answered your question!")
 end

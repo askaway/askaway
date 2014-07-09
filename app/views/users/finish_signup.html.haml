@@ -1,0 +1,18 @@
+.row
+  .col-md-8.col-md-offset-2{:class => ".col-xs-12"}
+    #add-email.well.well-with-space
+      %h2.well-heading
+        Just one last thing...
+      %p.help-block Please confirm your email address. We won't spam you.
+      = form_for(current_user, :as => 'user', :url => finish_signup_path, :html => { role: 'form'}) do |f|
+        - if @show_errors && current_user.errors.any?
+          #error_explanation
+            - current_user.errors.full_messages.each do |msg|
+              = msg
+              %br/
+        .form-group
+          = f.label :email, class: 'sr-only'
+          .controls
+            = f.text_field :email, :autofocus => true, :value => '', class: 'form-control input-lg', placeholder: 'Your email'
+        .actions
+          = f.submit 'Continue', :class => 'btn btn-primary', data: { disable_with: 'Continue'}

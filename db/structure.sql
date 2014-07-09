@@ -176,6 +176,39 @@ ALTER SEQUENCE friendly_id_slugs_id_seq OWNED BY friendly_id_slugs.id;
 
 
 --
+-- Name: identities; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE identities (
+    id integer NOT NULL,
+    user_id integer,
+    provider character varying(255),
+    uid character varying(255),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: identities_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE identities_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: identities_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE identities_id_seq OWNED BY identities.id;
+
+
+--
 -- Name: invitations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -465,6 +498,13 @@ ALTER TABLE ONLY friendly_id_slugs ALTER COLUMN id SET DEFAULT nextval('friendly
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY identities ALTER COLUMN id SET DEFAULT nextval('identities_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY invitations ALTER COLUMN id SET DEFAULT nextval('invitations_id_seq'::regclass);
 
 
@@ -511,11 +551,11 @@ ALTER TABLE ONLY votes ALTER COLUMN id SET DEFAULT nextval('votes_id_seq'::regcl
 
 
 --
--- Name: admin_notes_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: active_admin_comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY active_admin_comments
-    ADD CONSTRAINT admin_notes_pkey PRIMARY KEY (id);
+    ADD CONSTRAINT active_admin_comments_pkey PRIMARY KEY (id);
 
 
 --
@@ -540,6 +580,14 @@ ALTER TABLE ONLY comments
 
 ALTER TABLE ONLY friendly_id_slugs
     ADD CONSTRAINT friendly_id_slugs_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: identities_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY identities
+    ADD CONSTRAINT identities_pkey PRIMARY KEY (id);
 
 
 --
@@ -659,6 +707,13 @@ CREATE INDEX index_friendly_id_slugs_on_sluggable_id ON friendly_id_slugs USING 
 --
 
 CREATE INDEX index_friendly_id_slugs_on_sluggable_type ON friendly_id_slugs USING btree (sluggable_type);
+
+
+--
+-- Name: index_identities_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_identities_on_user_id ON identities USING btree (user_id);
 
 
 --
@@ -870,3 +925,5 @@ INSERT INTO schema_migrations (version) VALUES ('20140630052945');
 INSERT INTO schema_migrations (version) VALUES ('20140630060143');
 
 INSERT INTO schema_migrations (version) VALUES ('20140701060844');
+
+INSERT INTO schema_migrations (version) VALUES ('20140708200609');
