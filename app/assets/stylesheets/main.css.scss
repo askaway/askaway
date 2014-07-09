@@ -12,7 +12,6 @@ body {
     border-color: $teal-dark;
   }
 }
-
 .btn-primary.disabled,
 .btn-primary[disabled],
 fieldset[disabled] .btn-primary,
@@ -31,6 +30,17 @@ fieldset[disabled] .btn-primary.active {
   background-color: #45A5A5;
   border-color: #67B4BB;
 }
+
+.btn-facebook {
+  color: white;
+  background-color: #45619D;
+  border-color: #45619D;
+  &:hover {
+    background-color: #3C5998;
+    border-color: #3C5998;
+  }
+}
+
 
 /* For when we start including background images */
 // @media all and (min-width: 480px) {

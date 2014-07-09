@@ -10,6 +10,19 @@
           %div{class: 'alert alert-warning'}
             %div= msg
 
+      = link_to user_omniauth_authorize_path(:facebook), class: 'btn btn-primary btn-facebook btn-lg btn-block login-social-btn' do
+        %span.fa.fa-facebook.login-social-icon
+        Log in with Facebook
+      = link_to user_omniauth_authorize_path(:google_oauth2), class: 'btn btn-danger btn-lg btn-block login-social-btn' do
+        %span.fa.fa-google.login-social-icon
+        Log in with Google
+      = link_to user_omniauth_authorize_path(:twitter), class: 'btn btn-info btn-lg btn-block login-social-btn' do
+        %span.fa.fa-twitter.login-social-icon
+        Log in with Twitter
+
+      %hr
+
+      %h5 Log in with email
       = simple_form_for(:user, url: user_session_path) do |f|
         = f.input :email, required: false, autofocus: true, label: false, placeholder: 'Email', input_html: { class: 'input-lg' }
         = f.input :password, required: false, label: false, placeholder: 'Password', input_html: { class: 'input-lg' }

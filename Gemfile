@@ -1,9 +1,12 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.0.5'
-
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
+
+# Production monitoring gems
+gem 'raygun4ruby'
+gem 'newrelic_rpm'
 
 gem 'devise'
 gem 'activeadmin', github: 'gregbell/active_admin'
@@ -11,7 +14,6 @@ gem 'rack-canonical-host'
 
 # Gems used only for assets and not required
 # in production environments by default.
-
 gem 'sass-rails', '~> 4.0.3'
 gem 'coffee-rails', '~> 4.0.1'
 gem 'bootstrap-sass', '~> 3.1.1.1'
@@ -19,8 +21,8 @@ gem 'uglifier', '>= 1.0.3'
 gem 'jquery-rails'
 gem 'angularjs-rails'
 gem 'haml-rails'
-gem 'simple_form', git: 'https://github.com/plataformatec/simple_form.git'
 
+gem 'simple_form', git: 'https://github.com/plataformatec/simple_form.git'
 gem 'gravtastic'
 gem 'font-awesome-sass'
 gem 'sinatra', '>= 1.3.0', :require => nil
@@ -31,8 +33,10 @@ gem 'rabl'
 gem 'friendly_id', '~> 5.0.0'
 gem 'obscenity'
 gem 'workflow'
-gem 'raygun4ruby'
-gem 'newrelic_rpm'
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
 
 group :development do
   gem 'thin'

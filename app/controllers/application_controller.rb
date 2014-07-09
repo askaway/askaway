@@ -5,7 +5,8 @@ class ApplicationController < ActionController::Base
 
   before_filter :store_location
   before_filter :check_for_invitation
-  before_filter :update_sanitized_params, if: :devise_controller?
+  before_filter :update_sanitized_params, if: :inside_devise?
+  before_filter :ensure_signup_complete, unless: :inside_devise?
 
   after_action :verify_authorized, :except => :index
 
@@ -15,10 +16,12 @@ class ApplicationController < ActionController::Base
 
   def store_location
     # store last url - this is needed for post-login redirect to whatever the user last visited.
+    # TODO: replace with checking controller name (less likely to change than path)
     if (request.fullpath != "/log_in" &&
         request.fullpath != "/create_an_account" &&
         request.fullpath != "/users/password" &&
         request.fullpath != "/log_out" &&
+        # FIXME: I assume below is broken cause the path changed
         request.fullpath =~ /\/questions\/d+\/votes/ &&
         !request.xhr?) # don't store ajax calls
       session[:previous_url] = request.fullpath
@@ -49,7 +52,7 @@ class ApplicationController < ActionController::Base
   end
 
   def inside_devise?
-    (controller_name == 'registrations') || (controller_name == 'sessions')
+    devise_controller?
   end
 
   def inside_invitations?
@@ -58,5 +61,16 @@ class ApplicationController < ActionController::Base
 
   def inside_active_admin?
     self.class.superclass.superclass.name == 'ActiveAdmin::BaseController'
+  end
+
+  def ensure_signup_complete
+    # Ensure we don't go into an infinite loop
+    return if action_name == 'finish_signup'
+
+    # Redirect to the 'finish_signup' page if the user
+    # email hasn't been verified yet
+    if current_user && !current_user.email_verified?
+      redirect_to finish_signup_path
+    end
   end
 end
