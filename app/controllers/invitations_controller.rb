@@ -4,6 +4,24 @@ class InvitationsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, :with => :invitation_not_found
   rescue_from Invitation::InvitationAlreadyAccepted, :with => :invitation_not_found
 
+  def create
+    party = Party.friendly.find(params[:party_id])
+    invitation = party.invitations.build(invitation_params)
+    authorize(invitation)
+    # TODO: should be sending above invite object to invite.
+    #       (refactor later)
+    if Invitation.invite!(email: invitation.email,
+                          name: invitation.name,
+                          intent: 'to_join_party',
+                          invitable: party,
+                          inviter: current_user)
+      flash[:notice] = "Invited #{invitation.name} to #{invitation.invitable.name}."
+    else
+      flash[:alert] = "#{invitation.name} could not be invited."
+    end
+    redirect_to party_path(party)
+  end
+
   def show
     authorize(invitation)
     raise Invitation::InvitationAlreadyAccepted if invitation.accepted?
@@ -21,8 +39,8 @@ class InvitationsController < ApplicationController
   def destroy
     authorize(invitation)
     invitation.destroy
-    flash[:notice] = 'Invitation cancelled.'
-    redirect_to(invited_reps_party_path(@invitation.invitable))
+    flash[:notice] = "Cancelled invitation to #{invitation.name}."
+    redirect_to(party_path(invitation.invitable))
   end
 
   private
@@ -32,5 +50,9 @@ class InvitationsController < ApplicationController
 
     def invitation_not_found
       render 'invitation_not_found'
+    end
+
+    def invitation_params
+      params.require(:invitation).permit(:name, :email)
     end
 end

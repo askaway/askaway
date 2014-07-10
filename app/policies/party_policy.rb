@@ -5,20 +5,12 @@ class PartyPolicy < ApplicationPolicy
     end
   end
 
-  def new_reps?
+  def invite_reps?
     user && (user.is_admin? || user_is_party_rep?)
   end
 
-  def invite_reps?
-    new_reps?
-  end
-
-  def invited_reps?
-    new_reps?
-  end
-
   def walkthrough?
-    new_reps?
+    invite_reps?
   end
 
   private

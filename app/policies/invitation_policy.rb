@@ -5,6 +5,10 @@ class InvitationPolicy < ApplicationPolicy
     end
   end
 
+  def create?
+    PartyPolicy.new(user, @record.invitable).invite_reps?
+  end
+
   def destroy?
     user.is_rep_for?(@record.invitable) || user.is_admin?
   end
