@@ -12,7 +12,7 @@ module ApplicationHelper
     title = 'Create an account'
     if session[:invitation_token].present?
       invitation = Invitation.find_by(token: session[:invitation_token])
-      title += " to join #{invitation.invitable.full_name}"
+      title = "Join #{invitation.invitable.name}"
     end
     title
   end

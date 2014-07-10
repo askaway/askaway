@@ -68,11 +68,12 @@ class Invitation < ActiveRecord::Base
   end
 
   def accept!(acceptor)
-    Rep.create!(party: invitable, user: acceptor)
+    raise Invitation::InvitationAlreadyAccepted if accepted?
+    rep = Rep.new(party: invitable, user: acceptor)
+    raise Invitation::InvitationAlreadyAccepted unless rep.valid?
+    rep.save!
     update_attributes(accepted_at: Time.zone.now,
                       acceptor_id: acceptor.id)
-  rescue ActiveRecord::RecordInvalid
-    false
   end
 
   def accepted?

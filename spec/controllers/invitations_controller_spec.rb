@@ -19,18 +19,15 @@ RSpec.describe InvitationsController, :type => :controller do
 
         it { expect(invitation).to have_received(:accept!).with(user) }
         it { expect(session).to have_received(:delete).with(:invitation_token) }
+        it { expect(response).to redirect_to(walkthrough_party_path(invitation.invitable))}
+      end
 
-        context 'if invitation.accept! succeeds' do
-          it { expect(response).to redirect_to(walkthrough_party_path(invitation.invitable))}
-        end
-
-        context 'if invitation accept fails' do
-          before do
-            allow(invitation).to receive(:accept!).and_return(false)
-            get :show, id: invitation.token
-          end
-          it { expect(response).to redirect_to(root_path) }
-          it { expect(flash[:alert]).to match("Could not accept invitation. You might already be a member of #{invitation.invitable.name}") }
+      context 'user already a rep of party' do
+        it 'renders invitation not found template' do
+          invitation.accept!(user)
+          invitation2 = FactoryGirl.create(:invitation, invitable: invitation.invitable)
+          get :show, id: invitation2.token
+          expect(response).to render_template(:invitation_not_found)
         end
       end
     end
@@ -52,12 +49,21 @@ RSpec.describe InvitationsController, :type => :controller do
     end
 
     context 'invitation already accepted' do
-      before do
+      it 'renders invitation not found template' do
         invitation.accept!(user)
         get :show, id: invitation.token
+        expect(response).to render_template(:invitation_not_found)
       end
+    end
+  end
 
-      it { expect(response).to render_template(:invitation_not_found) }
+  describe "#destroy" do
+    it 'destroys invitation' do
+      sign_in user
+      # Make user a rep so they have permission to destroy
+      Rep.create(party: invitation.invitable, user: user)
+      delete :destroy, id: invitation.token
+      expect{invitation.reload}.to raise_error(ActiveRecord::RecordNotFound)
     end
   end
 end

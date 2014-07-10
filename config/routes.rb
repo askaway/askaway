@@ -41,5 +41,5 @@ Askaway::Application.routes.draw do
     end
   end
 
-  resources :invitations, only: :show
+  resources :invitations, only: [:show, :destroy]
 end

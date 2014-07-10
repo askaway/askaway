@@ -4,8 +4,8 @@
 %ul.reps-list
 - @party.rep_users.each do |rep|
   %li= rep.name
-/ Eventually we need reps to be able to add people as well
-- if current_user.try(:is_admin?)
+- if current_user && (current_user.is_admin? || current_user.is_rep_for?(@party))
   = link_to "Invite reps", new_reps_party_path(@party), class: 'btn btn-default'
-  = link_to "#{@party.invitations.count} pending invitations", invited_reps_party_path(@party), class: 'secondary-link'
+  - if (invitations_count = @party.pending_invitations.count) > 0
+    = link_to pluralize(@party.pending_invitations.count, 'pending invitation'), invited_reps_party_path(@party), class: 'secondary-link'
 

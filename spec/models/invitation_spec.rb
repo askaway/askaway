@@ -4,6 +4,10 @@ describe Invitation, :type => :model do
   let(:party) { FactoryGirl.build_stubbed(:party) }
   let(:inviter) { FactoryGirl.build_stubbed(:user) }
   let(:mailer) { double(:mailer, deliver: true) }
+  let(:invitation) { Invitation.create!(email: 'meg@example.org',
+                       intent: 'to_join_party',
+                       invitable: party,
+                       inviter: inviter) }
 
   it { is_expected.to belong_to(:inviter) }
   it { is_expected.to belong_to(:invitable) }
@@ -14,10 +18,6 @@ describe Invitation, :type => :model do
   describe '#accept!' do
     let(:party) { FactoryGirl.create(:party) }
     let(:acceptor) { FactoryGirl.create(:user) }
-    let(:invitation) { Invitation.create!(email: 'meg@example.org',
-                           intent: 'to_join_party',
-                           invitable: party,
-                           inviter: inviter) }
 
     context 'acceptor is not a party member' do
       before do
@@ -30,23 +30,23 @@ describe Invitation, :type => :model do
     end
 
     context 'acceptor is already a party rep' do
-      before { FactoryGirl.create(:rep, user: acceptor, party: party) }
-
-      it { expect(invitation.accept!(acceptor)).to eq(false) }
-
-      it 'does not assign accepted_at' do
-        invitation.accept!(acceptor)
+      it 'raises error and does not assign accepted_at' do
+        FactoryGirl.create(:rep, user: acceptor, party: party)
+        expect{invitation.accept!(acceptor)}.to raise_error(Invitation::InvitationAlreadyAccepted)
         expect(invitation.accepted_at).to be_nil
+      end
+    end
+
+    context 'already accepted' do
+      it 'raises error' do
+        user2 = FactoryGirl.create(:user)
+        invitation.accept!(acceptor)
+        expect{invitation.accept!(user2)}.to raise_error(Invitation::InvitationAlreadyAccepted)
       end
     end
   end
 
   describe '#accepted?' do
-    let(:invitation) { Invitation.create!(email: 'meg@example.org',
-                           intent: 'to_join_party',
-                           invitable: party,
-                           inviter: inviter) }
-
     context 'accepted_at is populated' do
       before { invitation.update_attribute(:accepted_at, Time.zone.now) }
 
@@ -59,10 +59,6 @@ describe Invitation, :type => :model do
   end
 
   describe '.create!' do
-    let(:invitation) { Invitation.create!(email: 'meg@example.org',
-                               intent: 'to_join_party',
-                               invitable: party,
-                               inviter: inviter) }
     it { expect(invitation.token).to be_present }
   end
 
