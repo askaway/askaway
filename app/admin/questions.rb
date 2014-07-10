@@ -1,13 +1,23 @@
 ActiveAdmin.register Question do
+  config.sort_order = 'ranking_cache_asc'
+
   permit_params :body, :topic_id, :workflow_state
 
+  scope :all
   scope :awaiting_review
 
   index do
     selectable_column
+    column "#", sortable: :ranking_cache do |question|
+      question.ranking_cache
+    end
+    column :votes_count
     column :body
     column :user do |question|
       link_to question.user.name, question.user
+    end
+    column :created, sortable: :created_at do |question|
+      time_ago_in_words(question.created_at)
     end
     column :review do |question|
       if question.awaiting_review?
