@@ -298,7 +298,8 @@ CREATE TABLE questions (
     comments_count integer DEFAULT 0 NOT NULL,
     user_id integer NOT NULL,
     slug character varying(255),
-    workflow_state character varying(255)
+    workflow_state character varying(255),
+    ranking_cache integer
 );
 
 
@@ -930,3 +931,5 @@ INSERT INTO schema_migrations (version) VALUES ('20140701060844');
 INSERT INTO schema_migrations (version) VALUES ('20140708200609');
 
 INSERT INTO schema_migrations (version) VALUES ('20140709212119');
+
+INSERT INTO schema_migrations (version) VALUES ('20140710223114');
