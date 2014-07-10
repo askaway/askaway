@@ -20,8 +20,9 @@
 
 FactoryGirl.define do
   factory :invitation do
+    name { Faker::Name.name }
     email { Faker::Internet.email }
-    intent "to_join_group"
+    intent "to_join_party"
     inviter
     invitable
 

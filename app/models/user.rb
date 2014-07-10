@@ -52,6 +52,10 @@ class User < ActiveRecord::Base
     Rep.exists?(user_id: id)
   end
 
+  def is_rep_for?(party)
+    Rep.where(party: party, user: self).exists?
+  end
+
   def name_and_email
     "#{name} <#{email}>"
   end

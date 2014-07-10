@@ -25,8 +25,12 @@ class Invitation < ActiveRecord::Base
   validates :token, uniqueness: true
 
   validates :inviter_id, presence: true
+  validates :name, presence: true
+  validates :email, presence: true
+  validates :intent, presence: true
 
   before_validation :set_token, on: [:create, :save]
+  after_create :send_invitation
 
   scope :to_join_party, ->(party) {
     where(invitable_id: party.id).
@@ -36,20 +40,6 @@ class Invitation < ActiveRecord::Base
 
   scope :unaccepted, -> { where(accepted_at: nil) }
 
-  def self.invite!(email: email,
-                   name: name,
-                   intent: intent,
-                   invitable: invitable,
-                   inviter: inviter)
-    invitation = create!(email: email,
-                         name: name,
-                         intent: intent,
-                         invitable: invitable,
-                         inviter: inviter)
-    InvitationMailer.send(intent, invitation).deliver
-    invitation
-  end
-
   def self.batch_invite!(emails: emails,
                          intent: intent,
                          invitable: invitable,
@@ -58,7 +48,7 @@ class Invitation < ActiveRecord::Base
     return false if emails.blank?
     invitations = []
     emails.each do |address|
-      invitations << invite!(email: address.address,
+      invitations << create!(email: address.address,
                              name: address.display_name,
                              intent: intent,
                              invitable: invitable,
@@ -68,11 +58,12 @@ class Invitation < ActiveRecord::Base
   end
 
   def accept!(acceptor)
-    Rep.create!(party: invitable, user: acceptor)
+    raise Invitation::InvitationAlreadyAccepted if accepted?
+    rep = Rep.new(party: invitable, user: acceptor)
+    raise Invitation::InvitationAlreadyAccepted unless rep.valid?
+    rep.save!
     update_attributes(accepted_at: Time.zone.now,
                       acceptor_id: acceptor.id)
-  rescue ActiveRecord::RecordInvalid
-    false
   end
 
   def accepted?
@@ -84,17 +75,20 @@ class Invitation < ActiveRecord::Base
   end
 
   private
-
-  def self.process_emails(emails)
-    begin
-      raw_addresses = Mail::AddressList.new(emails)
-    rescue Mail::Field::ParseError
-      return false
+    def self.process_emails(emails)
+      begin
+        raw_addresses = Mail::AddressList.new(emails)
+      rescue Mail::Field::ParseError
+        return false
+      end
+      return raw_addresses.addresses
     end
-    return raw_addresses.addresses
-  end
 
-  def set_token
-    self.token ||= SecureRandom.urlsafe_base64
-  end
+    def set_token
+      self.token ||= SecureRandom.urlsafe_base64
+    end
+
+    def send_invitation
+      InvitationMailer.send(intent, self).deliver
+    end
 end

@@ -7,11 +7,10 @@ Feature: Site admin invites rep to party
     Given I am logged in as an admin
     And there is a party
     When I visit the party page
-    And I click "Invite reps"
     And I fill in the new member form
     Then I should see a message telling me reps have been invited
-    Then emails should be sent to the reps I invited
-    And I should see "3 pending invitations"
+    Then an email should be sent to the rep I invited
+    And I should see their name listed as invited
 
   Scenario: Visitor accepts invitation to party
     Given I have been invited to join a party
@@ -29,7 +28,4 @@ Feature: Site admin invites rep to party
     Given I am logged in
     And there is a party
     When I visit the party page
-    Then I should not see "Invite reps"
-
-    When I visit the party new reps page
-    Then I should be redirected to the home page and told I don't have priviledges
+    Then I should not see "Invite"

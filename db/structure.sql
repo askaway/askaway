@@ -224,7 +224,8 @@ CREATE TABLE invitations (
     accepted_at timestamp without time zone,
     token character varying(255) NOT NULL,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    cancelled_at timestamp without time zone
 );
 
 
@@ -927,3 +928,5 @@ INSERT INTO schema_migrations (version) VALUES ('20140630060143');
 INSERT INTO schema_migrations (version) VALUES ('20140701060844');
 
 INSERT INTO schema_migrations (version) VALUES ('20140708200609');
+
+INSERT INTO schema_migrations (version) VALUES ('20140709212119');

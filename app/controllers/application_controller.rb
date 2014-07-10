@@ -48,7 +48,7 @@ class ApplicationController < ActionController::Base
   end
 
   def verify_authorized
-    super unless (inside_devise? || inside_invitations? || inside_active_admin?)
+    super unless (inside_devise? || inside_active_admin?)
   end
 
   def inside_devise?

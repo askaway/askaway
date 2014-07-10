@@ -1,11 +1,43 @@
-%h1= @party.name
+%div{ng_controller: 'PartiesCtrl'}
+  %h1= @party.name
+  .panel.panel-default
+    .panel-heading
+      %h2.panel-title Reps
+    %ul.reps-list.list-group
+      - @party.rep_users.each do |rep_user|
+        %li.list-group-item
+          .media
+            %a.pull-left{href: user_path(rep_user)}
+              %img.media-object{src: rep_user.gravatar_url }
+            .media-body= link_to rep_user.name, rep_user
+      - if current_user && (current_user.is_admin? || current_user.is_rep_for?(@party))
+        - @party.invitations.order('created_at ASC').each do |invitation|
+          %li.list-group-item
+            .media
+              .pull-left
+                %img.media-object{src: User.new(email: invitation.email).gravatar_url}
+              .media-body
+                .list-group-item-heading.gray-light #{invitation.name} (invited)
+                .list-group-item-text.text-detail
+                  = link_to 'Copy invitation link', '#', data: {toggle: 'modal', target: '#resend-invitation'}, ng_click: "invitation.url = '#{invitation_url(invitation.token)}'; invitation.name = '#{invitation.name}'"
+                  |
+                  = link_to 'Delete', invitation_path(invitation), method: :delete, data: {confirm: 'Are you sure you want to delete the invitation?'}
+        %li.list-group-item
+          .list-group-item-heading Invite someone to represent #{@party.name}
+          .list-group-item-body
+            = simple_form_for([@party, @invitation], html: {class: 'form-inline'}) do |f|
+              = f.input :name, placeholder: 'Full Name', label_html: {class: 'sr-only'}
+              = f.input :email, placeholder: 'Email', label_html: {class: 'sr-only'}
+              = f.submit 'Invite', data: {disable_with: 'Invite'}, class: 'btn btn-primary'
 
-%h2 Reps
-%ul.reps-list
-- @party.rep_users.each do |rep|
-  %li= rep.name
-/ Eventually we need reps to be able to add people as well
-- if current_user.try(:is_admin?)
-  = link_to "Invite reps", new_reps_party_path(@party), class: 'btn btn-default'
-  = link_to "#{@party.invitations.count} pending invitations", invited_reps_party_path(@party), class: 'secondary-link'
-
+  #resend-invitation.modal.fade
+    .modal-dialog
+      .modal-content
+        .modal-header
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          %h3.modal-title Copy invitation link
+        .modal-body
+          = text_field_tag :invitation_link, "{{invitation.url}}", :onclick => 'this.select();', class: 'form-control'
+          .help-block Manually email this link to {{invitation.name}} to re-invite them to #{@party.name}.
+        .modal-footer
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>

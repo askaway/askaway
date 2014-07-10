@@ -5,7 +5,7 @@ describe PartyPolicy do
   let(:user) { User.new }
   let(:party) { Party.new }
 
-  [:new_reps?, :invite_reps?, :invited_reps?, :walkthrough?].each do |action|
+  [:invite_reps?, :walkthrough?].each do |action|
     permissions action do
       context 'admin' do
         before { user.is_admin = true }

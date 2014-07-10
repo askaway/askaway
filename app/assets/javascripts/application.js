@@ -20,3 +20,4 @@
 //= require directives/charcounter
 //= require controllers/questions
 //= require controllers/answers
+//= require controllers/parties

@@ -31,6 +31,10 @@ class Party < ActiveRecord::Base
     Invitation.to_join_party(self)
   end
 
+  def pending_invitations
+    invitations.where(accepted_at: nil)
+  end
+
   def full_name
     "The #{name}"
   end

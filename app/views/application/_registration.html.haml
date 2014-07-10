@@ -5,6 +5,9 @@
         x
       %h4.modal-title= create_account_title
     .modal-body
+      = render 'social_login_buttons'
+      %hr
+      %h5 Or create an account
       = simple_form_for(resource, as: :user, url: registration_path(:user)) do |f|
         = f.error_notification
         = f.input :name, required: true, autofocus: true
