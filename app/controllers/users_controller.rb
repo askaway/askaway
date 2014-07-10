@@ -22,7 +22,11 @@ class UsersController < ApplicationController
     if request.patch? && params[:user]
       if current_user.update(user_params)
         sign_in(current_user, :bypass => true)
-        redirect_to session[:previous_url] || root_path
+        redirect_path = session[:previous_url] || root_path
+        if current_user.is_rep?
+          redirect_path = walkthrough_party_path(current_user.party)
+        end
+        redirect_to redirect_path
       else
         @show_errors = true
       end

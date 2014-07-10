@@ -41,9 +41,6 @@ gem 'omniauth-google-oauth2'
 group :development do
   gem 'thin'
   gem 'quiet_assets'
-  gem 'debugger', :platforms => [:mingw_19, :ruby_19]
-  gem 'byebug', :platforms => [:mingw_20, :ruby_20]
-  gem 'pry-byebug', :platforms => [:mingw_20, :ruby_20]
   gem 'guard-rspec'
   gem 'guard-cucumber'
   gem 'guard-livereload', require: false
@@ -62,6 +59,9 @@ group :development, :test do
   gem 'factory_girl_rails', '~> 4.4.0'
   gem 'launchy'
   gem 'pry-rails'
+  gem 'debugger', :platforms => [:mingw_19, :ruby_19]
+  gem 'byebug', :platforms => [:mingw_20, :mingw_21, :ruby_20, :ruby_21]
+  gem 'pry-byebug', :platforms => [:mingw_20, :mingw_21, :ruby_20, :ruby_21]
 end
 
 group :test do
