@@ -5,6 +5,7 @@ describe Invitation, :type => :model do
   let(:inviter) { FactoryGirl.build_stubbed(:user) }
   let(:mailer) { double(:mailer, deliver: true) }
   let(:invitation) { Invitation.create!(email: 'meg@example.org',
+                       name: 'Meg Howie',
                        intent: 'to_join_party',
                        invitable: party,
                        inviter: inviter) }
@@ -12,7 +13,6 @@ describe Invitation, :type => :model do
   it { is_expected.to belong_to(:inviter) }
   it { is_expected.to belong_to(:invitable) }
 
-  it { is_expected.to validate_uniqueness_of(:token) }
   it { is_expected.to validate_presence_of(:inviter_id) }
 
   describe '#accept!' do
@@ -60,30 +60,11 @@ describe Invitation, :type => :model do
 
   describe '.create!' do
     it { expect(invitation.token).to be_present }
-  end
 
-  describe '.invite!' do
-    let(:invitation) { double(:invitation) }
-    let(:name) { 'Jon Lemmon' }
-    let(:email) { 'jon@example.org' }
-    let(:invite!) { Invitation.invite!(
-                    email: email,
-                    name: name,
-                    intent: 'to_join_party',
-                    invitable: party,
-                    inviter: inviter) }
-
-    before do
-      allow(Invitation).to receive(:create!).and_return(invitation)
-      allow(InvitationMailer).to receive(:to_join_party).and_return(mailer)
+    it 'emails the person' do
+      expect(InvitationMailer).to receive(:to_join_party).and_return(mailer)
+      invitation
     end
-
-    it 'emails reps' do
-      expect(InvitationMailer).to receive(:to_join_party).with(invitation)
-      invite!
-    end
-
-    it { expect(invite!).to eq(invitation) }
   end
 
   describe '.batch_invite!' do
@@ -104,14 +85,14 @@ describe Invitation, :type => :model do
       let(:invitations) { [invitation, invitation] }
 
       it 'splits up name and email and invites' do
-        expect(Invitation).to receive(:invite!).
+        expect(Invitation).to receive(:create!).
                               with(email: 'jo@example.org',
                                    name: nil,
                                    intent: 'to_join_party',
                                    invitable: party,
                                    inviter: inviter).
                               and_return(invitation)
-        expect(Invitation).to receive(:invite!).
+        expect(Invitation).to receive(:create!).
                               with(email: 'meg@example.org',
                                    name: 'Meg Howie',
                                    intent: 'to_join_party',

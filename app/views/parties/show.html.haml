@@ -11,7 +11,7 @@
               %img.media-object{src: rep_user.gravatar_url }
             .media-body= link_to rep_user.name, rep_user
       - if current_user && (current_user.is_admin? || current_user.is_rep_for?(@party))
-        - @party.invitations.each do |invitation|
+        - @party.invitations.order('created_at ASC').each do |invitation|
           %li.list-group-item
             .media
               .pull-left

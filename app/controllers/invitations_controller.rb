@@ -5,21 +5,18 @@ class InvitationsController < ApplicationController
   rescue_from Invitation::InvitationAlreadyAccepted, :with => :invitation_not_found
 
   def create
-    party = Party.friendly.find(params[:party_id])
-    invitation = party.invitations.build(invitation_params)
-    authorize(invitation)
-    # TODO: should be sending above invite object to invite.
-    #       (refactor later)
-    if Invitation.invite!(email: invitation.email,
-                          name: invitation.name,
-                          intent: 'to_join_party',
-                          invitable: party,
-                          inviter: current_user)
-      flash[:notice] = "Invited #{invitation.name} to #{invitation.invitable.name}."
+    @party = Party.friendly.find(params[:party_id])
+    @invitation = @party.invitations.build(invitation_params)
+    @invitation.intent = 'to_join_party'
+    @invitation.inviter = current_user
+    authorize(@invitation)
+    if @invitation.save
+      flash[:notice] = "Invited #{@invitation.name} to #{@invitation.invitable.name}."
     else
-      flash[:alert] = "#{invitation.name} could not be invited."
+      flash[:error] = "Could not send invitation. See errors below."
+      return render 'parties/show'
     end
-    redirect_to party_path(party)
+    redirect_to party_path(@party)
   end
 
   def show
