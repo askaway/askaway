@@ -1,0 +1,5 @@
+= semantic_form_for @rep, url: { action: :create_assignment } do |f|
+  = f.inputs do
+    = f.input :name, input_html: { disabled: true }
+    = f.input :new_topic, as: :select, collection: Topic.order('name ASC')
+  = f.actions

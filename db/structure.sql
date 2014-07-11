@@ -324,6 +324,38 @@ ALTER SEQUENCE questions_id_seq OWNED BY questions.id;
 
 
 --
+-- Name: rep_topics; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE rep_topics (
+    id integer NOT NULL,
+    rep_id integer,
+    topic_id integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: rep_topics_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE rep_topics_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: rep_topics_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE rep_topics_id_seq OWNED BY rep_topics.id;
+
+
+--
 -- Name: reps; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -560,6 +592,13 @@ ALTER TABLE ONLY questions ALTER COLUMN id SET DEFAULT nextval('questions_id_seq
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY rep_topics ALTER COLUMN id SET DEFAULT nextval('rep_topics_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY reps ALTER COLUMN id SET DEFAULT nextval('reps_id_seq'::regclass);
 
 
@@ -661,6 +700,14 @@ ALTER TABLE ONLY parties
 
 ALTER TABLE ONLY questions
     ADD CONSTRAINT questions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: rep_topics_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY rep_topics
+    ADD CONSTRAINT rep_topics_pkey PRIMARY KEY (id);
 
 
 --
@@ -850,6 +897,20 @@ CREATE INDEX index_questions_on_votes_count ON questions USING btree (votes_coun
 
 
 --
+-- Name: index_rep_topics_on_rep_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_rep_topics_on_rep_id ON rep_topics USING btree (rep_id);
+
+
+--
+-- Name: index_rep_topics_on_topic_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_rep_topics_on_topic_id ON rep_topics USING btree (topic_id);
+
+
+--
 -- Name: index_reps_on_party_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -987,5 +1048,7 @@ INSERT INTO schema_migrations (version) VALUES ('20140708200609');
 INSERT INTO schema_migrations (version) VALUES ('20140709212119');
 
 INSERT INTO schema_migrations (version) VALUES ('20140710223114');
+
+INSERT INTO schema_migrations (version) VALUES ('20140711220317');
 
 INSERT INTO schema_migrations (version) VALUES ('20140711225435');

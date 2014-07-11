@@ -6,12 +6,18 @@ ActiveAdmin.register Question do
   scope :all
   scope :awaiting_review
 
+  action_item do
+    link_to "Update Rankings", update_rankings_admin_questions_path, :method => :put
+  end
+
   index do
     selectable_column
     column "#", sortable: :ranking_cache do |question|
       question.ranking_cache
     end
-    column :votes_count
+    column :votes, sortable: :votes_count do |question|
+      question.votes_count
+    end
     column :body
     column :user do |question|
       link_to question.user.name, question.user
@@ -28,14 +34,23 @@ ActiveAdmin.register Question do
         question.workflow_state.capitalize
       end
     end
+    column :email do |question|
+      if question.topic.nil?
+        link_to "Assign", edit_admin_question_path(question)
+      elsif question.reminder_email.nil?
+        link_to "Email"
+      else
+        ' '
+      end
+    end
     actions
   end
 
   form do |f|
     f.inputs do
       f.input :body
-      f.input :topic
-      f.input :topic_rnz
+      f.input :topic, as: :select, collection: Topic.order('name ASC')
+      f.input :topic_rnz, as: :select, collection: Topic.order('name ASC')
       f.input :workflow_state, as: :select, collection: Question.workflow_spec.states.keys
     end
     f.actions
@@ -51,6 +66,12 @@ ActiveAdmin.register Question do
     question = Question.friendly.find(params[:id])
     question.reject!
     redirect_to admin_questions_url, :notice => "Question rejected."
+  end
+
+  collection_action :update_rankings, method: :put do
+    QuestionRankingCache.update
+    flash[:notice] = "Question rankings have been updated for the admin panel."
+    redirect_to admin_questions_path
   end
 
   controller do

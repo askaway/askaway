@@ -62,6 +62,10 @@ class Question < ActiveRecord::Base
     end
   end
 
+  # TODO: replace this with real association
+  def reminder_email
+  end
+
   def name
     body
   end
