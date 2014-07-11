@@ -10,6 +10,7 @@
 #  votes_count    :integer          default(0)
 #  answers_count  :integer          default(0)
 #  topic_id       :integer
+#  topic_rnz_id   :integer
 #  comments_count :integer          default(0), not null
 #  user_id        :integer          not null
 #

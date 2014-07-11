@@ -299,7 +299,8 @@ CREATE TABLE questions (
     user_id integer NOT NULL,
     slug character varying(255),
     workflow_state character varying(255),
-    ranking_cache integer
+    ranking_cache integer,
+    topic_rnz_id integer
 );
 
 
@@ -361,6 +362,37 @@ ALTER SEQUENCE reps_id_seq OWNED BY reps.id;
 CREATE TABLE schema_migrations (
     version character varying(255) NOT NULL
 );
+
+
+--
+-- Name: topic_rnzs; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE topic_rnzs (
+    id integer NOT NULL,
+    name character varying(255),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: topic_rnzs_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE topic_rnzs_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: topic_rnzs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE topic_rnzs_id_seq OWNED BY topic_rnzs.id;
 
 
 --
@@ -535,6 +567,13 @@ ALTER TABLE ONLY reps ALTER COLUMN id SET DEFAULT nextval('reps_id_seq'::regclas
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY topic_rnzs ALTER COLUMN id SET DEFAULT nextval('topic_rnzs_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY topics ALTER COLUMN id SET DEFAULT nextval('topics_id_seq'::regclass);
 
 
@@ -622,6 +661,14 @@ ALTER TABLE ONLY parties
 
 ALTER TABLE ONLY questions
     ADD CONSTRAINT questions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: topic_rnzs_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY topic_rnzs
+    ADD CONSTRAINT topic_rnzs_pkey PRIMARY KEY (id);
 
 
 --
@@ -782,6 +829,13 @@ CREATE INDEX index_questions_on_topic_id ON questions USING btree (topic_id);
 
 
 --
+-- Name: index_questions_on_topic_rnz_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_questions_on_topic_rnz_id ON questions USING btree (topic_rnz_id);
+
+
+--
 -- Name: index_questions_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -933,3 +987,5 @@ INSERT INTO schema_migrations (version) VALUES ('20140708200609');
 INSERT INTO schema_migrations (version) VALUES ('20140709212119');
 
 INSERT INTO schema_migrations (version) VALUES ('20140710223114');
+
+INSERT INTO schema_migrations (version) VALUES ('20140711225435');

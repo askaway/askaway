@@ -38,7 +38,7 @@ def create_or_update_rep( details = {} )
     user = FactoryGirl.create(:user, name: name)
   end
   unless party.rep_users.exists?(id: user.id)
-    rep = Rep.create(user: user, party: party)
+    Rep.create(user: user, party: party)
   end
 end
 
@@ -55,12 +55,16 @@ def rand_in_range(from, to)
 end
 
 general_topic = FactoryGirl.create(:topic, name: "General")
+values_topic_rnz = FactoryGirl.create(:topic_rnz, name: "Values")
+FactoryGirl.create(:topic_rnz, name: "General")
+FactoryGirl.create(:topic_rnz, name: "Economy")
 
 FactoryGirl.define do
   factory :seed_question, class: Question do
-    body { "How will you #{Faker::Company.bs.split[0]} the role of #{Faker::Name.title.split[0..1].join(' ')} to make Wellington a more #{Faker::Commerce.fetch('commerce.product_name.adjective').downcase} place?" }
+    body { "How will you #{Faker::Company.bs.split[0]} the role of #{Faker::Name.title.split[0..1].join(' ')} to make New Zealand a more #{Faker::Commerce.fetch('commerce.product_name.adjective').downcase} place?" }
     user { users.sample }
     topic general_topic
+    topic_rnz values_topic_rnz
     votes_count { Random.rand(300) }
     created_at { rand_time(1.months.ago) }
   end
