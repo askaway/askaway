@@ -10,5 +10,7 @@
 
 class Topic < ActiveRecord::Base
   has_many :questions, inverse_of: :topic
+  has_many :rep_topics
+  has_many :reps, through: :rep_topics
   validates_presence_of :name
 end

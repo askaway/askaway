@@ -1,0 +1,5 @@
+= semantic_form_for @rep, url: { action: :remove_assignment } do |f|
+  = f.inputs do
+    = f.input :name, input_html: { disabled: true }
+    = f.input :unassign_topic, as: :select, collection: @rep.topics.order('name ASC')
+  = f.actions
