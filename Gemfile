@@ -47,7 +47,9 @@ group :development do
   gem 'annotate'
   gem "better_errors"
   gem "binding_of_caller"
-  gem "rack-livereload"
+  # Livereload seemed to be causing me errors. Feel free to uncomment if needed.
+  # You'll also need to uncomment the line in development.rb. -Jon Lemmon
+  # gem "rack-livereload"
 end
 
 group :development, :test do
