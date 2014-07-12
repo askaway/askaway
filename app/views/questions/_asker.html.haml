@@ -5,13 +5,14 @@
       %img(ng-src="{{question.user_avatar}}")
   -# .col-sm-offset-2.col-xs-offset-3.col-sm-10.col-xs-9
   -# .col-xs-offset-2.col-xs-10
-  .col-xs-offset-1.col-xs-10
+  .col-sm-offset-2.col-sm-10{ class: "col-xs-offset-{{up_vote_bs_width}} col-xs-{{up_vote_bs_width_inv}}" }
     .text-detail
       %a.visible-xs-inline.question-asker-avatar(ng-href='{{question.user_path}}')
         %img(ng-src="{{question.user_avatar}}")
-      asked by
-      %span(ng-show="question.is_anonymous") {{question.user}}
-      %a.emphasized(ng-hide="question.is_anonymous" ng-href="{{question.user_path}}")
-        {{question.user}}
-      {{question.created_at}} ago ·
-      %a(ng-href="{{question.path}}") {{question.comments_count}} comments
+      .question-asker-details
+        asked by
+        %span(ng-show="question.is_anonymous") {{question.user}}
+        %a.emphasized(ng-hide="question.is_anonymous" ng-href="{{question.user_path}}")
+          {{question.user}}
+        {{question.created_at}} ago ·
+        %a(ng-href="{{question.path}}") {{question.comments_count}} comments

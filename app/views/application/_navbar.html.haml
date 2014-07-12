@@ -1,38 +1,49 @@
 .navbar.navbar-default.navbar-fixed-top{:role => "navigation"}
   .container
-    .navbar-header
+    .navbar-header.row
+      .col-xs-12.col-md-8.col-md-offset-2
 
-      %a.navbar-brand{:href => root_path}
-        = image_tag "logotype.png", alt: 'Ask Away', class: 'navbar-brand-img'
+        %a.navbar-brand{:href => root_path}
+          .hidden-xs
+            = image_tag "logotype.png", alt: 'Ask Away', class: 'navbar-brand-img'
+          .visible-xs-inline-block
+            = image_tag "logonotype.png", alt: 'Ask Away', class: 'navbar-brand-img'
 
-      .navbar-actions
-        .topics-toggle.pull-left.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
-          %span.sr-only Toggle navigation
-          %span.topics-icon.glyphicon.glyphicon-tags
-          %span.topics-text Topics
-          -# %span.icon-bar
-          -# %span.icon-bar
-          -# %span.icon-bar
-        -# %ul.nav.navbar-nav.navbar-right
-        %ul.navbar-user-actions.list-inline.pull-right
-          - if current_user
-            %li
-              %div
-                -# icon goes here
-                = render 'ask_question_button'
-            %li.dropdown
-              %a.user-settings-dropdown.dropdown-toggle{href: '#', :'data-toggle' => 'dropdown'}
-                %img{src: current_user.gravatar_url(size: 32)}
-                %b.caret
-              %ul.dropdown-menu.dropdown-menu-right
-                %li= link_to 'Account settings', edit_users_path
-                %li= link_to 'Log out', destroy_user_session_path, method: :delete
-          - else
-            %li
-              %button.btn.btn-link.navbar-btn{:'data-toggle' => 'modal', :'data-target' => '#login-modal', :'type' => 'button'} Log in
-            %li
-              %div
-                = render 'ask_question_button'
+        .navbar-actions
+          -# .topics-toggle.pull-left.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+            %span.sr-only Toggle navigation
+            %span.topics-icon.glyphicon.glyphicon-tags
+            %span.topics-text Topics
+            -# %span.icon-bar
+            -# %span.icon-bar
+            -# %span.icon-bar
+          -# %ul.nav.navbar-nav.navbar-right
+          -# .dropdown.pull-left
+            %a.dropdown-toggle{href: '#', :'data-toggle' => 'dropdown'}
+              %span.topics-icon.glyphicon.glyphicon-tags
+              %span.topics-text Topics
+            %ul.dropdown-menu
+              %li= link_to 'Account settings', edit_users_path
+              %li= link_to 'Log out', destroy_user_session_path, method: :delete
+          %ul.navbar-user-actions.list-inline.pull-right
+            - if current_user
+              %li
+                %div
+                  -# icon goes here
+                  = render 'ask_question_button'
+              %li.dropdown
+                %a.user-settings-dropdown.dropdown-toggle{href: '#', :'data-toggle' => 'dropdown'}
+                  %img{src: current_user.gravatar_url(size: 32)}
+                  %b.caret
+                %ul.dropdown-menu.dropdown-menu-right
+                  %li= link_to 'Account settings', edit_users_path
+                  %li= link_to 'Log out', destroy_user_session_path, method: :delete
+            - else
+              %li
+                %button.btn.btn-link.navbar-btn{:'data-toggle' => 'modal', :'data-target' => '#login-modal', :'type' => 'button'} Log in
+              %li
+                %div
+                  = render 'ask_question_button'
 
     .collapse.navbar-collapse
       %ul.nav.navbar-nav

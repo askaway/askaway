@@ -1,17 +1,20 @@
 .row
-  .col-question-list.col-xs-12.col-md-8.col-md-offset-2
+  .col-question-list.col-xs-12.col-md-8.col-md-offset-2.font-small
     -# %h3.page-heading= heading
     %ul.list-group.question-list(ng-controller='QuestionsCtrl' infinite-scroll="loadQuestions()" infinite-scroll-disabled="loadingQuestions")
       %li.question-filters.list-group-item.row.row-no-gutter
         %a{ href: root_path }
-          .question-filter.question-filter-first.col-xs-4.text-center
+          .question-filter.question-filter-first.col-xs-3.text-center
             Trending
         %a{ href: new_questions_path }
-          .question-filter.col-xs-4.text-center
+          .question-filter.col-xs-3.text-center
             Newest
         %a{ href: root_path }
-          .question-filter.col-xs-4.text-center
+          .question-filter.col-xs-3.text-center
             Best
+        %a{ href: root_path }
+          .question-filter.col-xs-3.text-center
+            &middot; &middot; &middot;
       %li.question.list-group-item.list-group-item-clickable(ng-repeat="question in questionList" id="question-{{question.id}}" ng-class="{'question-expanded': question.expanded}" ng-click="toggleQuestion($event)")
         .row
           = render 'question_up_vote'
