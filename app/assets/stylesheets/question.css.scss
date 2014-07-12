@@ -39,3 +39,11 @@
     background-color: white;
   }
 }
+
+@media (max-width: $screen-xs-max) {
+  .col-question-list { padding: 0; }
+  .question {
+    border-left: none;
+    border-right: none;
+  }
+}
