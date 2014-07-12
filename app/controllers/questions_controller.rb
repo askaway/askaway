@@ -50,7 +50,7 @@ class QuestionsController < ApplicationController
 
   private
     def question_params
-      params.require(:question).permit(:body, :topic_id, :topic_rnz_id, :is_anonymous)
+      params.require(:question).permit(:body, :is_anonymous)
     end
 
     def fetch_question
