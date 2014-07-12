@@ -38,4 +38,31 @@ class Party < ActiveRecord::Base
   def full_name
     "The #{name}"
   end
+
+  def unassigned_topics
+    @_unassigned_topics ||= calculate_unassigned_topics
+  end
+
+  def assigned_topics
+    @_assigned_topics ||= calculate_assigned_topics
+  end
+
+  private
+    def calculate_assigned_topics
+      # FIXME: this should be done in SQL to be performant
+      topics = []
+      reps.assigned.each do |rep|
+        topics += rep.topics
+      end
+      topics
+    end
+
+    def calculate_unassigned_topics
+      # FIXME: this should be done in SQL to be performant
+      assigned = []
+      reps.each do |rep|
+        assigned = assigned + rep.topics
+      end
+      Topic.all - assigned
+    end
 end

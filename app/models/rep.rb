@@ -25,5 +25,9 @@ class Rep < ActiveRecord::Base
     -> { joins("LEFT JOIN rep_topics ON reps.id = rep_topics.rep_id").
          where('rep_topics.topic_id IS NULL') }
 
+  scope :assigned,
+    -> { joins("LEFT JOIN rep_topics ON reps.id = rep_topics.rep_id").
+         where('rep_topics.topic_id IS NOT NULL').uniq }
+
   attr_accessor :new_topic, :unassign_topic
 end
