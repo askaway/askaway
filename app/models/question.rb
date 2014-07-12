@@ -10,6 +10,7 @@
 #  votes_count    :integer          default(0)
 #  answers_count  :integer          default(0)
 #  topic_id       :integer
+#  topic_rnz_id   :integer
 #  comments_count :integer          default(0), not null
 #  user_id        :integer          not null
 #
@@ -39,6 +40,7 @@ class Question < ActiveRecord::Base
   has_many :comments, inverse_of: :question, dependent: :destroy
   has_many :votes, inverse_of: :question, dependent: :destroy
   belongs_to :topic, inverse_of: :questions
+  belongs_to :topic_rnz, inverse_of: :questions
   belongs_to :user, inverse_of: :questions
 
   validates_presence_of :body, :user

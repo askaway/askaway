@@ -20,7 +20,7 @@ describe Question, :type => :model do
   describe 'relations' do
     it { is_expected.to have_many :answers }
 
-    [:topic, :user].each do |attr|
+    [:topic, :topic_rnz, :user].each do |attr|
       it { is_expected.to belong_to attr }
     end
   end
