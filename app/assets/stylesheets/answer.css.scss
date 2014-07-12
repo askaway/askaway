@@ -1,3 +1,26 @@
 .answer {
   font-family: $font-family-helvetica;
 }
+.answer-footer {
+  font-size: $font-size-extra-small;
+  font-weight: 300;
+}
+.answer-detail {
+  padding-left: 5px;
+  display: inline-block;
+}
+.answer-avatar {
+  margin-top: 3px;
+  border-radius: $avatar-radius;
+  height: 40px;
+  width: 40px;
+}
+.answer-rep, .answer-body {
+  font-size: $font-size-small;
+}
+.answer-rep {
+  font-weight: 500;
+}
+.answer-body {
+  font-weight: 300;
+}
