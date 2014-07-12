@@ -11,14 +11,24 @@ $gray-extra-light: #D8D8D8;
 // Grid breakpoint
 $container-tablet: 620px;
 $screen-sm-min: 640px;
+$grid-float-breakpoint: 99999px;
+/* $navbar-max-width: 780px; */
+/* $navbar-max-width-sm: 780px; */
 
 // Fonts
 $font-size-extra-small: 14px;
+$font-size-extra-small-xs: 12px;
 $font-size-base: 18px;
+$font-size-base-xs: 13px;
 $font-size-medium-large: 20px;
+$font-size-medium-large-xs: 15px;
 $font-family-sans-serif: 'Lato', Helvetica, Arial, sans-serif;
 $font-family-helvetica: 'Helvetica Neue', Arial, sans-serif;
 $font-color-base: #333;
+
+// Navbar
+$body-navbar-padding: 64px + 15px;
+$body-navbar-padding-mobile: 100px;
 
 // Misc
 $avatar-radius: 25%;

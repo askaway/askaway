@@ -1,7 +1,22 @@
 body {
   background: #EEE;
-  padding-top: 50px;
+  padding-top: $body-navbar-padding;
+  @media (max-width: $screen-xs-max) {
+    font-size: $font-size-base-xs;
+  }
 }
+
+.row-no-gutter {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.btn {
+  @media (max-width: $screen-xs-max) {
+    font-size: $font-size-base-xs;
+  }
+}
+
 
 .btn-primary {
   color: white;

@@ -3,7 +3,9 @@
 }
 .question-up-vote {
   text-align: center;
-  padding: 5px 0 0 12px;
+  @media (min-width: $screen-sm-min) {
+    padding: 5px 0 0 12px;
+  }
   .fa-chevron-up {
     color: #888;
     &:hover {
@@ -24,10 +26,19 @@
     border-radius: $avatar-radius;
     width: 40px;
     height: 40px;
+    @media (max-width: $screen-xs-max) {
+      width: 30px;
+      height: 30px;
+      margin: 3px 10px 3px 0;
+      float: left;
+    }
   }
 }
 .question-body {
   font-size: $font-size-medium-large;
+  @media (max-width: $screen-xs-max) {
+    font-size: $font-size-medium-large-xs;
+  }
   font-weight: 300;
   line-height: 1.4;
 }
@@ -40,8 +51,19 @@
   }
 }
 
+.question-filters {
+  padding: 0;
+  .question-filter {
+    border-left: 1px solid #ccc;
+    padding: 13px 0 10px;
+  }
+  .question-filter-first { border-left: none }
+  /* .question-filter:first-child { border-left: none; } */
+}
+
+.col-question-list { padding: 0; }
+
 @media (max-width: $screen-xs-max) {
-  .col-question-list { padding: 0; }
   .question {
     border-left: none;
     border-right: none;
