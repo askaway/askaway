@@ -1,9 +1,6 @@
-%span.visible-xs-block.pull-left.question-asker-avatar-xs
-  = render 'question_asker_avatar'
-.text-detail.question-asker-details
-  asked by
-  %span(ng-show="question.is_anonymous") {{question.user}}
-  %a.emphasized(ng-hide="question.is_anonymous" ng-href="{{question.user_path}}")
-    {{question.user}}
-  {{question.created_at}} ago ·
-  %a(ng-href="{{question.path}}") {{question.comments_count}} comments
+asked by
+%span(ng-show="question.is_anonymous") {{question.user}}
+%a.emphasized(ng-hide="question.is_anonymous" ng-href="{{question.user_path}}")
+  {{question.user}}
+{{question.created_at}} ago ·
+%a(ng-href="{{question.path}}") {{question.comments_count}} comments

@@ -5,9 +5,20 @@ body {
   }
 }
 
-.row-no-gutter {
+.display-inline-block { display: inline-block; }
+.display-inline { display: inline; }
+
+.row-nogutter {
   margin-left: 0;
   margin-right: 0;
+}
+.col-nogutter { padding-left: 0; padding-right: 0; }
+.col-nogutter-left { padding-left: 0; }
+.col-nogutter-right { padding-right: 0; }
+@media (max-width: $screen-xs-max) {
+  .col-nogutter-xs { padding-left: 0; padding-right: 0; }
+  .col-nogutter-left-xs { padding-left: 0; }
+  .col-nogutter-right-xs { padding-right: 0; }
 }
 
 .btn {

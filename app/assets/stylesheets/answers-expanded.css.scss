@@ -9,4 +9,16 @@ ul.answers-expanded {
 }
 .answers-expanded-item {
   padding-bottom: 20px;
+  display: block;
+  .rep-answer-name {
+    display: inline-block;
+    padding-right: 5px;
+  }
+  .rep-answer-detail {
+    display: inline-block;
+  }
+}
+.col-rep-avatar {
+  text-align: right;
+  /* @media (max-width: $screen-xs-max) { } */
 }

@@ -3,19 +3,25 @@
     -# %h3.page-heading= heading
     %ul.list-group.question-list(ng-controller='QuestionsCtrl' infinite-scroll="loadQuestions()" infinite-scroll-disabled="loadingQuestions")
 
-      %li.question.question-filters.list-group-item.row.row-no-gutter
+      %li.question.question-filters.list-group-item.row.row-nogutter
         = render 'question_filters'
 
       %li.question.list-group-item.list-group-item-clickable(ng-repeat="question in questionList" id="question-{{question.id}}" ng-class="{'question-expanded': question.expanded}" ng-click="toggleQuestion($event)")
-        .row
-          .col-xs-2.col-sm-2
+        .row.row-question-main
+          .col-xs-2.col-nogutter-right.text-center
             = render 'question_up_vote'
-          .col-xs-10.col-sm-10.question-col-main
-            .row
-              .col-xs-12= render 'question_body'
-            .row.question-asker-row
-              .col-xs-12= render 'asker'
-            .row
-              .col-xs-12= render 'answers'
+          .col-xs-10.question-col-main
+            = render 'question_body'
+        -# .row.question-asker-row
+        .row.row-question-asker
+          -# .col-xs-12
+          .visible-xs.col-asker-avatar.col-xs-2.col-nogutter
+            = render 'question_asker_avatar'
+          .col-xs-offset-0.col-sm-offset-2.col-xs-10
+            .text-detail.question-asker-details
+              = render 'asker'
+        .row.row-question-answers
+          .col-xs-12
+            = render 'answers'
     .text-center(ng-show="loadingQuestions")
       Loading more...
