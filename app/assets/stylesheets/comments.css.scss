@@ -16,11 +16,16 @@
 .comment-avatar {
   margin-top: 3px;
   border-radius: $avatar-radius;
-  height: 40px;
-  width: 40px;
+  @include square($avatar-answers-expanded-size);
+  @media (max-width: $screen-xs-max) {
+    @include square($avatar-answers-expanded-size-xs);
+  }
 }
 .comment-name, .comment-body {
   font-size: $font-size-small;
+  @media (max-width: $screen-xs-max) {
+    font-size: $font-size-small-xs;
+  }
 }
 .comment-name {
   font-weight: 500;

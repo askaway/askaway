@@ -1,6 +1,9 @@
 .page-heading {
  color: $gray-light;
  font-size: $font-size-medium-large;
+  @media (max-width: $screen-xs-max) {
+    font-size: $font-size-medium-large-xs;
+  }
 }
 
 .big-top-margin {

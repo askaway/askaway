@@ -11,14 +11,30 @@ $gray-extra-light: #D8D8D8;
 // Grid breakpoint
 $container-tablet: 620px;
 $screen-sm-min: 640px;
+$grid-float-breakpoint: 99999px;
 
 // Fonts
 $font-size-extra-small: 14px;
+$font-size-extra-small-xs: 12px;
+$font-size-small: 16px;
+$font-size-small-xs: 13px;
 $font-size-base: 18px;
+$font-size-base-xs: 14px;
 $font-size-medium-large: 20px;
+$font-size-medium-large-xs: 15px;
 $font-family-sans-serif: 'Lato', Helvetica, Arial, sans-serif;
 $font-family-helvetica: 'Helvetica Neue', Arial, sans-serif;
 $font-color-base: #333;
 
-// Misc
+// Navbar
+$navbar-height: 50px;
+$body-navbar-padding: $navbar-height + 25px;
+$body-navbar-padding-mobile: $navbar-height;
+
+// Avatars
 $avatar-radius: 25%;
+$avatar-navbar-size: 32px;
+$avatar-asker-size: 40px;
+$avatar-asker-size-xs: 32px;
+$avatar-answers-expanded-size: 40px;
+$avatar-answers-expanded-size-xs: 40px;
