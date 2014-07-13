@@ -13,7 +13,7 @@ Feature: Rep edits question
     Given I am logged in
     And there is a question with an answer
     When I visit the question
-    Then I should not see 'Edit'
+    Then I should not see "Edit"
 
   Scenario: Visitor sees revision history
     Given there is a question with an answer
