@@ -30,7 +30,7 @@
   %body{class: "#{controller.controller_name} #{controller.action_name}"}
     = render 'navbar'
 
-    .container.container-main
+    .container
       = yield
 
     - unless user_signed_in?

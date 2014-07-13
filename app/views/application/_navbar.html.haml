@@ -10,26 +10,10 @@
             = image_tag "logonotype.png", alt: 'Ask Away', class: 'navbar-brand-img'
 
         .navbar-actions
-          -# .topics-toggle.pull-left.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
-            %span.sr-only Toggle navigation
-            %span.topics-icon.glyphicon.glyphicon-tags
-            %span.topics-text Topics
-            -# %span.icon-bar
-            -# %span.icon-bar
-            -# %span.icon-bar
-          -# %ul.nav.navbar-nav.navbar-right
-          -# .dropdown.pull-left
-            %a.dropdown-toggle{href: '#', :'data-toggle' => 'dropdown'}
-              %span.topics-icon.glyphicon.glyphicon-tags
-              %span.topics-text Topics
-            %ul.dropdown-menu
-              %li= link_to 'Account settings', edit_users_path
-              %li= link_to 'Log out', destroy_user_session_path, method: :delete
           %ul.navbar-user-actions.list-inline.pull-right
             - if current_user
               %li
                 %div
-                  -# icon goes here
                   = render 'ask_question_button'
               %li.dropdown
                 %a.user-settings-dropdown.dropdown-toggle{href: '#', :'data-toggle' => 'dropdown'}

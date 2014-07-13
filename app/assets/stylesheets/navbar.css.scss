@@ -7,41 +7,13 @@ body {
 
 .navbar {
   background-color: white;
-  /* .container { max-width: $navbar-max-width; } */
-  /* .navbar-header { margin: 0; } */
-
   .navbar-brand {
-    /* margin-left: 15px; */
     padding: 10px;
-    /* position: absolute;
-     * left: 50%;
-     * width: 140px;
-     * margin-left: -70px; */
+    .navbar-brand-img {
+      max-width: 100%;
+      max-height: 100%;
+    }
   }
-  .navbar-brand-img {
-    max-width: 100%;
-    max-height: 100%;
-  }
-
-  /* .navbar-actions {
-   *   @media (max-width: $screen-xs-max) {
-   *     margin: 50px 15px 0 15px;
-   *   }
-   * } */
-
-  /* .navbar-toggle {
-   *   padding: 7px 13px 7px;
-   *   margin: 5.5px 0;
-   *   border: none;
-   *   border-radius: none;
-   *   .topics-icon { top: 3px; }
-   *   .topics-text { margin-left: 6px; }
-   *   @media (max-width: 370px) {
-   *     .topics-text {
-   *       display: none !important;
-   *     }
-   *   }
-   * } */
 
   .navbar-user-actions {
     margin: 1px;
@@ -51,14 +23,10 @@ body {
       padding: 6px 0px;
       img {
         border-radius: 4px;
-        @include square(38px)
+        @include square($avatar-navbar-size)
       }
       .caret {}
     }
   }
 }
 
-
-/* .navbar-btn-ask {    */
-/*   margin-left: 15px; */
-/* }                    */

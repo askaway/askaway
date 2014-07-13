@@ -1,6 +1,4 @@
-.col-sm-1.hidden-xs
-  %a.question-asker-avatar(ng-href='{{question.user_path}}')
-    %img(ng-src="{{question.user_avatar}}")
-.col-xs-10
-  .question-body
-    .list-group-item-clickable-header {{question.body}}
+.question-body.list-group-item-clickable-header
+  -# %span.question-asker-avatar-inline.pull-left
+  -#   = render 'question_asker_avatar'
+  {{question.body}}

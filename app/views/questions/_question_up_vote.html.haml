@@ -1,8 +1,8 @@
-.col-sm-1{ class: "col-xs-{{up_vote_bs_width}}" }
-  .question-up-vote
+.row
+  .col-sm-6.col-xs-12.question-up-vote
     %a(href="" ng-click="toggleVote()")
       %i.fa.fa-chevron-up(id="vote-for-{{question.id}}" ng-class="{'fa-chevron-up-voted': question.vote_id}")
     .question-up-vote-count {{question.votes_count}}
-  -# .visible-xs-block
-    %a.question-asker-avatar(ng-href='{{question.user_path}}')
-      %img(ng-src="{{question.user_avatar}}")
+
+  .col-sm-6.hidden-xs.question-asker-avatar-sm
+    = render 'question_asker_avatar'

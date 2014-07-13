@@ -1,6 +1,5 @@
 body {
   background: #EEE;
-  padding-top: $body-navbar-padding;
   @media (max-width: $screen-xs-max) {
     font-size: $font-size-base-xs;
   }
@@ -16,7 +15,6 @@ body {
     font-size: $font-size-base-xs;
   }
 }
-
 
 .btn-primary {
   color: white;
