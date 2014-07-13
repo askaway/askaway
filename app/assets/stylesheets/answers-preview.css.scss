@@ -15,12 +15,18 @@ $answers-preview-height: 30px;
 .answers-preview-count-number {
   vertical-align: middle;
   font-size: $font-size-medium-large;
+  @media (max-width: $screen-xs-max) {
+    font-size: $font-size-medium-large-xs;
+  }
   font-weight: 300;
 }
 .answers-preview-count-text {
   vertical-align: middle;
   padding-left: 2px;
   font-size: $font-size-extra-small;
+  @media (max-width: $screen-xs-max) {
+    font-size: $font-size-extra-small-xs;
+  }
   color: $gray-light;
   font-weight: 300;
 }
