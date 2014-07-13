@@ -1,22 +1,38 @@
-.comments {
-  font-family: $font-family-helvetica;
-}
-.comments-count {
+.comment-count {
   color: $gray-light;
   font-size: $font-size-small;
 }
-
-.comments-input {
+.comment-input {
   padding-top: 15px;
   padding-bottom: 5px;
 }
-
-.comment-user-name {
+.comment {
+  font-family: $font-family-helvetica;
+}
+.comment-detail {
+  padding-left: 5px;
+  display: inline-block;
+}
+.comment-avatar {
+  margin-top: 3px;
+  border-radius: $avatar-radius;
+  @include square($avatar-answers-expanded-size);
+  @media (max-width: $screen-xs-max) {
+    @include square($avatar-answers-expanded-size-xs);
+  }
+}
+.comment-name, .comment-body {
   font-size: $font-size-small;
+  @media (max-width: $screen-xs-max) {
+    font-size: $font-size-small-xs;
+  }
+}
+.comment-name {
   font-weight: 500;
 }
-
 .comment-body {
-  font-size: $font-size-small;
-  font-weight: 200;
+  font-weight: 300;
+  p {
+    margin-bottom: 6px;
+  }
 }

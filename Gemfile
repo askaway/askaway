@@ -37,6 +37,7 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
+gem 'paper_trail', '~> 3.0.3'
 
 group :development do
   gem 'thin'

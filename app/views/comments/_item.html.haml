@@ -1,13 +1,13 @@
-%div.media
+%div.media.comment
   %span.pull-left
-    %img.media-object{src: comment.user.gravatar_url }
+    %img.media-object.comment-avatar{src: comment.user.gravatar_url }
   %div.media-body
-    .comment-user-name= link_to comment.user.name, comment.user
-    .text-detail
-      %small
+    .comment-name
+      = link_to comment.user.name, comment.user
+      .comment-detail.text-detail
         = time_ago_in_words(comment.created_at) + " ago"
         - if current_user.try(:is_admin?)
           ·
           = link_to "Delete", comment, method: :delete
-    %p.comment-body= comment.body
+    .comment-body= simple_format(comment.body)
 

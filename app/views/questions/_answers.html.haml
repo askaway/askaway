@@ -19,14 +19,21 @@
     %hr
     %ul.answers-expanded
       %li.answers-expanded-item(ng-repeat="answer in question.answers")
-        %div.media
+        %div.media.comment.answer
           %span.pull-left
-            %img.media-object.answers-expanded-item-avatar(ng-src="{{answer.rep_avatar}}")
+            %img.media-object.comment-avatar(ng-src="{{answer.rep_avatar}}")
           .media-body
-            .list-group-item-heading
+            .comment-name
               %a(ng-href="{{answer.user_path}}") {{answer.rep}}
               %a(ng-href="{{answer.party_path}}") ({{answer.party}})
-            .list-group-item-text {{answer.body}}
+              .text-detail.comment-detail
+                {{answer.created_at}}
+                %span(ng-show='{{answer.history_path}}')
+                  ·
+                  %a(ng-href='{{answer.history_path}}') Edited
+            .comment-body {{answer.body}}
+            .answer-footer.text-detail(ng-show="{{answer.edit_path}}")
+              %a(ng-href="{{answer.edit_path}}") Edit
 
     %a.btn.btn-info.btn-block(href="{{question.path}}")
       %i.fa.fa-arrow-circle-right

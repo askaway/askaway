@@ -3,7 +3,7 @@ attributes :answers_count, :body, :comments_count, :id, :is_anonymous, :votes_co
 child(:answers) { 
   attributes :body
   node(:created_at) { |answer|
-    time_ago_in_words(answer.created_at)
+    time_ago_in_words(answer.created_at) + ' ago'
   }
   node(:rep) { |answer|
     answer.rep.user_name
@@ -19,6 +19,16 @@ child(:answers) {
   }
   node(:party_path) { |answer|
     party_path(answer.rep.party)
+  }
+  node(:edit_path) { |answer|
+    if AnswerPolicy.new(current_user, answer).edit?
+      edit_answer_path(answer)
+    end
+  }
+  node(:history_path) { |answer|
+    if answer.is_edited?
+      history_answer_path(answer)
+    end
   }
 }
 node(:path) { |question|

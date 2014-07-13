@@ -13,28 +13,37 @@
             .text-detail= asked_by_at_time_ago(@question)
 
       %ul.list-group
-        %li.list-group-item.comments-count= "#{@question.answers_count} ANSWERS"
+        %li.list-group-item.comment-count= "#{@question.answers_count} ANSWERS"
         - if show_answer_form?
           %li.list-group-item
             %div.media
               %span.pull-left
-                %img.media-object{src: current_user.gravatar_url }
+                %img.media-object.comment-avatar{src: current_user.gravatar_url }
               %div.media-body
-                = render 'answers/form', question: @question, answer: @new_answer
+                = render 'answers/form', question: @question, answer: @new_answer, button_text: 'Post answer'
         - @answers.each do |answer|
           %li.list-group-item
             %div.media.answer
               %span.pull-left
-                %img.media-object{src: answer.rep.user.gravatar_url }
+                %img.media-object.comment-avatar{src: answer.rep.user.gravatar_url }
               %div.media-body
-                .list-group-item-heading
+                .comment-name
                   = link_to(answer.rep.user_name, answer.rep.user)
                   = link_to("(#{answer.rep.party.name})", answer.rep.party)
-                .list-group-item-text.comment-body= answer.body
-        %li.list-group-item.comments-count= "#{@question.comments_count} COMMENTS"
+                  .text-detail.comment-detail
+                    = time_ago_in_words(answer.created_at) + ' ago'
+                    - if answer.is_edited?
+                      ·
+                      = link_to 'Edited', history_answer_path(answer)
+
+                .comment-body= simple_format(answer.body)
+                - if AnswerPolicy.new(current_user, answer).edit?
+                  .answer-footer.text-detail
+                    = link_to "Edit", edit_answer_path(answer)
+        %li.list-group-item.comment-count= "#{@question.comments_count} COMMENTS"
       .panel-body
-        .row.comments
-          .col-xs-12.comments-input
+        .row.comment-list
+          .col-xs-12.comment-input
             - if user_signed_in?
               = render 'comments/form'
             - else

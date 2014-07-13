@@ -10,25 +10,3 @@ ul.answers-expanded {
 .answers-expanded-item {
   padding-bottom: 20px;
 }
-.answers-expanded-item-avatar {
-  margin-top: 3px;
-  border-radius: $avatar-radius;
-  @include square($avatar-answers-expanded-size);
-  @media (max-width: $screen-xs-max) {
-    @include square($avatar-answers-expanded-size-xs);
-  }
-}
-.answers-expanded {
-  .list-group-item-heading, .list-group-item-text {
-    font-size: $font-size-small;
-    @media (max-width: $screen-xs-max) {
-      font-size: $font-size-small-xs;
-    }
-  }
-  .list-group-item-heading {
-    font-weight: 500;
-  }
-  .list-group-item-text {
-    font-weight: 300;
-  }
-}

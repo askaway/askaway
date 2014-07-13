@@ -28,6 +28,11 @@ Askaway::Application.routes.draw do
 
   resources :comments, only: :destroy
   resources :votes, only: :destroy
+  resources :answers, only: [:edit, :update] do
+    member do
+      get :history
+    end
+  end
 
   get 'new_questions', to: 'questions#new_questions'
   get 'trending', to: 'questions#trending'

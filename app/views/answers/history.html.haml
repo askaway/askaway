@@ -1,0 +1,24 @@
+.row
+  .col-xs-12.col-md-8.col-md-offset-2
+    %h3
+      Answer history
+      %small= link_to '(Back to question)', question_path(@answer.question)
+    %ul.list-group
+      %li.list-group-item
+        .media.answer
+          %span.pull-left
+            %img.media-object.comment-avatar{src: @answer.rep.user.gravatar_url }
+          .media-body
+            .comment-name
+              = link_to @answer.rep.name, @answer.rep.user
+              %span.text-detail said
+
+      - @answer.versions.each do |version|
+        - next unless answer = version.reify
+        %li.list-group-item
+          .list-group-item-header.text-detail= answer.updated_at.strftime("%I:%M%p %d %B %Y %Z")
+          .list-group-item-text.comment-body= simple_format(answer.body)
+
+      %li.list-group-item
+        .list-group-item-header.text-detail= @answer.updated_at.strftime("%I:%M%p %d %B %Y %Z")
+        .list-group-item-text.comment-body= simple_format(@answer.body)
