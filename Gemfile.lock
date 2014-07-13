@@ -274,8 +274,6 @@ GEM
     rack-canonical-host (0.1.0)
       addressable
       rack (~> 1.0)
-    rack-livereload (0.3.15)
-      rack
     rack-protection (1.5.3)
       rack
     rack-test (0.6.2)
@@ -424,7 +422,6 @@ DEPENDENCIES
   quiet_assets
   rabl
   rack-canonical-host
-  rack-livereload
   rails (= 4.0.5)
   rails_12factor
   raygun4ruby

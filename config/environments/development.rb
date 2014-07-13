@@ -1,5 +1,5 @@
 Askaway::Application.configure do
-  config.middleware.insert_before Rack::Lock, Rack::LiveReload
+  # config.middleware.insert_before Rack::Lock, Rack::LiveReload
   # Settings specified here will take precedence over those in config/application.rb
 
   config.eager_load = false

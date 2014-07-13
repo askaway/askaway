@@ -12,24 +12,10 @@ ActiveAdmin.register Rep do
         val += ERB::Util.h(rep.topics.order('name asc').map(&:name).to_s + ' ')
         val += link_to('Remove', unassign_admin_rep_path(rep)) + ' '
       end
-      val += link_to 'Assign', assign_admin_rep_path(rep)
+      val += link_to 'Assign', assign_admin_rep_topics_path(rep_id: rep.id)
       val
     end
     column :created_at
-  end
-
-  member_action :assign do
-    @rep = Rep.find(params[:id])
-    session[:previous_url] = env["HTTP_REFERER"]
-  end
-
-  member_action :create_assignment, method: :patch do
-    @rep = Rep.find(params[:id])
-    topic = Topic.find(params[:rep][:new_topic])
-    @rep.topics << topic
-    @rep.save!
-    redirect_url = session[:previous_url] || admin_reps_path
-    redirect_to redirect_url, notice: "#{@rep.user_name} assigned to #{topic.name}."
   end
 
   member_action :remove_assignment, method: :patch do
@@ -42,6 +28,7 @@ ActiveAdmin.register Rep do
 
   member_action :unassign do
     @rep = Rep.find(params[:id])
+    @rep.unassign_topic = Topic.find(params[:topic_id]) if params[:topic_id]
     session[:previous_url] = env["HTTP_REFERER"]
   end
 end
