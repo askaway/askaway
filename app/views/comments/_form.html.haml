@@ -1,6 +1,6 @@
 %div.media
   %span.pull-left
-    %img.media-object{src: current_user.gravatar_url }
+    %img.media-object.comment-avatar{src: current_user.gravatar_url }
   %div.media-body
     = simple_form_for [@question, @comment] do |f|
       = f.input :body, placeholder: "Join the conversation...", label: false

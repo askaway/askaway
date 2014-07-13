@@ -19,5 +19,5 @@ Feature: Rep edits question
     Given there is a question with an answer
     And the answer has been edited
     When I visit the question
-    And I click edit
+    And I click "Edited"
     Then I should see the question revision history

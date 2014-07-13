@@ -23,7 +23,9 @@ class Answer < ActiveRecord::Base
   validates_presence_of :body
   validates_length_of :body, maximum: BODY_MAX_LENGTH
   validates_uniqueness_of :rep_id, scope: [:question_id]
-  validate :one_answer_per_party
+  validate :one_answer_per_party, on: :create
+
+  has_paper_trail
 
   def rep_name
     rep.name
@@ -35,6 +37,10 @@ class Answer < ActiveRecord::Base
 
   def rep_authorisation
     rep.authorisation
+  end
+
+  def is_edited?
+    edited_at.present?
   end
 
   private

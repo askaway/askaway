@@ -18,6 +18,7 @@
 //= require main
 //= require animations
 //= require directives/charcounter
+//= require directives/ng_initial
 //= require controllers/questions
 //= require controllers/answers
 //= require controllers/parties

@@ -21,7 +21,14 @@ child(:answers) {
     party_path(answer.rep.party)
   }
   node(:edit_path) { |answer|
-    "#" if current_user && current_user.is_rep_for?(answer.rep.party)
+    if AnswerPolicy.new(current_user, answer).edit?
+      edit_answer_path(answer)
+    end
+  }
+  node(:history_path) { |answer|
+    if answer.is_edited?
+      history_answer_path(answer)
+    end
   }
 }
 node(:path) { |question|

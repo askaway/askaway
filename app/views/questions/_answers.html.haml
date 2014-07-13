@@ -25,16 +25,20 @@
       .col-xs-offset-1.col-xs-11
         %ul.answers-expanded
           %li.answers-expanded-item(ng-repeat="answer in question.answers")
-            %div.media.answer
+            %div.media.comment.answer
               %span.pull-left
-                %img.media-object.answer-avatar(ng-src="{{answer.rep_avatar}}")
+                %img.media-object.comment-avatar(ng-src="{{answer.rep_avatar}}")
               .media-body
-                .answer-rep
+                .comment-name
                   %a(ng-href="{{answer.user_path}}") {{answer.rep}}
                   %a(ng-href="{{answer.party_path}}") ({{answer.party}})
-                  .text-detail.answer-detail {{answer.created_at}}
-                .answer-body {{answer.body}}
-                .answer-footer(ng-show="{{answer.edit_path}}")
+                  .text-detail.comment-detail
+                    {{answer.created_at}}
+                    %span(ng-show='{{answer.history_path}}')
+                      ·
+                      %a(ng-href='{{answer.history_path}}') Edited
+                .comment-body {{answer.body}}
+                .answer-footer.text-detail(ng-show="{{answer.edit_path}}")
                   %a(ng-href="{{answer.edit_path}}") Edit
 
       .col-xs-12

@@ -1,0 +1,3 @@
+%h1 Edit answer
+%p= @answer.question.body
+= render 'form', question: nil, answer: @answer, button_text: 'Update answer'
