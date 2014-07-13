@@ -27,8 +27,9 @@ $font-family-helvetica: 'Helvetica Neue', Arial, sans-serif;
 $font-color-base: #333;
 
 // Navbar
-$body-navbar-padding: 50px + 25px;
-$body-navbar-padding-mobile: 50px;
+$navbar-height: 50px;
+$body-navbar-padding: $navbar-height + 25px;
+$body-navbar-padding-mobile: $navbar-height;
 
 // Avatars
 $avatar-radius: 25%;

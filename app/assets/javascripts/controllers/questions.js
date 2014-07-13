@@ -2,8 +2,6 @@ askaway.controller('QuestionsCtrl', ['$scope', '$http', function( $scope, $http 
   $scope.loadingQuestions = false;
   $scope.questionList = [];
   $scope.page = 1;
-  $scope.up_vote_bs_width = 2;
-  $scope.up_vote_bs_width_inv = 12 - $scope.up_vote_bs_width;
 
   $scope.toggleVote = function() {
     var question = this.question;
