@@ -8,7 +8,6 @@
 
       %li.question.list-group-item.list-group-item-clickable(ng-repeat="question in questionList" id="question-{{question.id}}" ng-class="{'question-expanded': question.expanded}" ng-click="toggleQuestion($event)")
         .row
-          -# .col-sm-1.col-xs-2
           .col-xs-2.col-sm-2
             = render 'question_up_vote'
           .col-xs-10.col-sm-10.question-col-main
