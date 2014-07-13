@@ -1,41 +1,49 @@
 .question-answers(ng-show="question.answers_count > 0")
-  .question-footer
-    .row
-      .col-sm-10.col-xs-12
-        .answers-preview
-          .answers-preview-count
-            %span.answers-preview-count-number
-              {{question.answers_count}}
-            %span.answers-preview-count-text
-              {{(question.answers_count == 1) ? 'Answer' : 'Answers'}}
-          %ul.list-inline.answers-preview-avatars
-            %li.answers-preview-avatar(ng-repeat="answer in question.answers")
-              %img(ng-src="{{answer.rep_avatar}}")
-      .col-sm-2.hidden-xs.answers-preview-expand.text-detail
-        %a.question-toggle.answers-preview-expand-inner
-          {{(question.expanded) ? 'Collapse' : 'Expand'}}
+  .row.question-footer
+    .answers-preview.col-xs-10.col-xs-offset-2.col-sm-8
+      .answers-preview-count
+        %span.answers-preview-count-number
+          {{question.answers_count}}
+        %span.answers-preview-count-text
+          {{(question.answers_count == 1) ? 'Answer' : 'Answers'}}
+      %ul.list-inline.answers-preview-avatars
+        %li.answers-preview-avatar(ng-repeat="answer in question.answers")
+          %img(ng-src="{{answer.rep_avatar}}")
+    .answers-preview-expand.text-detail.col-sm-2.hidden-xs
+      %a.question-toggle.answers-preview-expand-inner
+        {{(question.expanded) ? 'Collapse' : 'Expand'}}
 
   .answers-expanded-container.slide-down(ng-show="question.expanded")
-    %hr
+    .row
+      .col-xs-offset-2.col-xs-10
+        %hr
+
     %ul.answers-expanded
       %li.answers-expanded-item(ng-repeat="answer in question.answers")
-        %div.media.comment.answer
-          %span.pull-left
-            %img.media-object.comment-avatar(ng-src="{{answer.rep_avatar}}")
-          .media-body
-            .comment-name
-              %a(ng-href="{{answer.user_path}}") {{answer.rep}}
-              %a(ng-href="{{answer.party_path}}") ({{answer.party}})
-              .text-detail.comment-detail
-                {{answer.created_at}}
-                %span(ng-show='{{answer.history_path}}')
-                  ·
-                  %a(ng-href='{{answer.history_path}}') Edited
-            .comment-body {{answer.body}}
-            .answer-footer.text-detail(ng-show="{{answer.edit_path}}")
-              %a(ng-href="{{answer.edit_path}}") Edit
+        .row.media.comment.answer
 
-    %a.btn.btn-info.btn-block(href="{{question.path}}")
-      %i.fa.fa-arrow-circle-right
-      More
+          .col-rep-avatar.col-sm-offset-1.col-sm-1.col-xs-2.col-nogutter
+            %a.display-inline-block(ng-href='{{answer.user_path}}')
+              %img.media-object.comment-avatar(ng-src="{{answer.rep_avatar}}")
+
+          .col-xs-10
+            .media-body
+              .comment-name
+                .rep-answer-name
+                  %a(ng-href="{{answer.user_path}}") {{answer.rep}}
+                  %a(ng-href="{{answer.party_path}}") ({{answer.party}})
+                .rep-answer-detail.text-detail
+                  {{answer.created_at}}
+                  %span(ng-show='{{answer.history_path}}')
+                    &middot;
+                    %a(ng-href='{{answer.history_path}}') Edited
+              .comment-body {{answer.body}}
+              .answer-footer.text-detail(ng-show="{{answer.edit_path}}")
+                %a(ng-href="{{answer.edit_path}}") Edit
+
+    .row
+      .col-xs-offset-2.col-xs-10
+        %a.btn.btn-info.btn-block(href="{{question.path}}")
+          %i.fa.fa-arrow-circle-right
+          More
 
