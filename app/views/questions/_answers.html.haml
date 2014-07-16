@@ -28,11 +28,11 @@
               %a(ng-href="{{answer.party_path}}") ({{answer.party}})
               .text-detail.comment-detail
                 {{answer.created_at}}
-                %span(ng-show='{{answer.history_path}}')
+                %span(ng-show='"{{answer.history_path}}"')
                   ·
                   %a(ng-href='{{answer.history_path}}') Edited
             .comment-body {{answer.body}}
-            .answer-footer.text-detail(ng-show="{{answer.edit_path}}")
+            .answer-footer.text-detail(ng-show="'{{answer.edit_path}}'")
               %a(ng-href="{{answer.edit_path}}") Edit
 
     %a.btn.btn-info.btn-block(href="{{question.path}}")
