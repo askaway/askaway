@@ -56,7 +56,9 @@ askaway.controller('QuestionsCtrl', ['$scope', '$http', function( $scope, $http 
   };
 
   function getUrl() {
-    var resource = window.location.pathname;
+    var resource = window.location.hash;
+
+    resource = resource.replace(/^#/, '');
 
     if (resource === '/') {
       resource = '/trending';

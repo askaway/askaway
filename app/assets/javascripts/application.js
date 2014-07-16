@@ -13,6 +13,7 @@
 //= require jquery_ujs
 //= require angular
 //= require angular-animate
+//= require angular-route
 //= require bootstrap
 //= require ng-infinite-scroll.min
 //= require main
@@ -22,3 +23,5 @@
 //= require controllers/questions
 //= require controllers/answers
 //= require controllers/parties
+//= require angular-rails-templates
+//= require_tree ./templates
