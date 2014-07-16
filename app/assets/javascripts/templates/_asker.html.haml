@@ -1,5 +1,4 @@
-%span.visible-xs-block.pull-left.question-asker-avatar-xs
-  = render 'question_asker_avatar'
+%span.visible-xs-block.pull-left.question-asker-avatar-xs(ng-include='question_asker_avatar')
 .text-detail.question-asker-details
   asked by
   %span(ng-show="question.is_anonymous") {{question.user}}

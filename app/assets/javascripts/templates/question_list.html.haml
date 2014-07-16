@@ -1,0 +1,22 @@
+%ul.list-group.question-list(infinite-scroll="loadQuestions()" infinite-scroll-disabled="loadingQuestions")
+
+  %li.question.question-filters.list-group-item.row.row-no-gutter
+    %ng-include(src="'question_filters.html'")
+
+  %li.question.list-group-item.list-group-item-clickable(ng-repeat="question in questionList" id="question-{{question.id}}" ng-class="{'question-expanded': question.expanded}" ng-click="toggleQuestion($event)")
+    .row
+      .col-xs-2.col-sm-2
+        %ng-include(src="'_question_up_vote.html'")
+      .col-xs-10.col-sm-10.question-col-main
+        .row
+          .col-xs-12
+            %ng-include(src="'_question_body.html'")
+        .row.question-asker-row
+          .col-xs-12
+            %ng-include(src="'_asker.html'")
+        .row
+          .col-xs-12
+            %ng-include(src="'_answers.html'")
+
+.text-center(ng-show="loadingQuestions")
+  Loading more...

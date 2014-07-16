@@ -5,4 +5,4 @@
     .question-up-vote-count {{question.votes_count}}
 
   .col-sm-6.hidden-xs.question-asker-avatar-sm
-    = render 'question_asker_avatar'
+    %ng-include(src="'_question_asker_avatar.html'")
