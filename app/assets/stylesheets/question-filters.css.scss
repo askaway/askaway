@@ -1,0 +1,18 @@
+.list-group-item.question-filters {
+  padding: 0;
+  @media (max-width: $screen-xs-max) { border-radius: 0; }
+}
+.question-filter {
+  color: $gray-light;
+  font-weight: 400;
+  padding: 13px 0 10px;
+  &:hover {
+    color: $gray;
+    border-bottom: 4px solid #EAF066;
+    text-decoration: none;
+  }
+}
+.question-filter-selected {
+  color: $gray;
+  border-bottom: 4px solid #EAF066;
+}

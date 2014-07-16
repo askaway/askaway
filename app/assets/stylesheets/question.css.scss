@@ -12,16 +12,6 @@
     border-right: none;
   }
   &.list-group-item { padding: 20px 20px 16px 15px; }
-
-  &.list-group-item.question-filters {
-    padding: 0;
-    .question-filter {
-      border-left: 1px solid #ccc;
-      padding: 13px 0 10px;
-    }
-    .question-filter-first { border-left: none }
-    @media (max-width: $screen-xs-max) { border-radius: 0; }
-  }
 }
 
 .question-col-main > .row > .col-xs-12 {
