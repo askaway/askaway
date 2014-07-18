@@ -1,14 +1,14 @@
 = content_for :title, "#{@question.body} | Questions for New Zealand's political parties - Ask Away"
 = content_for :description, "#{@question.user_name} asked the parties, \"#{@question.body}\" Click to see their answers or ask them your own question."
 
-.row
+.row(ng-controller='QuestionCtrl')
   .col-xs-12.col-md-8.col-md-offset-2
     .panel.panel-default.big-top-margin
       .panel-body.question
         .row
-          .col-xs-1.question-up-vote
-            = render 'question_up_vote', question: @question
-          .col-xs-11
+          .col-xs-2.col-sm-2
+            = render 'question_up_vote'
+          .col-xs-10.col-sm-10
             .question-body= @question.body
             .text-detail= asked_by_at_time_ago(@question)
 
