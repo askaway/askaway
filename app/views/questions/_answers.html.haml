@@ -1,7 +1,7 @@
-.question-answers(ng-show="question.answers_count > 0")
+.question-answers
   .question-footer
     .row
-      .col-sm-10.col-xs-12
+      .col-sm-10.col-xs-12(ng-show="question.answers_count > 0")
         .answers-preview
           .answers-preview-count
             %span.answers-preview-count-number
@@ -11,13 +11,13 @@
           %ul.list-inline.answers-preview-avatars
             %li.answers-preview-avatar(ng-repeat="answer in question.answers")
               %img(ng-src="{{answer.rep_avatar}}")
-      .col-sm-2.hidden-xs.answers-preview-expand.text-detail
+      .col-sm-2.hidden-xs.answers-preview-expand.text-detail(ng-class="{ 'col-sm-offset-10': question.answers_count === 0 }")
         %a.question-toggle.answers-preview-expand-inner
           {{(question.expanded) ? 'Collapse' : 'Expand'}}
 
   .answers-expanded-container.slide-down(ng-show="question.expanded")
-    %hr
-    %ul.answers-expanded
+    %hr(ng-show="question.answers_count > 0")
+    %ul.answers-expanded(ng-show="question.answers_count > 0")
       %li.answers-expanded-item(ng-repeat="answer in question.answers")
         %div.media.comment.answer
           %span.pull-left
@@ -35,7 +35,7 @@
             .answer-footer.text-detail(ng-show="'{{answer.edit_path}}'")
               %a(ng-href="{{answer.edit_path}}") Edit
 
-    %a.btn.btn-info.btn-block(href="{{question.path}}")
+    %a.btn.btn-info.btn-block.btn-lg(href="{{question.path}}")
       %i.fa.fa-arrow-circle-right
-      More
+      See comments
 
