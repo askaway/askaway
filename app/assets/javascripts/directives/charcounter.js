@@ -6,6 +6,6 @@ askaway.directive('charcounter', function() {
       content: '=forModel',
       maxlength: '=maxlength'
     },
-    template: "<div class='char-counter'>{{maxlength - content.length}}{{console.log($scope, content)}}</div>"
+    template: "<div class='char-counter'>{{maxlength - content.length}}</div>"
   };
 });

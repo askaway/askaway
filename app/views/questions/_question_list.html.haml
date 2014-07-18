@@ -15,6 +15,14 @@
               .col-xs-12= render 'question_body'
             .row.question-asker-row
               .col-xs-12= render 'asker'
+            .row(ng-controller='AnswerFormCtrl' ng-show="question.can_answer && question.expanded")
+              .col-xs-1
+                %img.media-object.comment-avatar{src: current_user.try(:gravatar_url) }
+              %form.col-xs-11(ng-submit="addAnswer()")
+                .form-group
+                  %textarea.form-control.required(ng-model="question.answerText" placeholder='Write your answer...')
+                  %charcounter(for_model="question.answerText" maxlength="350")
+                %input.btn.btn-primary(type="submit" ng-disabled="!question.answerText")
             .row
               .col-xs-12= render 'answers'
     .text-center(ng-show="loadingQuestions")

@@ -61,3 +61,6 @@ node(:created_at) { |question|
 node(:vote_id) { |question|
   current_user_vote_id_for(question)
 }
+node(:can_answer) { |question|
+  current_user.can_answer?(question) if current_user
+}
