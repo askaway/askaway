@@ -542,9 +542,10 @@ ALTER SEQUENCE versions_id_seq OWNED BY versions.id;
 CREATE TABLE votes (
     id integer NOT NULL,
     question_id integer NOT NULL,
-    user_id integer NOT NULL,
+    user_id integer,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    ip_address character varying(255)
 );
 
 
@@ -673,11 +674,11 @@ ALTER TABLE ONLY votes ALTER COLUMN id SET DEFAULT nextval('votes_id_seq'::regcl
 
 
 --
--- Name: active_admin_comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: admin_notes_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY active_admin_comments
-    ADD CONSTRAINT active_admin_comments_pkey PRIMARY KEY (id);
+    ADD CONSTRAINT admin_notes_pkey PRIMARY KEY (id);
 
 
 --
@@ -1097,6 +1098,8 @@ INSERT INTO schema_migrations (version) VALUES ('20140630052106');
 INSERT INTO schema_migrations (version) VALUES ('20140630052945');
 
 INSERT INTO schema_migrations (version) VALUES ('20140630060143');
+
+INSERT INTO schema_migrations (version) VALUES ('20140630090236');
 
 INSERT INTO schema_migrations (version) VALUES ('20140701060844');
 

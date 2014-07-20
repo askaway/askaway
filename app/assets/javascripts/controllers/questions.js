@@ -3,14 +3,22 @@ askaway.controller('QuestionsCtrl', ['$scope', '$http', function( $scope, $http 
   $scope.questionList = [];
   $scope.page = 1;
 
+  function requireLogin(data, status) {
+    if (Math.floor(status / 100) === 4) { // 4xx status
+      $('#login-modal').modal('show');
+    }
+  }
+
   $scope.toggleVote = function() {
     var question = this.question;
 
     if (question.vote_id) {
-      $http.delete('/votes/' + question.vote_id).success(function(vote) {
-        question.votes_count--;
-        question.vote_id = undefined;
-      });
+      $http.delete('/votes/' + question.vote_id)
+        .success(function(vote) {
+          question.votes_count--;
+          question.vote_id = undefined;
+        })
+        .error(requireLogin);
     } else {
       $http.post(question.path + '/votes', null, {
         headers: {
@@ -21,17 +29,12 @@ askaway.controller('QuestionsCtrl', ['$scope', '$http', function( $scope, $http 
           question.votes_count++;
           question.vote_id = vote.id;
         })
-        .error(function(data, status) {
-          if (status === 401) {
-            $('#login-modal').modal('show');
-          }
-          // FIXME handle other error statuses ... message box?
-        });
+        .error(requireLogin);
     }
   };
 
   $scope.toggleQuestion = function(e) {
-    link = $(e.target).closest('a')
+    link = $(e.target).closest('a');
     if ((link.length === 0) || link.hasClass('question-toggle')) {
       this.question.expanded = !this.question.expanded;
     }
@@ -65,4 +68,3 @@ askaway.controller('QuestionsCtrl', ['$scope', '$http', function( $scope, $http 
 
 askaway.controller( 'QuestionFormCtrl', ['$scope', function( $scope ) {
 }]);
-
