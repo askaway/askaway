@@ -50,6 +50,14 @@ $answers-preview-height: 30px;
   bottom: 0px;
   right: 15px;
 }
+.answers-preview-expand.no-answers {
+  text-align: right;
+  height: inherit;
+  margin-top: 4px;
+  .answers-preview-expand-inner {
+    position: static;
+  }
+}
 .list-group-item-clickable:hover .answers-preview-expand-inner {
   color: $link-color;
 }

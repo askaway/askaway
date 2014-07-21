@@ -1,0 +1,3 @@
+.answers-preview-expand.text-detail(ng-class='{"no-answers": question.answers_count === 0}')
+  %a.question-toggle.answers-preview-expand-inner
+    {{(question.expanded) ? 'Collapse' : 'Expand'}}
