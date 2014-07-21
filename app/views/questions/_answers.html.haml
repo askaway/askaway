@@ -11,9 +11,8 @@
           %ul.list-inline.answers-preview-avatars
             %li.answers-preview-avatar(ng-repeat="answer in question.answers")
               %img(ng-src="{{answer.rep_avatar}}")
-      .col-sm-2.hidden-xs.answers-preview-expand.text-detail(ng-class="{ 'col-sm-offset-10': question.answers_count === 0 }")
-        %a.question-toggle.answers-preview-expand-inner
-          {{(question.expanded) ? 'Collapse' : 'Expand'}}
+      .col-sm-2.hidden-xs(ng-show="question.answers_count > 0")
+        = render 'expand_question'
 
   .answers-expanded-container.slide-down(ng-show="question.expanded")
     %hr(ng-show="question.answers_count > 0")
@@ -35,7 +34,7 @@
             .answer-footer.text-detail(ng-show="'{{answer.edit_path}}'")
               %a(ng-href="{{answer.edit_path}}") Edit
 
-    %a.btn.btn-info.btn-block(href="{{question.path}}")
+    %a.btn.btn-info.btn-block(href="{{question.path}}" ng-class="{'answers-expanded-see-comments-padded': question.answers_count === 0}")
       %i.fa.fa-arrow-circle-right
       -# TODO: show number of comments here: "See 1 comment"
       See comments
