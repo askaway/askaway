@@ -1,4 +1,4 @@
-.question-answers
+.question-answers(ng-class='{"no-answers": question.answers_count === 0}')
   .question-footer
     .row
       .col-sm-10.col-xs-12(ng-show="question.answers_count > 0")
@@ -16,6 +16,7 @@
 
   .answers-expanded-container.slide-down(ng-show="question.expanded")
     %hr(ng-show="question.answers_count > 0")
+
     %ul.answers-expanded(ng-show="question.answers_count > 0")
       %li.answers-expanded-item(ng-repeat="answer in question.answers")
         %div.media.comment.answer
@@ -33,6 +34,17 @@
             .comment-body {{answer.body}}
             .answer-footer.text-detail(ng-show="'{{answer.edit_path}}'")
               %a(ng-href="{{answer.edit_path}}") Edit
+
+    .answer-form-container(ng-controller='AnswerFormCtrl' ng-show="question.can_answer && question.expanded")
+      %div.media.comment.answer
+        %span.pull-left
+          %img.media-object.comment-avatar{src: current_user.try(:gravatar_url) }
+        .media-body
+          %form(ng-submit="addAnswer()")
+            .form-group
+              %textarea.form-control.required#answer-text(ng-model="question.answerText" placeholder='Write your answer...')
+              %charcounter(for_model="question.answerText" maxlength="350")
+            %input.btn.btn-primary#post-answer(type="submit" ng-disabled="!question.answerText" data-disable-with="Post answer" value='Post answer')
 
     %a.btn.btn-info.btn-block(href="{{question.path}}" ng-class="{'answers-expanded-see-comments-padded': question.answers_count === 0}")
       %i.fa.fa-arrow-circle-right

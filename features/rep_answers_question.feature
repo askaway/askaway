@@ -11,3 +11,14 @@ Feature: Rep answers question
     And I fill in and submit the answer form
     Then my answer should be posted and it should appear on the question
     And an email should be sent to who asked the question
+
+  @javascript
+  Scenario: Rep answers question inline
+    Given I am logged in
+    And I am rep for a party
+    And there is a question
+    When I visit the home page
+    And I expand the question
+    And I fill in and submit the answer form on the question
+    Then my answer should be posted and it should appear on the question
+    And an email should be sent to who asked the question
