@@ -12,7 +12,7 @@
             %li.answers-preview-avatar(ng-repeat="answer in question.answers")
               %img(ng-src="{{answer.rep_avatar}}")
       .col-sm-2.hidden-xs(ng-show="question.answers_count > 0")
-        = render 'expand_question'
+        = render 'questions/expand_question'
 
   .answers-expanded-container.slide-down(ng-show="question.expanded")
     %hr(ng-show="question.answers_count > 0")

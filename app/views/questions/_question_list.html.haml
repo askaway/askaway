@@ -1,21 +1,23 @@
+- hide_filters ||= false
 .row
   .col-question-list.col-xs-12.col-md-8.col-md-offset-2.font-small
     -# %h3.page-heading= heading
     %ul.list-group.question-list(ng-controller='QuestionsCtrl' infinite-scroll="loadQuestions()" infinite-scroll-disabled="loadingQuestions")
 
-      %li.question.question-filters.list-group-item.row.row-no-gutter
-        = render 'question_filters'
+      - unless hide_filters
+        %li.question.question-filters.list-group-item.row.row-no-gutter
+          = render 'questions/question_filters'
 
       %li.question.list-group-item.list-group-item-clickable(ng-repeat="question in questionList" id="question-{{question.id}}" ng-class="{'question-expanded': question.expanded}" ng-click="toggleQuestion($event)")
         .row
           .col-xs-2.col-sm-2
-            = render 'question_up_vote'
+            = render 'questions/question_up_vote'
           .col-xs-10.col-sm-10.question-col-main
             .row
-              .col-xs-12= render 'question_body'
+              .col-xs-12= render 'questions/question_body'
             .row.question-asker-row
-              .col-xs-12= render 'asker'
+              .col-xs-12= render 'questions/asker'
             .row
-              .col-xs-12= render 'answers'
+              .col-xs-12= render 'questions/answers'
     .text-center(ng-show="loadingQuestions")
       Loading more...

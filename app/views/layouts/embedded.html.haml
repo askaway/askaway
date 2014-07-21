@@ -1,0 +1,14 @@
+!!!
+%html(lang="en" xmlns:fb= "http://ogp.me/ns/fb#" ng-app='askaway')
+  %head
+    = render 'head'
+
+  %body{class: "#{controller.controller_name} #{controller.action_name}"}
+
+    .container
+      = yield
+
+    <script>
+    $("body a").attr("target","_blank");
+    </script>
+

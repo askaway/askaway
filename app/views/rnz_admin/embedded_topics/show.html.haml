@@ -1,0 +1,7 @@
+.row
+  .col-xs-12.col-md-8.col-md-offset-2
+    = render 'nav'
+    %h1
+      = @embedded_topic.name
+      %span.small= link_to '(Edit)', edit_rnz_admin_embedded_topic_path(@embedded_topic)
+    = render 'et_questions_list', questions: @questions

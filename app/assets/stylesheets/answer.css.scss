@@ -3,6 +3,9 @@
 }
 .answer-footer {
   font-size: $font-size-extra-small;
+  @media (max-width: $screen-xs-max) {
+    font-size: $font-size-extra-small-xs;
+  }
   font-weight: 300;
 }
 .answer-form-container {

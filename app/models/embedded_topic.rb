@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: topic_rnzs
+# Table name: embedded_topics
 #
 #  id         :integer          not null, primary key
 #  name       :string(255)
@@ -8,8 +8,7 @@
 #  updated_at :datetime
 #
 
-FactoryGirl.define do
-  factory :topic_rnz do
-    name { Faker::Name.name }
-  end
+class EmbeddedTopic < ActiveRecord::Base
+  has_many :questions, inverse_of: :embedded_topic
+  validates_presence_of :name
 end

@@ -9,6 +9,7 @@ Askaway::Application.routes.draw do
     get 'create_an_account' => 'devise/registrations#new', as: :new_user_registration
     post 'create_an_account' => 'devise/registrations#create', as: :user_registration
   end
+
   ActiveAdmin.routes(self)
 
   match '/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
@@ -33,6 +34,20 @@ Askaway::Application.routes.draw do
       get :history
     end
   end
+
+  scope module: :admin do
+    resources :embedded_topics, only: :index
+  end
+
+  scope '/rnz', module: :rnz_admin, as: 'rnz_admin' do
+    get '/' => redirect('rnz/embedded_topics')
+    resources :embedded_topics, except: [:destroy]
+    resources :questions, only: [:edit, :update]
+  end
+
+  resources :embedded_topics, only: :show
+  # get 'embedded_topics/admin', to: 'embedded_topics#admin'
+  # resources :embedded_topics, only: :show
 
   get 'new_questions', to: 'questions#new_questions'
   get 'trending', to: 'questions#trending'

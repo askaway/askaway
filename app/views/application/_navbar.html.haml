@@ -37,7 +37,7 @@
           %li= link_to current_user.rep.party.name, current_user.rep.party
 
 - flash.each do |name, msg|
-  - flash_class = 'alert'
+  - flash_class = 'alert alert-flash'
   - flash_class += ' alert-success' if name == :notice
   - flash_class += ' alert-warning' if name == :alert
   %div{class: flash_class}
