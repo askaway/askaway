@@ -35,7 +35,8 @@
             .answer-footer.text-detail(ng-show="'{{answer.edit_path}}'")
               %a(ng-href="{{answer.edit_path}}") Edit
 
-    %a.btn.btn-info.btn-block.btn-lg(href="{{question.path}}")
+    %a.btn.btn-info.btn-block(href="{{question.path}}")
       %i.fa.fa-arrow-circle-right
+      -# TODO: show number of comments here: "See 1 comment"
       See comments
 
