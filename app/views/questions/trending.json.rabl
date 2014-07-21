@@ -59,6 +59,5 @@ node(:created_at) { |question|
   time_ago_in_words(question.created_at)
 }
 node(:vote_id) { |question|
-  vote = current_user_vote_for(question)
-  vote.id unless vote.nil?
+  current_user_vote_id_for(question)
 }

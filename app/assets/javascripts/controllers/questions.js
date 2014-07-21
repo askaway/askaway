@@ -61,6 +61,9 @@ askaway.controller('QuestionCtrl', ['$scope', '$http', function( $scope, $http )
   }
 }]);
 
+askaway.controller( 'QuestionFormCtrl', ['$scope', function( $scope ) {
+}]);
+
 /**
  * Returns a function after the $http provider is in scope
  */
@@ -69,10 +72,12 @@ function toggleVote($http) {
     var question = this.question;
 
     if (question.vote_id) {
-      $http.delete('/votes/' + question.vote_id).success(function(vote) {
-        question.votes_count--;
-        question.vote_id = undefined;
-      });
+      $http.delete('/votes/' + question.vote_id)
+        .success(function(vote) {
+          question.votes_count--;
+          question.vote_id = undefined;
+        })
+        .error(requireLogin);
     } else {
       $http.post(question.path + '/votes', null, {
         headers: {
@@ -83,15 +88,13 @@ function toggleVote($http) {
           question.votes_count++;
           question.vote_id = vote.id;
         })
-        .error(function(data, status) {
-          if (Math.floor(status / 100) === 4) {
-            $('#login-modal').modal('show');
-          }
-        });
+        .error(requireLogin);
     }
   };
 }
 
-askaway.controller( 'QuestionFormCtrl', ['$scope', function( $scope ) {
-}]);
-
+function requireLogin(data, status) {
+  if (Math.floor(status / 100) === 4) { // 4xx status
+    $('#login-modal').modal('show');
+  }
+}

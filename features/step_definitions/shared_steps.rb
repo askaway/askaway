@@ -52,4 +52,7 @@ Given(/^there is a question$/) do
   @question = FactoryGirl.create(:question)
 end
 
-
+Given(/^there is a question already voted for$/) do
+  @question = FactoryGirl.create(:question)
+  @question.votes << FactoryGirl.create(:vote, :ip_address => "127.0.0.1")
+end
