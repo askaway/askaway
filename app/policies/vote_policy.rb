@@ -10,6 +10,10 @@ class VotePolicy < ApplicationPolicy
   end
 
   def destroy?
-    user.id == @record.user_id
+    if user
+      user.id == @record.user_id
+    else
+      !@record.user_id
+    end
   end
 end
