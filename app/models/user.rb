@@ -59,4 +59,8 @@ class User < ActiveRecord::Base
   def name_and_email
     "#{name} <#{email}>"
   end
+
+  def can_answer?(question)
+    is_rep? && !Question.has_answer_from_party?(question, party)
+  end
 end

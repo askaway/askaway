@@ -62,9 +62,9 @@ class QuestionsController < ApplicationController
     end
 
     def show_answer_form?
-      current_user.try(:is_rep?) &&
-        !Question.has_answer_from_party?(@question, current_user.party)
+      current_user.try(:can_answer?, @question)
     end
+
     helper_method :show_answer_form?
 
     def record_not_found

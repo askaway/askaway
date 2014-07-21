@@ -21,3 +21,14 @@ Then(/^an email should be sent to who asked the question$/) do
   expect(current_email).not_to be_nil
   expect(current_email.subject).to eq("#{@rep.party.name} answered your question!")
 end
+
+When(/^I expand the question$/) do
+  find("#question-#{@question.id}").click
+end
+
+When(/^I fill in and submit the answer form on the question$/) do
+  @answer_count = @question.answers_count
+  fill_in 'answer-text', with: Faker::Lorem.paragraph
+  click_on 'post-answer'
+  page.find('.answers-expanded-item') #causes capybara to wait until comment is posted
+end

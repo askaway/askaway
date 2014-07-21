@@ -5,3 +5,10 @@
   font-size: $font-size-extra-small;
   font-weight: 300;
 }
+.answer-form-container {
+  margin-bottom: 15px;
+  font-size: $font-size-small;
+}
+.no-answers .answer-form-container {
+  margin-top: 15px;
+}

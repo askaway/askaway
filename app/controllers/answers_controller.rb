@@ -30,9 +30,9 @@ class AnswersController < ApplicationController
                         rep: current_user.rep)
     authorize answer
     if answer.save
-      flash[:notice] = 'Answer posted.'
+      flash[:notice] = 'Answer posted.' unless request.xhr?
     else
-      flash[:alert] = 'Could not post answer. It may have already been answered by someone from your party.'
+      flash[:alert] = 'Could not post answer. It may have already been answered by someone from your party.' unless request.xhr?
     end
     redirect_to question
   end

@@ -6,9 +6,10 @@ askaway.controller('QuestionsCtrl', ['$scope', '$http', function( $scope, $http 
   $scope.toggleVote = toggleVote($http);
 
   $scope.toggleQuestion = function(e) {
-    var link = $(e.target).closest('a');
+    var $target = $(e.target),
+      $veto = $target.closest('a[href], form');
 
-    if ((link.length === 0) || link.hasClass('question-toggle')) {
+    if ($veto.length === 0) {
       this.question.expanded = !this.question.expanded;
     }
   };
@@ -79,11 +80,7 @@ function toggleVote($http) {
         })
         .error(requireLogin);
     } else {
-      $http.post(question.path + '/votes', null, {
-        headers: {
-          Accept: 'application/json'
-        }
-      })
+      $http.post(question.path + '/votes', null)
         .success(function(vote) {
           question.votes_count++;
           question.vote_id = vote.id;
