@@ -56,6 +56,10 @@ class User < ActiveRecord::Base
     Rep.where(party: party, user: self).exists?
   end
 
+  def can_embed?
+    is_embedder? || is_admin?
+  end
+
   def name_and_email
     "#{name} <#{email}>"
   end

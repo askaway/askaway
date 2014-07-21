@@ -144,6 +144,37 @@ ALTER SEQUENCE comments_id_seq OWNED BY comments.id;
 
 
 --
+-- Name: embedded_topics; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE embedded_topics (
+    id integer NOT NULL,
+    name character varying(255),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: embedded_topics_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE embedded_topics_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: embedded_topics_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE embedded_topics_id_seq OWNED BY embedded_topics.id;
+
+
+--
 -- Name: friendly_id_slugs; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -301,7 +332,7 @@ CREATE TABLE questions (
     slug character varying(255),
     workflow_state character varying(255),
     ranking_cache integer,
-    topic_rnz_id integer
+    embedded_topic_id integer
 );
 
 
@@ -398,37 +429,6 @@ CREATE TABLE schema_migrations (
 
 
 --
--- Name: topic_rnzs; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE topic_rnzs (
-    id integer NOT NULL,
-    name character varying(255),
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
-);
-
-
---
--- Name: topic_rnzs_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE topic_rnzs_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: topic_rnzs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE topic_rnzs_id_seq OWNED BY topic_rnzs.id;
-
-
---
 -- Name: topics; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -478,7 +478,8 @@ CREATE TABLE users (
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     is_admin boolean DEFAULT false,
-    name character varying(255) NOT NULL
+    name character varying(255) NOT NULL,
+    is_embedder boolean DEFAULT false
 );
 
 
@@ -593,6 +594,13 @@ ALTER TABLE ONLY comments ALTER COLUMN id SET DEFAULT nextval('comments_id_seq':
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY embedded_topics ALTER COLUMN id SET DEFAULT nextval('embedded_topics_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY friendly_id_slugs ALTER COLUMN id SET DEFAULT nextval('friendly_id_slugs_id_seq'::regclass);
 
 
@@ -636,13 +644,6 @@ ALTER TABLE ONLY rep_topics ALTER COLUMN id SET DEFAULT nextval('rep_topics_id_s
 --
 
 ALTER TABLE ONLY reps ALTER COLUMN id SET DEFAULT nextval('reps_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY topic_rnzs ALTER COLUMN id SET DEFAULT nextval('topic_rnzs_id_seq'::regclass);
 
 
 --
@@ -757,7 +758,7 @@ ALTER TABLE ONLY rep_topics
 -- Name: topic_rnzs_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
-ALTER TABLE ONLY topic_rnzs
+ALTER TABLE ONLY embedded_topics
     ADD CONSTRAINT topic_rnzs_pkey PRIMARY KEY (id);
 
 
@@ -906,6 +907,13 @@ CREATE INDEX index_questions_on_answers_count ON questions USING btree (answers_
 
 
 --
+-- Name: index_questions_on_embedded_topic_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_questions_on_embedded_topic_id ON questions USING btree (embedded_topic_id);
+
+
+--
 -- Name: index_questions_on_ranking; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -924,13 +932,6 @@ CREATE UNIQUE INDEX index_questions_on_slug ON questions USING btree (slug);
 --
 
 CREATE INDEX index_questions_on_topic_id ON questions USING btree (topic_id);
-
-
---
--- Name: index_questions_on_topic_rnz_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_questions_on_topic_rnz_id ON questions USING btree (topic_rnz_id);
 
 
 --
@@ -1116,3 +1117,7 @@ INSERT INTO schema_migrations (version) VALUES ('20140711225435');
 INSERT INTO schema_migrations (version) VALUES ('20140712235615');
 
 INSERT INTO schema_migrations (version) VALUES ('20140713002728');
+
+INSERT INTO schema_migrations (version) VALUES ('20140721082237');
+
+INSERT INTO schema_migrations (version) VALUES ('20140721083135');

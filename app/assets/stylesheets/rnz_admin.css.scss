@@ -1,0 +1,19 @@
+body.rnz_admin\/embedded_topics, body.rnz_admin\/questions {
+  font-family: $font-family-helvetica;
+  font-size: $font-size-small;
+  .badge {
+    font-size: $font-size-extra-small;
+  }
+  // .assign-btn {
+  //   font-size: $font-size-extra-small;
+  // }
+  h1, h2, h3, h4, h5 {
+    font-size: $font-size-large;
+  }
+  .question-body {
+    margin-top: 0px;
+  }
+}
+.embedded-topics-nav {
+  font-size: $font-size-extra-small;
+}

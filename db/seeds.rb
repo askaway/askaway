@@ -55,16 +55,16 @@ def rand_in_range(from, to)
 end
 
 general_topic = FactoryGirl.create(:topic, name: "General")
-values_topic_rnz = FactoryGirl.create(:topic_rnz, name: "Values")
-FactoryGirl.create(:topic_rnz, name: "General")
-FactoryGirl.create(:topic_rnz, name: "Economy")
+values_embedded_topic = FactoryGirl.create(:embedded_topic, name: "Values")
+FactoryGirl.create(:embedded_topic, name: "General")
+FactoryGirl.create(:embedded_topic, name: "Economy")
 
 FactoryGirl.define do
   factory :seed_question, class: Question do
     body { "How will you #{Faker::Company.bs.split[0]} the role of #{Faker::Name.title.split[0..1].join(' ')} to make New Zealand a more #{Faker::Commerce.fetch('commerce.product_name.adjective').downcase} place?" }
     user { users.sample }
     topic general_topic
-    topic_rnz values_topic_rnz
+    embedded_topic values_embedded_topic
     votes_count { Random.rand(300) }
     created_at { rand_time(1.months.ago) }
   end

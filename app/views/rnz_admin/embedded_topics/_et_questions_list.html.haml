@@ -1,0 +1,10 @@
+%ul.list-group
+  - questions.each do |question|
+    %li.list-group-item
+      .row
+        .col-xs-1
+          #{question.votes_count}
+        .col-xs-9
+          = question.name
+        .col-xs-2
+          = link_to "Assign", edit_rnz_admin_question_path(question), class: 'btn btn-primary btn-sm assign-btn'

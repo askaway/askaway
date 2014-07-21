@@ -1,7 +1,7 @@
 ActiveAdmin.register Question do
   config.sort_order = 'ranking_cache_asc'
 
-  permit_params :body, :topic_id, :topic_rnz_id, :workflow_state
+  permit_params :body, :topic_id, :embedded_topic_id, :workflow_state
 
   scope :all
   scope :awaiting_review
@@ -50,7 +50,7 @@ ActiveAdmin.register Question do
     f.inputs do
       f.input :body
       f.input :topic, as: :select, collection: Topic.order('name ASC')
-      f.input :topic_rnz, as: :select, collection: Topic.order('name ASC')
+      f.input :embedded_topic, as: :select, collection: EmbeddedTopic.order('name ASC')
       f.input :workflow_state, as: :select, collection: Question.workflow_spec.states.keys
     end
     f.actions

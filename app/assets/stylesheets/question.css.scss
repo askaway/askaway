@@ -24,6 +24,9 @@
 .question-up-vote {
   text-align: center;
   font-size: $font-size-base;
+  @media (max-width: $screen-xs-max) {
+    font-size: $font-size-medium-large-xs;
+  }
   padding: 0;
   @media (min-width: $screen-sm-min) {
     padding: 0 0 0 12px;
