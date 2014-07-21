@@ -55,12 +55,13 @@
     margin-top: 0;
     margin: 3px 10px 3px 0;
     @include square($avatar-asker-size-xs);
-    /* float: left; */
   }
-  .question-asker-details {
-    margin-top: 4px;
-    display: inline;
-  }
+  // .question-asker-details {
+  //   @media (max-width: $screen-xs-max) {
+  //     margin-top: 9px;
+  //     display: inline-block;
+  //   }
+  // }
 
 }
 .question-body {
