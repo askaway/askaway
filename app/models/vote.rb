@@ -15,5 +15,5 @@ class Vote < ActiveRecord::Base
 
   validates_presence_of :question
   validates_uniqueness_of :user_id, scope: :question_id, if: 'user_id.present?'
-  validates_uniqueness_of :ip_address, scope: :question_id, if: 'ip_address.present?'
+  validates_uniqueness_of :ip_address, scope: :question_id, if: 'ip_address.present? && !user_id.present?'
 end
