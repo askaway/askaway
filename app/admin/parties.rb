@@ -41,10 +41,9 @@ ActiveAdmin.register Party do
         li ERB::Util.h("#{rep.name} #{rep.topics.map(&:name)}") + ' ' + link_to("(Unassign)", unassign_admin_rep_path(id: rep.id))
       end
     end
-    assigned_to_party = Topic.assigned_to_party(party)
-    h2 "#{pluralize assigned_to_party.count, "Assigned Topic"}"
+    h2 "#{pluralize party.assigned_topics.count, "Assigned Topic"}"
     ul do
-      assigned_to_party.each do |topic|
+      party.assigned_topics.each do |topic|
         li ERB::Util.h("#{topic.name} #{topic.reps.where(party: party).map(&:name)}") + ' ' + link_to("(Unassign)", unassign_admin_rep_path(id: topic.reps.where(party: party).first.id, topic_id: topic.id))
       end
     end
