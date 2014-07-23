@@ -38,7 +38,7 @@
     .answer-form-container(ng-controller='AnswerFormCtrl' ng-show="question.can_answer && question.expanded")
       %div.media.comment.answer
         %span.pull-left
-          %img.media-object.comment-avatar{src: current_user.try(:gravatar_url) }
+          %img.media-object.comment-avatar{src: current_user.try(:avatar_url) }
         .media-body
           %form(ng-submit="addAnswer()")
             .form-group
