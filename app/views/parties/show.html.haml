@@ -10,14 +10,14 @@
             %li.list-group-item
               .media
                 %a.pull-left{href: user_path(rep_user)}
-                  %img.media-object{src: rep_user.gravatar_url }
+                  %img.media-object{src: rep_user.avatar_url }
                 .media-body= link_to rep_user.name, rep_user
           - if current_user && (current_user.is_admin? || current_user.is_rep_for?(@party))
             - @party.pending_invitations.order('created_at ASC').each do |invitation|
               %li.list-group-item
                 .media
                   .pull-left
-                    %img.media-object{src: User.new(email: invitation.email).gravatar_url}
+                    %img.media-object{src: User.new(email: invitation.email).avatar_url}
                   .media-body
                     .list-group-item-heading.gray-light #{invitation.name} (invited)
                     .list-group-item-text.text-detail

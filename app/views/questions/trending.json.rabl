@@ -12,7 +12,7 @@ child(:answers) {
     user_path(answer.rep.user)
   }
   node(:rep_avatar) { |answer|
-    answer.rep.user.gravatar_url
+    answer.rep.user.avatar_url
   }
   node(:party) { |answer|
     answer.rep.party.name
@@ -52,7 +52,7 @@ node(:user_avatar) { |question|
   if question.is_anonymous?
     "http://placekitten.com/64/64"
   else
-    question.user.gravatar_url
+    question.user.avatar_url
   end
 }
 node(:created_at) { |question|
