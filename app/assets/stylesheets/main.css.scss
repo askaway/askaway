@@ -56,10 +56,10 @@ fieldset[disabled] .btn-primary.active {
 
 
 /* For when we start including background images */
-// @media all and (min-width: 480px) {
-//   body {
-//     background: #EEE url('') no-repeat;
-//     background-attachment: fixed;
-//     background-size: cover;
-//   }
-// }
+@media all and (min-width: 480px) {
+  body {
+    background: #EEE url('bw-fair.jpg') no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+   }
+  }

@@ -26,7 +26,7 @@
     // UserVoice
     :javascript
       // Include the UserVoice JavaScript SDK (only needed once on a page)
-      UserVoice=window.UserVoice||[];(function(){var uv=document.createElement('script');uv.type='text/javascript';uv.async=true;uv.src='//widget.uservoice.com/LWyE5xxX8ed0Ek8Wa4MeuA.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(uv,s)})();
+      UserVoice=window.UserVoice||[];(function(){var uv=document.createElement('script');uv.type='text/javascript';uv.async=true;uv.src='//widget.uservoice.com/PfWC60sVhPGQW3Cee5vpow.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(uv,s)})();
 
       //
       // UserVoice Javascript SDK developer documentation:
@@ -35,18 +35,27 @@
 
       // Set colors
       UserVoice.push(['set', {
-        accent_color: '#448dd6',
+        accent_color: '#e2753a',
         trigger_color: 'white',
-        trigger_background_color: 'rgba(46, 49, 51, 0.6)'
+        trigger_background_color: '#e2753a'
       }]);
 
       // Identify the user and pass traits
       // To enable, replace sample data with actual user traits and uncomment the line
       UserVoice.push(['identify', {
-        email:      "#{current_user.email unless current_user.nil?}", // User’s email address
-        name:      "#{current_user.name unless current_user.nil?}", // User’s email address
-        created_at: #{if current_user then current_user.created_at.to_i else 0 end}, // Unix timestamp for the date the user signed up
-        id:         #{if current_user then current_user.id else 0 end} // Optional: Unique id of the user (if set, this should not change)
+        //email:      'john.doe@example.com', // User’s email address
+        //name:       'John Doe', // User’s real name
+        //created_at: 1364406966, // Unix timestamp for the date the user signed up
+        //id:         123, // Optional: Unique id of the user (if set, this should not change)
+        //type:       'Owner', // Optional: segment your users by type
+        //account: {
+        //  id:           123, // Optional: associate multiple users with a single account
+        //  name:         'Acme, Co.', // Account name
+        //  created_at:   1364406966, // Unix timestamp for the date the account was created
+        //  monthly_rate: 9.99, // Decimal; monthly rate of the account
+        //  ltv:          1495.00, // Decimal; lifetime value of the account
+        //  plan:         'Enhanced' // Plan name for the account
+        //}
       }]);
 
       // Add default trigger to the bottom-right corner of the window:
