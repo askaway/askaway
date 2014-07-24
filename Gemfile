@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.0.5'
+gem 'rails', '~> 4.1.0'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
@@ -48,6 +48,9 @@ group :development do
   gem 'annotate'
   gem "better_errors"
   gem "binding_of_caller"
+  gem 'spring'
+  gem "spring-commands-rspec"
+  gem "spring-commands-cucumber"
   # Livereload seemed to be causing me errors. Feel free to uncomment if needed.
   # You'll also need to uncomment the line in development.rb. -Jon Lemmon
   # gem "rack-livereload"
@@ -70,7 +73,7 @@ end
 group :test do
   gem 'database_cleaner'
   gem 'cucumber-rails', :require => false
-  gem 'shoulda-matchers'
+  gem 'shoulda-matchers', require: false
   gem 'timecop'
 end
 
