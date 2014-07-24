@@ -16,12 +16,4 @@ class UserPolicy < ApplicationPolicy
   def edit?
     true
   end
-
-  def new_avatar?
-    true
-  end
-
-  def upload_avatar?
-    true
-  end
 end

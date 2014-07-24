@@ -60,9 +60,6 @@ GEM
     arbre (1.0.1)
       activesupport (>= 3.0.0)
     arel (5.0.1.20140414130214)
-    aws-sdk (1.48.1)
-      json (~> 1.4)
-      nokogiri (>= 1.4.4)
     bcrypt (3.1.7)
     better_errors (1.1.0)
       coderay (>= 1.0.0)
@@ -92,11 +89,7 @@ GEM
       mail
     celluloid (0.15.2)
       timers (~> 1.1.0)
-    climate_control (0.0.3)
-      activesupport (>= 3.0)
     cliver (0.3.2)
-    cocaine (0.5.4)
-      climate_control (>= 0.0.3, < 1.0)
     coderay (1.1.0)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
@@ -258,11 +251,6 @@ GEM
     paper_trail (3.0.3)
       activerecord (>= 3.0, < 5.0)
       activesupport (>= 3.0, < 5.0)
-    paperclip (4.2.0)
-      activemodel (>= 3.0.0)
-      activesupport (>= 3.0.0)
-      cocaine (~> 0.5.3)
-      mime-types
     pg (0.17.1)
     poltergeist (1.5.1)
       capybara (~> 2.1)
@@ -409,7 +397,6 @@ DEPENDENCIES
   activeadmin!
   angularjs-rails
   annotate
-  aws-sdk
   better_errors
   binding_of_caller
   bootstrap-kaminari-views
@@ -441,7 +428,6 @@ DEPENDENCIES
   omniauth-google-oauth2
   omniauth-twitter
   paper_trail (~> 3.0.3)
-  paperclip (~> 4.1)
   pg
   poltergeist
   pry-byebug
