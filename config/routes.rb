@@ -51,6 +51,7 @@ Askaway::Application.routes.draw do
 
   get 'new_questions', to: 'questions#new_questions'
   get 'trending', to: 'questions#trending'
+  get 'best', to: 'questions#best'
 
   resources :parties, only: :show, path: 'p' do
     member do
