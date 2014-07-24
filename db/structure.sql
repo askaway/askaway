@@ -479,14 +479,7 @@ CREATE TABLE users (
     updated_at timestamp without time zone,
     is_admin boolean DEFAULT false,
     name character varying(255) NOT NULL,
-    is_embedder boolean DEFAULT false,
-    placeholder_id integer,
-    uploaded_avatar_file_name character varying(255),
-    uploaded_avatar_content_type character varying(255),
-    uploaded_avatar_file_size integer,
-    uploaded_avatar_updated_at timestamp without time zone,
-    selected_avatar_type character varying(255),
-    selected_avatar_identity_id integer
+    is_embedder boolean DEFAULT false
 );
 
 
@@ -1128,9 +1121,3 @@ INSERT INTO schema_migrations (version) VALUES ('20140713002728');
 INSERT INTO schema_migrations (version) VALUES ('20140721082237');
 
 INSERT INTO schema_migrations (version) VALUES ('20140721083135');
-
-INSERT INTO schema_migrations (version) VALUES ('20140724051924');
-
-INSERT INTO schema_migrations (version) VALUES ('20140724063831');
-
-INSERT INTO schema_migrations (version) VALUES ('20140724083829');
