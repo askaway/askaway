@@ -44,12 +44,15 @@ class User < ActiveRecord::Base
   delegate :party, to: :rep, prefix: false
 
   def avatar_url(size: 64)
-    filtered_identities = identities.where("provider NOT LIKE 'facebook'")
-    if filtered_identities.present?
-      iden = filtered_identities.first
+    if identities.present?
+      iden = identities.first
       provider = iden.provider
-      provider = 'gplus' if provider == 'google_oauth2'
-      "http://res.cloudinary.com/demo/image/#{provider}/w_#{size},h_#{size},c_fill/#{iden.uid}.jpg"
+      if provider == 'facebook'
+        "https://graph.facebook.com/#{iden.uid}/picture?width=#{size}&height=#{size}"
+      else
+        provider = 'gplus' if provider == 'google_oauth2'
+        "https://res.cloudinary.com/demo/image/#{provider}/w_#{size},h_#{size},c_fill/#{iden.uid}.jpg"
+      end
     else
       gravatar_url(size: size)
     end
