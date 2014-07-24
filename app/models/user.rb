@@ -22,6 +22,8 @@
 class User < ActiveRecord::Base
   TEMP_EMAIL_PREFIX = 'change@me'
   TEMP_EMAIL_REGEX = /\Achange@me/
+  PICTURE_SIZES = {small: 32, large: 64}
+  AVATAR_TYPES = %w(identity uploaded_avatar placeholder)
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -29,34 +31,23 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook, :google_oauth2, :twitter]
 
-  include Gravtastic
-  # gravtastic size: 64, default: 'http://lorempixel.com/output/cats-q-c-64-64-3.jpg'
-  gravtastic default: :identicon
+  has_attached_file :uploaded_avatar, :styles => { :small => "32x32#", :large => "64x64#" }, :default_url => "http://placekitten.com/64/64"
+  validates_attachment_content_type :uploaded_avatar, :content_type => /\Aimage\/.*\Z/
 
   validates_presence_of :name
   validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
+  validates_inclusion_of :selected_avatar_type, in: AVATAR_TYPES, allow_blank: true
+  validate :owns_selected_avatar_identity
 
   has_many :questions
   has_many :votes
   has_many :identities
   has_one :rep
+  belongs_to :selected_avatar_identity, class_name: 'Identity'
 
   delegate :party, to: :rep, prefix: false
 
-  def avatar_url(size: 64)
-    if identities.present?
-      iden = identities.first
-      provider = iden.provider
-      if provider == 'facebook'
-        "https://graph.facebook.com/#{iden.uid}/picture?width=#{size}&height=#{size}"
-      else
-        provider = 'gplus' if provider == 'google_oauth2'
-        "https://res.cloudinary.com/demo/image/#{provider}/w_#{size},h_#{size},c_fill/#{iden.uid}.jpg"
-      end
-    else
-      gravatar_url(size: size)
-    end
-  end
+  before_create :set_placeholder_id
 
   def email_verified?
     self.email && self.email !~ TEMP_EMAIL_REGEX
@@ -81,4 +72,67 @@ class User < ActiveRecord::Base
   def can_answer?(question)
     is_rep? && !Question.has_answer_from_party?(question, party)
   end
+
+  def select_avatar(type: nil, identity: nil)
+    self.selected_avatar_type = type
+    if identity.present?
+      self.selected_avatar_type = 'identity'
+      self.selected_avatar_identity = identity
+    end
+  end
+
+  def avatar_url(size: :large)
+    if selected_avatar_type == 'identity'
+      selected_avatar_identity.image_url(size: size)
+    elsif selected_avatar_type == 'uploaded_avatar'
+      uploaded_avatar.url(size)
+    else
+      placeholder_image_url(size: size)
+    end
+  end
+
+  def avatar_selection_choices
+    choices = []
+    if identities.present?
+      identities.order('provider ASC').each do |iden|
+        name = iden.provider.capitalize
+        name = 'Google' if iden.provider == 'google_oauth2'
+        selection = { name: name, identity: iden }
+        selection.merge!(selected: true) if is_selected?(identity: iden)
+        choices << selection
+      end
+    end
+    if uploaded_avatar.present?
+      selection = { name: 'uploaded', type: 'uploaded_avatar'}
+      selection.merge!(selected: true) if is_selected?(type: 'uploaded_avatar')
+      choices << selection
+    end
+    selection = { name: 'random animal', type: 'placeholder'}
+    selection.merge!(selected: true) if is_selected?(type: 'placeholder')
+    choices << selection
+  end
+
+  private
+    def placeholder_image_url(size: :large)
+      width = PICTURE_SIZES.fetch(size)
+      ActionController::Base.helpers.asset_path("placeholders/#{placeholder_id}-#{width}.jpeg");
+    end
+
+    def set_placeholder_id
+      self.placeholder_id ||= rand(5)
+    end
+
+    def owns_selected_avatar_identity
+      if selected_avatar_type == 'identity' && !identities.include?(selected_avatar_identity)
+        errors.add(:selected_avatar_identity, "does not belong to user")
+      end
+    end
+
+    def is_selected?(identity: nil, type: nil)
+      if identity.present?
+        (selected_avatar_type == 'identity') && (selected_avatar_identity == identity)
+      else
+        (selected_avatar_type == type) || (selected_avatar_type.nil? && type == 'placeholder')
+      end
+    end
 end

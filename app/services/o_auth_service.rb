@@ -37,6 +37,11 @@ class OAuthService
     if identity.user != user
       identity.user = user
       identity.save!
+      # If user hasn't selected an avatar type yet, set it to their identity image
+      if user.selected_avatar_type.nil?
+        user.select_avatar(type: 'identity', identity: identity)
+        user.save!
+      end
     end
     user
   end

@@ -18,6 +18,8 @@ Askaway::Application.routes.draw do
     collection do
       get :edit
       patch :update
+      get :new_avatar
+      patch :upload_avatar
     end
   end
 
