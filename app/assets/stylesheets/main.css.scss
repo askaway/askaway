@@ -54,12 +54,14 @@ fieldset[disabled] .btn-primary.active {
   }
 }
 
+.user-title {
+  font-size: $font-size-large;
+  font-weight: 400;
+}
 
 /* For when we start including background images */
-@media all and (min-width: 480px) {
-  body {
-    background: #EEE url(image_path('bw-fair.jpg')) no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-   }
-  }
+body {
+  background: #EEE url(image_path('bw-fair.jpg')) no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}

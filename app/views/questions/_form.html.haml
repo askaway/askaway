@@ -1,4 +1,3 @@
-%h2 Ask a question
 = simple_form_for(@question, html: { ng_controller: 'QuestionFormCtrl' } ) do |f|
   = f.input :body, placeholder: "Write your question...", label_html: {class: 'sr-only'},
     input_html: { rows: 3 }, as: :charlimited

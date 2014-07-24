@@ -1,7 +1,9 @@
 .row
   .col-xs-12.col-md-8.col-md-offset-2
     %div{ng_controller: 'PartiesCtrl'}
-      %h1= @party.name
+      .list-group
+        .list-group-item
+          %h1.list-group-item-heading= @party.name
       .panel.panel-default
         .panel-heading
           %h2.panel-title Reps
