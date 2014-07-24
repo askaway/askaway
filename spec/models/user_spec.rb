@@ -27,8 +27,8 @@ describe User, :type => :model do
       it "returns social media picture" do
         expect(user.avatar_url).to eq('http://res.cloudinary.com/demo/image/twitter/w_64,h_64,c_fill/12345.jpg')
       end
-      it 'returns gplus image for google_oauth_2 provider' do
-        identity.update_attribute(:provider, 'google_oauth_2')
+      it 'returns gplus image for google_oauth2 provider' do
+        identity.update_attribute(:provider, 'google_oauth2')
         expect(user.avatar_url).to eq('http://res.cloudinary.com/demo/image/gplus/w_64,h_64,c_fill/12345.jpg')
       end
       it 'ignores facebook for now (since it doesnt work with cloudinary)' do

@@ -48,7 +48,7 @@ class User < ActiveRecord::Base
     if filtered_identities.present?
       iden = filtered_identities.first
       provider = iden.provider
-      provider = 'gplus' if provider == 'google_oauth_2'
+      provider = 'gplus' if provider == 'google_oauth2'
       "http://res.cloudinary.com/demo/image/#{provider}/w_#{size},h_#{size},c_fill/#{iden.uid}.jpg"
     else
       gravatar_url(size: size)
