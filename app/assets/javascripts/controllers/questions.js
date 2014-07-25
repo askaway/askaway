@@ -53,12 +53,11 @@ askaway.controller('QuestionCtrl', ['$scope', '$http', function( $scope, $http )
 
     $scope.loadingQuestions = true;
 
-    $http.get(url).success(function(data) {
-      var i = 0;
-
-      $scope.loadingQuestions = false;
-      $scope.question = data;
-    });
+    $http.get(url)
+      .success(function(data) {
+        $scope.loadingQuestions = false;
+        $scope.question = data;
+      });
   }
 }]);
 
