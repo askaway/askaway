@@ -10,8 +10,10 @@
 
       %li.question.list-group-item.list-group-item-clickable(ng-repeat="question in questionList" id="question-{{question.id}}" ng-class="{'question-expanded': question.expanded}" ng-click="toggleQuestion($event)")
         .row
-          .col-xs-2.col-sm-2
+          .col-xs-1.col-sm-1.question-up-vote(ng-click="toggleVote()" data-veto-expand)
             = render 'questions/question_up_vote'
+          .col-sm-1.hidden-xs.question-asker-avatar-sm
+            = render 'questions/question_asker_avatar'
           .col-xs-10.col-sm-10.question-col-main
             .row
               .col-xs-12= render 'questions/question_body'

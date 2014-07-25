@@ -12,6 +12,15 @@
     border-right: none;
   }
   &.list-group-item { padding: 20px 20px 16px 15px; }
+  > .row {
+    display: table-row;
+
+    > .question-col-main, > .question-up-vote, > .question-asker-avatar-sm {
+      display: table-cell;
+      float: none;
+      vertical-align: top;
+    }
+  }
 }
 
 .question-col-main > .row > .col-xs-12 {

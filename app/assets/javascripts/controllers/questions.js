@@ -7,7 +7,7 @@ askaway.controller('QuestionsCtrl', ['$scope', '$http', function( $scope, $http 
 
   $scope.toggleQuestion = function(e) {
     var $target = $(e.target),
-      $veto = $target.closest('a[href], form');
+      $veto = $target.closest('a[href], form, [data-veto-expand]');
 
     if ($veto.length === 0) {
       this.question.expanded = !this.question.expanded;
