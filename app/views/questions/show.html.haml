@@ -44,10 +44,11 @@
       .panel-body
         .row.comment-list
           .col-xs-12.comment-input
-            - if user_signed_in?
-              = render 'comments/form'
-            - else
-              = link_to 'Log in', new_user_session_path
-              to comment
+            - unless current_user.try(:can_answer?, @question)
+              - if user_signed_in?
+                = render 'comments/form'
+              - else
+                = link_to 'Log in', new_user_session_path
+                to comment
 
             = render partial: 'comments/item', collection: @comments, as: :comment
