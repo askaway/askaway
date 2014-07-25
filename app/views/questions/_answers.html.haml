@@ -42,9 +42,13 @@
         .media-body
           %form(ng-submit="addAnswer()")
             .form-group
-              %textarea.form-control.required#answer-text(ng-model="question.answerText" placeholder='Write your answer...')
+              %textarea.form-control.required#answer-text(ng-model="question.answerText" placeholder='Write your answer...' ng-disabled="question.error_message")
               %charcounter(for_model="question.answerText" maxlength="350")
-            %input.btn.btn-primary#post-answer(type="submit" ng-disabled="!question.answerText" data-disable-with="Post answer" value='Post answer')
+            .alert.alert-warning(ng-show="question.error_message")
+              {{question.error_message}}
+
+            %input.btn.btn-primary#post-answer(type="submit" ng-disabled="!question.answerText" ng-hide="question.error_message" data-disable-with="Post answer" value='Post answer')
+            %button.btn.btn-info(ng-show="question.error_message" ng-click="loadQuestion()") Reload
 
     %a.btn.btn-info.btn-block(href="{{question.path}}" ng-class="{'answers-expanded-see-comments-padded': question.answers_count === 0}")
       %i.fa.fa-arrow-circle-right
