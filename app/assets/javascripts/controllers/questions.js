@@ -14,6 +14,21 @@ askaway.controller('QuestionsCtrl', ['$scope', '$http', function( $scope, $http 
     }
   };
 
+  $scope.loadQuestion = function() {
+    var me = this;
+
+    $scope.loadingQuestions = true;
+
+    $http.get(me.question.path).success(function(data) {
+      $scope.loadingQuestions = false;
+
+      me.question.error_message = undefined;
+      me.question.answers = data.answers;
+      me.question.answers_count = data.answers_count;
+      me.question.can_answer = data.can_answer;
+    });
+  };
+
   $scope.loadQuestions = function() {
     var url = getUrl();
 
