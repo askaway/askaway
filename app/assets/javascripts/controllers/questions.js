@@ -76,21 +76,13 @@ function toggleVote($http) {
         .success(function(vote) {
           question.votes_count--;
           question.vote_id = undefined;
-        })
-        .error(requireLogin);
+        });
     } else {
       $http.post(question.path + '/votes', null)
         .success(function(vote) {
           question.votes_count++;
           question.vote_id = vote.id;
-        })
-        .error(requireLogin);
+        });
     }
   };
-}
-
-function requireLogin(data, status) {
-  if (Math.floor(status / 100) === 4) { // 4xx status
-    $('#login-modal').modal('show');
-  }
 }
