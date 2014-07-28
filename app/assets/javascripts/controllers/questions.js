@@ -84,19 +84,36 @@ askaway.controller( 'QuestionFormCtrl', ['$scope', function( $scope ) {
  */
 function toggleVote($http) {
   return function() {
-    var question = this.question;
+    var question = this.question,
+      vote_id = question.vote_id;
+
+    if (question.togglingVote) {
+      return;
+    }
+
+    question.togglingVote = true;
 
     if (question.vote_id) {
+      question.votes_count--;
       $http.delete('/votes/' + question.vote_id)
         .success(function(vote) {
-          question.votes_count--;
           question.vote_id = undefined;
+          question.togglingVote = undefined;
+        })
+        .error(function(data, status) {
+          question.togglingVote = false;
+          question.votes_count++;
         });
     } else {
+      question.votes_count++;
       $http.post(question.path + '/votes', null)
         .success(function(vote) {
-          question.votes_count++;
           question.vote_id = vote.id;
+          question.togglingVote = undefined;
+        })
+        .error(function(data, status) {
+          question.togglingVote = false;
+          question.votes_count--;
         });
     }
   };

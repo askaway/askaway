@@ -46,9 +46,9 @@
               %charcounter(for_model="question.answerText" maxlength="350")
             .alert.alert-warning(ng-show="question.error_message")
               {{question.error_message}}
+              %a(href ng-show="question.error_message" ng-click="loadQuestion()") (Reload question)
 
             %input.btn.btn-primary#post-answer(type="submit" ng-disabled="!question.answerText" ng-hide="question.error_message" data-disable-with="Post answer" value='Post answer')
-            %button.btn.btn-info(ng-show="question.error_message" ng-click="loadQuestion()") Reload
 
     %a.btn.btn-info.btn-block(href="{{question.path}}" ng-class="{'answers-expanded-see-comments-padded': question.answers_count === 0}")
       %i.fa.fa-arrow-circle-right
