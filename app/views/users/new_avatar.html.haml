@@ -1,0 +1,10 @@
+.row
+  .col-xs-12.col-md-8.col-md-offset-2
+    .panel.panel-default
+      .panel-heading
+        %h1.panel-title Upload a profile picture
+      .panel-body
+        = simple_form_for current_user, :url => upload_avatar_users_path, :html => { :multipart => true } do |f|
+          = f.file_field :uploaded_avatar
+          %br
+          = f.submit 'Upload', class: 'btn btn-primary', data: {disable_with: 'Upload'}

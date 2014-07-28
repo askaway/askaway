@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:edit, :update, :finish_signup]
-  before_action :set_user, only: [:show]
+  before_action :authenticate_user!, except: :show
+  before_action :set_user, only: :show
 
   def show
     authorize @user
@@ -31,6 +31,18 @@ class UsersController < ApplicationController
         @show_errors = true
       end
     end
+  end
+
+  def new_avatar
+    authorize current_user
+  end
+
+  def upload_avatar
+    authorize current_user
+    current_user.uploaded_avatar = params[:user][:uploaded_avatar]
+    current_user.save!
+    flash[:notice] = 'Profile picture updated.'
+    redirect_to edit_user_path(current_user)
   end
 
   private
