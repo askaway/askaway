@@ -31,11 +31,23 @@
   @media (min-width: $screen-sm-min) {
     padding: 0 0 0 12px;
   }
-  .question-up-vote-count { color: $gray-light; }
-  .fa-chevron-up {
+  .question-up-vote-count {
+    color: $gray-light;
+    margin-top: -7px;
+    font-size: $font-size-small;
+  }
+  .upvote-icon {
     color: #888;
     &:hover { color: #333; }
-    &.fa-chevron-up-voted { color: #FE7A15; }
+    &.upvote-icon-voted { color: #FE7A15; }
+  }
+  .upvote-icon.fa-arrow-up {
+    line-height: 38px;
+  }
+  .question-up-vote-label {
+    margin-top: 3px;
+    font-size: 10px;
+    text-transform: uppercase;
   }
 }
 
