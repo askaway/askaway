@@ -95,7 +95,10 @@ function toggleVote($http) {
 
     if (question.vote_id) {
       question.votes_count--;
-      $http.delete('/votes/' + question.vote_id)
+      $http({
+        method: 'DELETE', // IE8 fail. http://tech.pro/tutorial/1238/angularjs-and-ie8-gotcha-http-delete
+        url: '/votes/' + question.vote_id
+      })
         .success(function(vote) {
           question.vote_id = undefined;
           question.togglingVote = undefined;
