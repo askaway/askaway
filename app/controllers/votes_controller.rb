@@ -7,7 +7,7 @@ class VotesController < ApplicationController
     question = Question.friendly.find(params[:question_id])
     vote = Vote.create(question: question, user: current_user, ip_address: request.remote_ip)
 
-    render json: { message: "Duplicate IP" }, status: 422 and return unless vote.valid?
+    render json: { message: "Duplicate IP", require_login: true }, status: 422 and return unless vote.valid?
 
     session[:votes] = {} unless session[:votes]
     session[:votes][question.id] = vote.id

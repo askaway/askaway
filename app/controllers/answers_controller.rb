@@ -28,13 +28,17 @@ class AnswersController < ApplicationController
     answer = Answer.new(body: params[:answer][:body],
                         question: question,
                         rep: current_user.rep)
+    error_message = 'Could not post answer. It may have already been answered by someone from your party.'
     authorize answer
     if answer.save
       flash[:notice] = 'Answer posted.' unless request.xhr?
+      redirect_to question
+    elsif request.xhr?
+      render json: { message: error_message }, status: 422
     else
-      flash[:alert] = 'Could not post answer. It may have already been answered by someone from your party.' unless request.xhr?
+      flash[:alert] = error_message
+      redirect_to question
     end
-    redirect_to question
   end
 
   private

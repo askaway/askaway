@@ -14,6 +14,21 @@ askaway.controller('QuestionsCtrl', ['$scope', '$http', function( $scope, $http 
     }
   };
 
+  $scope.loadQuestion = function() {
+    var me = this;
+
+    $scope.loadingQuestions = true;
+
+    $http.get(me.question.path).success(function(data) {
+      $scope.loadingQuestions = false;
+
+      me.question.error_message = undefined;
+      me.question.answers = data.answers;
+      me.question.answers_count = data.answers_count;
+      me.question.can_answer = data.can_answer;
+    });
+  };
+
   $scope.loadQuestions = function() {
     var url = getUrl();
 
@@ -53,12 +68,11 @@ askaway.controller('QuestionCtrl', ['$scope', '$http', function( $scope, $http )
 
     $scope.loadingQuestions = true;
 
-    $http.get(url).success(function(data) {
-      var i = 0;
-
-      $scope.loadingQuestions = false;
-      $scope.question = data;
-    });
+    $http.get(url)
+      .success(function(data) {
+        $scope.loadingQuestions = false;
+        $scope.question = data;
+      });
   }
 }]);
 
@@ -89,7 +103,6 @@ function toggleVote($http) {
         .error(function(data, status) {
           question.togglingVote = false;
           question.votes_count++;
-          requireLogin(data, status);
         });
     } else {
       question.votes_count++;
@@ -99,15 +112,9 @@ function toggleVote($http) {
           question.togglingVote = undefined;
         })
         .error(function(data, status) {
+          question.togglingVote = false;
           question.votes_count--;
-          requireLogin(data, status);
         });
     }
   };
-}
-
-function requireLogin(data, status) {
-  if (Math.floor(status / 100) === 4) { // 4xx status
-    $('#login-modal').modal('show');
-  }
 }
