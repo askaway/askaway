@@ -37,6 +37,7 @@ class AnswersController < ApplicationController
       render json: { message: error_message }, status: 422
     else
       flash[:alert] = error_message
+      redirect_to question
     end
   end
 
