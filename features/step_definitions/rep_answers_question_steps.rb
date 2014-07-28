@@ -22,6 +22,10 @@ Then(/^an email should be sent to who asked the question$/) do
   expect(current_email.subject).to eq("#{@rep.party.name} answered your question!")
 end
 
+When(/^I have answered the question$/) do
+  @question.answers << FactoryGirl.create(:answer, question: @question, rep: @rep)
+end
+
 When(/^I expand the question$/) do
   find("#question-#{@question.id}").click
 end
