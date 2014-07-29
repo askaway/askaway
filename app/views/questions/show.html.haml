@@ -18,14 +18,14 @@
           %li.list-group-item
             %div.media
               %span.pull-left
-                %img.media-object.comment-avatar{src: current_user.avatar_url }
+                %img.media-object.avatar.comment-avatar{src: current_user.avatar_url }
               %div.media-body
                 = render 'answers/form', question: @question, answer: @new_answer, button_text: 'Post answer'
         - @answers.each do |answer|
           %li.list-group-item
             %div.media.answer
               %span.pull-left
-                %img.media-object.comment-avatar{src: answer.rep.user.avatar_url }
+                %img.media-object.avatar.comment-avatar{src: answer.rep.user.avatar_url }
               %div.media-body
                 .comment-name
                   = link_to(answer.rep.user_name, answer.rep.user)

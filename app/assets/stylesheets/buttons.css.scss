@@ -1,0 +1,43 @@
+.btn {
+  @media (max-width: $screen-xs-max) {
+    font-size: $font-size-base-xs;
+  }
+}
+
+.btn-primary {
+  color: white;
+  background-color: $teal;
+  border-color: $teal;
+  &:hover {
+    background-color: $teal-dark;
+    border-color: $teal-dark;
+  }
+}
+.btn-primary.disabled,
+.btn-primary[disabled],
+fieldset[disabled] .btn-primary,
+.btn-primary.disabled:hover,
+.btn-primary[disabled]:hover,
+fieldset[disabled] .btn-primary:hover,
+.btn-primary.disabled:focus,
+.btn-primary[disabled]:focus,
+fieldset[disabled] .btn-primary:focus,
+.btn-primary.disabled:active,
+.btn-primary[disabled]:active,
+fieldset[disabled] .btn-primary:active,
+.btn-primary.disabled.active,
+.btn-primary[disabled].active,
+fieldset[disabled] .btn-primary.active {
+  background-color: #45A5A5;
+  border-color: #67B4BB;
+}
+
+.btn-facebook {
+  color: white;
+  background-color: #45619D;
+  border-color: #45619D;
+  &:hover {
+    background-color: #3C5998;
+    border-color: #3C5998;
+  }
+}

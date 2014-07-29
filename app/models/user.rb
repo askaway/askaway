@@ -94,9 +94,15 @@ class User < ActiveRecord::Base
         select_avatar!(selection)
       end
     end
-    if selected_avatar_type == 'identity'
-      selected_avatar_identity.image_url(size: size)
-    elsif selected_avatar_type == 'uploaded_avatar'
+    specific_avatar_url(type: selected_avatar_type,
+                        identity: selected_avatar_identity,
+                        size: size)
+  end
+
+  def specific_avatar_url(type: nil, identity: nil, size: :large)
+    if type == 'identity'
+      identity.image_url(size: size)
+    elsif type == 'uploaded_avatar'
       uploaded_avatar.url(size)
     else
       placeholder_image_url(size: size)
@@ -109,7 +115,8 @@ class User < ActiveRecord::Base
       identities.order('provider ASC').each do |iden|
         name = iden.provider.capitalize
         name = 'Google' if iden.provider == 'google_oauth2'
-        selection = { name: name, identity: iden }
+        name = "#{name}"
+        selection = { name: name, type: 'identity', identity: iden }
         selection.merge!(selected: true) if is_selected?(identity: iden)
         choices << selection
       end
@@ -119,7 +126,7 @@ class User < ActiveRecord::Base
       selection.merge!(selected: true) if is_selected?(type: 'uploaded_avatar')
       choices << selection
     end
-    selection = { name: 'random animal', type: 'placeholder'}
+    selection = { name: 'Random animal', type: 'placeholder'}
     selection.merge!(selected: true) if is_selected?(type: 'placeholder')
     choices << selection
   end

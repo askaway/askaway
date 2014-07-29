@@ -1,5 +1,7 @@
 body {
-  background: #EEE;
+  background: #EEE url(image_path('bw-fair.jpg')) no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
   @media (max-width: $screen-xs-max) {
     font-size: $font-size-base-xs;
   }
@@ -10,58 +12,23 @@ body {
   margin-right: 0;
 }
 
-.btn {
-  @media (max-width: $screen-xs-max) {
-    font-size: $font-size-base-xs;
-  }
-}
-
-.btn-primary {
-  color: white;
-  background-color: $teal;
-  border-color: $teal;
-  &:hover {
-    background-color: $teal-dark;
-    border-color: $teal-dark;
-  }
-}
-.btn-primary.disabled,
-.btn-primary[disabled],
-fieldset[disabled] .btn-primary,
-.btn-primary.disabled:hover,
-.btn-primary[disabled]:hover,
-fieldset[disabled] .btn-primary:hover,
-.btn-primary.disabled:focus,
-.btn-primary[disabled]:focus,
-fieldset[disabled] .btn-primary:focus,
-.btn-primary.disabled:active,
-.btn-primary[disabled]:active,
-fieldset[disabled] .btn-primary:active,
-.btn-primary.disabled.active,
-.btn-primary[disabled].active,
-fieldset[disabled] .btn-primary.active {
-  background-color: #45A5A5;
-  border-color: #67B4BB;
-}
-
-.btn-facebook {
-  color: white;
-  background-color: #45619D;
-  border-color: #45619D;
-  &:hover {
-    background-color: #3C5998;
-    border-color: #3C5998;
-  }
-}
-
 .user-title {
   font-size: $font-size-large;
   font-weight: 400;
 }
 
-/* For when we start including background images */
-body {
-  background: #EEE url(image_path('bw-fair.jpg')) no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
+.avatar {
+  border-radius: $avatar-radius;
 }
+.avatar-choice-icon {
+  @include square(64px);
+}
+.avatar-choice-text {
+  margin-top: 17px;
+}
+.fa.avatar-upload-icon {
+  line-height: 64px;
+  width: 64px;
+  text-align: center;
+}
+
