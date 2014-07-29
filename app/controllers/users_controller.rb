@@ -8,13 +8,19 @@ class UsersController < ApplicationController
 
   def update
     authorize current_user
-    current_user.update(user_params)
-    flash[:notice] = 'Your profile has been updated.'
-    redirect_to root_url
+    if current_user.update(user_params)
+      flash[:notice] = 'Your profile has been updated.'
+      redirect_to root_url
+    else
+      flash[:notice] = 'Could not update your profile.'
+      @user = current_user
+      render 'edit'
+    end
   end
 
   def edit
     authorize current_user
+    @user = current_user
   end
 
   def finish_signup
