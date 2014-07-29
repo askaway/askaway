@@ -20,7 +20,14 @@
                   %img{src: current_user.avatar_url(size: :small)}
                   %b.caret
                 %ul.dropdown-menu.dropdown-menu-right
-                  %li= link_to 'Account settings', edit_users_path
+                  %li
+                    = link_to user_path(current_user) do
+                      %span.glyphicon.glyphicon-user.dropdown-icon
+                      My profile
+                  %li
+                    = link_to edit_users_path do
+                      %span.fa.fa-gear.dropdown-icon
+                      Account settings
                   %li= link_to 'Log out', destroy_user_session_path, method: :delete
             - else
               %li

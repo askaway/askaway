@@ -4,11 +4,16 @@
       %span.pull-left
         %img.media-object.comment-avatar{src: @user.avatar_url}
       .media-body
-        %h1.list-group-item-heading.user-title= @user.name
+        %h1.list-group-item-heading.user-title
+          = @user.name
+          - if @user == current_user
+            %span.small= link_to '(Edit)', edit_users_path
 
-- if @user.questions.count > 0
-  %ul.list-group
-    %li.list-group-item
-      %h2.user-title.list-group-item-heading Questions
-    - @user.questions.not_anonymous.each do |question|
-      %li.list-group-item= link_to question.body, question
+%ul.list-group
+  %li.list-group-item
+    %h2.user-title.list-group-item-heading Questions
+    - if @user.questions.count > 0
+      - @user.questions.not_anonymous.each do |question|
+        %li.list-group-item= link_to question.body, question
+    - else
+      #{@user.first_name} has not asked any questions yet.

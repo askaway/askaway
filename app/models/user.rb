@@ -35,6 +35,7 @@ class User < ActiveRecord::Base
   validates_attachment_content_type :uploaded_avatar, :content_type => /\Aimage\/.*\Z/
 
   validates_presence_of :name
+  validates_presence_of :email
   validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
   validates_inclusion_of :selected_avatar_type, in: AVATAR_TYPES, allow_blank: true
   validate :owns_selected_avatar_identity
@@ -48,6 +49,10 @@ class User < ActiveRecord::Base
   delegate :party, to: :rep, prefix: false
 
   before_create :set_placeholder_id
+
+  def first_name
+    name.split(" ")[0]
+  end
 
   def email_verified?
     self.email && self.email !~ TEMP_EMAIL_REGEX
