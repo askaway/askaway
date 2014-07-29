@@ -49,6 +49,10 @@ class User < ActiveRecord::Base
 
   before_create :set_placeholder_id
 
+  def first_name
+    name.split(" ")[0]
+  end
+
   def email_verified?
     self.email && self.email !~ TEMP_EMAIL_REGEX
   end

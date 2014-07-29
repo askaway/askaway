@@ -25,7 +25,23 @@ body {
         border-radius: 4px;
         @include square($avatar-navbar-size)
       }
-      .caret {}
+    }
+  }
+  li.dropdown {
+    a.dropdown-toggle {
+      color: $gray-light;
+      &:hover {
+        text-decoration: none;
+        color: $gray;
+      }
+    }
+    .dropdown-icon {
+      color: $gray-light;
+      margin-right: 5px;
+      font-size: 14px;
+    }
+    .dropdown-icon.fa {
+      font-size: 16px;
     }
   }
 }
