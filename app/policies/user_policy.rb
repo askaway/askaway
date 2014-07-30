@@ -18,10 +18,14 @@ class UserPolicy < ApplicationPolicy
   end
 
   def new_avatar?
-    true
+    user.is_rep? || user.is_admin?
   end
 
   def upload_avatar?
+    user.is_rep? || user.is_admin?
+  end
+
+  def select_avatar?
     true
   end
 end

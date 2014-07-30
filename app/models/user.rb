@@ -78,8 +78,9 @@ class User < ActiveRecord::Base
     is_rep? && !Question.has_answer_from_party?(question, party)
   end
 
-  def select_avatar!(type: nil, identity: nil)
+  def select_avatar!(type: nil, identity: nil, identity_id: nil)
     self.selected_avatar_type = type
+    identity ||= Identity.find(identity_id) if identity_id
     if identity.present?
       self.selected_avatar_type = 'identity'
       self.selected_avatar_identity = identity

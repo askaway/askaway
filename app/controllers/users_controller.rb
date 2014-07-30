@@ -45,10 +45,30 @@ class UsersController < ApplicationController
 
   def upload_avatar
     authorize current_user
+    unless params[:user]
+      flash[:alert] = 'Oops! Looks like you forgot to choose a picture to upload.'
+      return render 'new_avatar'
+    end
     current_user.uploaded_avatar = params[:user][:uploaded_avatar]
-    current_user.save!
-    flash[:notice] = 'Profile picture updated.'
-    redirect_to edit_user_path(current_user)
+    if current_user.valid?
+      current_user.select_avatar!(type: 'uploaded_avatar')
+      flash[:notice] = 'Lookin good! Profile picture updated.'
+      redirect_to edit_users_path
+    else
+      flash[:alert] = "Oops! We couldn't update your picture for some reason."
+      render 'new_avatar'
+    end
+  end
+
+  def select_avatar
+    authorize current_user
+    identity, type = params[:identity], params[:type]
+    if current_user.select_avatar!(identity_id: identity, type: type)
+      flash[:notice] = 'Lookin good! Profile picture updated.'
+    else
+      flash[:notice] = "Oops! We couldn't update your picture for some reason."
+    end
+    redirect_to edit_users_path
   end
 
   private
