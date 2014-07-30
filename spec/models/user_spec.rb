@@ -34,8 +34,8 @@ describe User, :type => :model do
           fb_iden = FactoryGirl.create(:identity, provider: 'facebook', user: user)
           user.select_avatar!(identity: fb_iden)
           expect(user.avatar_selection_choices).to eq(
-            [{name: 'Facebook', identity: fb_iden, selected: true},
-             {name: 'Twitter', identity: tw_iden},
+            [{name: 'Facebook', identity: fb_iden, type: 'identity', selected: true},
+             {name: 'Twitter', identity: tw_iden, type: 'identity'},
              {name: 'uploaded', type: 'uploaded_avatar'},
              {name: 'random animal', type: 'placeholder'}])
         end

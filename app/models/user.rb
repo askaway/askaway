@@ -126,7 +126,7 @@ class User < ActiveRecord::Base
       selection.merge!(selected: true) if is_selected?(type: 'uploaded_avatar')
       choices << selection
     end
-    selection = { name: 'Random animal', type: 'placeholder'}
+    selection = { name: 'random animal', type: 'placeholder'}
     selection.merge!(selected: true) if is_selected?(type: 'placeholder')
     choices << selection
   end
