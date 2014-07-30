@@ -22,7 +22,6 @@ body {
     .user-settings-dropdown {
       padding: 6px 0px;
       img {
-        border-radius: 4px;
         @include square($avatar-navbar-size)
       }
     }

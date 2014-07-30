@@ -21,7 +21,7 @@
       %li.answers-expanded-item(ng-repeat="answer in question.answers")
         %div.media.comment.answer
           %span.pull-left
-            %img.media-object.comment-avatar(ng-src="{{answer.rep_avatar}}")
+            %img.media-object.avatar.comment-avatar(ng-src="{{answer.rep_avatar}}")
           .media-body
             .comment-name
               %a(ng-href="{{answer.user_path}}") {{answer.rep}}
@@ -38,7 +38,7 @@
     .answer-form-container(ng-controller='AnswerFormCtrl' ng-show="question.can_answer && question.expanded")
       %div.media.comment.answer
         %span.pull-left
-          %img.media-object.comment-avatar{src: current_user.try(:avatar_url) }
+          %img.media-object.avatar.comment-avatar{src: current_user.try(:avatar_url) }
         .media-body
           %form(ng-submit="addAnswer()")
             .form-group
