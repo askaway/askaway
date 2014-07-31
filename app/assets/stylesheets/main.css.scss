@@ -7,6 +7,10 @@ body {
   }
 }
 
+.btn {
+  font-family: $font-family-lato;
+}
+
 .row-no-gutter {
   margin-left: 0;
   margin-right: 0;
@@ -14,6 +18,11 @@ body {
 
 .user-title {
   font-size: $font-size-large;
+  font-weight: 400;
+}
+
+.user-questions-title {
+  font-size: $font-size-base;
   font-weight: 400;
 }
 

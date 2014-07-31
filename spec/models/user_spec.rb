@@ -117,18 +117,18 @@ describe User, :type => :model do
         it 'returns identity.image url if selected' do
           user.select_avatar!(identity: @identity)
           expect(user.avatar_url).to eq(@identity.image_url)
-          expect(user.avatar_url(size: :small)).to eq(@identity.image_url(size: :small))
+          expect(user.avatar_url(size: :xsmall)).to eq(@identity.image_url(size: :xsmall))
         end
         it 'returns uploaded_avatar url if selected' do
           user.select_avatar!(type: 'uploaded_avatar')
           expect(user.avatar_url).to match('/system/users/uploaded_avatars/.+/large')
-          expect(user.avatar_url(size: :small)).to match('/system/users/uploaded_avatars/.+/small')
+          expect(user.avatar_url(size: :xsmall)).to match('/system/users/uploaded_avatars/.+/small')
         end
         it 'returns placeholder url if selected' do
           user.select_avatar!(type: 'placeholder')
           user.update_attribute(:placeholder_id, 2)
           expect(user.avatar_url).to eq('/assets/placeholders/2-64.jpeg')
-          expect(user.avatar_url(size: :small)).to eq('/assets/placeholders/2-32.jpeg')
+          expect(user.avatar_url(size: :xsmall)).to eq('/assets/placeholders/2-32.jpeg')
         end
       end
     end

@@ -5,7 +5,7 @@ class Identity < ActiveRecord::Base
 
   after_destroy :update_user_image
 
-  def image_url(size: :large)
+  def image_url(size: :small)
     width = User::PICTURE_SIZES.fetch(size)
     if provider == 'facebook'
       "https://graph.facebook.com/#{uid}/picture?width=#{width}&height=#{width}"
