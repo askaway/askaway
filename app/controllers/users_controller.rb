@@ -55,7 +55,7 @@ class UsersController < ApplicationController
       flash[:notice] = 'Lookin good! Profile picture updated.'
       redirect_to edit_users_path
     else
-      flash[:alert] = "Oops! We couldn't update your picture for some reason."
+      flash[:alert] = "Oops! We couldn't update your picture. Make sure it's under 5 megabytes."
       render 'new_avatar'
     end
   end

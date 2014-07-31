@@ -32,7 +32,9 @@ class User < ActiveRecord::Base
          :omniauthable, :omniauth_providers => [:facebook, :google_oauth2, :twitter]
 
   has_attached_file :uploaded_avatar, :styles => { :xsmall => "32x32#", :small => "64x64#" }
-  validates_attachment_content_type :uploaded_avatar, :content_type => /\Aimage\/.*\Z/
+  validates_attachment :uploaded_avatar,
+    content_type: { content_type: /\Aimage\/.*\Z/ },
+    size: { :in => 0..5.megabytes }
 
   validates_presence_of :name
   validates_presence_of :email
