@@ -121,8 +121,8 @@ describe User, :type => :model do
         end
         it 'returns uploaded_avatar url if selected' do
           user.select_avatar!(type: 'uploaded_avatar')
-          expect(user.avatar_url).to match('/system/users/uploaded_avatars/.+/large')
-          expect(user.avatar_url(size: :xsmall)).to match('/system/users/uploaded_avatars/.+/small')
+          expect(user.avatar_url).to match('/system/users/uploaded_avatars/.+/small')
+          expect(user.avatar_url(size: :xsmall)).to match('/system/users/uploaded_avatars/.+/xsmall')
         end
         it 'returns placeholder url if selected' do
           user.select_avatar!(type: 'placeholder')
