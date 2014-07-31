@@ -50,7 +50,7 @@ node(:user_path) { |question|
 }
 node(:user_avatar) { |question|
   if question.is_anonymous?
-    "http://placekitten.com/64/64"
+    image_url('placeholders/5-64.jpeg')
   else
     question.user.avatar_url
   end

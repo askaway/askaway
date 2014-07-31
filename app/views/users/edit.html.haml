@@ -10,7 +10,7 @@
             %li.list-group-item
               %div.media
                 %span.pull-left
-                  - choice_sliced = choice.slice(:type, :identity).merge(size: :large)
+                  - choice_sliced = choice.slice(:type, :identity).merge(size: :small)
                   = image_tag current_user.specific_avatar_url(choice_sliced), class: 'media-object avatar avatar-choice-icon'
                 .media-body.avatar-choice-text
                   - if choice[:selected]

@@ -22,7 +22,7 @@
 class User < ActiveRecord::Base
   TEMP_EMAIL_PREFIX = 'change@me'
   TEMP_EMAIL_REGEX = /\Achange@me/
-  PICTURE_SIZES = {small: 32, large: 64}
+  PICTURE_SIZES = {xsmall: 32, small: 64}
   AVATAR_TYPES = %w(identity uploaded_avatar placeholder)
 
   # Include default devise modules. Others available are:
@@ -31,7 +31,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook, :google_oauth2, :twitter]
 
-  has_attached_file :uploaded_avatar, :styles => { :small => "32x32#", :large => "64x64#" }, :default_url => "http://placekitten.com/64/64"
+  has_attached_file :uploaded_avatar, :styles => { :xsmall => "32x32#", :small => "64x64#" }
   validates_attachment_content_type :uploaded_avatar, :content_type => /\Aimage\/.*\Z/
 
   validates_presence_of :name
@@ -87,7 +87,7 @@ class User < ActiveRecord::Base
     save
   end
 
-  def avatar_url(size: :large)
+  def avatar_url(size: :small)
     if selected_avatar_type.nil?
       selection = avatar_selection_choices.first.slice(:type, :identity)
       unless selection[:type] == 'placeholder'
@@ -99,7 +99,7 @@ class User < ActiveRecord::Base
                         size: size)
   end
 
-  def specific_avatar_url(type: nil, identity: nil, size: :large)
+  def specific_avatar_url(type: nil, identity: nil, size: :small)
     if type == 'identity'
       identity.image_url(size: size)
     elsif type == 'uploaded_avatar'
@@ -132,7 +132,7 @@ class User < ActiveRecord::Base
   end
 
   private
-    def placeholder_image_url(size: :large)
+    def placeholder_image_url(size: :small)
       width = PICTURE_SIZES.fetch(size)
       ActionController::Base.helpers.asset_path("placeholders/#{placeholder_id}-#{width}.jpeg");
     end

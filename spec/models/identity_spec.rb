@@ -15,9 +15,9 @@ describe Identity, :type => :model do
       identity.update_attribute(:provider, 'facebook')
       expect(identity.image_url).to eq('https://graph.facebook.com/12345/picture?width=64&height=64')
     end
-    context 'given size: :small' do
+    context 'given size: :xsmall' do
       it 'returns picture of size 32' do
-        expect(identity.image_url(size: :small)).to eq('https://res.cloudinary.com/demo/image/twitter/w_32,h_32,c_fill/12345.jpg')
+        expect(identity.image_url(size: :xsmall)).to eq('https://res.cloudinary.com/demo/image/twitter/w_32,h_32,c_fill/12345.jpg')
       end
     end
     context 'given size 31' do
