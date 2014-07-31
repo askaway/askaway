@@ -1,6 +1,6 @@
 require 'active_support/concern'
 
-module UploadableAvatar
+module UploadedAvatar
   extend ActiveSupport::Concern
 
   PICTURE_SIZES = {xsmall: 32, small: 64}

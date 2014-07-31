@@ -20,7 +20,7 @@
 #
 
 class User < ActiveRecord::Base
-  include UploadableAvatar
+  include UploadedAvatar
 
   TEMP_EMAIL_PREFIX = 'change@me'
   TEMP_EMAIL_REGEX = /\Achange@me/
