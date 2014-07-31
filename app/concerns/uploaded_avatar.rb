@@ -9,7 +9,9 @@ module UploadedAvatar
   included do
     belongs_to :selected_avatar_identity, class_name: 'Identity'
 
-    has_attached_file :uploaded_avatar, :styles => { :xsmall => "32x32#", :small => "64x64#" }
+    has_attached_file :uploaded_avatar,
+      :styles => { :xsmall => "32x32#", :small => "64x64#" },
+      :s3_protocol => :https
     validates_attachment :uploaded_avatar,
       content_type: { content_type: /\Aimage\/.*\Z/ },
       size: { :in => 0..5.megabytes }
