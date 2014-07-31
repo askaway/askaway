@@ -7,4 +7,4 @@
         = simple_form_for current_user, :url => upload_avatar_users_path, :html => { :multipart => true } do |f|
           = f.file_field :uploaded_avatar
           %br
-          = f.submit 'Upload', class: 'btn btn-primary', data: {disable_with: 'Upload'}
+          = f.submit 'Upload', class: 'btn btn-primary', data: {disable_with: 'Uploading...'}
