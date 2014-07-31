@@ -31,6 +31,8 @@
                   %li= link_to 'Log out', destroy_user_session_path, method: :delete
             - else
               %li
+                = link_to 'About', about_path, class: 'btn btn-link navbar-btn'
+              %li
                 %button.btn.btn-link.navbar-btn{:'data-toggle' => 'modal', :'data-target' => '#login-modal', :'type' => 'button'} Log in
               %li
                 %div
