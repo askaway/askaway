@@ -14,19 +14,17 @@ $answers-preview-height: 30px;
 }
 .answers-preview-count-number {
   vertical-align: middle;
-  font-size: $font-size-medium-large;
+  font-size: $font-size-base;
   @media (max-width: $screen-xs-max) {
-    font-size: $font-size-medium-large-xs;
+    font-size: $font-size-base-xs;
   }
   font-weight: 300;
 }
 .answers-preview-count-text {
   vertical-align: middle;
   padding-left: 2px;
-  font-size: $font-size-extra-small;
-  @media (max-width: $screen-xs-max) {
-    font-size: $font-size-extra-small-xs;
-  }
+  text-transform: uppercase;
+  font-size: $font-size-extra-extra-small;
   color: $gray-light;
   font-weight: 300;
 }
