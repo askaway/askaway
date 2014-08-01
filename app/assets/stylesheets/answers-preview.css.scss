@@ -14,9 +14,9 @@ $answers-preview-height: 30px;
 }
 .answers-preview-count-number {
   vertical-align: middle;
-  font-size: $font-size-medium-large;
+  font-size: $font-size-base;
   @media (max-width: $screen-xs-max) {
-    font-size: $font-size-medium-large-xs;
+    font-size: $font-size-base-xs;
   }
   font-weight: 300;
 }

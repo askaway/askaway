@@ -1,0 +1,33 @@
+.up-vote {
+  text-align: center;
+  font-size: $font-size-base;
+  padding: 0;
+  @media (min-width: $screen-sm-min) {
+    padding: 0 0 0 12px;
+  }
+  .up-vote-count {
+    color: $gray;
+    font-weight: 300;
+    margin-top: -7px;
+    font-size: $font-size-small;
+    @media (max-width: $screen-xs-max) {
+      font-size: $font-size-base-xs;
+    }
+  }
+  .upvote-icon {
+    color: #888;
+    &:hover { color: #333; }
+    &.upvote-icon-voted { color: #FE7A15; }
+  }
+  .upvote-icon.fa-arrow-up {
+    line-height: 38px;
+    @media (max-width: $screen-xs-max) {
+      font-size: $font-size-small;
+    }
+  }
+  .up-vote-label {
+    margin-top: 3px;
+    font-size: 10px;
+    text-transform: uppercase;
+  }
+}
