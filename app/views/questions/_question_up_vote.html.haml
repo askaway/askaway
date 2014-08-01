@@ -1,8 +1,4 @@
-.row
-  .col-sm-6.col-xs-12.question-up-vote
-    %a(href="" ng-click="toggleVote()")
-      %i.fa.fa-chevron-up(id="vote-for-{{question.id}}" ng-class="{'fa-chevron-up-voted': question.vote_id}")
-    .question-up-vote-count {{question.votes_count}}
+%a(href)
+  %i.fa.fa-chevron-up(id="vote-for-{{question.id}}" ng-class="{'fa-chevron-up-voted': question.vote_id}")
+.question-up-vote-count {{question.votes_count}}
 
-  .col-sm-6.hidden-xs.question-asker-avatar-sm
-    = render 'questions/question_asker_avatar'
