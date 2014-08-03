@@ -41,14 +41,25 @@ class UsersController < ApplicationController
 
   def new_avatar
     authorize current_user
+    @resource = current_user
+    @title = "Upload a profile picture"
   end
 
   def upload_avatar
     authorize current_user
-    current_user.uploaded_avatar = params[:user][:uploaded_avatar]
-    current_user.save!
-    flash[:notice] = 'Profile picture updated.'
-    redirect_to edit_user_path(current_user)
+    @resource = current_user
+    perform_avatar_upload(@resource, edit_users_path)
+  end
+
+  def select_avatar
+    authorize current_user
+    identity, type = params[:identity], params[:type]
+    if current_user.select_avatar!(identity_id: identity, type: type)
+      flash[:notice] = 'Lookin good! Profile picture updated.'
+    else
+      flash[:notice] = "Oops! We couldn't update your picture for some reason."
+    end
+    redirect_to edit_users_path
   end
 
   private

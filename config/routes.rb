@@ -20,6 +20,7 @@ Askaway::Application.routes.draw do
       patch :update
       get :new_avatar
       patch :upload_avatar
+      patch :select_avatar
     end
   end
 
@@ -59,6 +60,8 @@ Askaway::Application.routes.draw do
     member do
       get :invited_reps
       get :walkthrough
+      get :new_avatar
+      patch :upload_avatar
     end
     resources :invitations, only: [:new, :create]
   end

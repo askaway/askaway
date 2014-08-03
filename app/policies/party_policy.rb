@@ -6,16 +6,23 @@ class PartyPolicy < ApplicationPolicy
   end
 
   def invite_reps?
-    user && (user.is_admin? || user_is_party_rep?)
+    user_can_administer_party?
   end
 
   def walkthrough?
-    invite_reps?
+    user_can_administer_party?
+  end
+
+  def new_avatar?
+    user_can_administer_party?
+  end
+
+  def upload_avatar?
+    user_can_administer_party?
   end
 
   private
-
-  def user_is_party_rep?
-    @record.rep_users.exists?(id: user.id)
-  end
+    def user_can_administer_party?
+      user.try(:can_administer?, @record)
+    end
 end
