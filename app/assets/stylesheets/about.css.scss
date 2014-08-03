@@ -1,0 +1,19 @@
+.welcome-banner {
+  padding-top: 140px;
+  padding-bottom: 30px;
+  color: white;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+.welcome-banner h3 {
+  font-weight: 300;
+}
+
+.voter-resource-links {
+  text-align: center;
+  font-size: $font-size-small;
+}
+.voter-resource-links img {
+  margin: auto;
+  margin-bottom: 1em;
+}
