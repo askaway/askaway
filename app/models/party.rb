@@ -16,6 +16,15 @@ class Party < ActiveRecord::Base
   friendly_id slug_candidate, :use => [:slugged, :history]
   include FriendlyIdHelper
 
+  include UploadedAvatar
+
+  # has_attached_file :cover,
+  #   :styles => { :medium => "64x64#" },
+  #   :s3_protocol => :https
+  # validates_attachment :cover,
+  #   content_type: { content_type: /\Aimage\/.*\Z/ },
+  #   size: { :in => 0..10.megabytes }
+
   validates_presence_of :name
   validates_uniqueness_of :name
   validates_presence_of :auth_statement

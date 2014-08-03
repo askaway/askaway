@@ -58,6 +58,10 @@ class User < ActiveRecord::Base
     Rep.where(party: party, user: self).exists?
   end
 
+  def can_administer?(party)
+    is_admin? || is_rep_for?(@party)
+  end
+
   def can_embed?
     is_embedder? || is_admin?
   end
