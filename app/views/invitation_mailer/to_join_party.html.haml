@@ -1,12 +1,26 @@
-%p= "Hi #{@invitation.name}!"
+%p= "Kia ora #{@invitation.name}!"
 
 %p
   = @invitation.inviter.name
-  has invited you to answer questions for The
+  has invited you to answer questions on behalf of the
   = @invitation.invitable.name
-  on Ask Away - a website where Kiwis ask the parties questions during the elections, and you as an MP can answer them! Click the link below to get started:
+  on the website Ask Away. Your party secretary has authorised any content you post to the site. Click the link below to get started:
 
 %p= link_to invitation_url(@invitation), invitation_url(@invitation), id: 'invitation-link'
 
 %p
-  If you have any questions, feel free to email meg@askaway.org.nz. Ask Away is part of Massey University's Design and Democracy Project.
+  %i What is Ask Away?
+  %br
+  Ask Away is a website where Kiwis ask the parties questions during the election, and you can answer them on behalf of your party. Ask Away is part of Massey University’s Design and Democracy Project, which aims to facilitate youth engagement in the 2014 General Election.
+%p
+  %i Which questions should you answer?
+  %br
+  In general, we would like the most popular question each day to get answered, so you can expect around one or two questions to be passed your way each week. 
+%p
+  If you have any questions, free to email me, meg@askaway.org.nz, or call me with any questions.
+%p
+  Warm regards,
+  %br
+  Meg Howie
+  %br
+  0274418072
