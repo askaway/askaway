@@ -6,18 +6,23 @@ class PartyPolicy < ApplicationPolicy
   end
 
   def invite_reps?
-    user.can_administer?(@record)
+    user_can_administer_party?
   end
 
   def walkthrough?
-    user.can_administer?(@record)
+    user_can_administer_party?
   end
 
   def new_avatar?
-    user.can_administer?(@record)
+    user_can_administer_party?
   end
 
   def upload_avatar?
-    user.can_administer?(@record)
+    user_can_administer_party?
   end
+
+  private
+    def user_can_administer_party?
+      user.try(:can_administer?, @record)
+    end
 end

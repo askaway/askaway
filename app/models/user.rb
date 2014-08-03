@@ -59,7 +59,7 @@ class User < ActiveRecord::Base
   end
 
   def can_administer?(party)
-    is_admin? || is_rep_for?(@party)
+    is_admin? || is_rep_for?(party)
   end
 
   def can_embed?

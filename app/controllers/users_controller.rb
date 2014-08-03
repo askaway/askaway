@@ -48,19 +48,7 @@ class UsersController < ApplicationController
   def upload_avatar
     authorize current_user
     @resource = current_user
-    unless params[:user]
-      flash[:alert] = 'Oops! Looks like you forgot to choose a picture to upload.'
-      return render 'new_avatar'
-    end
-    @resource.uploaded_avatar = params[:user][:uploaded_avatar]
-    if @resource.valid?
-      @resource.select_avatar!(type: 'uploaded_avatar')
-      flash[:notice] = 'Lookin good! Profile picture updated.'
-      redirect_to edit_users_path
-    else
-      flash[:alert] = "Oops! We couldn't update your picture. Make sure it's under 5 megabytes."
-      render 'new_avatar'
-    end
+    perform_avatar_upload(@resource, edit_users_path)
   end
 
   def select_avatar
