@@ -67,4 +67,6 @@ Askaway::Application.routes.draw do
   end
 
   resources :invitations, only: [:show, :destroy]
+
+  get 'about', to: 'pages#about', as: 'about'
 end

@@ -14,6 +14,11 @@ h3, h4, h5, h6 {
   font-size: $font-size-large + 4;
 }
 
+h1, h2, {
+  font-family: $font-family-lato;
+  font-weight: bold;
+}
+
 .text-detail {
   color: $gray-light;
   font-size: $font-size-extra-small;
@@ -34,4 +39,11 @@ h3, h4, h5, h6 {
   color: $gray-light;
 }
 
-.thin { font-weight: 300; }
+.thin { font-weight: 300; 
+}
+
+
+
+
+
+
