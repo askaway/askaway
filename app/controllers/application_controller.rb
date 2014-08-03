@@ -81,4 +81,21 @@ class ApplicationController < ActionController::Base
       redirect_to finish_signup_path
     end
   end
+
+  def perform_avatar_upload(resource, path_for_redirect)
+    resource_name = resource.class.name.downcase.to_sym
+    unless params[resource_name]
+      flash[:alert] = 'Oops! Looks like you forgot to choose a picture to upload.'
+      return render 'new_avatar'
+    end
+    @resource.uploaded_avatar = params[resource_name][:uploaded_avatar]
+    if @resource.valid?
+      @resource.select_avatar!(type: 'uploaded_avatar')
+      flash[:notice] = 'Lookin good! Profile picture updated.'
+      redirect_to path_for_redirect
+    else
+      flash[:alert] = "Oops! We couldn't update your picture. Make sure it's under 5 megabytes."
+      render 'new_avatar'
+    end
+  end
 end
