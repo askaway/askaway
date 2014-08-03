@@ -22,7 +22,7 @@ width: 80%;
 
 // /* Sticky footer styles
 // -------------------------------------------------- */
-$footer-height: 230px;
+$footer-height: 200px;
 
 html {
   position: relative;
@@ -44,25 +44,3 @@ body {
     font-size: $font-size-extra-small;
   }
 }
-
-// html,
-// body {
-//   height: 100%;
-//   /* The html and body elements cannot have any padding or margin. */
-// }
-
-// /* Wrapper for page content to push down footer */
-// #wrap {
-//   min-height: 100%;
-//   height: auto;
-//   /* Negative indent footer by its height */
-//   margin: 0 auto -$footer-height;
-//   /* Pad bottom by footer height */
-//   padding: 0 0 $footer-height;
-// }
-
-// /* Set the fixed height of the footer here */
-// #footer {
-//   height: $footer-height;
-//   background-color: #f5f5f5;
-// }
