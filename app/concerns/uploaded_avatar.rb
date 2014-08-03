@@ -3,14 +3,14 @@ require 'active_support/concern'
 module UploadedAvatar
   extend ActiveSupport::Concern
 
-  PICTURE_SIZES = {xsmall: 32, small: 64}
+  PICTURE_SIZES = {xsmall: 32, small: 64, medium: 128}
   AVATAR_TYPES = %w(identity uploaded_avatar placeholder)
 
   included do
     belongs_to :selected_avatar_identity, class_name: 'Identity'
 
     has_attached_file :uploaded_avatar,
-      :styles => { :xsmall => "32x32#", :small => "64x64#" },
+      :styles => { :xsmall => "32x32#", :small => "64x64#", :medium => "128x128#" },
       :s3_protocol => :https
     validates_attachment :uploaded_avatar,
       content_type: { content_type: /\Aimage\/.*\Z/ },
@@ -24,7 +24,7 @@ module UploadedAvatar
 
   def avatar_selection_choices
     choices = []
-    if identities.present?
+    if defined?(identities) && identities.present?
       identities.order('provider ASC').each do |iden|
         name = iden.provider.capitalize
         name = 'Google' if iden.provider == 'google_oauth2'

@@ -10,10 +10,21 @@ class PartiesController < ApplicationController
 
   def walkthrough; end
 
-  private
-
-  def fetch_party_and_authorize
-    @party ||= Party.friendly.find(params[:id])
-    authorize @party
+  def new_avatar
+    @resource = @party
+    @title = "Upload a profile picture for #{@party.name}"
+    render 'users/new_avatar'
   end
+
+  def upload_avatar
+    authorize current_user
+    @resource = @party
+    perform_avatar_upload(@party, party_path(@party))
+  end
+
+  private
+    def fetch_party_and_authorize
+      @party ||= Party.friendly.find(params[:id])
+      authorize @party
+    end
 end
