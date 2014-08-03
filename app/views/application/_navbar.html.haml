@@ -10,6 +10,11 @@
             = image_tag "logonotype.png", alt: 'Ask Away', class: 'navbar-brand-img'
 
         .navbar-actions
+          %ul.navbar-user-actions.list-inline.pull-left
+            %li
+              = link_to 'About', about_path, class: 'btn btn-link navbar-btn'
+
+        .navbar-actions
           %ul.navbar-user-actions.list-inline.pull-right
             - if current_user
               %li
@@ -30,8 +35,6 @@
                       Account settings
                   %li= link_to 'Log out', destroy_user_session_path, method: :delete
             - else
-              %li
-                = link_to 'About', about_path, class: 'btn btn-link navbar-btn'
               %li
                 %button.btn.btn-link.navbar-btn{:'data-toggle' => 'modal', :'data-target' => '#login-modal', :'type' => 'button'} Log in
               %li
