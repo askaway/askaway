@@ -13,6 +13,27 @@
         = render 'login'
       #registration-modal.modal.fade
         = render 'registration'
+    .footer
+      .container
+        %footer
+          .row
+            .col-xs-4
+              .DandD.img-responsive
+                %a{href: "http://designdem.ac.nz"}
+                = image_tag 'DandDlogo.png'
+            .col-xs-4
+              .massey.img-responsive
+                = image_tag 'Massey-logo.jpg'
+            .col-xs-4
+              .codefor
+                %h2 Code for NZ
+          .row
+            %p.text-detail
+              Authorised by Meg Howie, Te Ara Hihiko, Massey University, Wallace St, Wellington.
+            %p.text-detail
+              This work is licensed under a
+              = succeed "." do
+                %a{href: "http://creativecommons.org/licenses/by-nc/3.0/deed.en_US", rel: "license", target: "_blank"} Creative Commons Attribution-NonCommercial 3.0 Unported License
 
     :javascript
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
