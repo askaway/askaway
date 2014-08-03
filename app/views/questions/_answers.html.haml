@@ -50,7 +50,7 @@
 
             %input.btn.btn-primary#post-answer(type="submit" ng-disabled="!question.answerText" ng-hide="question.error_message" data-disable-with="Post answer" value='Post answer')
 
-    %a.btn.btn-info.btn-block(href="{{question.path}}" ng-class="{'answers-expanded-see-comments-padded': question.answers_count === 0}")
+    %a.btn.btn-grey.btn-block(href="{{question.path}}" ng-class="{'answers-expanded-see-comments-padded': question.answers_count === 0}")
       %i.fa.fa-arrow-circle-right
       -# TODO: show number of comments here: "See 1 comment"
       See comments

@@ -6,11 +6,11 @@
 
 .btn-primary {
   color: white;
-  background-color: $teal;
-  border-color: $teal;
+  background-color: $blue;
+  border-color: $blue;
   &:hover {
-    background-color: $teal-dark;
-    border-color: $teal-dark;
+    background-color: $blue-dark;
+    border-color: $blue-dark;
   }
 }
 .btn-primary.disabled,
@@ -39,5 +39,16 @@ fieldset[disabled] .btn-primary.active {
   &:hover {
     background-color: #3C5998;
     border-color: #3C5998;
+  }
+}
+
+.btn-grey {
+  color: white;
+  background-color: rgb(190, 190, 190);
+  border-color: rgb(190, 190, 190);
+  &:hover {
+    color: white;
+    background-color: rgb(170, 170, 170);
+    border-color: rgb(170, 170, 170);
   }
 }
