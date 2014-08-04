@@ -24,7 +24,7 @@
               %li.list-group-item
                 .media
                   .pull-left
-                    %img.media-object{src: User.new(email: invitation.email).avatar_url}
+                    %img.media-object{src: @party.avatar_url(size: :small)}
                   .media-body
                     .list-group-item-heading.gray-light #{invitation.name} (invited)
                     .list-group-item-text.text-detail
