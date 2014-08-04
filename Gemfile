@@ -79,7 +79,7 @@ end
 gem 'raygun4ruby'
 gem 'newrelic_rpm'
 
-group :production, :staging do
+group :production do
   gem 'unicorn'
   gem 'pg'
   gem 'rack-timeout'
