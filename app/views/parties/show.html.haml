@@ -7,8 +7,8 @@
             .pull-left
               %img.media-object.avatar{src: @party.avatar_url(size: :medium)}
             .media-body
-              %h1.list-group-item-heading= @party.name
-              %p= @party.description
+              %h1.list-group-item-heading.party-heading= @party.name
+              %p.party-description= @party.description
       .panel.panel-default
         .panel-heading
           %h2.panel-title Spokespeople
