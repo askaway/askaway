@@ -1,6 +1,4 @@
-if Rails.env.production? || Rails.env.staging?
-  Raygun.setup do |config|
-    config.api_key = ENV['RAYGUN_APIKEY']
-    config.filter_parameters = Rails.application.config.filter_parameters
-  end
+Raygun.setup do |config|
+  config.api_key = ENV['RAYGUN_APIKEY']
+  config.filter_parameters = Rails.application.config.filter_parameters
 end

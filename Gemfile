@@ -74,12 +74,14 @@ group :test do
   gem 'timecop'
 end
 
+# Production monitoring gems
+# (too annoying to stick into :production group, so i left them here -JL)
+gem 'raygun4ruby'
+gem 'newrelic_rpm'
+
 group :production, :staging do
   gem 'unicorn'
   gem 'pg'
   gem 'rack-timeout'
   gem 'rails_12factor'
-  # Production monitoring gems
-  gem 'raygun4ruby'
-  gem 'newrelic_rpm'
 end
