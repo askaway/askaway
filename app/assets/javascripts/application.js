@@ -23,3 +23,4 @@
 //= require controllers/questions
 //= require controllers/answers
 //= require controllers/parties
+//= require controllers/announcements

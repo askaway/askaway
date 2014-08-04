@@ -68,5 +68,7 @@ Askaway::Application.routes.draw do
 
   resources :invitations, only: [:show, :destroy]
 
+  post 'announcements/dismiss', to: 'announcements#dismiss'
+
   get 'about', to: 'pages#about', as: 'about'
 end

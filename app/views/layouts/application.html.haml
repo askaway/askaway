@@ -4,10 +4,10 @@
     = render 'head'
   %body{class: "#{controller.controller_path} #{controller.action_name}"}
     = render 'navbar'
+    = render 'flash'
 
-    #wrap
-      .container
-        = yield
+    .container
+      = yield
 
     - unless user_signed_in?
       #login-modal.modal.fade

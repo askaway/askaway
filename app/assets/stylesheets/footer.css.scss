@@ -1,7 +1,28 @@
+$footer-height: 200px;
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: $footer-height;
+}
+
 .footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: $footer-height;
+
   background-color: white;
   padding-top: 40px;
   padding-bottom: 40px;
+  .text-detail {
+    font-size: $font-size-extra-small;
+  }
 }
 
 .footer .text-detail {
@@ -18,29 +39,4 @@ width: 60%;
 
 .massey img {
 width: 80%;
-}
-
-// /* Sticky footer styles
-// -------------------------------------------------- */
-$footer-height: 200px;
-
-html {
-  position: relative;
-  min-height: 100%;
-}
-body {
-  /* Margin bottom by footer height */
-  margin-bottom: $footer-height;
-}
-
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  /* Set the fixed height of the footer here */
-  height: $footer-height;
-  background-color: #f5f5f5;
-  .text-detail {
-    font-size: $font-size-extra-small;
-  }
 }
