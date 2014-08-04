@@ -1,12 +1,7 @@
 source 'https://rubygems.org'
+ruby '2.1.2'
 
 gem 'rails', '~> 4.1.0'
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
-# Production monitoring gems
-gem 'raygun4ruby'
-gem 'newrelic_rpm'
 
 gem 'devise'
 gem 'activeadmin', github: 'gregbell/active_admin'
@@ -80,8 +75,11 @@ group :test do
 end
 
 group :production do
-  gem 'rack-timeout'
   gem 'unicorn'
   gem 'pg'
+  gem 'rack-timeout'
   gem 'rails_12factor'
+  # Production monitoring gems
+  gem 'raygun4ruby'
+  gem 'newrelic_rpm'
 end
