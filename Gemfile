@@ -74,7 +74,7 @@ group :test do
   gem 'timecop'
 end
 
-group :production do
+group :production, :staging do
   gem 'unicorn'
   gem 'pg'
   gem 'rack-timeout'
