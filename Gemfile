@@ -40,9 +40,9 @@ gem 'omniauth-google-oauth2'
 gem 'paper_trail', '~> 3.0.3'
 gem 'paperclip', '~> 4.1'
 gem 'aws-sdk'
-gem 'thin'
 
 group :development do
+  gem 'thin'
   gem 'quiet_assets'
   gem 'guard-rspec'
   gem 'guard-cucumber'
@@ -80,6 +80,8 @@ group :test do
 end
 
 group :production do
+  gem 'rack-timeout'
+  gem 'unicorn'
   gem 'pg'
   gem 'rails_12factor'
 end
