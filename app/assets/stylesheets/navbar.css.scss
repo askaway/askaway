@@ -12,8 +12,12 @@ body {
   .navbar-brand {
     padding: 10px;
     .navbar-brand-img {
-      max-width: 100%;
-      max-height: 100%;
+      height: 30px;
+      width: auto;
+    }
+    .navbar-brand-img-notype {
+      // width: 31;
+      height: 30;
     }
   }
 
@@ -36,11 +40,11 @@ body {
     }
     .dropdown-icon {
       color: $gray-light;
-      margin-right: 5px;
-      font-size: 14px;
+      font-size: 16px;
+      margin-right: 3px;
+      width: 16px;
     }
     .dropdown-icon.fa {
-      font-size: 16px;
     }
   }
 }

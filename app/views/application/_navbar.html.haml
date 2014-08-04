@@ -5,9 +5,9 @@
 
         %a.navbar-brand{:href => root_path}
           .hidden-xs
-            = image_tag "logotype.png", alt: 'Ask Away', width: 118, height: 30, class: 'navbar-brand-img img-responsive'
-          .visible-xs-inline-block.img-responsive
-            = image_tag "logonotype.png", alt: 'Ask Away', width: 31, height: 30, class: 'navbar-brand-img img-responsive'
+            = image_tag "logotype.png", alt: 'Ask Away', class: 'navbar-brand-img'
+          .visible-xs-inline-block
+            = image_tag "logonotype.png", alt: 'Ask Away', width: 31, height: 30, class: 'navbar-brand-img navbar-brand-img-small img-responsive'
 
         .navbar-actions
           %ul.navbar-user-actions.list-inline.pull-left
@@ -29,6 +29,11 @@
                     = link_to user_path(current_user) do
                       %span.fa.fa-user.dropdown-icon
                       My profile
+                  - if current_user.is_rep?
+                    %li
+                      = link_to party_path(current_user.party) do
+                        %span.fa.fa-group.dropdown-icon
+                        My party
                   %li
                     = link_to edit_users_path do
                       %span.fa.fa-gear.dropdown-icon

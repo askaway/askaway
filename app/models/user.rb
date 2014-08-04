@@ -54,6 +54,10 @@ class User < ActiveRecord::Base
     Rep.exists?(user_id: id)
   end
 
+  def is_rep_or_admin?
+    is_admin? || Rep.exists?(user_id: id)
+  end
+
   def is_rep_for?(party)
     Rep.where(party: party, user: self).exists?
   end

@@ -1,7 +1,7 @@
 .row
   .col-xs-12.col-md-8.col-md-offset-2
     - avatar_selection_choices = @user.avatar_selection_choices
-    - if avatar_selection_choices.count > 1
+    - if @user.is_rep_or_admin? || avatar_selection_choices.count > 1
       .panel.panel-default
         .panel-heading
           %h1.panel-title Choose a profile picture
