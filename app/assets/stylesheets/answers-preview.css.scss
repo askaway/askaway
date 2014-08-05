@@ -1,4 +1,5 @@
 $answers-preview-height: 30px;
+$answers-preview-party-avatar-height: 16px;
 
 .answers-preview {
   @include clearfix();
@@ -33,11 +34,22 @@ $answers-preview-height: 30px;
   margin-left: 5px;
   line-height: $answers-preview-height;
 }
-.answers-preview-avatar img {
+img.answers-preview-rep-avatar {
   border-radius: $avatar-radius;
   width: $answers-preview-height;
   height: $answers-preview-height;
   margin: 0 3px;
+}
+.answers-preview-party-avatar {
+  position: relative;
+  img {
+    border-radius: 10px;
+    position: absolute;
+    left: 22px;
+    top: -12px;
+    width: 20px;
+    height: 20px;
+  }
 }
 .answers-preview-expand {
   text-align: right;

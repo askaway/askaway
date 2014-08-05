@@ -14,6 +14,9 @@ child(:answers) {
   node(:rep_avatar) { |answer|
     answer.rep.user.avatar_url
   }
+  node(:party_avatar) { |answer|
+    answer.rep.party.avatar_url(size: :xsmall)
+  }
   node(:party) { |answer|
     answer.rep.party.name
   }
