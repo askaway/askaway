@@ -1,5 +1,5 @@
 .footer {
-  background-color: white;
+  background-color: #E9E8E8;
   padding-top: 40px;
   .text-detail {
     font-size: $font-size-extra-small;
@@ -14,21 +14,33 @@
   color: #4f8aff;
 }
 
+.footer-container {
+    padding: 15px;
+}
+
 .DandD img {
-width: 60%;
+  width: 80%;
 }
 
 .massey img {
-width: 80%;
+  width: 100%;
+}
+
+.openlab img {
+  width: 70%;
 }
 
 .codefor {
   margin-top: 5px;
 }
 
+.footer-text {
+  margin: 0;
+}
+
 // /* Sticky footer styles
 // -------------------------------------------------- */
-$footer-height: 210px;
+$footer-height: 240px;
 
 html {
   position: relative;
@@ -36,6 +48,9 @@ html {
 }
 body {
   margin-bottom: $footer-height;
+  @media (min-width: $container-tablet) {
+    min-height: 800px;
+  }
 }
 
 .footer {
