@@ -21,25 +21,10 @@
                 %img.media-object.avatar.comment-avatar{src: current_user.avatar_url }
               %div.media-body
                 = render 'answers/form', question: @question, answer: @new_answer, button_text: 'Post answer'
-        - @answers.each do |answer|
-          %li.list-group-item
-            %div.media.answer
-              %span.pull-left
-                %img.media-object.avatar.comment-avatar{src: answer.rep.user.avatar_url }
-              %div.media-body
-                .comment-name
-                  = link_to(answer.rep.user_name, answer.rep.user)
-                  = link_to("(#{answer.rep.party.name})", answer.rep.party)
-                  .text-detail.comment-detail
-                    = time_ago_in_words(answer.created_at) + ' ago'
-                    - if answer.is_edited?
-                      ·
-                      = link_to 'Edited', history_answer_path(answer)
+        .panel-body
+          = render 'answers/answers_expanded'
 
-                .comment-body= simple_format(answer.body)
-                - if AnswerPolicy.new(current_user, answer).edit?
-                  .answer-footer.text-detail
-                    = link_to "Edit", edit_answer_path(answer)
+
         %li.list-group-item.comment-count= "#{@question.comments_count} COMMENTS"
       .panel-body
         .row.comment-list

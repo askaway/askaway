@@ -10,45 +10,15 @@
               {{(question.answers_count == 1) ? 'Answer' : 'Answers'}}
           %ul.list-inline.answers-preview-avatars
             %li.answers-preview-avatar(ng-repeat="answer in question.answers")
-              %img(ng-src="{{answer.rep_avatar}}")
+              %img.answers-preview-rep-avatar(ng-src="{{answer.rep_avatar}}")
+              .answers-preview-party-avatar
+                %img(ng-src="{{answer.party_avatar}}")
       .col-sm-2.hidden-xs(ng-show="question.answers_count > 0")
         = render 'questions/expand_question'
 
   .answers-expanded-container.slide-down(ng-show="question.expanded")
     %hr(ng-show="question.answers_count > 0")
-
-    %ul.answers-expanded(ng-show="question.answers_count > 0")
-      %li.answers-expanded-item(ng-repeat="answer in question.answers")
-        %div.media.comment.answer
-          %span.pull-left
-            %img.media-object.avatar.comment-avatar(ng-src="{{answer.rep_avatar}}")
-          .media-body
-            .comment-name
-              %a(ng-href="{{answer.user_path}}") {{answer.rep}}
-              %a(ng-href="{{answer.party_path}}") ({{answer.party}})
-              .text-detail.comment-detail
-                {{answer.created_at}}
-                %span(ng-show='"{{answer.history_path}}"')
-                  ·
-                  %a(ng-href='{{answer.history_path}}') Edited
-            .comment-body {{answer.body}}
-            .answer-footer.text-detail(ng-show="'{{answer.edit_path}}'")
-              %a(ng-href="{{answer.edit_path}}") Edit
-
-    .answer-form-container(ng-controller='AnswerFormCtrl' ng-show="question.can_answer && question.expanded")
-      %div.media.comment.answer
-        %span.pull-left
-          %img.media-object.avatar.comment-avatar{src: current_user.try(:avatar_url) }
-        .media-body
-          %form(ng-submit="addAnswer()")
-            .form-group
-              %textarea.form-control.required#answer-text(ng-model="question.answerText" placeholder='Write your answer...' ng-disabled="question.error_message")
-              %charcounter(for_model="question.answerText" maxlength="350")
-            .alert.alert-warning(ng-show="question.error_message")
-              {{question.error_message}}
-              %a(href ng-show="question.error_message" ng-click="loadQuestion()") (Reload question)
-
-            %input.btn.btn-primary#post-answer(type="submit" ng-disabled="!question.answerText" ng-hide="question.error_message" data-disable-with="Post answer" value='Post answer')
+    = render 'answers/answers_expanded'
 
     %a.btn.btn-grey.btn-block(href="{{question.path}}" ng-class="{'answers-expanded-see-comments-padded': question.answers_count === 0}")
       %i.fa.fa-arrow-circle-right

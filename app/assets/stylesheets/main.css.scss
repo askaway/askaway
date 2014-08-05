@@ -4,6 +4,7 @@ body {
   background-size: cover;
   @media (max-width: $screen-xs-max) {
     font-size: $font-size-base-xs;
+    background: #EEE;
   }
 }
 
@@ -46,4 +47,10 @@ body {
 }
 .party-heading {
   font-weight: 400;
+}
+
+.uv-icon {
+  @media (max-width: $screen-xs-max) {
+    display: none !important;
+  }
 }
