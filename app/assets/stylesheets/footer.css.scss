@@ -5,7 +5,8 @@
     font-size: $font-size-extra-small;
   }
   a:hover{
-    opacity: 1;
+    opacity: .8;
+    img { opacity: .8; }
   }
 }
 
@@ -29,7 +30,7 @@
   opacity: .6;
 }
 
-.massey {
+.massey img {
   display: inline-block;
   opacity: .6;
 }
@@ -60,7 +61,7 @@
 
 .social-icons a {
   color: black;
-  font-size: 3em;
+  font-size: 2.5em;
   opacity: .5;
   text-decoration: none;
 }
