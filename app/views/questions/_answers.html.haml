@@ -10,7 +10,9 @@
               {{(question.answers_count == 1) ? 'Answer' : 'Answers'}}
           %ul.list-inline.answers-preview-avatars
             %li.answers-preview-avatar(ng-repeat="answer in question.answers")
-              %img(ng-src="{{answer.rep_avatar}}")
+              %img.answers-preview-rep-avatar(ng-src="{{answer.rep_avatar}}")
+              .answers-preview-party-avatar
+                %img(ng-src="{{answer.party_avatar}}")
       .col-sm-2.hidden-xs(ng-show="question.answers_count > 0")
         = render 'questions/expand_question'
 
@@ -20,8 +22,10 @@
     %ul.answers-expanded(ng-show="question.answers_count > 0")
       %li.answers-expanded-item(ng-repeat="answer in question.answers")
         %div.media.comment.answer
-          %span.pull-left
+          %span.pull-left.answer-avatar-container
             %img.media-object.avatar.comment-avatar(ng-src="{{answer.rep_avatar}}")
+            .answer-party-avatar
+              %img(ng-src="{{answer.party_avatar}}")
           .media-body
             .comment-name
               %a(ng-href="{{answer.user_path}}") {{answer.rep}}
