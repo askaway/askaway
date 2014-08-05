@@ -14,7 +14,8 @@ Askaway::Application.configure do
   config.serve_static_assets = false
 
   # Compress JavaScripts and CSS
-  config.assets.compress = true
+  config.assets.js_compressor = :uglifier
+  config.assets.css_compressor = :sass
 
   # Don't fallback to assets pipeline if a precompiled asset is missed
   config.assets.compile = false
@@ -32,8 +33,8 @@ Askaway::Application.configure do
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   config.force_ssl = true
 
-  # See everything in the log (default is :info)
-  # config.log_level = :debug
+  # Set to :debug to see everything in the log.
+  config.log_level = :info
 
   # Prepend all log lines with the following tags
   # config.log_tags = [ :subdomain, :uuid ]
@@ -62,6 +63,9 @@ Askaway::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+
+  # Use default logging formatter so that PID and timestamp are not suppressed.
+  config.log_formatter = ::Logger::Formatter.new
 
   config.action_mailer.default_url_options = { :host => ENV['CANONICAL_HOST'] }
   ActionMailer::Base.smtp_settings = {
