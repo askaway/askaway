@@ -3,20 +3,42 @@
     .row
       .col-question-list.col-xs-12.col-md-8.col-md-offset-2.footer-container
         .row
-          .col-xs-3
-            .DandD.img-responsive
-              %a{href: "http://designdem.ac.nz"}
-              = image_tag 'DandDlogo.png'
-          .col-xs-3
-            .massey.img-responsive
-              %a{href: "http://massey.ac.nz"}
-              = image_tag 'footerMasseyLogo.png'
-          .col-xs-3
-            %h4.codefor Code for NZ
-          .col-xs-3
-            .openlab.img-responsive
-              %a{href: "http://openlab.ac.nz"}
-              = image_tag 'footerOpenLabLogo.png'
+          .col-sm-8
+            .row
+              .col-sm-6
+                .DandD
+                  %a{href: "http://designdemocracy.ac.nz", :target => "_blank"}
+                    = image_tag 'DandDlogo.png', class: 'img-responsive'
+              .col-sm-6
+                %h4.codefor 
+                  = link_to 'http://www.meetup.com/code-for-nz-auckland/', :target => "_blank" do
+                    Code for NZ
+            .row
+              .col-sm-6
+                .massey
+                  %a{href: "http://massey.ac.nz", :target => "_blank"}
+                    = image_tag 'CoCAMassey_Hori_Black.png', class: 'img-responsive'
+              .col-sm-6
+                .openlab.img-responsive
+                  %a{href: "http://openlab.ac.nz", :target => "_blank"}
+                    = image_tag 'OpenLab_BlackLine.png', class: 'img-responsive'
+          .col-sm-4
+            .social-icons
+              = link_to 'https://facebook.com/askawaynz', :target => "_blank" do
+                %span.fa.fa-facebook-square
+              = link_to 'https://twitter.com/askawaynz', :target => "_blank" do
+                %span.fa.fa-twitter-square
+            %p.text-detail
+              Please have a gander at our 
+              %a{href: "http://massey.ac.nz", :target => "_blank"}
+                Terms of Use 
+              and 
+              %a{href: "http://massey.ac.nz", :target => "_blank"}
+                Privacy Policy.
+              %p.text-detail
+                Ask Away is an open source project and you can find the code on 
+                %a{href: "https://github.com/askaway", :target => "_blank"}
+                  Github.
         .row.footer-text
           %p.text-detail
             Authorised by Meg Howie, Te Ara Hihiko, Massey University, Wallace St, Wellington.
