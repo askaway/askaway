@@ -20,6 +20,8 @@
 #
 
 class User < ActiveRecord::Base
+  include UploadedAvatar
+
   TEMP_EMAIL_PREFIX = 'change@me'
   TEMP_EMAIL_REGEX = /\Achange@me/
 
@@ -29,11 +31,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook, :google_oauth2, :twitter]
 
-  include Gravtastic
-  # gravtastic size: 64, default: 'http://lorempixel.com/output/cats-q-c-64-64-3.jpg'
-  gravtastic default: :identicon
-
   validates_presence_of :name
+  validates_presence_of :email
   validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
 
   has_many :questions
@@ -43,19 +42,8 @@ class User < ActiveRecord::Base
 
   delegate :party, to: :rep, prefix: false
 
-  def avatar_url(size: 64)
-    if identities.present?
-      iden = identities.first
-      provider = iden.provider
-      if provider == 'facebook'
-        "https://graph.facebook.com/#{iden.uid}/picture?width=#{size}&height=#{size}"
-      else
-        provider = 'gplus' if provider == 'google_oauth2'
-        "https://res.cloudinary.com/demo/image/#{provider}/w_#{size},h_#{size},c_fill/#{iden.uid}.jpg"
-      end
-    else
-      gravatar_url(size: size)
-    end
+  def first_name
+    name.split(" ")[0]
   end
 
   def email_verified?
@@ -66,8 +54,16 @@ class User < ActiveRecord::Base
     Rep.exists?(user_id: id)
   end
 
+  def is_rep_or_admin?
+    is_admin? || Rep.exists?(user_id: id)
+  end
+
   def is_rep_for?(party)
     Rep.where(party: party, user: self).exists?
+  end
+
+  def can_administer?(party)
+    is_admin? || is_rep_for?(party)
   end
 
   def can_embed?

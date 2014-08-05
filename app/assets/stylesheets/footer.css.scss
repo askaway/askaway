@@ -1,0 +1,46 @@
+.footer {
+  background-color: white;
+  padding-top: 40px;
+  .text-detail {
+    font-size: $font-size-extra-small;
+  }
+}
+
+.footer .text-detail {
+  font-size: 16px;
+  margin-top: 10px;
+}
+.footer .text-detail a{
+  color: #4f8aff;
+}
+
+.DandD img {
+width: 60%;
+}
+
+.massey img {
+width: 80%;
+}
+
+.codefor {
+  margin-top: 5px;
+}
+
+// /* Sticky footer styles
+// -------------------------------------------------- */
+$footer-height: 210px;
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  margin-bottom: $footer-height;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: $footer-height;
+}

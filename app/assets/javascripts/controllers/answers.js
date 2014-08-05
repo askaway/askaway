@@ -11,8 +11,8 @@ askaway.controller('AnswerFormCtrl', ['$scope', '$http', function($scope, $http)
         $scope.question.can_answer = question.can_answer;
       })
       .error(function(data, status) {
-        if (Math.floor(status / 100) === 4) {
-          $('#login-modal').modal('show');
+        if (status === 422) {
+          $scope.question.error_message = data.message;
         }
       });
   };

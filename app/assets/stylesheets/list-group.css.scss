@@ -3,10 +3,10 @@
   padding-bottom: 5px;
 }
 .list-group-item-clickable {
-  color: #555;
+  color: #333;
 }
-.list-group-item-clickable:hover {
-  background-color: #f5f5f5;
+a.list-group-item-clickable:hover, .list-group-item-clickable:hover {
+  background-color: #eee;
   cursor: pointer;
 }
 .list-group-item-clickable-header {

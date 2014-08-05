@@ -18,6 +18,9 @@ Askaway::Application.routes.draw do
     collection do
       get :edit
       patch :update
+      get :new_avatar
+      patch :upload_avatar
+      patch :select_avatar
     end
   end
 
@@ -51,14 +54,21 @@ Askaway::Application.routes.draw do
 
   get 'new_questions', to: 'questions#new_questions'
   get 'trending', to: 'questions#trending'
+  get 'best', to: 'questions#best'
 
   resources :parties, only: :show, path: 'p' do
     member do
       get :invited_reps
       get :walkthrough
+      get :new_avatar
+      patch :upload_avatar
     end
     resources :invitations, only: [:new, :create]
   end
 
   resources :invitations, only: [:show, :destroy]
+
+  post 'announcements/dismiss', to: 'announcements#dismiss'
+
+  get 'about', to: 'pages#about', as: 'about'
 end

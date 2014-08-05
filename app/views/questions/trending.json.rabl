@@ -14,6 +14,9 @@ child(:answers) {
   node(:rep_avatar) { |answer|
     answer.rep.user.avatar_url
   }
+  node(:party_avatar) { |answer|
+    answer.rep.party.avatar_url(size: :xsmall)
+  }
   node(:party) { |answer|
     answer.rep.party.name
   }
@@ -50,7 +53,7 @@ node(:user_path) { |question|
 }
 node(:user_avatar) { |question|
   if question.is_anonymous?
-    "http://placekitten.com/64/64"
+    image_url('placeholders/5-64.jpeg')
   else
     question.user.avatar_url
   end

@@ -1,7 +1,21 @@
-%h1= @user.name
+.row
+  .col-xs-12.col-md-8.col-md-offset-2
+    .list-group
+      .list-group-item
+        %div.media.comment.answer
+          %span.pull-left
+            %img.media-object.avatar.comment-avatar{src: @user.avatar_url(size: :small)}
+          .media-body
+            %h1.list-group-item-heading.user-title
+              = @user.name
+              - if @user == current_user
+                %span.small= link_to '(Edit)', edit_users_path
 
-- if @user.questions.count > 0
-  %h2= "#{@user.name}'s questions"
-  %ul
-    - @user.questions.not_anonymous.each do |question|
-      %li= link_to question.body, question
+    %ul.list-group
+      %li.list-group-item
+        %h2.user-title.list-group-item-heading Questions
+        - if @user.questions.count > 0
+          - @user.questions.not_anonymous.each do |question|
+            %li.list-group-item= link_to question.body, question
+        - else
+          #{@user.first_name} has not asked any questions yet.

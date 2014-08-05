@@ -19,6 +19,7 @@ class OAuthService
       # email_is_verified = auth.info.email && (auth.info.verified || auth.info.verified_email)
       # email = auth.info.email if email_is_verified
       email = auth.info.email
+      email ||= "#{User::TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com"
       user = User.where(:email => email).first if email
 
       # Create the user if it's a new registration
@@ -26,7 +27,7 @@ class OAuthService
         user = User.new(
           name: auth.extra.raw_info.name,
           #username: auth.info.nickname || auth.uid,
-          email: email ? email : "#{User::TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
+          email: email,
           password: Devise.friendly_token[0,20]
         )
         user.save!

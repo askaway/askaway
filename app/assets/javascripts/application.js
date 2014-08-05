@@ -19,6 +19,8 @@
 //= require animations
 //= require directives/charcounter
 //= require directives/ng_initial
+//= require services/auth_interceptor
 //= require controllers/questions
 //= require controllers/answers
 //= require controllers/parties
+//= require controllers/announcements

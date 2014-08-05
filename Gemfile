@@ -1,12 +1,7 @@
 source 'https://rubygems.org'
+ruby '2.1.2'
 
-gem 'rails', '4.0.5'
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
-# Production monitoring gems
-gem 'raygun4ruby'
-gem 'newrelic_rpm'
+gem 'rails', '~> 4.1.0'
 
 gem 'devise'
 gem 'activeadmin', github: 'gregbell/active_admin'
@@ -38,6 +33,8 @@ gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'paper_trail', '~> 3.0.3'
+gem 'paperclip', '~> 4.1'
+gem 'aws-sdk'
 
 group :development do
   gem 'thin'
@@ -48,6 +45,9 @@ group :development do
   gem 'annotate'
   gem "better_errors"
   gem "binding_of_caller"
+  gem 'spring'
+  gem "spring-commands-rspec"
+  gem "spring-commands-cucumber"
   # Livereload seemed to be causing me errors. Feel free to uncomment if needed.
   # You'll also need to uncomment the line in development.rb. -Jon Lemmon
   # gem "rack-livereload"
@@ -70,11 +70,18 @@ end
 group :test do
   gem 'database_cleaner'
   gem 'cucumber-rails', :require => false
-  gem 'shoulda-matchers'
+  gem 'shoulda-matchers', require: false
   gem 'timecop'
 end
 
+# Production monitoring gems
+# (too annoying to stick into :production group, so i left them here -JL)
+gem 'raygun4ruby'
+gem 'newrelic_rpm'
+
 group :production do
+  gem 'unicorn'
   gem 'pg'
+  gem 'rack-timeout'
   gem 'rails_12factor'
 end

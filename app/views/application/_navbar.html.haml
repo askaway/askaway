@@ -7,7 +7,12 @@
           .hidden-xs
             = image_tag "logotype.png", alt: 'Ask Away', class: 'navbar-brand-img'
           .visible-xs-inline-block
-            = image_tag "logonotype.png", alt: 'Ask Away', class: 'navbar-brand-img'
+            = image_tag "logonotype.png", alt: 'Ask Away', width: 31, height: 30, class: 'navbar-brand-img navbar-brand-img-small img-responsive'
+
+        .navbar-actions.hidden-xs
+          %ul.navbar-user-actions.list-inline.pull-left
+            %li
+              = link_to 'About', about_path, class: 'btn btn-link navbar-btn'
 
         .navbar-actions
           %ul.navbar-user-actions.list-inline.pull-right
@@ -17,10 +22,22 @@
                   = render 'ask_question_button'
               %li.dropdown
                 %a.user-settings-dropdown.dropdown-toggle{href: '#', :'data-toggle' => 'dropdown'}
-                  %img{src: current_user.avatar_url(size: 32)}
+                  %img.avatar{src: current_user.avatar_url(size: :xsmall)}
                   %b.caret
                 %ul.dropdown-menu.dropdown-menu-right
-                  %li= link_to 'Account settings', edit_users_path
+                  %li
+                    = link_to user_path(current_user) do
+                      %span.fa.fa-user.dropdown-icon
+                      My profile
+                  - if current_user.is_rep?
+                    %li
+                      = link_to party_path(current_user.party) do
+                        %span.fa.fa-group.dropdown-icon
+                        My party
+                  %li
+                    = link_to edit_users_path do
+                      %span.fa.fa-gear.dropdown-icon
+                      Account settings
                   %li= link_to 'Log out', destroy_user_session_path, method: :delete
             - else
               %li
@@ -35,13 +52,3 @@
         %li= link_to 'Newest', new_questions_path
         - if current_user.try(:is_rep?)
           %li= link_to current_user.rep.party.name, current_user.rep.party
-
-- flash.each do |name, msg|
-  - flash_class = 'alert alert-flash'
-  - flash_class += ' alert-success' if name == :notice
-  - flash_class += ' alert-warning' if name == :alert
-  %div{class: flash_class}
-    %button{type: 'button', class: 'close', :'data-dismiss' => 'alert', :'aria-hidden' => 'true'} &times;
-    .container
-      %div= msg
-

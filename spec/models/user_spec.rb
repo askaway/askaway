@@ -20,43 +20,4 @@ describe User, :type => :model do
     end
   end
 
-  describe "#avatar_url" do
-    context 'user has social media identity' do
-      let(:identity) { FactoryGirl.create(:identity, uid: '12345', provider: 'twitter', user: user) }
-      before { identity }
-      it "returns twitter picture" do
-        expect(user.avatar_url).to eq('https://res.cloudinary.com/demo/image/twitter/w_64,h_64,c_fill/12345.jpg')
-      end
-      it 'returns gplus picture' do
-        identity.update_attribute(:provider, 'google_oauth2')
-        expect(user.avatar_url).to eq('https://res.cloudinary.com/demo/image/gplus/w_64,h_64,c_fill/12345.jpg')
-      end
-      it 'returns facebook picture' do
-        # TODO: check back with cloudinary on this
-        identity.update_attribute(:provider, 'facebook')
-        expect(user.avatar_url).to eq('https://graph.facebook.com/12345/picture?width=64&height=64')
-      end
-      context 'given a size' do
-        it 'returns social media picture of given size' do
-          expect(user.avatar_url(size: 32)).to eq('https://res.cloudinary.com/demo/image/twitter/w_32,h_32,c_fill/12345.jpg')
-        end
-      end
-    end
-    context 'user has no social media identity' do
-      it "returns gravatar" do
-        expect(user.avatar_url).to eq(user.gravatar_url + '&s=64')
-      end
-      context "given a size" do
-        it "returns a gravatar picture of given size" do
-          expect(user.avatar_url(size: 32)).to eq(user.gravatar_url(size: 32))
-        end
-      end
-    end
-    context 'user has no social media or gravatar' do
-      it "returns animal picture"
-      context 'given a size' do
-        it 'returns animal picture of given size'
-      end
-    end
-  end
 end

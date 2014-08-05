@@ -2,7 +2,7 @@ class QuestionsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
   before_filter :fetch_question, only: [:show]
   before_filter :fetch_answers, only: [:show]
-  after_action :verify_authorized, :except => [:trending, :new_questions]
+  after_action :verify_authorized, :except => [:trending, :new_questions, :best]
 
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
@@ -12,6 +12,11 @@ class QuestionsController < ApplicationController
 
   def new_questions
     @questions = policy_scope(Question).order(created_at: :desc).uniq.
+                 page(params[:page])
+  end
+
+  def best
+    @questions = policy_scope(Question).order(votes_count: :desc).uniq.
                  page(params[:page])
   end
 

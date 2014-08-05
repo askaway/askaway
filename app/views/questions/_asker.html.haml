@@ -1,7 +1,5 @@
 .row
   .col-xs-12(ng-class='{"col-sm-10": question.answers_count === 0}')
-    %span.visible-xs-block.pull-left.question-asker-avatar-xs
-      = render 'questions/question_asker_avatar'
     .text-detail.question-asker-details
       asked by
       %span(ng-show="question.is_anonymous") {{question.user}}
