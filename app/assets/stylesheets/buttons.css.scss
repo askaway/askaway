@@ -28,8 +28,8 @@ fieldset[disabled] .btn-primary:active,
 .btn-primary.disabled.active,
 .btn-primary[disabled].active,
 fieldset[disabled] .btn-primary.active {
-  background-color: #45A5A5;
-  border-color: #67B4BB;
+  background-color: $blue-disabled;
+  border-color: $blue-disabled;
 }
 
 .btn-facebook {
