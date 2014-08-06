@@ -1,0 +1,19 @@
+.row
+  .col-xs-12.col-md-8.col-md-offset-2
+    %div
+      .list-group
+        .list-group-item
+          .media
+            .pull-left
+              %img.media-object.avatar{src: profile.avatar_url(size: :medium)}
+            .media-body
+              %h1.list-group-item-heading.profile-heading
+                = profile.name
+                - if profile.edit_url
+                  %span.small= link_to '(Edit)', profile.edit_url#edit_user_path(@user)
+              %p.profile-description= profile.description
+      - profile.sections.each do |section|
+        .panel.panel-default
+          .panel-heading
+            %h2.panel-title= section.name.capitalize
+          = render section.template_path, record: section.record
