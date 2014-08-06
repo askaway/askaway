@@ -17,9 +17,8 @@ class PartiesController < ApplicationController
   end
 
   def upload_avatar
-    authorize current_user
     @resource = @party
-    perform_avatar_upload(@party, party_path(@party))
+    perform_avatar_upload(path_for_redirect: party_path(@party))
   end
 
   private
