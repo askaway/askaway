@@ -15,7 +15,7 @@ Askaway::Application.routes.draw do
   match '/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
 
   resources :users, only: :show do
-    collection do
+    member do
       get :edit
       patch :update
       get :new_avatar

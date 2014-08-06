@@ -4,7 +4,7 @@ describe UsersController, :type => :controller do
   let(:user) { FactoryGirl.create(:user) }
 
   describe 'GET #edit' do
-    let(:response) { get :edit }
+    let(:response) { get :edit, id: user.id }
 
     context 'logged in' do
       before { sign_in user }
@@ -18,7 +18,7 @@ describe UsersController, :type => :controller do
   end
 
   describe 'PATCH #update' do
-    let(:response) { patch :update, user: attrs }
+    let(:response) { patch :update, id: user.id, user: attrs }
     let(:attrs) { { name: 'new name', email: 'new@email.com' } }
 
     context 'logged in' do

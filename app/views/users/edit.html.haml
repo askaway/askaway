@@ -4,7 +4,7 @@
     - if @user.is_rep_or_admin? || avatar_selection_choices.count > 1
       .panel.panel-default
         .panel-heading
-          %h1.panel-title Choose a profile picture
+          %h1.panel-title= @title_change_picture
         .panel-body
           %ul.list-group
             - avatar_selection_choices.each do |choice|
@@ -13,9 +13,9 @@
                 %div.media
                   %span.pull-left
                     - choice_sliced = choice.slice(:type, :identity).merge(size: :small)
-                    - choice_url = select_avatar_users_path(choice_sliced)
+                    - choice_url = select_avatar_user_path(@user, choice_sliced)
                     = link_to choice_url, method: :patch do
-                      = image_tag current_user.specific_avatar_url(choice_sliced), class: 'media-object avatar avatar-choice-icon'
+                      = image_tag @user.specific_avatar_url(choice_sliced), class: 'media-object avatar avatar-choice-icon'
                   .media-body.avatar-choice-text
                     - if choice[:selected]
                       #{choice[:name].capitalize} picture
@@ -24,16 +24,16 @@
                       = link_to "Use your #{choice[:name]} picture", choice_url, method: :patch
                     - elsif choice[:type] == 'placeholder'
                       = link_to "Use a random animal picture", choice_url, class: 'avatar-choice-link', method: :patch
-            - if UserPolicy.new(current_user, current_user).upload_avatar?
+            - if UserPolicy.new(current_user, @user).upload_avatar?
               %li.list-group-item
                 %div.media.comment.answer
                   %span.pull-left
                     %span.fa.fa-plus.avatar-upload-icon
                   .media-body.avatar-choice-text
-                    = link_to "Upload your own", new_avatar_users_path
+                    = link_to "Upload your own", new_avatar_user_path(@user)
 
     .panel.panel-default
       .panel-heading
-        %h1.panel-title Edit your details
+        %h1.panel-title= @title_edit_details
       .panel-body
         = render 'form'

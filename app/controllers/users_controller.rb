@@ -1,36 +1,37 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, except: :show
-  before_action :set_user, only: :show
 
   def show
-    authorize @user
+    authorize user
   end
 
   def update
-    authorize current_user
-    if current_user.update(user_params)
+    authorize user
+    if user.update(user_params)
       flash[:notice] = 'Your profile has been updated.'
       redirect_to root_url
     else
       flash[:notice] = 'Could not update your profile.'
-      @user = current_user
       render 'edit'
     end
   end
 
   def edit
-    authorize current_user
-    @user = current_user
+    authorize user
+    @title_change_picture = 'Choose a profile picture'
+    @title_change_picture += " for #{user.name}" if user != current_user
+    @title_edit_details = 'Edit your details'
+    @title_edit_details = "Edit #{user.name}'s details" if user != current_user
   end
 
   def finish_signup
-    authorize current_user
+    authorize user
     if request.patch? && params[:user]
-      if current_user.update(user_params)
-        sign_in(current_user, :bypass => true)
+      if user.update(user_params)
+        sign_in(user, :bypass => true)
         redirect_path = session[:previous_url] || root_path
-        if current_user.is_rep?
-          redirect_path = walkthrough_party_path(current_user.party)
+        if user.is_rep?
+          redirect_path = walkthrough_party_path(user.party)
         end
         redirect_to redirect_path
       else
@@ -40,31 +41,32 @@ class UsersController < ApplicationController
   end
 
   def new_avatar
-    authorize current_user
-    @resource = current_user
-    @title = "Upload a profile picture"
+    authorize user
+    @resource = user
+    @title = 'Upload a profile picture'
+    @title += " for #{user.name}" if user != current_user
   end
 
   def upload_avatar
-    authorize current_user
-    @resource = current_user
-    perform_avatar_upload(@resource, edit_users_path)
+    authorize user
+    @resource = user
+    perform_avatar_upload(path_for_redirect: edit_user_path(user))
   end
 
   def select_avatar
-    authorize current_user
+    authorize user
     identity, type = params[:identity], params[:type]
-    if current_user.select_avatar!(identity_id: identity, type: type)
+    if user.select_avatar!(identity_id: identity, type: type)
       flash[:notice] = 'Lookin good! Profile picture updated.'
     else
       flash[:notice] = "Oops! We couldn't update your picture for some reason."
     end
-    redirect_to edit_users_path
+    redirect_to edit_user_path(user)
   end
 
   private
-    def set_user
-      @user = User.find(params[:id])
+    def user
+      @user ||= User.find(params[:id])
     end
 
     def user_params

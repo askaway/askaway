@@ -55,7 +55,7 @@ class User < ActiveRecord::Base
   end
 
   def is_rep_or_admin?
-    is_admin? || Rep.exists?(user_id: id)
+    is_admin? || is_rep?
   end
 
   def is_rep_for?(party)

@@ -82,8 +82,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def perform_avatar_upload(resource, path_for_redirect)
-    resource_name = resource.class.name.downcase.to_sym
+  def perform_avatar_upload(path_for_redirect: nil)
+    resource_name = @resource.class.name.downcase.to_sym
     unless params[resource_name]
       flash[:alert] = 'Oops! Looks like you forgot to choose a picture to upload.'
       return render 'new_avatar'
