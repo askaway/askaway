@@ -1,46 +1,74 @@
 .footer {
-  background-color: white;
-  padding-top: 40px;
+  background-color: #E9E8E8;
+  padding-top: 20px;
   .text-detail {
     font-size: $font-size-extra-small;
   }
+  a:hover{
+    opacity: .8;
+    img { opacity: .8; }
+  }
 }
 
-.footer .text-detail {
-  font-size: 16px;
-  margin-top: 10px;
-}
 .footer .text-detail a{
-  color: #4f8aff;
+  color: $blue;
 }
 
+.footer-container {
+    padding: 15px;
+}
+
+.DandD {
+  display: inline-block;
+  margin-bottom: 1.5em;
+  @media (max-width: $container-tablet) {
+    margin-bottom: 0;
+  }
+}
 .DandD img {
-width: 60%;
+  width: 80%;
+  opacity: .6;
 }
 
 .massey img {
-width: 80%;
+  display: inline-block;
+  opacity: .6;
+}
+
+.openlab img {
+  width: 60%;
+  opacity: .6;
+  margin-top: -23px;
+  @media (max-width: $container-tablet) {
+    width: 30%;
+    margin-top: 0;
+  }
 }
 
 .codefor {
-  margin-top: 5px;
+  display: inline-block;
 }
 
-// /* Sticky footer styles
-// -------------------------------------------------- */
-$footer-height: 210px;
-
-html {
-  position: relative;
-  min-height: 100%;
-}
-body {
-  margin-bottom: $footer-height;
+.codefor a {
+  color: black;
+  text-decoration: none;
+  opacity: .6;
 }
 
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: $footer-height;
+.footer-text {
+  margin: 0;
+}
+
+.social-icons a {
+  color: black;
+  font-size: 2.5em;
+  opacity: .5;
+  text-decoration: none;
+}
+
+.content-container {
+  // margin-bottom: $footer-height;
+  @media (min-width: $container-tablet) {
+    min-height: 650px;
+  }
 }

@@ -20,7 +20,7 @@
 
 .answer-form-container(ng-controller='AnswerFormCtrl' ng-show="question.can_answer && question.expanded")
   %div.media.comment.answer
-    %span.pull-left
+    %span.pull-left.hidden-xs
       %img.media-object.avatar.comment-avatar{src: current_user.try(:avatar_url) }
     .media-body
       %form(ng-submit="addAnswer()")
@@ -32,4 +32,3 @@
           %a(href ng-show="question.error_message" ng-click="loadQuestion()") (Reload question)
 
         %input.btn.btn-primary#post-answer(type="submit" ng-disabled="!question.answerText" ng-hide="question.error_message" data-disable-with="Post answer" value='Post answer')
-

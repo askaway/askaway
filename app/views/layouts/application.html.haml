@@ -6,7 +6,7 @@
     = render 'navbar'
     = render 'flash'
 
-    .container
+    .container.content-container
       = yield
 
     - unless user_signed_in?

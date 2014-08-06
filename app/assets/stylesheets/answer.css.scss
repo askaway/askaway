@@ -30,3 +30,10 @@
 .no-answers .answer-form-container {
   margin-top: 15px;
 }
+
+#answer-text {
+  @media (max-width: $screen-xs-max){
+    font-size: $font-size-extra-small;
+    height: 100px;
+  }
+}

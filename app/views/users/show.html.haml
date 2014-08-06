@@ -9,7 +9,7 @@
             %h1.list-group-item-heading.user-title
               = @user.name
               - if @user == current_user
-                %span.small= link_to '(Edit)', edit_users_path
+                %span.small= link_to '(Edit)', edit_user_path(@user)
 
     %ul.list-group
       %li.list-group-item
