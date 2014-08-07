@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     @profile = ProfilePresenter.new(current_user, user)
 
     @meta_title = "#{user.name} | #{@meta_title}"
-    @meta_description = "#{user.name} on Ask Away - a place to ask NZ's parties questions and see their answers."
+    @meta_description = "#{user.name} on Ask Away - a place to ask questions to NZ's parties and see their answers."
     @meta_img = URI(request.url) + user.avatar_url(size: :large)
   end
 
