@@ -4,7 +4,7 @@ body {
   background-size: cover;
   @media (max-width: $screen-xs-max) {
     font-size: $font-size-base-xs;
-    background: #EEE;
+    background: #AAA;
   }
 }
 
@@ -40,13 +40,6 @@ body {
   line-height: 64px;
   width: 64px;
   text-align: center;
-}
-
-.profile-description {
-  font-weight: 300;
-}
-.profile-heading {
-  font-weight: 400;
 }
 
 .uv-icon {

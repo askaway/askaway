@@ -19,7 +19,7 @@ class Rep < ActiveRecord::Base
   validates_uniqueness_of :user_id
 
   delegate :name, to: :user, prefix: :user
-  delegate :name, to: :user
+  delegate :name, :avatar_url, to: :user
 
   scope :unassigned,
     -> { joins("LEFT JOIN rep_topics ON reps.id = rep_topics.rep_id").
