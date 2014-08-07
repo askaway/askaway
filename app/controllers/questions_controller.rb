@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create]
+  # before_action :authenticate_user!, only: [:new, :create]
   before_filter :fetch_question, only: [:show]
   before_filter :fetch_answers, only: [:show]
   after_action :verify_authorized, :except => [:trending, :new_questions, :best]
