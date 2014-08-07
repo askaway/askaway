@@ -48,7 +48,8 @@ class QuestionsController < ApplicationController
       if @question.awaiting_review?
         flash[:notice] = 'Thanks! Your question will be reviewed and posted shortly.'
       else
-        flash[:notice] = 'Thanks! Your question has been posted.'
+        flash[:notice] = render_to_string(partial: "flash_share_buttons",
+                                          layout: false)
       end
       redirect_to new_questions_path
     else

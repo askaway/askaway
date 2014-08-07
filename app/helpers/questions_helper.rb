@@ -33,4 +33,5 @@ module QuestionsHelper
       link_to question.user_name, question.user, class: 'emphasized'
     end
   end
+
 end
