@@ -7,8 +7,9 @@ class PartiesController < ApplicationController
     if request.path != party_path(@party)
       redirect_to @party, status: :moved_permanently
     end
+
     @meta_title = "#{@party.name} - Answering your questions on Ask Away"
-    @meta_description = "See #{@party.name}'s answers to your questions this New Zealand election."
+    @meta_description = "Ask the #{@party.name} questions and see their answers this New Zealand election."
     @meta_img = URI(request.url) + @party.avatar_url(size: :large)
   end
 

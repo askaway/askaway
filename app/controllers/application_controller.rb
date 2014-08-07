@@ -102,7 +102,9 @@ class ApplicationController < ActionController::Base
 
   def set_meta_tags
     @meta_title = "Ask Away | Ask NZ's parties your questions this election"
-    @meta_description = "See the political parties' responses to the things you care about."
+    @meta_description = "Find out where the parties stand on the things you care about."
+    # @meta_description = "See the political parties' responses to the things you care about."
+    # @meta_description = "See what they're saying about the things that are important to you."
     @meta_img = ActionController::Base.helpers.asset_path('askaway-facebook.jpg')
   end
 end

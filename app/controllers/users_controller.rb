@@ -4,6 +4,10 @@ class UsersController < ApplicationController
   def show
     authorize user
     @profile = ProfilePresenter.new(current_user, user)
+
+    @meta_title = "#{user.name} | Ask Away - Ask NZ's parties your questions this election"
+    @meta_description = "See #{user.name}'s profile on Ask Away - a place to ask NZ's parties questions and see their answers."
+    @meta_img = URI(request.url) + user.avatar_url(size: :large)
   end
 
   def update
