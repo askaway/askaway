@@ -105,12 +105,16 @@ class ApplicationController < ActionController::Base
     @meta_description = "Find out where the parties stand on the things you care about."
     # @meta_description = "See the political parties' responses to the things you care about."
     # @meta_description = "See what they're saying about the things that are important to you."
-    @meta_img = ActionController::Base.helpers.asset_url('askaway-facebook.jpg')
+    @meta_img = asset_url('askaway-facebook.jpg')
   end
 
   def redirect_to_canonical_show_path(record)
     if request.path != eval("#{record.class.name.underscore}_path(record)")
       redirect_to record, status: :moved_permanently
     end
+  end
+
+  def asset_url(asset)
+    "#{request.protocol}#{request.host_with_port}#{ActionController::Base.helpers.asset_url(asset)}"
   end
 end
