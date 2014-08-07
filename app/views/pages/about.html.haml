@@ -13,20 +13,31 @@
         %h3 How it works
         .row
           .col-sm-4
+            .img-responsive.icon
+              =image_tag "ask.svg"
             %p
-              1. Ask a question for all of the parties to answer
+              1. Ask a question for all of the parties to answer. Be nice, then they'll be more likely to answer it!
           .col-sm-4
+            .img-responsive.icon
+              =image_tag "vote.svg"
             %p
-              2. Vote for the questions you think are important
+              2. Vote for the questions you think are important. That way, you decide what gets talked about.
           .col-sm-4
+            .img-responsive.icon
+              =image_tag "answer.svg"
             %p
-              3. Spokespeople from the parties will answer the most popular questions each day
+              3. Spokespeople from the parties will answer the most popular questions each day.
         .row
           .col-xs-12
             %h3 About Ask Away
             %p Ask Away is a Q &amp; A website where New Zealanders can ask the parties questions in the lead up to the elections. It’s an easy way to find out the parties’ positions on issues, and to compare their views side by side. It’s also a way for you to make your voice heard this election, and get the parties talking about the things that are important to you.
             %h3 Who we are
-            %p This platform is a part of Massey University’s Design & Democracy Lab, and is being led by Meg Howie as her Master of Design project, in collaboration with Jon Lemmon, Code for NZ and other open source developers. If you’d like to know more, follow our blog or get in touch.
+            %p This platform is a part of Massey University’s Design & Democracy Project, and is being led by Meg Howie as her Master of Design project, in collaboration with Jon Lemmon, Code for NZ and other open source developers. If you’d like to know more, 
+            = link_to "http://designdemocracy.ac.nz", :target => "_blank" do
+              follow our blog 
+            or 
+            = link_to "http://designdemocracy.ac.nz", :target => "_blank" do 
+              get in touch.
             %h3 What we care about
             %p We believe that everyone should be a part of the political conversation in our country, so we’re making it easy to be involved this election. We want to facilitate connections and conversations between those in power and the people, to help NZ’s politicians be both relevant and responsive.
             %h3 Our friends
@@ -37,7 +48,7 @@
               = link_to "http://onthefence.co.nz", :target => "_blank" do
                 = image_tag "On-the-Fence-Logo.png", :class => "img-responsive" 
               = link_to "On The Fence", "http://onthefence.co.nz", :target => "_blank"
-              is a fun, visual questionnaire that educates and guides inexperienced voters to find a best match from New Zealand’s political parties
+              is a fun, visual questionnaire that educates and guides you to find a best match from New Zealand's political parties. It's also part of the Design and Democracy Project.
           .col-sm-4{:href => "rockenrol.me"}
             %p
               = link_to "http://rockenrol.me", :target => "_blank" do
