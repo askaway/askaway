@@ -102,6 +102,6 @@ class ApplicationController < ActionController::Base
 
   def set_meta_tags
     @meta_title = "Ask Away | Ask NZ's parties your questions this election"
-    @meta_description = "See what they're saying about the things that are important to you."
+    @meta_description = "See the political parties' responses to the things you care about."
   end
 end
