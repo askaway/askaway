@@ -5,12 +5,16 @@ class VotesController < ApplicationController
   def create
     authorize Vote
     question = Question.friendly.find(params[:question_id])
-    vote = Vote.create(question: question, user: current_user, ip_address: request.remote_ip)
 
+    unless current_user
+      session[:votes] ||= {}
+      render json: { message: "Please login", require_login: true }, status: 422 and return if session[:votes].length >= 3
+    end
+
+    vote = Vote.create(question: question, user: current_user, ip_address: request.remote_ip)
     render json: { message: "Duplicate IP", require_login: true }, status: 422 and return unless vote.valid?
 
-    session[:votes] = {} unless session[:votes]
-    session[:votes][question.id] = vote.id
+    session[:votes][question.id] = vote.id unless current_user
     render json: vote
   end
 
@@ -24,7 +28,7 @@ class VotesController < ApplicationController
     end
 
     @vote.destroy!
-    session[:votes].delete(@vote.question_id) if session[:votes]
+    session[:votes].try(:delete, @vote.question_id)
     render json: @vote
   end
 
