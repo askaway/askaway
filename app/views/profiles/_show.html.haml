@@ -10,8 +10,11 @@
               %h1.list-group-item-heading.profile-heading
                 = profile.name
                 - if profile.edit_url
-                  %span.small= link_to '(Edit)', profile.edit_url#edit_user_path(@user)
-              %p.profile-description= profile.description
+                  %span.small= link_to '(Edit)', profile.edit_url
+              - if profile.link_url
+                %p.profile-link= link_to profile.link_text, profile.link_url
+              - if profile.description
+                %p.profile-description= profile.description
       - profile.sections.each do |section|
         .panel.panel-default
           .panel-heading
