@@ -31,13 +31,13 @@ class UsersController < ApplicationController
   end
 
   def finish_signup
-    authorize user
+    authorize current_user
     if request.patch? && params[:user]
-      if user.update(user_params)
-        sign_in(user, :bypass => true)
+      if current_user.update(user_params)
+        sign_in(current_user, :bypass => true)
         redirect_path = session[:previous_url] || root_path
-        if user.is_rep?
-          redirect_path = walkthrough_party_path(user.party)
+        if current_user.is_rep?
+          redirect_path = walkthrough_party_path(current_user.party)
         end
         redirect_to redirect_path
       else
