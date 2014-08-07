@@ -1,7 +1,8 @@
 .row
   .col-xs-12.col-md-8.col-md-offset-2
+    - policy = UserPolicy.new(current_user, @user)
     - avatar_selection_choices = @user.avatar_selection_choices
-    - if @user.is_rep_or_admin? || avatar_selection_choices.count > 1
+    - if policy.upload_avatar? || avatar_selection_choices.count > 1
       .panel.panel-default
         .panel-heading
           %h1.panel-title= @title_change_picture
@@ -24,7 +25,7 @@
                       = link_to "Use your #{choice[:name]} picture", choice_url, method: :patch
                     - elsif choice[:type] == 'placeholder'
                       = link_to "Use a random animal picture", choice_url, class: 'avatar-choice-link', method: :patch
-            - if UserPolicy.new(current_user, @user).upload_avatar?
+            - if policy.upload_avatar?
               %li.list-group-item
                 %div.media.comment.answer
                   %span.pull-left

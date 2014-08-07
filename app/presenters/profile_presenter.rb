@@ -10,7 +10,7 @@ class ProfilePresenter
 
   def edit_url
     if @record.class == User && UserPolicy.new(@user, @record).edit?
-      Rails.application.routes.url_helpers.edit_user_path(@user)
+      Rails.application.routes.url_helpers.edit_user_path(@record)
     end
   end
 
