@@ -1,4 +1,8 @@
-var askaway = angular.module('askaway', [ 'infinite-scroll', 'ngAnimate' ]);
+var askaway = angular.module('askaway', [
+ 'infinite-scroll',
+ 'ngAnimate',
+ 'ngSanitize'
+]);
 
 askaway.config(function($httpProvider) {
   var authToken = $("meta[name=\"csrf-token\"]").attr("content");
