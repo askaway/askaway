@@ -1,5 +1,10 @@
-.up-vote-wrapper:hover .upvote-icon{
-  color: #333;
+.up-vote-wrapper:hover {
+  .upvote-icon, .up-vote-label {
+    color: #333;
+  }
+  .up-vote-count {
+    color: #000;
+  }
 }
 .up-vote {
   text-align: center;
