@@ -8,6 +8,9 @@ describe UserPolicy do
   let(:admin) { FactoryGirl.create(:user, is_admin: true) }
 
   permissions :edit? do
+    it 'does not permit visitor to edit a users profile' do
+      expect(subject).not_to permit(nil, user)
+    end
     it 'permits user to edit only their own profile' do
       expect(subject).to permit(user, user)
       expect(subject).not_to permit(user, admin)
@@ -25,6 +28,10 @@ describe UserPolicy do
   end
 
   permissions :upload_avatar? do
+    it 'does not permit visitor to upload a photo for a user' do
+      expect(subject).not_to permit(nil, user)
+    end
+
     it 'permits admin to upload a photo for anyone' do
       expect(subject).to permit(admin, user)
       expect(subject).to permit(admin, admin)

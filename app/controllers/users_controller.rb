@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def show
     authorize user
+    @profile = ProfilePresenter.new(current_user, user)
   end
 
   def update

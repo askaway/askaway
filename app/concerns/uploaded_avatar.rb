@@ -7,10 +7,19 @@ module UploadedAvatar
   AVATAR_TYPES = %w(identity uploaded_avatar placeholder)
 
   included do
+    def self.avatar_styles
+      styles = {}
+      PICTURE_SIZES.each_pair do |key, val|
+        styles[key] = "#{val}x#{val}#"
+      end
+      styles
+    end
+
     belongs_to :selected_avatar_identity, class_name: 'Identity'
+    belongs_to :placeholder
 
     has_attached_file :uploaded_avatar,
-      :styles => { :xsmall => "32x32#", :small => "64x64#", :medium => "128x128#" },
+      :styles => self.avatar_styles,
       :s3_protocol => :https
     validates_attachment :uploaded_avatar,
       content_type: { content_type: /\Aimage\/.*\Z/ },
@@ -19,7 +28,8 @@ module UploadedAvatar
     validates_inclusion_of :selected_avatar_type, in: AVATAR_TYPES, allow_blank: true
     validate :owns_selected_avatar_identity
 
-    before_create :set_placeholder_id
+    before_create :set_placeholder
+
   end
 
   def avatar_selection_choices
@@ -78,12 +88,18 @@ module UploadedAvatar
 
   private
     def placeholder_image_url(size: :small)
-      width = PICTURE_SIZES.fetch(size)
-      ActionController::Base.helpers.asset_path("placeholders/#{placeholder_id}-#{width}.jpeg");
+      self.placeholder ||= Placeholder.first
+      if self.placeholder
+        self.placeholder.uploaded_avatar.url(size)
+      else
+        # This sucks but I can't think of a better way to do it. Should
+        # mainly only affect the tests...
+        ActionController::Base.helpers.asset_path("placeholders/owl.jpg");
+      end
     end
 
-    def set_placeholder_id
-      self.placeholder_id ||= rand(5)
+    def set_placeholder
+      self.placeholder ||= Placeholder.offset(rand(Placeholder.count)).first
     end
 
     def owns_selected_avatar_identity

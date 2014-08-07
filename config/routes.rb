@@ -68,6 +68,13 @@ Askaway::Application.routes.draw do
 
   resources :invitations, only: [:show, :destroy]
 
+  resources :placeholders, only: [:new, :create, :show] do
+    member do
+      get :new_avatar
+      patch :upload_avatar
+    end
+  end
+
   post 'announcements/dismiss', to: 'announcements#dismiss'
 
   get 'about', to: 'pages#about', as: 'about'

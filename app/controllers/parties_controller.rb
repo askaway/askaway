@@ -2,6 +2,7 @@ class PartiesController < ApplicationController
   before_filter :fetch_party_and_authorize
 
   def show
+    @profile = ProfilePresenter.new(current_user, @party)
     @invitation = Invitation.new
     if request.path != party_path(@party)
       redirect_to @party, status: :moved_permanently

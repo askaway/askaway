@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe 'UploadedAvatar' do
   let(:user) { FactoryGirl.create(:user) }
+  let(:placeholder) { FactoryGirl.create(:placeholder) }
 
   describe '#avatar_selection_choices' do
     before do
@@ -66,8 +67,9 @@ describe 'UploadedAvatar' do
   describe "#avatar_url" do
     context 'user has not selected an avatar' do
       it "returns placeholder picture, but does not select it" do
-        user.update_attribute(:placeholder_id, 2)
-        expect(user.avatar_url).to eq('/assets/placeholders/2-64.jpeg')
+        placeholder
+        user.update_attribute(:placeholder_id, placeholder.id)
+        expect(user.avatar_url).to eq(placeholder.uploaded_avatar.url(:small))
         user.reload
         expect(user.selected_avatar_type).to be_nil
       end
@@ -107,9 +109,9 @@ describe 'UploadedAvatar' do
       end
       it 'returns placeholder url if selected' do
         user.select_avatar!(type: 'placeholder')
-        user.update_attribute(:placeholder_id, 2)
-        expect(user.avatar_url).to eq('/assets/placeholders/2-64.jpeg')
-        expect(user.avatar_url(size: :xsmall)).to eq('/assets/placeholders/2-32.jpeg')
+        user.update_attribute(:placeholder_id, placeholder.id)
+        expect(user.avatar_url).to eq(placeholder.uploaded_avatar.url(:small))
+        expect(user.avatar_url(size: :xsmall)).to eq(placeholder.uploaded_avatar.url(:xsmall))
       end
     end
   end
