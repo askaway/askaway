@@ -11,6 +11,19 @@ Given(/^I am logged in$/) do
   click_on 'log-in-btn'
 end
 
+When(/^I log in with email$/) do
+  @name = 'Meg Howie'
+  @email = 'meg@howie.com'
+  password = 'password'
+  @is_admin ||= false
+  @user = User.create!(name: @name, email: @email, password: password, is_admin: @is_admin)
+  # visit new_user_session_path
+  click_on 'Log in with Email'
+  find('.simple_form.user').fill_in 'user_email', with: @email
+  find('.simple_form.user').fill_in 'user_password', with: password
+  click_on 'log-in-btn'
+end
+
 Given(/^I am logged in as an admin$/) do
   @is_admin = true
   step 'I am logged in'

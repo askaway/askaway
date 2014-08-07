@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe QuestionsController, :type => :controller do
-  let(:user) { FactoryGirl.create(:user) }
+  # let(:user) { FactoryGirl.create(:user) }
 
   describe "GET trending" do
     it "succeeds" do
@@ -10,7 +10,7 @@ describe QuestionsController, :type => :controller do
   end
 
   context 'POST #create' do
-    before { sign_in user }
+    # before { sign_in user }
 
     let(:request) { post :create, question: FactoryGirl.attributes_for(:question) }
 

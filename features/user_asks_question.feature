@@ -22,3 +22,24 @@ Feature: User asks question
     Then I should be taken to the new questions list
     And I should see "Thanks! Your question will be reviewed"
     And I should not see my question
+
+  @javascript
+  Scenario: Guest asks question
+    When I visit the home page
+    And I click on "Ask a question"
+    And I fill out the ask question form with "Hey, why does the government exist?"
+    And I log in with email
+    Then I should be taken to the new questions list
+    And I should see "Thanks! Your question will be reviewed"
+    And I should not see my question
+
+  @javascript
+  Scenario: Guest asks question and logs in
+    When I visit the home page
+    And I click on "Ask a question"
+    And I fill out the ask question form with "Hey, why does the government exist?"
+    Then I should be asked to log in
+    Then I should be taken to the new questions list
+    And I should see "Thanks! Your question will be reviewed"
+    And I should not see my question
+
