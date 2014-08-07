@@ -1,7 +1,6 @@
 .row
-  .col-sm-6.col-xs-12.up-vote
-    %a(href="" ng-click="toggleVote()")
-      %i.fa.fa-arrow-up.upvote-icon(id="vote-for-{{question.id}}" ng-class="{'upvote-icon-voted': question.vote_id}")
+  %a.col-sm-6.col-xs-12.up-vote(href ng-click="toggleVote()")
+    %i.fa.fa-arrow-up.upvote-icon(id="vote-for-{{question.id}}" ng-class="{'upvote-icon-voted': question.vote_id}")
     .up-vote-count {{question.votes_count}}
     .text-detail.up-vote-label {{ question.votes_count === 1 ? 'vote' : 'votes' }}
 
