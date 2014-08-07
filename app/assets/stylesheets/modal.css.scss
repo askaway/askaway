@@ -11,8 +11,12 @@
   &.in .modal-dialog { @include translate(0, 0) }
 }
 
-.how-it-works p {
-  font-size: $font-size-small;
+.how-it-works {
+  & .modal-body {
+    padding: 3%;}
+  & .modal-footer {
+    padding: 3%;
+    padding-top: 0;}
 }
 
 .icon {
