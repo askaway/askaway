@@ -1,3 +1,6 @@
+.up-vote-wrapper:hover .upvote-icon{
+  color: #333;
+}
 .up-vote {
   text-align: center;
   font-size: $font-size-base;
@@ -20,7 +23,6 @@
   }
   .upvote-icon {
     color: #888;
-    &:hover { color: #333; }
     &.upvote-icon-voted { color: #FE7A15; }
   }
   .upvote-icon.fa-arrow-up {
