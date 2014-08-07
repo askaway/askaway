@@ -3,8 +3,7 @@
     .text-detail.question-asker-details
       asked by
       %span(ng-show="question.is_anonymous") {{question.user}}
-      %a.emphasized(ng-hide="question.is_anonymous" ng-href="{{question.user_path}}")
-        {{question.user}}
+      %a.emphasized(ng-hide="question.is_anonymous" ng-href="{{question.user_path}}") {{question.user}}
       {{question.created_at}} ago ·
       %a(ng-href="{{question.path}}") {{question.comments_count}} comments
   .col-sm-2.hidden-xs(ng-show="question.answers_count === 0")
