@@ -1,6 +1,12 @@
 - hide_filters ||= false
 .row
   .col-question-list.col-xs-12.col-md-8.col-md-offset-2.font-small
+    .welcome-banner
+      .img-responsive.logo-full
+        =image_tag "white-logo.svg"
+      %div
+        %h1 Welcome to Ask Away
+        %h3 Where you can ask the parties your questions this election
     -# %h3.page-heading= heading
     %ul.list-group.question-list(ng-controller='QuestionsCtrl' infinite-scroll="loadQuestions()" infinite-scroll-disabled="loadingQuestions")
 
