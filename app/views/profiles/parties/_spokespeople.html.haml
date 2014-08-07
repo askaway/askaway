@@ -1,5 +1,5 @@
 %ul.reps-list.list-group
-  - record.rep_users.each do |rep_user|
+  - record.rep_users.order(name: :asc).each do |rep_user|
     %li.list-group-item
       .media
         %a.pull-left{href: user_path(rep_user)}
