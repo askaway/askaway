@@ -13,15 +13,25 @@
 
 .how-it-works {
   & .modal-body {
-    padding: 3%;}
+    padding: 4%;}
   & .modal-footer {
     padding: 3%;
     padding-top: 0;}
+  @media (max-width: $container-tablet) {
+    & .modal-body {
+      padding: 6%;
+    }
+  }
 }
 
 .icon {
   padding-bottom: 1em;
   text-align: center;
+  height: 110px;
+  @media (max-width: $container-tablet) {
+    & img {width: 30%;}
+    height: 90px;
+  }
 }
 
 .modal-header {

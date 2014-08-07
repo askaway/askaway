@@ -2,12 +2,12 @@
 .row
   .col-question-list.col-xs-12.col-md-8.col-md-offset-2.font-small
     .welcome-banner
-      .img-responsive.logo-full
+      .img-responsive.logo-full.hidden-xs
         =image_tag "white-logo.svg"
       %div
         %h1 Welcome to Ask Away
         %h3 Where you can ask the parties your questions this election
-        %button.btn.btn-primary{"data-target" => "#HowItWorks", "data-toggle" => "modal"}
+        %button.btn.btn-primary.hidden-xs{"data-target" => "#HowItWorks", "data-toggle" => "modal"}
           How does it work?
     -# %h3.page-heading= heading
     %ul.list-group.question-list(ng-controller='QuestionsCtrl' infinite-scroll="loadQuestions()" infinite-scroll-disabled="loadingQuestions")
