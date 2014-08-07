@@ -1,7 +1,8 @@
 %p
   %b Great question. So great you should probably share it...
 .question-flash-share
-  = link_to "https://www.facebook.com/dialog/share?app_id=#{ENV['FACEBOOK_API_KEY']}&display=popup&href=#{question_url(@question)}&redirect_uri=#{question_url(@question)}", target: '_blank', class: 'btn btn-primary btn-facebook btn-lg login-social-btn' do
+  - share_link = CGI.escape(question_url(@question))
+  = link_to "https://www.facebook.com/dialog/share?app_id=#{ENV['FACEBOOK_API_KEY']}&display=popup&href=#{share_link}&redirect_uri=#{share_link}", target: '_blank', class: 'btn btn-primary btn-facebook btn-lg login-social-btn' do
     .fa.fa-facebook.login-social-icon.fa-fw
     Share
   = link_to '#', class: 'btn btn-info btn-lg login-social-btn' do
