@@ -27,11 +27,14 @@ class QuestionsController < ApplicationController
 
   def show
     authorize @question
+    redirect_to_canonical_show_path(@question)
     @comment = Comment.new
     @comments = @question.comments.includes(:user).order(created_at: :desc)
     if show_answer_form?
       @new_answer = Answer.new
     end
+    @meta_title = "#{@question.body} | Ask Away"
+    @meta_description = "#{@question.user_name} asked NZ's parties, \"#{@question.body}\" These were their answers..."
   end
 
   # POST /questions

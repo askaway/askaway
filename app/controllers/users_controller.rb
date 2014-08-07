@@ -3,7 +3,12 @@ class UsersController < ApplicationController
 
   def show
     authorize user
+    redirect_to_canonical_show_path(user)
     @profile = ProfilePresenter.new(current_user, user)
+
+    @meta_title = "#{user.name} | #{@meta_title}"
+    @meta_description = "#{user.name} on Ask Away - a place to ask questions to NZ's parties and see their answers."
+    @meta_img = URI(request.url) + user.avatar_url(size: :large)
   end
 
   def update
@@ -67,7 +72,7 @@ class UsersController < ApplicationController
 
   private
     def user
-      @user ||= User.find(params[:id])
+      @user ||= User.friendly.find(params[:id])
     end
 
     def user_params

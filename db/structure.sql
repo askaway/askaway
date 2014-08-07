@@ -527,7 +527,8 @@ CREATE TABLE users (
     uploaded_avatar_updated_at timestamp without time zone,
     selected_avatar_type character varying(255),
     selected_avatar_identity_id integer,
-    placeholder_id integer
+    placeholder_id integer,
+    slug character varying(255)
 );
 
 
@@ -1054,6 +1055,13 @@ CREATE UNIQUE INDEX index_users_on_reset_password_token ON users USING btree (re
 
 
 --
+-- Name: index_users_on_slug; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_users_on_slug ON users USING btree (slug);
+
+
+--
 -- Name: index_versions_on_item_type_and_item_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1196,4 +1204,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140803062450');
 INSERT INTO schema_migrations (version) VALUES ('20140806051334');
 
 INSERT INTO schema_migrations (version) VALUES ('20140806231453');
+
+INSERT INTO schema_migrations (version) VALUES ('20140807083855');
 
