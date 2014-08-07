@@ -14,7 +14,7 @@ Askaway::Application.routes.draw do
 
   match '/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
 
-  resources :users, only: :show do
+  resources :users, path: 'u', only: :show do
     member do
       get :edit
       patch :update
@@ -23,6 +23,9 @@ Askaway::Application.routes.draw do
       patch :select_avatar
     end
   end
+
+  get '/users/:id' => redirect("/u/%{id}")
+  get '/users/:id/:action' => redirect("/u/%{id}/%{action}")
 
   resources :questions, path: 'q', only: [:show, :new, :create] do
     resources :comments, only: :create

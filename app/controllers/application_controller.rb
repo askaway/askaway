@@ -107,4 +107,10 @@ class ApplicationController < ActionController::Base
     # @meta_description = "See what they're saying about the things that are important to you."
     @meta_img = ActionController::Base.helpers.asset_path('askaway-facebook.jpg')
   end
+
+  def redirect_to_canonical_show_path(record)
+    if request.path != eval("#{record.class.name.underscore}_path(record)")
+      redirect_to record, status: :moved_permanently
+    end
+  end
 end

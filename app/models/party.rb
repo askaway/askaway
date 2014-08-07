@@ -25,10 +25,6 @@ class Party < ActiveRecord::Base
   has_many :reps
   has_many :rep_users, through: :reps, source: :user
 
-  def slug_candidate
-    :name
-  end
-
   def invitations
     Invitation.to_join_party(self)
   end
