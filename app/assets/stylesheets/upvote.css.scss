@@ -18,9 +18,14 @@
       font-size: $font-size-base-xs;
     }
   }
+  &:hover {
+    text-decoration: none;
+    .upvote-icon {
+      color: #333;
+    }
+  }
   .upvote-icon {
     color: #888;
-    &:hover { color: #333; }
     &.upvote-icon-voted { color: #FE7A15; }
   }
   .upvote-icon.fa-arrow-up {
