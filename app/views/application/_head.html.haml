@@ -10,7 +10,7 @@
 %meta{:content => "website", :property => "og:type"}
 %meta{:content => request.original_url, :property => "og:url"}
 %meta{:content => @meta_description, :property => "og:description"}
-%meta{:content => image_url('askaway-facebook.jpg'), :property => "og:image"}
+%meta{:content => @meta_img, :property => "og:image"}
 = csrf_meta_tags
 = stylesheet_link_tag "application", :media => "all"
 / fonts added by meg

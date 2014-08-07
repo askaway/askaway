@@ -33,7 +33,7 @@ class QuestionsController < ApplicationController
       @new_answer = Answer.new
     end
     @meta_title = "#{@question.body} | Ask Away"
-    @meta_description = "#{@question.user_name} asked, \"#{@question.body}\" Click to see the parties' answers."
+    @meta_description = "#{@question.user_name} asked NZ's parties, \"#{@question.body}\" These were their answers..."
   end
 
   # POST /questions
