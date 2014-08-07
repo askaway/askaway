@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   before_filter :check_for_invitation
   before_filter :update_sanitized_params, if: :inside_devise?
   before_filter :ensure_signup_complete, unless: :inside_devise?
+  before_filter :set_meta_tags
 
   after_action :verify_authorized, :except => :index
 
@@ -97,5 +98,11 @@ class ApplicationController < ActionController::Base
       flash[:alert] = "Oops! We couldn't update your picture. Make sure it's under 5 megabytes."
       render 'new_avatar'
     end
+  end
+
+  def set_meta_tags
+    @meta_title = "Ask Away | Ask NZ's parties your questions this election"
+    @meta_description = "See the political parties' responses to the things you care about."
+    @meta_img = ActionController::Base.helpers.asset_path('askaway-facebook.jpg')
   end
 end

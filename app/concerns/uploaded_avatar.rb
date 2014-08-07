@@ -3,7 +3,7 @@ require 'active_support/concern'
 module UploadedAvatar
   extend ActiveSupport::Concern
 
-  PICTURE_SIZES = {xsmall: 32, small: 64, medium: 128}
+  PICTURE_SIZES = {xsmall: 32, small: 64, medium: 128, large: 256}
   AVATAR_TYPES = %w(identity uploaded_avatar placeholder)
 
   included do

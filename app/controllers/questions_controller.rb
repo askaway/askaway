@@ -32,6 +32,8 @@ class QuestionsController < ApplicationController
     if show_answer_form?
       @new_answer = Answer.new
     end
+    @meta_title = "#{@question.body} | Ask Away"
+    @meta_description = "#{@question.user_name} asked NZ's parties, \"#{@question.body}\" These were their answers..."
   end
 
   # POST /questions
