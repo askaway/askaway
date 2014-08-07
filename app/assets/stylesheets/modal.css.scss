@@ -10,3 +10,22 @@
   }
   &.in .modal-dialog { @include translate(0, 0) }
 }
+
+.how-it-works p {
+  font-size: $font-size-small;
+  text-align: center;
+}
+
+.how-it-works .icon {
+  padding-bottom: 1em;
+  text-align: center;
+}
+
+.modal-header {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.modal-footer {
+  border-top: none;
+}
