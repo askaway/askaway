@@ -3,14 +3,14 @@
     %li.list-group-item
       .media
         %a.pull-left{href: user_path(rep_user)}
-          %img.media-object{src: rep_user.avatar_url }
+          %img.media-object.avatar{src: rep_user.avatar_url }
         .media-body= link_to rep_user.name, rep_user
   - if current_user.try(:can_administer?, record)
     - record.pending_invitations.order('created_at ASC').each do |invitation|
       %li.list-group-item
         .media
           .pull-left
-            %img.media-object{src: record.avatar_url(size: :small)}
+            %img.media-object.avatar{src: record.avatar_url(size: :small)}
           .media-body
             .list-group-item-heading.gray-light #{invitation.name} (invited)
             .list-group-item-text.text-detail
