@@ -2,6 +2,6 @@
   %span.pull-left
     %img.media-object.avatar.comment-avatar{src: current_user.avatar_url }
   %div.media-body
-    = simple_form_for [@question, @comment] do |f|
-      = f.input :body, placeholder: "Join the conversation...", label: false
-      = f.button :submit, 'Post comment', class: "btn btn-primary", data: {disable_with: 'Post comment'}
+    = simple_form_for( [@question, @comment], html: { ng_controller: 'CommentsCtrl', name: "new_comment", dirtyconfirm: "new_comment", ng_submit: "submit()" } ) do |f|
+      = f.input :body, placeholder: "Join the conversation...", label: false, input_html: { ng_initial: true, ng_model: "comment.body" }
+      = f.button :submit, 'Post comment', class: "btn btn-primary", data: {disable_with: 'Post comment'}, ng_disabled: "!comment.body" 
