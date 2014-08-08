@@ -62,4 +62,11 @@
   margin-right: 10px;
 }
 
-
+.loading-spinner {
+  text-align: center;
+  padding-top: 70px;
+  padding-bottom: 200px;
+  img {
+    opacity: 0.8em;
+  }
+}

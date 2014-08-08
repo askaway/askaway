@@ -1,5 +1,6 @@
 askaway.controller('QuestionsCtrl', ['$scope', '$http', function( $scope, $http ) {
   $scope.loadingQuestions = false;
+  $scope.questionsInitialized = false;
   $scope.questionList = [];
   $scope.page = 1;
 
@@ -43,6 +44,8 @@ askaway.controller('QuestionsCtrl', ['$scope', '$http', function( $scope, $http 
       for (; i < data.length; i++) {
         $scope.questionList.push(data[i]);
       }
+
+      $scope.questionsInitialized = true;
     });
   };
 
