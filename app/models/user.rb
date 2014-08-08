@@ -20,6 +20,11 @@
 #
 
 class User < ActiveRecord::Base
+  # include FriendlyId
+  # def self.slug_candidate; :name; end
+  # friendly_id slug_candidate, :use => [:slugged, :history]
+  # include FriendlyIdHelper
+
   include UploadedAvatar
 
   TEMP_EMAIL_PREFIX = 'change@me'

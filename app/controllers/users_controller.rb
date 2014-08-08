@@ -3,6 +3,12 @@ class UsersController < ApplicationController
 
   def show
     authorize user
+    redirect_to_canonical_show_path(user)
+    @profile = ProfilePresenter.new(current_user, user)
+
+    @meta_title = "#{user.name} | #{@meta_title}"
+    @meta_description = "#{user.name} on Ask Away - a place to ask questions to NZ's parties and see their answers."
+    @meta_img = URI(request.url) + user.avatar_url(size: :large)
   end
 
   def update
@@ -25,13 +31,13 @@ class UsersController < ApplicationController
   end
 
   def finish_signup
-    authorize user
+    authorize current_user
     if request.patch? && params[:user]
-      if user.update(user_params)
-        sign_in(user, :bypass => true)
+      if current_user.update(user_params)
+        sign_in(current_user, :bypass => true)
         redirect_path = session[:previous_url] || root_path
-        if user.is_rep?
-          redirect_path = walkthrough_party_path(user.party)
+        if current_user.is_rep?
+          redirect_path = walkthrough_party_path(current_user.party)
         end
         redirect_to redirect_path
       else
@@ -66,6 +72,7 @@ class UsersController < ApplicationController
 
   private
     def user
+      # @user ||= User.friendly.find(params[:id])
       @user ||= User.find(params[:id])
     end
 

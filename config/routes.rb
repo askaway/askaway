@@ -24,6 +24,9 @@ Askaway::Application.routes.draw do
     end
   end
 
+  # get '/users/:id' => redirect("/u/%{id}")
+  # get '/users/:id/:action' => redirect("/u/%{id}/%{action}")
+
   resources :questions, path: 'q', only: [:show, :new, :create] do
     resources :comments, only: :create
     resources :votes, only: :create
@@ -67,6 +70,13 @@ Askaway::Application.routes.draw do
   end
 
   resources :invitations, only: [:show, :destroy]
+
+  resources :placeholders, only: [:new, :create, :show] do
+    member do
+      get :new_avatar
+      patch :upload_avatar
+    end
+  end
 
   post 'announcements/dismiss', to: 'announcements#dismiss'
 

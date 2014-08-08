@@ -18,10 +18,6 @@ module ApplicationHelper
   end
 
   def upload_avatar_resource_path(resource)
-    if resource.class.name == 'User'
-      upload_avatar_user_path(resource)
-    elsif resource.class.name == 'Party'
-      upload_avatar_party_path(resource)
-    end
+    send("upload_avatar_#{resource.class.name.underscore}_path", resource)
   end
 end

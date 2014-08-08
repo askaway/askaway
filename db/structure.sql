@@ -322,6 +322,40 @@ ALTER SEQUENCE parties_id_seq OWNED BY parties.id;
 
 
 --
+-- Name: placeholders; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE placeholders (
+    id integer NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    uploaded_avatar_file_name character varying(255),
+    uploaded_avatar_content_type character varying(255),
+    uploaded_avatar_file_size integer,
+    uploaded_avatar_updated_at timestamp without time zone
+);
+
+
+--
+-- Name: placeholders_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE placeholders_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: placeholders_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE placeholders_id_seq OWNED BY placeholders.id;
+
+
+--
 -- Name: questions; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -643,6 +677,13 @@ ALTER TABLE ONLY parties ALTER COLUMN id SET DEFAULT nextval('parties_id_seq'::r
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY placeholders ALTER COLUMN id SET DEFAULT nextval('placeholders_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY questions ALTER COLUMN id SET DEFAULT nextval('questions_id_seq'::regclass);
 
 
@@ -750,6 +791,14 @@ ALTER TABLE ONLY reps
 
 ALTER TABLE ONLY parties
     ADD CONSTRAINT parties_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: placeholders_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY placeholders
+    ADD CONSTRAINT placeholders_pkey PRIMARY KEY (id);
 
 
 --
@@ -1143,4 +1192,12 @@ INSERT INTO schema_migrations (version) VALUES ('20140724063831');
 INSERT INTO schema_migrations (version) VALUES ('20140724083829');
 
 INSERT INTO schema_migrations (version) VALUES ('20140803062450');
+
+INSERT INTO schema_migrations (version) VALUES ('20140806051334');
+
+INSERT INTO schema_migrations (version) VALUES ('20140806231453');
+
+INSERT INTO schema_migrations (version) VALUES ('20140807083855');
+
+INSERT INTO schema_migrations (version) VALUES ('20140808002822');
 

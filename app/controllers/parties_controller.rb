@@ -2,10 +2,13 @@ class PartiesController < ApplicationController
   before_filter :fetch_party_and_authorize
 
   def show
+    @profile = ProfilePresenter.new(current_user, @party)
     @invitation = Invitation.new
-    if request.path != party_path(@party)
-      redirect_to @party, status: :moved_permanently
-    end
+    redirect_to_canonical_show_path(@party)
+
+    @meta_title = "#{@party.name} - Answering your questions on Ask Away"
+    @meta_description = "Ask the #{@party.name} questions and see their answers this New Zealand election."
+    @meta_img = URI(request.url) + @party.avatar_url(size: :large)
   end
 
   def walkthrough; end

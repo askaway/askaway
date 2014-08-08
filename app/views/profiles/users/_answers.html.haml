@@ -1,0 +1,10 @@
+%ul.list-group
+  - if record.rep.answers.count > 0
+    - record.rep.answers.reorder('created_at DESC').each do |answer|
+      %li.list-group-item
+        %p.profile-answers-question= link_to answer.question.body, answer.question
+        %p.profile-answers-answer.comment-body= answer.body
+        .text-detail= time_ago_in_words(answer.created_at) + ' ago'
+  - else
+    %li.list-group-item
+      #{record.first_name} has not answered any questions yet.

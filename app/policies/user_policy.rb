@@ -6,7 +6,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def edit?
-    user.is_admin? || (user == @record)
+    user && (user.is_admin? || (user == @record))
   end
 
   def update?
@@ -18,7 +18,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def upload_avatar?
-    user.is_admin? || (user.is_rep? && (user == @record))
+    user && (user.is_admin? || (user.is_rep? && (user == @record)))
   end
 
   def new_avatar?
