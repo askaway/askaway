@@ -20,7 +20,12 @@ body {
       height: 30;
     }
   }
-
+.logotype {
+  font-weight: 500;
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 30px;
+}
   .navbar-user-actions {
     margin: 1px;
     .user-settings-dropdown {

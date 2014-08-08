@@ -14,7 +14,7 @@
             %span(ng-show='"{{answer.history_path}}"')
               ·
               %a(ng-href='{{answer.history_path}}') Edited
-        .comment-body {{answer.body}}
+        .comment-body(ng-bind-html="answer.body | linky")
         .answer-footer.text-detail(ng-show="'{{answer.edit_path}}'")
           %a(ng-href="{{answer.edit_path}}") Edit
 
@@ -23,7 +23,7 @@
     %span.pull-left.hidden-xs
       %img.media-object.avatar.comment-avatar{src: current_user.try(:avatar_url) }
     .media-body
-      %form(ng-submit="addAnswer()")
+      %form(ng-submit="addAnswer()" name="new_answer" dirtyconfirm="new_answer")
         .form-group
           %textarea.form-control.required#answer-text(ng-model="question.answerText" placeholder='Write your answer...' ng-disabled="question.error_message")
           %charcounter(for_model="question.answerText" maxlength="350")

@@ -14,7 +14,7 @@ Askaway::Application.routes.draw do
 
   match '/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
 
-  resources :users, path: 'u', only: :show do
+  resources :users, only: :show do
     member do
       get :edit
       patch :update
@@ -24,8 +24,8 @@ Askaway::Application.routes.draw do
     end
   end
 
-  get '/users/:id' => redirect("/u/%{id}")
-  get '/users/:id/:action' => redirect("/u/%{id}/%{action}")
+  # get '/users/:id' => redirect("/u/%{id}")
+  # get '/users/:id/:action' => redirect("/u/%{id}/%{action}")
 
   resources :questions, path: 'q', only: [:show, :new, :create] do
     resources :comments, only: :create
@@ -57,7 +57,7 @@ Askaway::Application.routes.draw do
 
   get 'new_questions', to: 'questions#new_questions'
   get 'trending', to: 'questions#trending'
-  get 'best', to: 'questions#best'
+  get 'most_votes', to: 'questions#most_votes'
 
   resources :parties, only: :show, path: 'p' do
     member do
@@ -81,4 +81,6 @@ Askaway::Application.routes.draw do
   post 'announcements/dismiss', to: 'announcements#dismiss'
 
   get 'about', to: 'pages#about', as: 'about'
+  get 'terms_of_use', to: 'pages#terms_of_use', as: 'terms_of_use'
+  get 'privacy_policy', to: 'pages#privacy_policy', as: 'privacy_policy'
 end
