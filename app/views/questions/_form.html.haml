@@ -1,5 +1,4 @@
 = simple_form_for(@question, html: { ng_controller: 'QuestionFormCtrl', name: "new_question", dirtyconfirm: "new_question", dirtyconfirmmessage:"You have unsaved changes.", ng_submit: 'submit()' } ) do |f|
   = f.input :body, placeholder: "Write your question...", label_html: {class: 'sr-only'},
     input_html: { rows: 3 }, as: :charlimited
-  = f.input :is_anonymous, label: false, inline_label: 'Ask question anonymously'
   = f.submit "Ask question", class: 'btn btn-primary', data: {disable_with: 'Ask question'}
