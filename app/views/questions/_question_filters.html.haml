@@ -2,8 +2,5 @@
   Trending
 %a.question-filter.col-xs-3.text-center{ href: new_questions_path, ng_class: "{'question-filter-selected': #{action_name == 'new_questions'}}" }
   Newest
-%a.question-filter.col-xs-3.text-center{ href: '/best' }
-  Best
-/ %a.question-filter.col-xs-3.text-center{ href: root_path }
-/   &middot; &middot; &middot;
-
+%a.question-filter.col-xs-3.text-center{ href: most_votes_path, ng_class: "{'question-filter-selected': #{action_name == 'most_votes'}}" }
+  Most Votes
