@@ -1,51 +1,49 @@
 .navbar.navbar-default.navbar-fixed-top{:role => "navigation"}
   .container
-    .navbar-header.row
-      .col-xs-12.col-md-8.col-md-offset-2.navbar-col
+    .navbar-header
+      %a.navbar-brand{:href => root_path}
+        .hidden-xs.logotype
+          Ask Away
+          = image_tag "logo-small-pink.svg", alt: 'Ask Away', class: 'navbar-brand-img'
+        .visible-xs-inline-block
+          = image_tag "logo-small-pink.svg", alt: 'Ask Away', width: 31, height: 30, class: 'navbar-brand-img navbar-brand-img-small img-responsive'
 
-        %a.navbar-brand{:href => root_path}
-          .hidden-xs.logotype
-            Ask Away
-            = image_tag "logo-small-pink.svg", alt: 'Ask Away', class: 'navbar-brand-img'
-          .visible-xs-inline-block
-            = image_tag "logo-small-pink.svg", alt: 'Ask Away', width: 31, height: 30, class: 'navbar-brand-img navbar-brand-img-small img-responsive'
+      .navbar-actions.hidden-xs
+        %ul.navbar-user-actions.list-inline.pull-left
+          %li
+            = link_to 'About', about_path, class: 'btn btn-link navbar-btn'
 
-        .navbar-actions.hidden-xs
-          %ul.navbar-user-actions.list-inline.pull-left
+      .navbar-actions
+        %ul.navbar-user-actions.list-inline.pull-right
+          - if current_user
             %li
-              = link_to 'About', about_path, class: 'btn btn-link navbar-btn'
-
-        .navbar-actions
-          %ul.navbar-user-actions.list-inline.pull-right
-            - if current_user
-              %li
-                %div
-                  = render 'ask_question_button'
-              %li.dropdown
-                %a.user-settings-dropdown.dropdown-toggle{href: '#', :'data-toggle' => 'dropdown'}
-                  %img.avatar{src: current_user.avatar_url(size: :xsmall)}
-                  %b.caret
-                %ul.dropdown-menu.dropdown-menu-right
+              %div
+                = render 'ask_question_button'
+            %li.dropdown
+              %a.user-settings-dropdown.dropdown-toggle{href: '#', :'data-toggle' => 'dropdown'}
+                %img.avatar{src: current_user.avatar_url(size: :xsmall)}
+                %b.caret
+              %ul.dropdown-menu.dropdown-menu-right
+                %li
+                  = link_to user_path(current_user) do
+                    %span.fa.fa-user.dropdown-icon
+                    My profile
+                - if current_user.is_rep?
                   %li
-                    = link_to user_path(current_user) do
-                      %span.fa.fa-user.dropdown-icon
-                      My profile
-                  - if current_user.is_rep?
-                    %li
-                      = link_to party_path(current_user.party) do
-                        %span.fa.fa-group.dropdown-icon
-                        My party
-                  %li
-                    = link_to edit_user_path(current_user) do
-                      %span.fa.fa-gear.dropdown-icon
-                      Account settings
-                  %li= link_to 'Log out', destroy_user_session_path, method: :delete
-            - else
-              %li
-                %button.btn.btn-link.navbar-btn{:'data-toggle' => 'modal', :'data-target' => '#login-modal', :'type' => 'button'} Log in
-              %li
-                %div
-                  = render 'ask_question_button'
+                    = link_to party_path(current_user.party) do
+                      %span.fa.fa-group.dropdown-icon
+                      My party
+                %li
+                  = link_to edit_user_path(current_user) do
+                    %span.fa.fa-gear.dropdown-icon
+                    Account settings
+                %li= link_to 'Log out', destroy_user_session_path, method: :delete
+          - else
+            %li
+              %button.btn.btn-link.navbar-btn{:'data-toggle' => 'modal', :'data-target' => '#login-modal', :'type' => 'button'} Log in
+            %li
+              %div
+                = render 'ask_question_button'
 
     .collapse.navbar-collapse
       %ul.nav.navbar-nav
