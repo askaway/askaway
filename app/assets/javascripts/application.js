@@ -13,6 +13,7 @@
 //= require jquery_ujs
 //= require angular
 //= require angular-animate
+//= require angular-sanitize
 //= require bootstrap
 //= require ng-infinite-scroll.min
 //= require main
