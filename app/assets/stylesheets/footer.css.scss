@@ -47,12 +47,11 @@
 
 .codefor {
   display: inline-block;
-}
-
-.codefor a {
-  color: black;
-  text-decoration: none;
-  opacity: .6;
+  width: 60%;
+  img { opacity: .6; }
+  a {
+    text-decoration: none;
+  }
 }
 
 .footer-text {
