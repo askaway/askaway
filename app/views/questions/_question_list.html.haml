@@ -22,32 +22,3 @@
               .col-xs-12= render 'questions/answers'
     .text-center(ng-show="loadingQuestions")
       Loading more...
-
-.modal.fade#HowItWorks.how-it-works
-  .modal-dialog
-    .modal-content
-      .modal-header
-        %button.close{"data-dismiss" => "modal", type: "button"}
-          %span{"aria-hidden" => "true"} ×
-          %span.sr-only Close
-      .modal-body
-        .row
-          .col-sm-4
-            .img-responsive.icon
-              =image_tag "ask.svg"
-            %p
-              1. Ask a question for all the parties to answer
-          .col-sm-4
-            .img-responsive.icon
-              =image_tag "vote.svg"
-            %p
-              2. Vote for the questions you think are important
-          .col-sm-4
-            .img-responsive.icon
-              =image_tag "answer.svg"
-            %p
-              3. The parties will answer the most popular questions each day
-      .modal-footer
-        = link_to "More about Ask Away", "/about", :class => "pull-left"
-        %button.btn.btn-primary{"data-dismiss" => "modal", type: "button"} Got it
-
