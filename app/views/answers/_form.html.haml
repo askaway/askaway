@@ -1,4 +1,4 @@
 %div(ng-controller='AnswerFormCtrl')
-  = simple_form_for([question, answer], html: { ng_controller: 'AnswerFormCtrl' }) do |f|
+  = simple_form_for([question, answer], html: { ng_controller: 'AnswerFormCtrl', name: "new_answer", dirtyconfirm:"new_answer" }) do |f|
     = f.input :body, placeholder: 'Write your answer...', label_html: {class: 'sr-only'}, as: :charlimited, input_html: {ng_initial: true}
     = f.submit button_text, id: 'post-answer-btn', class: 'btn btn-primary', data: { disable_with: button_text }

@@ -18,8 +18,10 @@
 //= require main
 //= require animations
 //= require directives/charcounter
+//= require directives/dirtyconfirm
 //= require directives/ng_initial
 //= require services/auth_interceptor
+//= require controllers/comments
 //= require controllers/questions
 //= require controllers/answers
 //= require controllers/parties
