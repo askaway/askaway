@@ -20,5 +20,5 @@
               .col-xs-12= render 'questions/asker'
             .row
               .col-xs-12= render 'questions/answers'
-      %li.list-group-item.loading-spinner(ng-show="loadingQuestions")
+      %li.list-group-item.loading-spinner(ng-hide="questionsInitialized")
         = image_tag "ajax-loader.gif"
