@@ -5,12 +5,14 @@
   text-shadow: 2px 2px 6px rgba(0, 0, 0, 1);
   @media (max-width: $screen-xs-max) {
     padding: 5%;
-    font-size: 46px;
-    background-color: $blue;
   }
 }
 .welcome-banner h1 {
   margin-bottom: 7px;
+  font-size: 46px;
+  @media (max-width: $screen-xs-max) {
+    font-size: 26px;
+  }
 }
 .welcome-banner h3 {
   font-weight: 200;
@@ -18,7 +20,8 @@
   margin-bottom: 18px;
   font-size: 24px;
   @media (max-width: $screen-xs-max) {
-    font-size: 18px;
+    font-size: 15px;
+    margin-bottom: 27px;
   }
 }
 .logo-full img {

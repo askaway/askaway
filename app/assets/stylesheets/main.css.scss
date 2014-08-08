@@ -4,7 +4,8 @@ body {
   background-size: cover;
   @media (max-width: $screen-xs-max) {
     font-size: $font-size-base-xs;
-    background: #AAA;
+    background-position: 0% -8%;
+    background-size: 166%;
   }
 }
 
