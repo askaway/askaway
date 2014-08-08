@@ -47,14 +47,11 @@
 
 .codefor {
   display: inline-block;
-  opacity: .6;
   width: 60%;
-}
-
-.codefor a {
-  color: black;
-  text-decoration: none;
-  opacity: .6;
+  img { opacity: .6; }
+  a {
+    text-decoration: none;
+  }
 }
 
 .footer-text {
