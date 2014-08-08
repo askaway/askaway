@@ -40,7 +40,7 @@ describe UsersController, :type => :controller do
   end
 
   describe "GET #show" do
-    before { get :show, id: user.slug }
+    before { get :show, id: user.id }
 
     it { expect(assigns(:user)).to eq(user) }
     it { expect(response).to render_template(:show) }
