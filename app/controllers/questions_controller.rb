@@ -29,7 +29,7 @@ class QuestionsController < ApplicationController
     authorize @question
     redirect_to_canonical_show_path(@question)
     @comment = Comment.new
-    @comments = @question.comments.includes(:user).order(created_at: :desc)
+    @comments = @question.comments.includes(:user).order(created_at: :asc)
     if show_answer_form?
       @new_answer = Answer.new
     end

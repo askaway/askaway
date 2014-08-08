@@ -7,6 +7,7 @@ class CommentsController < ApplicationController
     @comment.user = current_user
     authorize @comment
     if @comment.save
+      flash[:notice] = 'Comment posted.'
       redirect_to @question
     else
       render template: "questions/show"
