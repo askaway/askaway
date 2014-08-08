@@ -2,29 +2,43 @@
   .container
     .navbar-header
       %button.navbar-toggle(type="button" data-toggle="collapse" data-target=".navbar-collapse")
-        %i.fa.fa-bars
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
       %a.navbar-brand{:href => root_path}
         .hidden-xs
           = image_tag "logotype.png", alt: 'Ask Away', class: 'navbar-brand-img'
         .visible-xs-inline-block
           = image_tag "logonotype.png", alt: 'Ask Away', width: 31, height: 30, class: 'navbar-brand-img navbar-brand-img-small img-responsive'
     %nav.collapse.navbar-collapse
-      %ul.nav.navbar-nav
+      %ul.nav.navbar-nav.hidden-xs
         %li
           = link_to 'About', about_path
-      %ul.nav.navbar-nav.navbar-right
+      %ul.nav.navbar-nav.navbar-right.hidden-xs
         - unless current_user
           %li
             %a{:href => '', :'data-toggle' => 'modal', :'data-target' => '#login-modal'} Log in
         %li
-          = render 'ask_question_button'
+          %div
+            = link_to 'Ask a question', new_question_path, class: 'btn btn-primary navbar-btn btn-ask navbar-btn-ask'
         - if current_user
-          %li.hidden-xs
+          %li
             %a.user-settings-dropdown.dropdown-toggle{href: '', :'data-toggle' => 'dropdown'}
               %img.avatar{src: current_user.avatar_url(size: :xsmall)}
               %b.caret
             %ul.dropdown-menu.dropdown-menu-right
               = render 'user_links'
-      - if current_user
-        %ul.nav.navbar-nav.visible-xs
+              %li= link_to 'Log out', destroy_user_session_path, method: :delete
+      %ul.nav.navbar-nav.visible-xs
+        %li
+          = link_to 'Ask a question', new_question_path
+        - if current_user
           = render 'user_links'
+        %li
+          = link_to 'About', about_path
+        %li
+          - if current_user
+            %li
+              = link_to 'Log out', destroy_user_session_path, method: :delete
+          - else
+            %a{:href => '', :'data-toggle' => 'modal', :'data-target' => '#login-modal'} Log in
