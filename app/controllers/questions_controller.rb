@@ -8,16 +8,19 @@ class QuestionsController < ApplicationController
 
   def trending
     @questions = policy_scope(Question).trending.page(params[:page])
+    render :index
   end
 
   def new_questions
     @questions = policy_scope(Question).order(created_at: :desc).uniq.
                  page(params[:page])
+    render :index
   end
 
   def most_votes
     @questions = policy_scope(Question).order(votes_count: :desc).uniq.
                  page(params[:page])
+    render :index
   end
 
   def new

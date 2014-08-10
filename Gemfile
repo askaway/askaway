@@ -36,6 +36,8 @@ gem 'paper_trail', '~> 3.0.3'
 gem 'paperclip', '~> 4.1'
 gem 'aws-sdk'
 
+gem 'jbuilder'
+
 group :development do
   gem 'thin'
   gem 'quiet_assets'
