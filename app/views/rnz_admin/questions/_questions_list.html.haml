@@ -5,7 +5,7 @@
         .col-xs-1
           #{question.votes_count}
         .col-xs-8
-          = question.name
+          = link_to question.name, question, target: '_blank'
         .col-xs-3.right-align
           - if showing_approved_questions?
             = link_to "Unapprove", unapprove_rnz_admin_question_path(question), class: 'btn btn-primary btn-sm assign-btn', method: :patch
