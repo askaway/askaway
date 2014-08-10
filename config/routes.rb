@@ -46,14 +46,25 @@ Askaway::Application.routes.draw do
   end
 
   scope '/rnz', module: :rnz_admin, as: 'rnz_admin' do
-    get '/' => redirect('rnz/embedded_topics')
+    get '/' => redirect('rnz/questions')
     resources :embedded_topics, except: [:destroy]
-    resources :questions, only: [:edit, :update]
+    resources :questions, only: [:index, :edit, :update] do
+      member do
+        patch :approve
+        patch :unapprove
+      end
+    end
   end
 
-  resources :embedded_topics, only: :show
+  scope '/embed', module: :embed, as: 'embed' do
+    resources :questions, only: [] do
+      collection do
+        get :trending
+      end
+    end
+  end
   # get 'embedded_topics/admin', to: 'embedded_topics#admin'
-  # resources :embedded_topics, only: :show
+  resources :embedded_topics, only: :show
 
   get 'new_questions', to: 'questions#new_questions'
   get 'trending', to: 'questions#trending'

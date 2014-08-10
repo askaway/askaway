@@ -1,7 +1,7 @@
 - hide_filters ||= false
 .row
   .col-question-list.col-xs-12.col-md-8.col-md-offset-2.font-small
-    = render 'welcome_banner'
+    /= render 'welcome_banner'
     -# %h3.page-heading= heading
     %ul.list-group.question-list(ng-controller='QuestionsCtrl' infinite-scroll="loadQuestions()" infinite-scroll-disabled="loadingQuestions")
 

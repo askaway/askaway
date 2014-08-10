@@ -1,11 +1,13 @@
-%ul.nav.nav-pills.embedded-topics-nav
-  %li{class: ('active' if request.path == rnz_admin_embedded_topics_path)}
-    = link_to rnz_admin_embedded_topics_path do
-      Unassigned
-      %span.badge= @unassigned_questions.count
-  - EmbeddedTopic.order('name asc').each do |et|
-    %li{class: ('active' if request.path == rnz_admin_embedded_topic_path(et))}
-      = link_to rnz_admin_embedded_topic_path(et) do
-        = et.name
-        %span.badge= et.questions.count
-  %li= link_to "+ New topic", new_rnz_admin_embedded_topic_path
+.panel.panel-default.rnz-nav
+  .panel-body
+    %ul.nav.nav-pills
+      %li{class: ('active' if request.path == rnz_admin_embedded_topics_path)}
+        = link_to rnz_admin_embedded_topics_path do
+          Unassigned
+          %span.badge= @unassigned_questions.count
+      - EmbeddedTopic.order('name asc').each do |et|
+        %li{class: ('active' if request.path == rnz_admin_embedded_topic_path(et))}
+          = link_to rnz_admin_embedded_topic_path(et) do
+            = et.name
+            %span.badge= et.questions.count
+      %li= link_to "+ New topic", new_rnz_admin_embedded_topic_path

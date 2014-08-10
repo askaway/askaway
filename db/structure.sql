@@ -373,7 +373,8 @@ CREATE TABLE questions (
     slug character varying(255),
     workflow_state character varying(255),
     ranking_cache integer,
-    embedded_topic_id integer
+    embedded_topic_id integer,
+    rnz_approved boolean DEFAULT false
 );
 
 
@@ -1200,4 +1201,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140806231453');
 INSERT INTO schema_migrations (version) VALUES ('20140807083855');
 
 INSERT INTO schema_migrations (version) VALUES ('20140808002822');
+
+INSERT INTO schema_migrations (version) VALUES ('20140809234311');
 

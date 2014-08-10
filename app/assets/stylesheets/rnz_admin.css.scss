@@ -14,6 +14,9 @@ body.rnz_admin\/embedded_topics, body.rnz_admin\/questions {
     margin-top: 0px;
   }
 }
-.embedded-topics-nav {
-  font-size: $font-size-extra-small;
+.rnz-nav {
+  margin-bottom: 0px;
+  .nav {
+    font-size: $font-size-extra-small;
+  }
 }

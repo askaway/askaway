@@ -51,12 +51,13 @@ askaway.controller('QuestionsCtrl', ['$scope', '$http', function( $scope, $http 
 
   function getUrl() {
     var resource = window.location.pathname;
+    var args = "&" + window.location.search.replace("?", "");
 
     if (resource === '/') {
       resource = '/trending';
     }
 
-    return resource + '.json?page=' + $scope.page++;
+    return (resource + '.json?page=' + $scope.page++ + args);
   }
 }]);
 
