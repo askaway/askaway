@@ -51,7 +51,7 @@ class Question < ActiveRecord::Base
 
   scope :answered, -> { joins(:answers).order('questions.answers_count DESC') }
   scope :unanswered, -> { where('questions.answers_count < 4') }
-  scope :trending, -> { order('ranking(questions.created_at, questions.votes_count) DESC') }
+  scope :trending, -> { order('ranking(questions.created_at, questions.votes_count, questions.answers_count) DESC') }
   scope :not_anonymous, -> { where('is_anonymous IS NOT TRUE') }
   scope :visible_to_public, -> { where("workflow_state IN ('default', 'accepted')") }
   scope :awaiting_review, -> { with_awaiting_review_state }
@@ -83,7 +83,7 @@ class Question < ActiveRecord::Base
   end
 
   def hotness
-    record = ActiveRecord::Base.connection.execute("SELECT ranking(questions.created_at, questions.votes_count) FROM questions WHERE id = #{id}").first
+    record = ActiveRecord::Base.connection.execute("SELECT ranking(questions.created_at, questions.votes_count, questions.answers_count) FROM questions WHERE id = #{id}").first
     if record.nil?
       0
     else
