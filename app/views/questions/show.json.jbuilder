@@ -1,1 +1,1 @@
-json.partial! 'questions/question', question: @question
+json.partial! 'questions/question', question: @question.decorate

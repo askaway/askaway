@@ -12,14 +12,14 @@ class QuestionsController < ApplicationController
   end
 
   def new_questions
-    @questions = policy_scope(Question).order(created_at: :desc).uniq.
-                 page(params[:page])
+    @questions = policy_scope(Question).order(created_at: :desc).uniq
+                 .page(params[:page])
     render :index
   end
 
   def most_votes
-    @questions = policy_scope(Question).order(votes_count: :desc).uniq.
-                 page(params[:page])
+    @questions = policy_scope(Question).order(votes_count: :desc).uniq
+                 .page(params[:page])
     render :index
   end
 
@@ -38,6 +38,7 @@ class QuestionsController < ApplicationController
     end
     @meta_title = "#{@question.body} | Ask Away"
     @meta_description = "#{@question.user_name} asked NZ's parties a question. Check out their answers..."
+    @question = @question.decorate
   end
 
   # POST /questions

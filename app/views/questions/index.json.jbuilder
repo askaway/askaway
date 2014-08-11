@@ -1,1 +1,1 @@
-json.array! @questions, partial: 'questions/question', as: :question
+json.array! @questions.decorate, partial: 'questions/question', as: :question

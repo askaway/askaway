@@ -37,6 +37,7 @@ gem 'paperclip', '~> 4.1'
 gem 'aws-sdk'
 
 gem 'jbuilder'
+gem 'draper'
 
 group :development do
   gem 'thin'
