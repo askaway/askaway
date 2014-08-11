@@ -32,26 +32,36 @@ askaway.controller('QuestionsCtrl', ['$scope', '$http', function( $scope, $http 
     });
   };
 
-  $scope.loadQuestions = function() {
-    if ($scope.noMoreQuestions) {
-      return;
+  // place data into questionList
+  function loadData(data) {
+    for (var i = 0; i < data.length; i++) {
+      $scope.questionList.push(data[i]);
     }
 
-    var url = getUrl();
+    if (data.length === 0) {
+      $scope.noMoreQuestions = true;
+    }
+  }
+
+  $scope.loadQuestions = function() {
+    var url = getUrl(), // always getUrl to advance page count sanely...
+      $questions;
+
+    // do initial loading
+    if ($scope.questionList.length === 0) {
+      $questions = angular.element('#question-data');
+      loadData(JSON.parse($questions.html()));
+      $questions.remove();
+      return;
+    } else if ($scope.noMoreQuestions) {
+      return;
+    }
 
     $scope.loadingQuestions = true;
 
     $http.get(url).success(function(data) {
-      var i = 0;
-
       $scope.loadingQuestions = false;
-      for (; i < data.length; i++) {
-        $scope.questionList.push(data[i]);
-      }
-
-      if (data.length === 0) {
-        $scope.noMoreQuestions = true;
-      }
+      loadData(data);
 
       $scope.questionsInitialized = true;
     });
