@@ -880,6 +880,20 @@ CREATE INDEX index_active_admin_comments_on_resource_type_and_resource_id ON act
 
 
 --
+-- Name: index_answers_on_question_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_answers_on_question_id ON answers USING btree (question_id);
+
+
+--
+-- Name: index_answers_on_rep_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_answers_on_rep_id ON answers USING btree (rep_id);
+
+
+--
 -- Name: index_comments_on_question_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1203,4 +1217,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140807083855');
 INSERT INTO schema_migrations (version) VALUES ('20140808002822');
 
 INSERT INTO schema_migrations (version) VALUES ('20140809234311');
+
+INSERT INTO schema_migrations (version) VALUES ('20140811100551');
 
