@@ -402,6 +402,8 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    unicorn-worker-killer (0.4.2)
+      unicorn (~> 4)
     warden (1.2.3)
       rack (>= 1.0)
     websocket-driver (0.3.3)
@@ -473,4 +475,5 @@ DEPENDENCIES
   timecop
   uglifier (>= 1.0.3)
   unicorn
+  unicorn-worker-killer
   workflow
