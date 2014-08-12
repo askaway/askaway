@@ -2,7 +2,7 @@ class QuestionsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
   before_filter :fetch_question, only: [:show]
   before_filter :fetch_answers, only: [:show]
-  after_action :verify_authorized, :except => [:trending, :new_questions, :best]
+  after_action :verify_authorized, :except => [:trending, :new_questions, :most_votes]
 
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
@@ -15,7 +15,7 @@ class QuestionsController < ApplicationController
                  page(params[:page])
   end
 
-  def best
+  def most_votes
     @questions = policy_scope(Question).order(votes_count: :desc).uniq.
                  page(params[:page])
   end
@@ -27,11 +27,14 @@ class QuestionsController < ApplicationController
 
   def show
     authorize @question
+    redirect_to_canonical_show_path(@question)
     @comment = Comment.new
-    @comments = @question.comments.includes(:user).order(created_at: :desc)
+    @comments = @question.comments.includes(:user).order(created_at: :asc)
     if show_answer_form?
       @new_answer = Answer.new
     end
+    @meta_title = "#{@question.body} | Ask Away"
+    @meta_description = "#{@question.user_name} asked NZ's parties a question. Check out their answers..."
   end
 
   # POST /questions
@@ -45,6 +48,8 @@ class QuestionsController < ApplicationController
       if @question.awaiting_review?
         flash[:notice] = 'Thanks! Your question will be reviewed and posted shortly.'
       else
+        # flash[:notice] = render_to_string(partial: "flash_share_buttons",
+        #                                   layout: false)
         flash[:notice] = 'Thanks! Your question has been posted.'
       end
       redirect_to new_questions_path

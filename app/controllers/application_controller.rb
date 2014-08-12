@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   before_filter :check_for_invitation
   before_filter :update_sanitized_params, if: :inside_devise?
   before_filter :ensure_signup_complete, unless: :inside_devise?
+  before_filter :set_meta_tags
 
   after_action :verify_authorized, :except => :index
 
@@ -80,5 +81,40 @@ class ApplicationController < ActionController::Base
     if current_user && !current_user.email_verified?
       redirect_to finish_signup_path
     end
+  end
+
+  def perform_avatar_upload(path_for_redirect: nil)
+    resource_name = @resource.class.name.downcase.to_sym
+    unless params[resource_name]
+      flash[:alert] = 'Oops! Looks like you forgot to choose a picture to upload.'
+      return render 'new_avatar'
+    end
+    @resource.uploaded_avatar = params[resource_name][:uploaded_avatar]
+    if @resource.valid?
+      @resource.select_avatar!(type: 'uploaded_avatar')
+      flash[:notice] = 'Lookin good! Profile picture updated.'
+      redirect_to path_for_redirect
+    else
+      flash[:alert] = "Oops! We couldn't update your picture. Make sure it's under 5 megabytes."
+      render 'new_avatar'
+    end
+  end
+
+  def set_meta_tags
+    @meta_title = "Ask NZ's parties your questions this election | Ask Away"
+    @meta_description = "Find out where the parties stand on the things you care about."
+    # @meta_description = "See the political parties' responses to the things you care about."
+    # @meta_description = "See what they're saying about the things that are important to you."
+    @meta_img = asset_url('askaway-facebook.jpg')
+  end
+
+  def redirect_to_canonical_show_path(record)
+    if request.path != eval("#{record.class.name.underscore}_path(record)")
+      redirect_to record, status: :moved_permanently
+    end
+  end
+
+  def asset_url(asset)
+    "#{request.protocol}#{request.host_with_port}#{ActionController::Base.helpers.asset_url(asset)}"
   end
 end

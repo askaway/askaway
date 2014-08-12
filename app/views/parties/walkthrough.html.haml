@@ -8,14 +8,14 @@
           %p Here's a few things to know before you start using the site:
 
           %ol
-            %li <strong>Everything happens on the <a href='/'>home page</a>.</strong> Go there to see the top questions of the last few days. Click on a question to answer it. You can answer any questions that your party hasn't answered yet. Just keep in mind if you're the right person in your party to be answering the question.
-            %li <strong>We'll send you email reminders</strong> if there are any really popular questions related to your category that you haven't answered yet. Your categories are:
+            %li <strong>Everything happens on the <a href='/'>home page</a>.</strong> Go there to see the top questions of the last few days. Click on a question to answer it. You can answer any questions that your party hasn't answered yet. Just bear in mind that your party can only give one answer to each question, so think about whether you’re the best person to be answering.
+            %li <strong>We'll send you email reminders</strong> if there are any really popular questions relating to your particular area of expertise.
             %li
               <strong>You can invite more people to answer questions</strong> on behalf of The
               = @party.name
               by visiting
               = link_to 'your party\'s page', party_path(@party)
-              and clicking 'Invite spokespeople'. You can always get back to your parties page by clicking the icon on the top of the site: (insert image here)
-            %li <strong>Have fun!</strong> This is a great opportunity to really connect with Kiwi youth about the things they care about. Also, if you ever have any questions or concerns, don't hesitate to email us (meg@askaway.org.nz).
+              and clicking 'Invite spokespeople'. 
+            %li <strong>Finally, thank you!</strong> Every answer you contribute sends a clear message to young New Zealanders that you care about what they have to say. Good on you, and we hope you enjoy using the site. Also, if you ever have any questions or concerns, don't hesitate to email us (meg@askaway.org.nz).
 
           = link_to 'Go to the home page!', root_path, class: 'btn btn-primary btn-lg'

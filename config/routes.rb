@@ -15,13 +15,17 @@ Askaway::Application.routes.draw do
   match '/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
 
   resources :users, only: :show do
-    collection do
+    member do
       get :edit
       patch :update
       get :new_avatar
       patch :upload_avatar
+      patch :select_avatar
     end
   end
+
+  # get '/users/:id' => redirect("/u/%{id}")
+  # get '/users/:id/:action' => redirect("/u/%{id}/%{action}")
 
   resources :questions, path: 'q', only: [:show, :new, :create] do
     resources :comments, only: :create
@@ -42,28 +46,52 @@ Askaway::Application.routes.draw do
   end
 
   scope '/rnz', module: :rnz_admin, as: 'rnz_admin' do
-    get '/' => redirect('rnz/embedded_topics')
+    get '/' => redirect('rnz/questions')
     resources :embedded_topics, except: [:destroy]
-    resources :questions, only: [:edit, :update]
+    resources :questions, only: [:index, :edit, :update] do
+      member do
+        patch :approve
+        patch :unapprove
+      end
+    end
   end
 
-  resources :embedded_topics, only: :show
+  scope '/embed', module: :embed, as: 'embed' do
+    resources :questions, only: [] do
+      collection do
+        get :trending
+      end
+    end
+  end
   # get 'embedded_topics/admin', to: 'embedded_topics#admin'
-  # resources :embedded_topics, only: :show
+  resources :embedded_topics, only: :show
 
   get 'new_questions', to: 'questions#new_questions'
   get 'trending', to: 'questions#trending'
-  get 'best', to: 'questions#best'
+  get 'most_votes', to: 'questions#most_votes'
 
   resources :parties, only: :show, path: 'p' do
     member do
       get :invited_reps
       get :walkthrough
+      get :new_avatar
+      patch :upload_avatar
     end
     resources :invitations, only: [:new, :create]
   end
 
   resources :invitations, only: [:show, :destroy]
 
+  resources :placeholders, only: [:new, :create, :show] do
+    member do
+      get :new_avatar
+      patch :upload_avatar
+    end
+  end
+
+  post 'announcements/dismiss', to: 'announcements#dismiss'
+
   get 'about', to: 'pages#about', as: 'about'
+  get 'terms_of_use', to: 'pages#terms_of_use', as: 'terms_of_use'
+  get 'privacy_policy', to: 'pages#privacy_policy', as: 'privacy_policy'
 end

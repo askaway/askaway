@@ -10,7 +10,7 @@ h2 {
   font-size: $font-size-large + 8;
 }
 
-h3, h4, h5, h6 {
+h3, {
   font-size: $font-size-large + 4;
 }
 
@@ -39,9 +39,9 @@ h1, h2, {
   color: $gray-light;
 }
 
-.thin { font-weight: 300; 
-}
+.thin { font-weight: 300; }
 
+.right-align { text-align: right; }
 
 
 

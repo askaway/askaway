@@ -25,6 +25,11 @@ reps = [
   }
 ]
 
+Placeholder.create(uploaded_avatar: File.new(Rails.root.join("app/assets/images/placeholders/owl.jpg"), "r"))
+Placeholder.create(uploaded_avatar: File.new(Rails.root.join("app/assets/images/placeholders/pukeko.jpg"), "r"))
+Placeholder.create(uploaded_avatar: File.new(Rails.root.join("app/assets/images/placeholders/giraffe.jpg"), "r"))
+Placeholder.create(uploaded_avatar: File.new(Rails.root.join("app/assets/images/placeholders/baboon.jpg"), "r"))
+Placeholder.create(uploaded_avatar: File.new(Rails.root.join("app/assets/images/placeholders/fox.jpg"), "r"))
 users = []
 5.times { users << FactoryGirl.create(:user) }
 

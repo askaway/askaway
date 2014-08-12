@@ -1,0 +1,50 @@
+.footer
+  .container
+    .row
+      .col-question-list.col-xs-12.col-md-8.col-md-offset-2.footer-container
+        .row
+          .col-sm-8
+            .row
+              .col-sm-6
+                .DandD
+                  %a{href: "http://designdemocracy.ac.nz", :target => "_blank"}
+                    = image_tag 'DandDlogo.png', class: 'img-responsive'
+              .col-sm-6
+                .codefor 
+                  = link_to 'http://codefor.org.nz/', :target => "_blank" do
+                    = image_tag 'code-for-nz.svg', class: 'img-responsive'
+            .row
+              .col-sm-6
+                .massey
+                  %a{href: "http://massey.ac.nz", :target => "_blank"}
+                    = image_tag 'CoCAMassey_Hori_Black.png', class: 'img-responsive'
+              .col-sm-6
+                .openlab.img-responsive
+                  %a{href: "http://openlab.ac.nz", :target => "_blank"}
+                    = image_tag 'OpenLab_BlackLine.png', class: 'img-responsive'
+          .col-sm-4
+            .social-icons
+              = link_to 'https://facebook.com/askawaynz', :target => "_blank" do
+                %span.fa.fa-facebook-square
+              = link_to 'https://twitter.com/askawaynz', :target => "_blank" do
+                %span.fa.fa-twitter-square
+              = link_to 'https://github.com/askaway/askaway', :target => "_blank" do
+                %span.fa.fa-github-square
+            %p.text-detail
+              Please have a gander at our 
+              %a{href: "terms_of_use", :target => "_blank"}
+                Terms of Use 
+              and 
+              %a{href: "privacy_policy", :target => "_blank"}
+                Privacy Policy.
+              %p.text-detail
+                Ask Away is an open source project and you can find the code on 
+                %a{href: "https://github.com/askaway", :target => "_blank"}
+                  Github.
+        .row.footer-text
+          %p.text-detail
+            Authorised by Meg Howie, Te Ara Hihiko, Massey University, Wallace St, Wellington.
+            %br
+            This work is licensed under a
+            = succeed "." do
+              %a{href: "http://creativecommons.org/licenses/by-nc/3.0/deed.en_US", rel: "license", target: "_blank"} Creative Commons Attribution-NonCommercial 3.0 Unported License

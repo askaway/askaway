@@ -16,4 +16,8 @@ module ApplicationHelper
     end
     title
   end
+
+  def upload_avatar_resource_path(resource)
+    send("upload_avatar_#{resource.class.name.underscore}_path", resource)
+  end
 end

@@ -1,5 +1,6 @@
 askaway.controller('QuestionsCtrl', ['$scope', '$http', function( $scope, $http ) {
   $scope.loadingQuestions = false;
+  $scope.questionsInitialized = false;
   $scope.questionList = [];
   $scope.page = 1;
 
@@ -8,6 +9,8 @@ askaway.controller('QuestionsCtrl', ['$scope', '$http', function( $scope, $http 
   $scope.toggleQuestion = function(e) {
     var $target = $(e.target),
       $veto = $target.closest('a[href], form');
+
+    if (window.getSelection && window.getSelection().toString() !== '') return;
 
     if ($veto.length === 0) {
       this.question.expanded = !this.question.expanded;
@@ -29,29 +32,50 @@ askaway.controller('QuestionsCtrl', ['$scope', '$http', function( $scope, $http 
     });
   };
 
+  // place data into questionList
+  function loadData(data) {
+    for (var i = 0; i < data.length; i++) {
+      $scope.questionList.push(data[i]);
+    }
+
+    if (data.length === 0) {
+      $scope.noMoreQuestions = true;
+    }
+  }
+
   $scope.loadQuestions = function() {
-    var url = getUrl();
+    var url = getUrl(), // always getUrl to advance page count sanely...
+      $questions;
+
+    // do initial loading
+    if ($scope.questionList.length === 0) {
+      $questions = angular.element('#question-data');
+      loadData(JSON.parse($questions.html()));
+      $questions.remove();
+      return;
+    } else if ($scope.noMoreQuestions) {
+      return;
+    }
 
     $scope.loadingQuestions = true;
 
     $http.get(url).success(function(data) {
-      var i = 0;
-
       $scope.loadingQuestions = false;
-      for (; i < data.length; i++) {
-        $scope.questionList.push(data[i]);
-      }
+      loadData(data);
+
+      $scope.questionsInitialized = true;
     });
   };
 
   function getUrl() {
     var resource = window.location.pathname;
+    var args = "&" + window.location.search.replace("?", "");
 
     if (resource === '/') {
       resource = '/trending';
     }
 
-    return resource + '.json?page=' + $scope.page++;
+    return (resource + '.json?page=' + $scope.page++ + args);
   }
 }]);
 
@@ -77,6 +101,9 @@ askaway.controller('QuestionCtrl', ['$scope', '$http', function( $scope, $http )
 }]);
 
 askaway.controller( 'QuestionFormCtrl', ['$scope', function( $scope ) {
+  $scope.submit = function() {
+    $scope.new_question.$setPristine();
+  };
 }]);
 
 /**
@@ -93,22 +120,29 @@ function toggleVote($http) {
 
     question.togglingVote = true;
 
-    if (question.vote_id) {
+    if (vote_id) {
+      // short circuit if we're trying to unvote for something still in progress.
+      if (vote_id === 'voting-in-progress') {
+        return;
+      }
+
       question.votes_count--;
+      question.vote_id = undefined;
       $http({
         method: 'DELETE', // IE8 fail. http://tech.pro/tutorial/1238/angularjs-and-ie8-gotcha-http-delete
-        url: '/votes/' + question.vote_id
+        url: '/votes/' + vote_id
       })
         .success(function(vote) {
-          question.vote_id = undefined;
           question.togglingVote = undefined;
         })
         .error(function(data, status) {
           question.togglingVote = false;
           question.votes_count++;
+          question.vote_id = vote_id;
         });
     } else {
       question.votes_count++;
+      question.vote_id = 'voting-in-progress';
       $http.post(question.path + '/votes', null)
         .success(function(vote) {
           question.vote_id = vote.id;
@@ -116,6 +150,7 @@ function toggleVote($http) {
         })
         .error(function(data, status) {
           question.togglingVote = false;
+          question.vote_id = undefined;
           question.votes_count--;
         });
     }

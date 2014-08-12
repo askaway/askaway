@@ -1,6 +1,21 @@
 .answer {
   font-family: $font-family-helvetica;
 }
+.answer-avatar-container.pull-left {
+  margin-right: 15px;
+  min-height: 55px;
+}
+.answer-party-avatar {
+  position: relative;
+  img {
+    border-radius: 20px;
+    position: absolute;
+    left: 24px;
+    top: -14px;
+    width: 23px;
+    height: 23px;
+  }
+}
 .answer-footer {
   font-size: $font-size-extra-small;
   @media (max-width: $screen-xs-max) {
@@ -14,4 +29,11 @@
 }
 .no-answers .answer-form-container {
   margin-top: 15px;
+}
+
+#answer-text {
+  @media (max-width: $screen-xs-max){
+    font-size: $font-size-extra-small;
+    height: 100px;
+  }
 }

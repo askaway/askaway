@@ -5,23 +5,27 @@ class UserPolicy < ApplicationPolicy
     end
   end
 
-  def finish_signup?
-    true
+  def edit?
+    user && (user.is_admin? || (user == @record))
   end
 
   def update?
-    true
+    edit?
   end
 
-  def edit?
-    true
-  end
-
-  def new_avatar?
-    true
+  def select_avatar?
+    edit?
   end
 
   def upload_avatar?
-    true
+    user && (user.is_admin? || (user.is_rep? && (user == @record)))
+  end
+
+  def new_avatar?
+    upload_avatar?
+  end
+
+  def finish_signup?
+    user == @record
   end
 end

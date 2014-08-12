@@ -29,10 +29,10 @@ SET search_path = public, pg_catalog;
 -- Name: ranking(timestamp without time zone, integer); Type: FUNCTION; Schema: public; Owner: -
 --
 
-CREATE FUNCTION ranking(created_at timestamp without time zone, votes_count integer) RETURNS numeric
+CREATE FUNCTION ranking(created_at timestamp without time zone, vote_count integer) RETURNS numeric
     LANGUAGE sql IMMUTABLE
     AS $$
-  SELECT ROUND(LOG(2, greatest(votes_count, 1)) + ((EXTRACT(EPOCH FROM created_at) - EXTRACT(EPOCH from timestamp '2014-1-1 0:00')) / 450000)::numeric, 7);
+  SELECT ROUND(LOG(2, greatest(vote_count, 1)) + ((EXTRACT(EPOCH FROM created_at) - EXTRACT(EPOCH from timestamp '2014-1-1 0:00')) / 450000)::numeric, 7);
 $$;
 
 
@@ -291,7 +291,14 @@ CREATE TABLE parties (
     description text,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    slug character varying(255)
+    slug character varying(255),
+    uploaded_avatar_file_name character varying(255),
+    uploaded_avatar_content_type character varying(255),
+    uploaded_avatar_file_size integer,
+    uploaded_avatar_updated_at timestamp without time zone,
+    placeholder_id integer,
+    selected_avatar_type character varying(255),
+    selected_avatar_identity_id integer
 );
 
 
@@ -315,6 +322,40 @@ ALTER SEQUENCE parties_id_seq OWNED BY parties.id;
 
 
 --
+-- Name: placeholders; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE placeholders (
+    id integer NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    uploaded_avatar_file_name character varying(255),
+    uploaded_avatar_content_type character varying(255),
+    uploaded_avatar_file_size integer,
+    uploaded_avatar_updated_at timestamp without time zone
+);
+
+
+--
+-- Name: placeholders_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE placeholders_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: placeholders_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE placeholders_id_seq OWNED BY placeholders.id;
+
+
+--
 -- Name: questions; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -332,7 +373,8 @@ CREATE TABLE questions (
     slug character varying(255),
     workflow_state character varying(255),
     ranking_cache integer,
-    embedded_topic_id integer
+    embedded_topic_id integer,
+    rnz_approved boolean DEFAULT false
 );
 
 
@@ -480,13 +522,13 @@ CREATE TABLE users (
     is_admin boolean DEFAULT false,
     name character varying(255) NOT NULL,
     is_embedder boolean DEFAULT false,
-    placeholder_id integer,
     uploaded_avatar_file_name character varying(255),
     uploaded_avatar_content_type character varying(255),
     uploaded_avatar_file_size integer,
     uploaded_avatar_updated_at timestamp without time zone,
     selected_avatar_type character varying(255),
-    selected_avatar_identity_id integer
+    selected_avatar_identity_id integer,
+    placeholder_id integer
 );
 
 
@@ -636,6 +678,13 @@ ALTER TABLE ONLY parties ALTER COLUMN id SET DEFAULT nextval('parties_id_seq'::r
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY placeholders ALTER COLUMN id SET DEFAULT nextval('placeholders_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY questions ALTER COLUMN id SET DEFAULT nextval('questions_id_seq'::regclass);
 
 
@@ -746,6 +795,14 @@ ALTER TABLE ONLY parties
 
 
 --
+-- Name: placeholders_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY placeholders
+    ADD CONSTRAINT placeholders_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: questions_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -820,6 +877,20 @@ CREATE INDEX index_active_admin_comments_on_namespace ON active_admin_comments U
 --
 
 CREATE INDEX index_active_admin_comments_on_resource_type_and_resource_id ON active_admin_comments USING btree (resource_type, resource_id);
+
+
+--
+-- Name: index_answers_on_question_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_answers_on_question_id ON answers USING btree (question_id);
+
+
+--
+-- Name: index_answers_on_rep_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_answers_on_rep_id ON answers USING btree (rep_id);
 
 
 --
@@ -918,13 +989,6 @@ CREATE INDEX index_questions_on_answers_count ON questions USING btree (answers_
 --
 
 CREATE INDEX index_questions_on_embedded_topic_id ON questions USING btree (embedded_topic_id);
-
-
---
--- Name: index_questions_on_ranking; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_questions_on_ranking ON questions USING btree (ranking(created_at, votes_count) DESC);
 
 
 --
@@ -1134,4 +1198,18 @@ INSERT INTO schema_migrations (version) VALUES ('20140724051924');
 INSERT INTO schema_migrations (version) VALUES ('20140724063831');
 
 INSERT INTO schema_migrations (version) VALUES ('20140724083829');
+
+INSERT INTO schema_migrations (version) VALUES ('20140803062450');
+
+INSERT INTO schema_migrations (version) VALUES ('20140806051334');
+
+INSERT INTO schema_migrations (version) VALUES ('20140806231453');
+
+INSERT INTO schema_migrations (version) VALUES ('20140807083855');
+
+INSERT INTO schema_migrations (version) VALUES ('20140808002822');
+
+INSERT INTO schema_migrations (version) VALUES ('20140809234311');
+
+INSERT INTO schema_migrations (version) VALUES ('20140811100551');
 

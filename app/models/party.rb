@@ -16,16 +16,14 @@ class Party < ActiveRecord::Base
   friendly_id slug_candidate, :use => [:slugged, :history]
   include FriendlyIdHelper
 
+  include UploadedAvatar
+
   validates_presence_of :name
   validates_uniqueness_of :name
   validates_presence_of :auth_statement
 
   has_many :reps
   has_many :rep_users, through: :reps, source: :user
-
-  def slug_candidate
-    :name
-  end
 
   def invitations
     Invitation.to_join_party(self)

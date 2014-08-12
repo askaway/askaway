@@ -1,50 +1,36 @@
 .row
   .col-xs-12.col-md-8.col-md-offset-2
-    .welcome-banner
-      .img-responsive
-        =image_tag "logo-white.png"
-      %div
-        %h1 Welcome to Ask Away
-        %h3 Where you can ask the parties your questions this election
-    .panel.panel-default.thin
-      .panel-header
-        .question-filter.question-filter-selected.about-heading About
+    = render 'welcome_banner'
+    .panel.panel-default.thin.about-panel
+      / .panel-header
+      /   .question-filter.question-filter-selected.about-heading About
       .panel-body
-        %h3 How it works
-        .row
-          .col-xs-4
-            %p
-              1. Ask a question for all of the parties to answer
-          .col-xs-4
-            %p
-              2. Vote for the questions you think are important
-          .col-xs-4
-            %p
-              3. Spokespeople from the parties will answer the most popular questions each day
         .row
           .col-xs-12
-            %h3 About Ask Away
+            %h3.about-heading-first About Ask Away
             %p Ask Away is a Q &amp; A website where New Zealanders can ask the parties questions in the lead up to the elections. It’s an easy way to find out the parties’ positions on issues, and to compare their views side by side. It’s also a way for you to make your voice heard this election, and get the parties talking about the things that are important to you.
             %h3 Who we are
-            %p This platform is a part of Massey University’s Design & Democracy Lab, and is being led by Meg Howie as her Master of Design project, in collaboration with Jon Lemmon, Code for NZ and other open source developers. If you’d like to know more, follow our blog or get in touch.
+            %p Ask Away is part of the <a href='http://designdemocracy.ac.nz', target='_blank'>Design and Democracy Project</a> at <a href='http://www.massey.ac.nz/', target='_blank'>Massey University</a>. It was made by:
+            %p <b><a href='https://twitter.com/HowieMeg', target='_blank'>Meg Howie</a></b> - Project lead. Strategic and communication designer. Ask Away is part of Meg’s Master of Design thesis.
+            %p <b><a href='https://twitter.com/jon_lemmon', target='_blank'>Jon Lemmon</a></b> - Lead interface designer and web developer. Jon is also a co-founder of <a href='https://www.loomio.org/', target='_blank'>Loomio</a>.
+            %p <b><a href='http://codefor.org.nz/', target='_blank'>Code For New Zealand</a></b> - CFNZ is a collective of open-source developers, modelled on <a href='http://www.codeforamerica.org/', target='_blank'>Code for America</a>, led by <a href='https://twitter.com/wombleton', target='_blank'>Rowan Crawford</a>.
+
+            %p Huge thanks to Meg’s supervisors <a href='https://twitter.com/musettecc', target='_blank'>Karl Kane</a> and <a href='https://twitter.com/Spinprofessor', target='_blank'>Claire Robinson</a>, <a href='http://openlab.ac.nz/', target='_blank'>Open Lab</a>, and the rest of the Design and Democracy team, as well as to the many other people who helped out along the way.
+
             %h3 What we care about
             %p We believe that everyone should be a part of the political conversation in our country, so we’re making it easy to be involved this election. We want to facilitate connections and conversations between those in power and the people, to help NZ’s politicians be both relevant and responsive.
             %h3 Our friends
             %p Ask Away is one of several youth voter initiatives, take a look at some of the other great resources out there.
         .row.voter-resource-links
-          .col-xs-4
+          .col-sm-4
             %p
               = link_to "http://onthefence.co.nz", :target => "_blank" do
                 = image_tag "On-the-Fence-Logo.png", :class => "img-responsive" 
               = link_to "On The Fence", "http://onthefence.co.nz", :target => "_blank"
-              is a fun, visual questionnaire that educates and guides inexperienced voters to find a best match from New Zealand’s political parties
-          .col-xs-4{:href => "rockenrol.me"}
+              is a fun, visual questionnaire that educates and guides you to find a best match from New Zealand's political parties. It's also part of the Design and Democracy Project.
+          .col-sm-4{:href => "rockenrol.me"}
             %p
               = link_to "http://rockenrol.me", :target => "_blank" do
                 =image_tag "rockenrol.png", :class => "img-responsive"
               = link_to "RockEnrol", "http://rockenrol.me", :target => "_blank"
               is a crowd-fuelled & collaborative campaign that uses popular culture, music, events, grassroots community organising & technology to build & activate political power for young people.
-          .col-xs-4
-            
-            
-            

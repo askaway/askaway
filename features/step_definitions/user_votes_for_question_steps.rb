@@ -3,6 +3,6 @@ When(/^I click on the vote arrow$/) do
 end
 
 Then(/^I should see the vote number increase by one$/) do
-  expect(find("#question-#{@question.id} .question-up-vote-count")).to(
+  expect(find("#question-#{@question.id} .up-vote-count")).to(
     have_content(@question.votes_count + 1))
 end

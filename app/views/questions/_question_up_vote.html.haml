@@ -1,8 +1,9 @@
 .row
-  .col-sm-6.col-xs-12.question-up-vote
-    %a(href="" ng-click="toggleVote()")
-      %i.fa.fa-chevron-up(id="vote-for-{{question.id}}" ng-class="{'fa-chevron-up-voted': question.vote_id}")
-    .question-up-vote-count {{question.votes_count}}
+  %a.up-vote-wrapper(href="" ng-click="toggleVote()")
+    .col-sm-6.col-xs-12.up-vote
+      %i.fa.fa-arrow-up.upvote-icon(id="vote-for-{{question.id}}" ng-class="{'upvote-icon-voted': question.vote_id}")
+      .up-vote-count {{question.votes_count}}
+      .text-detail.up-vote-label {{ question.votes_count === 1 ? 'vote' : 'votes' }}
 
-  .col-sm-6.hidden-xs.question-asker-avatar-sm
-    = render 'questions/question_asker_avatar'
+    .col-sm-6.hidden-xs.question-asker-avatar-sm
+      = render 'questions/question_asker_avatar'

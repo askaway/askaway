@@ -1,6 +1,10 @@
 - hide_filters ||= false
+
+#question-data.hidden
+  =render :template => "questions/trending.json"
 .row
   .col-question-list.col-xs-12.col-md-8.col-md-offset-2.font-small
+    /= render 'welcome_banner'
     -# %h3.page-heading= heading
     %ul.list-group.question-list(ng-controller='QuestionsCtrl' infinite-scroll="loadQuestions()" infinite-scroll-disabled="loadingQuestions")
 
@@ -8,7 +12,7 @@
         %li.question.question-filters.list-group-item.row.row-no-gutter
           = render 'questions/question_filters'
 
-      %li.question.list-group-item.list-group-item-clickable(ng-repeat="question in questionList" id="question-{{question.id}}" ng-class="{'question-expanded': question.expanded}" ng-click="toggleQuestion($event)")
+      %li.question.list-group-item.list-group-item-clickable(ng-repeat="question in questionList" id="question-{{question.id}}" ng-class="{'question-expanded': question.expanded}" ng-click="toggleQuestion($event)" ng-cloak='')
         .row
           .col-xs-2.col-sm-2
             = render 'questions/question_up_vote'
@@ -19,5 +23,5 @@
               .col-xs-12= render 'questions/asker'
             .row
               .col-xs-12= render 'questions/answers'
-    .text-center(ng-show="loadingQuestions")
-      Loading more...
+      %li.list-group-item.loading-spinner(ng-show="loadingQuestions")
+        = image_tag "ajax-loader.gif"

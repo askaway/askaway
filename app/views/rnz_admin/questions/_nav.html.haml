@@ -1,0 +1,11 @@
+.panel.panel-default.rnz-nav
+  .panel-body
+    %ul.nav.nav-pills
+      %li{class: ('active' if showing_unapproved_questions?)}
+        = link_to rnz_admin_questions_path do
+          Unapproved
+          %span.badge= @unapproved_questions.count
+      %li{class: ('active' if showing_approved_questions?)}
+        = link_to rnz_admin_questions_path(approved: true) do
+          Approved
+          %span.badge= @approved_questions.count

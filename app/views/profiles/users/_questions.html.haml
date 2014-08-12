@@ -1,0 +1,7 @@
+%ul.list-group
+  - if record.questions.count > 0
+    - record.questions.not_anonymous.each do |question|
+      %li.list-group-item= link_to question.body, question
+  - else
+    %li.list-group-item
+      #{record.first_name} has not asked any questions yet.

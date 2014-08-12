@@ -3,7 +3,7 @@
   %head
     = render 'head'
 
-  %body{class: "#{controller.controller_name} #{controller.action_name}"}
+  %body{class: "embed #{controller.controller_name} #{controller.action_name}"}
 
     .container
       = yield
@@ -27,4 +27,3 @@
 
       ga('create', 'UA-44134501-1', 'askaway.co.nz');
       ga('send', 'pageview');
-
