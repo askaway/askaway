@@ -10,7 +10,7 @@ askaway.controller('QuestionsCtrl', ['$scope', '$http', function( $scope, $http 
     var $target = $(e.target),
       $veto = $target.closest('a[href], form');
 
-    if (window.getSelection && window.getSelection().toString() != '') return;
+    if (window.getSelection && window.getSelection().toString() !== '') return;
 
     if ($veto.length === 0) {
       this.question.expanded = !this.question.expanded;
@@ -33,6 +33,10 @@ askaway.controller('QuestionsCtrl', ['$scope', '$http', function( $scope, $http 
   };
 
   $scope.loadQuestions = function() {
+    if ($scope.noMoreQuestions) {
+      return;
+    }
+
     var url = getUrl();
 
     $scope.loadingQuestions = true;
@@ -43,6 +47,10 @@ askaway.controller('QuestionsCtrl', ['$scope', '$http', function( $scope, $http 
       $scope.loadingQuestions = false;
       for (; i < data.length; i++) {
         $scope.questionList.push(data[i]);
+      }
+
+      if (data.length === 0) {
+        $scope.noMoreQuestions = true;
       }
 
       $scope.questionsInitialized = true;
