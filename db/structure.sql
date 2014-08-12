@@ -23,16 +23,30 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
 
 
+--
+-- Name: hstore; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS hstore WITH SCHEMA public;
+
+
+--
+-- Name: EXTENSION hstore; Type: COMMENT; Schema: -; Owner: -
+--
+
+COMMENT ON EXTENSION hstore IS 'data type for storing sets of (key, value) pairs';
+
+
 SET search_path = public, pg_catalog;
 
 --
--- Name: ranking(timestamp without time zone, integer); Type: FUNCTION; Schema: public; Owner: -
+-- Name: ranking(timestamp without time zone, integer, integer); Type: FUNCTION; Schema: public; Owner: -
 --
 
-CREATE FUNCTION ranking(created_at timestamp without time zone, votes_count integer) RETURNS numeric
+CREATE FUNCTION ranking(created_at timestamp without time zone, votes_count integer, answers_count integer) RETURNS numeric
     LANGUAGE sql IMMUTABLE
     AS $$
-  SELECT ROUND(LOG(2, greatest(votes_count, 1)) + ((EXTRACT(EPOCH FROM created_at) - EXTRACT(EPOCH from timestamp '2014-1-1 0:00')) / 450000)::numeric, 7);
+  SELECT ROUND(LOG(2, greatest(votes_count, 1)) + (CAST (values -> 'answer_weight' AS numeric) * answers_count) + ((EXTRACT(EPOCH FROM created_at) - EXTRACT(EPOCH from timestamp '2014-1-1 0:00')) / CAST (values -> 'time_weight' AS integer) )::numeric, 7) FROM settings;
 $$;
 
 
@@ -471,6 +485,35 @@ CREATE TABLE schema_migrations (
 
 
 --
+-- Name: settings; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE settings (
+    id integer NOT NULL,
+    "values" hstore
+);
+
+
+--
+-- Name: settings_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE settings_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: settings_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE settings_id_seq OWNED BY settings.id;
+
+
+--
 -- Name: topics; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -706,6 +749,13 @@ ALTER TABLE ONLY reps ALTER COLUMN id SET DEFAULT nextval('reps_id_seq'::regclas
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY settings ALTER COLUMN id SET DEFAULT nextval('settings_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY topics ALTER COLUMN id SET DEFAULT nextval('topics_id_seq'::regclass);
 
 
@@ -816,6 +866,14 @@ ALTER TABLE ONLY questions
 
 ALTER TABLE ONLY rep_topics
     ADD CONSTRAINT rep_topics_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: settings_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY settings
+    ADD CONSTRAINT settings_pkey PRIMARY KEY (id);
 
 
 --
@@ -989,13 +1047,6 @@ CREATE INDEX index_questions_on_answers_count ON questions USING btree (answers_
 --
 
 CREATE INDEX index_questions_on_embedded_topic_id ON questions USING btree (embedded_topic_id);
-
-
---
--- Name: index_questions_on_ranking; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_questions_on_ranking ON questions USING btree (ranking(created_at, votes_count) DESC);
 
 
 --
@@ -1217,6 +1268,12 @@ INSERT INTO schema_migrations (version) VALUES ('20140807083855');
 INSERT INTO schema_migrations (version) VALUES ('20140808002822');
 
 INSERT INTO schema_migrations (version) VALUES ('20140809234311');
+
+INSERT INTO schema_migrations (version) VALUES ('20140811084702');
+
+INSERT INTO schema_migrations (version) VALUES ('20140811084938');
+
+INSERT INTO schema_migrations (version) VALUES ('20140811093427');
 
 INSERT INTO schema_migrations (version) VALUES ('20140811100551');
 

@@ -49,6 +49,11 @@ describe Question, :type => :model do
   end
 
   describe "hotness" do
+    before do
+      Setting.set(:time_weight, 450000)
+      Setting.set(:answer_weight, 0)
+    end
+
     it 'has 0 hotness with no votes' do
       expect(cold_q.hotness).to eq(0)
     end
