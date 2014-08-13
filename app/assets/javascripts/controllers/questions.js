@@ -49,9 +49,9 @@ askaway.controller('QuestionsCtrl', ['$scope', '$http', function( $scope, $http 
 
     // do initial loading
     if ($scope.questionList.length === 0) {
-      $questions = angular.element('#question-data');
-      loadData(JSON.parse($questions.html()));
-      $questions.remove();
+      angular.element('#question-data').remove();
+      loadData(window.preloadQuestions);
+      delete window.preloadQuestions;
       return;
     } else if ($scope.noMoreQuestions) {
       return;
