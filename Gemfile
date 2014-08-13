@@ -81,7 +81,6 @@ gem 'newrelic_rpm'
 
 group :production do
   gem 'unicorn'
-  gem 'unicorn-worker-killer'
   gem 'pg'
   gem 'rack-timeout'
   gem 'rails_12factor'
