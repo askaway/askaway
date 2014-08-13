@@ -25,7 +25,7 @@
         .row.voter-resource-links
           .col-sm-4
             %p
-              = link_to "http://onthefence.co.nz", :target => "_blank" do
+              = link_to "http://onthefence.co.nz", :target => "_blank", :alt => "On the Fence logo" do
                 = image_tag "On-the-Fence-Logo.png", :class => "img-responsive" 
               = link_to "On The Fence", "http://onthefence.co.nz", :target => "_blank"
               is a fun, visual questionnaire that educates and guides you to find a best match from New Zealand's political parties. It's also part of the Design and Democracy Project.
@@ -33,5 +33,12 @@
             %p
               = link_to "http://rockenrol.me", :target => "_blank" do
                 =image_tag "rockenrol.png", :class => "img-responsive"
-              = link_to "RockEnrol", "http://rockenrol.me", :target => "_blank"
+              = link_to "RockEnrol", "http://rockenrol.me", :target => "_blank", :alt => "RockEnrol logo"
               is a crowd-fuelled & collaborative campaign that uses popular culture, music, events, grassroots community organising & technology to build & activate political power for young people.
+          .col-sm-4{:href => "http://virginvotercollective.co.nz/"}
+            %p
+              = link_to "http://virginvotercollective.co.nz/", :target => "_blank", :alt => "The Virgin Voter Collective logo" do
+                =image_tag "VVC.jpg", :class => "img-responsive"
+              Ask Away  is a member of the
+              = link_to "Virgin Voter Collective,", "http://virginvotercollective.co.nz/", :target => "_blank"
+              a non-partisan, nationwide umbrella effort of initiatives working to reverse the decline of young voter participation in NZ. Visit the site and check out all the other members helping you get ready to vote.
