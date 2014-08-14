@@ -35,6 +35,9 @@ gem 'omniauth-google-oauth2'
 gem 'paper_trail', '~> 3.0.3'
 gem 'paperclip', '~> 4.1'
 gem 'aws-sdk'
+gem 'fog'
+
+gem 'sitemap_generator'
 
 gem 'jbuilder'
 gem 'draper'

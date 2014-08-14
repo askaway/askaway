@@ -94,4 +94,6 @@ Askaway::Application.routes.draw do
   get 'about', to: 'pages#about', as: 'about'
   get 'terms_of_use', to: 'pages#terms_of_use', as: 'terms_of_use'
   get 'privacy_policy', to: 'pages#privacy_policy', as: 'privacy_policy'
+
+  get '/sitemap.xml.gz' => 'sitemaps#show'
 end

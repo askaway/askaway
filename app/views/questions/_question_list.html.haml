@@ -1,7 +1,7 @@
 - hide_filters ||= false
 
-:javascript
-  window.preloadQuestions = #{render :template => 'questions/index.json'}
+#question-data.hidden
+  =render :template => "questions/trending.json"
 .row
   .col-question-list.col-xs-12.col-md-8.col-md-offset-2.font-small
     /= render 'welcome_banner'

@@ -30,7 +30,7 @@ class QuestionsController < ApplicationController
 
   def show
     authorize @question
-    redirect_to_canonical_show_path(@question)
+    redirect_to_canonical_show_path(@question) unless request.xhr?
     @comment = Comment.new
     @comments = @question.comments.includes(:user).order(created_at: :asc)
     if show_answer_form?
