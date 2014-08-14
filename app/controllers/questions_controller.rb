@@ -10,18 +10,21 @@ class QuestionsController < ApplicationController
     @questions = policy_scope(Question).trending
                   .common_includes
                   .page(params[:page])
+    render :index
   end
 
   def new_questions
     @questions = policy_scope(Question).order(created_at: :desc)
                   .common_includes
                   .page(params[:page])
+    render :index
   end
 
   def most_votes
     @questions = policy_scope(Question).order(votes_count: :desc)
                   .common_includes
                   .page(params[:page])
+    render :index
   end
 
   def new
@@ -39,6 +42,7 @@ class QuestionsController < ApplicationController
     end
     @meta_title = "#{@question.body} | Ask Away"
     @meta_description = "#{@question.user_name} asked NZ's parties a question. Check out their answers..."
+    @question = @question.decorate
   end
 
   # POST /questions
