@@ -16,6 +16,7 @@
 /config/database.yml
 /public/users
 /public/system
+/public/sitemap.xml.gz
 
 .DS_Store
 

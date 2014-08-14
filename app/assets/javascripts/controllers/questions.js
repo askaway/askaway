@@ -22,7 +22,7 @@ askaway.controller('QuestionsCtrl', ['$scope', '$http', function( $scope, $http 
 
     $scope.loadingQuestions = true;
 
-    $http.get(me.question.path).success(function(data) {
+    $http.get(me.question.path + '.json').success(function(data) {
       $scope.loadingQuestions = false;
 
       me.question.error_message = undefined;
@@ -49,9 +49,9 @@ askaway.controller('QuestionsCtrl', ['$scope', '$http', function( $scope, $http 
 
     // do initial loading
     if ($scope.questionList.length === 0) {
-      angular.element('#question-data').remove();
-      loadData(window.preloadQuestions);
-      delete window.preloadQuestions;
+      $questions = angular.element('#question-data');
+      loadData(JSON.parse($questions.html()));
+      $questions.remove();
       return;
     } else if ($scope.noMoreQuestions) {
       return;
