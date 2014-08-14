@@ -22,7 +22,7 @@ askaway.controller('QuestionsCtrl', ['$scope', '$http', function( $scope, $http 
 
     $scope.loadingQuestions = true;
 
-    $http.get(me.question.path).success(function(data) {
+    $http.get(me.question.path + '.json').success(function(data) {
       $scope.loadingQuestions = false;
 
       me.question.error_message = undefined;
