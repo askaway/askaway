@@ -26,13 +26,13 @@ COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
 SET search_path = public, pg_catalog;
 
 --
--- Name: ranking(timestamp without time zone, integer); Type: FUNCTION; Schema: public; Owner: -
+-- Name: ranking(timestamp without time zone, integer, integer); Type: FUNCTION; Schema: public; Owner: -
 --
 
-CREATE FUNCTION ranking(created_at timestamp without time zone, vote_count integer) RETURNS numeric
+CREATE FUNCTION ranking(created_at timestamp without time zone, votes_count integer, answers_count integer) RETURNS numeric
     LANGUAGE sql IMMUTABLE
     AS $$
-  SELECT ROUND(LOG(2, greatest(vote_count, 1)) + ((EXTRACT(EPOCH FROM created_at) - EXTRACT(EPOCH from timestamp '2014-1-1 0:00')) / 450000)::numeric, 7);
+  SELECT ROUND(LOG(2, greatest(votes_count, 1)) + (CAST (aw.value AS numeric) * answers_count) + ((EXTRACT(EPOCH FROM created_at) - EXTRACT(EPOCH from timestamp '2014-1-1 0:00')) / (CAST(tw.value AS numeric) * 43200) )::numeric, 7) FROM settings tw, settings aw WHERE tw.name = 'time_weight' AND aw.name = 'answer_weight';
 $$;
 
 
@@ -471,6 +471,36 @@ CREATE TABLE schema_migrations (
 
 
 --
+-- Name: settings; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE settings (
+    id integer NOT NULL,
+    name character varying(255),
+    value character varying(255)
+);
+
+
+--
+-- Name: settings_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE settings_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: settings_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE settings_id_seq OWNED BY settings.id;
+
+
+--
 -- Name: topics; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -706,6 +736,13 @@ ALTER TABLE ONLY reps ALTER COLUMN id SET DEFAULT nextval('reps_id_seq'::regclas
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY settings ALTER COLUMN id SET DEFAULT nextval('settings_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY topics ALTER COLUMN id SET DEFAULT nextval('topics_id_seq'::regclass);
 
 
@@ -816,6 +853,14 @@ ALTER TABLE ONLY questions
 
 ALTER TABLE ONLY rep_topics
     ADD CONSTRAINT rep_topics_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: settings_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY settings
+    ADD CONSTRAINT settings_pkey PRIMARY KEY (id);
 
 
 --
@@ -1212,4 +1257,8 @@ INSERT INTO schema_migrations (version) VALUES ('20140808002822');
 INSERT INTO schema_migrations (version) VALUES ('20140809234311');
 
 INSERT INTO schema_migrations (version) VALUES ('20140811100551');
+
+INSERT INTO schema_migrations (version) VALUES ('20140814103434');
+
+INSERT INTO schema_migrations (version) VALUES ('20140814104713');
 
