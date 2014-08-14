@@ -7,17 +7,21 @@ class QuestionsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
   def trending
-    @questions = policy_scope(Question).trending.page(params[:page])
+    @questions = policy_scope(Question).trending
+                  .common_includes
+                  .page(params[:page])
   end
 
   def new_questions
-    @questions = policy_scope(Question).order(created_at: :desc).uniq.
-                 page(params[:page])
+    @questions = policy_scope(Question).order(created_at: :desc)
+                  .common_includes
+                  .page(params[:page])
   end
 
   def most_votes
-    @questions = policy_scope(Question).order(votes_count: :desc).uniq.
-                 page(params[:page])
+    @questions = policy_scope(Question).order(votes_count: :desc)
+                  .common_includes
+                  .page(params[:page])
   end
 
   def new

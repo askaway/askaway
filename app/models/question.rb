@@ -62,6 +62,16 @@ class Question < ActiveRecord::Base
     end
   end
 
+  def self.common_includes
+    includes( user:[:identities, :placeholder],
+              answers:[
+                rep:[
+                  party:[:placeholder],
+                  user:[:identities, :placeholder]
+                ]
+              ])
+  end
+
   # TODO: replace this with real association
   def reminder_email
   end
