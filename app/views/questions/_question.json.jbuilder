@@ -5,4 +5,4 @@ json.(question, :answers_count, :body, :comments_count, :id, :is_anonymous,
 json.user        question.user_name
 json.created_at  question.created_at_description
 
-json.answers question.answers.decorate, partial: 'answers/answer', as: :answer
+json.answers question.answers, partial: 'answers/answer', as: :answer
