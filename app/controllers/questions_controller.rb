@@ -7,19 +7,23 @@ class QuestionsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
   def trending
-    @questions = policy_scope(Question).trending.page(params[:page])
+    @questions = policy_scope(Question).trending
+                  .common_includes
+                  .page(params[:page])
     render :index
   end
 
   def new_questions
-    @questions = policy_scope(Question).order(created_at: :desc).uniq
-                 .page(params[:page])
+    @questions = policy_scope(Question).order(created_at: :desc)
+                  .common_includes
+                  .page(params[:page])
     render :index
   end
 
   def most_votes
-    @questions = policy_scope(Question).order(votes_count: :desc).uniq
-                 .page(params[:page])
+    @questions = policy_scope(Question).order(votes_count: :desc)
+                  .common_includes
+                  .page(params[:page])
     render :index
   end
 
@@ -32,7 +36,7 @@ class QuestionsController < ApplicationController
     authorize @question
     redirect_to_canonical_show_path(@question) unless request.xhr?
     @comment = Comment.new
-    @comments = @question.comments.includes(:user).order(created_at: :asc)
+    @comments = @question.comments.order(created_at: :asc)
     if show_answer_form?
       @new_answer = Answer.new
     end
@@ -68,7 +72,9 @@ class QuestionsController < ApplicationController
     end
 
     def fetch_question
-      @question = Question.includes(answers: :rep).friendly.find(params[:id])
+      @question = Question.common_includes
+        .includes(comments: [user: [:identities, :placeholder]])
+        .friendly.find(params[:id])
     end
 
     def fetch_answers
