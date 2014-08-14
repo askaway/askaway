@@ -39,6 +39,10 @@ gem 'fog'
 
 gem 'sitemap_generator'
 
+gem 'jbuilder'
+gem 'draper'
+gem 'dalli'
+
 group :development do
   gem 'thin'
   gem 'quiet_assets'
