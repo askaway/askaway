@@ -3,7 +3,7 @@ require 'rails_helper'
 describe Question, :type => :model do
   let(:question) { FactoryGirl.build :question }
   #FIXME is there a better way of adding 4.5million seconds? from http://stackoverflow.com/questions/10056066/time-manipulation-in-ruby
-  let(:hot_q) { FactoryGirl.create :question, :created_at => DateTime.new(2014, 1, 1) + Rational(10 * 450000, 86400), :votes_count => 64 }
+  let(:hot_q) { FactoryGirl.create :question, :created_at => DateTime.new(2014, 1, 1) + Rational(10 * 432000, 86400), :votes_count => 64 }
   let(:cool_q) { FactoryGirl.create :question, :created_at => DateTime.new(2014, 1, 1), :votes_count => 64 }
   let(:cold_q) { FactoryGirl.create :question, :created_at => DateTime.new(2014, 1, 1), :votes_count => 0 }
 
@@ -49,6 +49,10 @@ describe Question, :type => :model do
   end
 
   describe "hotness" do
+    before do
+      Setting.put(:time_weight, 10)
+      Setting.put(:answer_weight, 0)
+    end
     it 'has 0 hotness with no votes' do
       expect(cold_q.hotness).to eq(0)
     end
