@@ -5,6 +5,6 @@
   = link_to "#", onclick: "FB.ui({method: 'share', href: '#{question_url(@question)}', }, function(response){});", class: 'btn btn-primary btn-facebook btn-lg login-social-btn' do
     .fa.fa-facebook.login-social-icon.fa-fw
     Share
-  = link_to '#', class: 'btn btn-info btn-lg login-social-btn' do
+  = link_to "https://twitter.com/share?url=#{CGI.escape(question_url(@question))}", class: 'btn btn-info btn-lg login-social-btn', target: '_blank' do
     .fa.fa-twitter.login-social-icon.fa-fw
     Tweet
