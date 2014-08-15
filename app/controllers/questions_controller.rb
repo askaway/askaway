@@ -41,7 +41,7 @@ class QuestionsController < ApplicationController
       @new_answer = Answer.new
     end
     @meta_title = "#{@question.body} | Ask Away"
-    @meta_description = "#{@question.user_name} asked NZ's parties a question. Check out their answers..."
+    @meta_description = "#{@question.user_name} asked NZ's parties \"#{@question.body}\". Check out their answers..."
     @question = @question.decorate
   end
 
