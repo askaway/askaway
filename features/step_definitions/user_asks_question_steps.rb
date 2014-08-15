@@ -1,5 +1,5 @@
 Then(/^I should be told that the question was successfully posted$/) do
-  expect(page).to have_content('Your question has been posted.')
+  expect(page).to have_content('Great question. So great you should probably share it...')
 end
 
 Then(/^I should be taken to the new questions list$/) do
