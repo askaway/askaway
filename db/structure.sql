@@ -552,13 +552,13 @@ CREATE TABLE users (
     is_admin boolean DEFAULT false,
     name character varying(255) NOT NULL,
     is_embedder boolean DEFAULT false,
-    placeholder_id integer,
     uploaded_avatar_file_name character varying(255),
     uploaded_avatar_content_type character varying(255),
     uploaded_avatar_file_size integer,
     uploaded_avatar_updated_at timestamp without time zone,
     selected_avatar_type character varying(255),
-    selected_avatar_identity_id integer
+    selected_avatar_identity_id integer,
+    placeholder_id integer
 );
 
 
@@ -768,11 +768,11 @@ ALTER TABLE ONLY votes ALTER COLUMN id SET DEFAULT nextval('votes_id_seq'::regcl
 
 
 --
--- Name: admin_notes_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: active_admin_comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY active_admin_comments
-    ADD CONSTRAINT admin_notes_pkey PRIMARY KEY (id);
+    ADD CONSTRAINT active_admin_comments_pkey PRIMARY KEY (id);
 
 
 --
@@ -1030,6 +1030,13 @@ CREATE INDEX index_questions_on_answers_count ON questions USING btree (answers_
 
 
 --
+-- Name: index_questions_on_created_at; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_questions_on_created_at ON questions USING btree (created_at);
+
+
+--
 -- Name: index_questions_on_embedded_topic_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1257,6 +1264,8 @@ INSERT INTO schema_migrations (version) VALUES ('20140808002822');
 INSERT INTO schema_migrations (version) VALUES ('20140809234311');
 
 INSERT INTO schema_migrations (version) VALUES ('20140811100551');
+
+INSERT INTO schema_migrations (version) VALUES ('20140814083303');
 
 INSERT INTO schema_migrations (version) VALUES ('20140814103434');
 
