@@ -62,11 +62,16 @@
   margin-right: 10px;
 }
 
-.loading-spinner {
-  text-align: center;
-  padding-top: 70px;
-  padding-bottom: 200px;
-  img {
-    opacity: 0.8em;
+.questions {
+  .loading-spinner {
+    padding-top: 70px;
+    padding-bottom: 200px;
   }
+}
+.see-more-questions {
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 36px;
+  padding: 0 0 0 20px;
+  border-bottom: 1px solid #ddd;
 }

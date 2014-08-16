@@ -3,7 +3,7 @@
 %script#question-data(type="application/json")
   =render(:template => "questions/index.json").html_safe
 .row
-  .col-question-list.col-xs-12.col-md-8.col-md-offset-2.font-small
+  .questions.col-question-list.col-xs-12.col-md-8.col-md-offset-2.font-small
     /= render 'welcome_banner'
     -# %h3.page-heading= heading
     %ul.list-group.question-list(ng-controller='QuestionsCtrl' infinite-scroll="loadQuestions()" infinite-scroll-disabled="loadingQuestions")
@@ -23,5 +23,5 @@
               .col-xs-12= render 'questions/asker'
             .row
               .col-xs-12= render 'questions/answers'
-      %li.list-group-item.loading-spinner(ng-show="loadingQuestions")
+      %li.list-group-item.loading-spinner.questions-loading-spinner(ng-show="loadingQuestions")
         = image_tag "ajax-loader.gif"
