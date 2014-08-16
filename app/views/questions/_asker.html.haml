@@ -6,5 +6,27 @@
       %a.emphasized(ng-hide="question.is_anonymous" ng-href="{{question.user_path}}") {{question.user}}
       {{question.created_at}} ago ·
       %a(ng-href="{{question.path}}") {{question.comments_count}} comments
+      ·
+      %span.dropdown.share-question(id="share-question-{{question.id}}")
+        %a.dropdown-toggle(id="share-question-dropdown-{{question.id}}" data-toggle="dropdown" ng-click="shareQuestion($event, question);" href="#")
+          <span class="fa fa-facebook share-question-icon"></span><span class="fa fa-twitter share-question-icon"></span>Share
+        %ul.dropdown-menu(role="menu")
+          .loading-spinner
+            .sr-only Loading...
+            = image_tag "ajax-loader.gif"
+          .share-question-buttons.hide
+            %li(role="presentation")
+              %span(role="menuitem")
+                .share-question-btn.share-question-btn-twitter
+                  %span(id="share-question-btn-twitter-{{question.id}}")
+            %li(role="presentation")
+              %span(role="menuitem")
+                .share-question-btn.share-question-btn-facebook
+                  %span(id="share-question-btn-facebook-{{question.id}}")
   .col-sm-2.hidden-xs(ng-show="question.answers_count === 0")
     = render 'questions/expand_question'
+
+// :javascript
+//   $('#share-question-{{question.id}}').on('show.bs.dropdown', function () {
+//     alert('hi')
+//   })

@@ -67,6 +67,9 @@
     padding-top: 70px;
     padding-bottom: 200px;
   }
+  .share-question .loading-spinner {
+    padding: 10px 0 10px 0;
+  }
 }
 .see-more-questions {
   font-weight: 300;
@@ -74,4 +77,13 @@
   line-height: 36px;
   padding: 0 0 0 20px;
   border-bottom: 1px solid #ddd;
+}
+.share-question-icon {
+  margin-right: 3px;
+}
+.share-question-btn {
+  padding: 10px 0 0px 10px;
+}
+.share-question-btn-facebook {
+  padding-bottom: 10px;
 }

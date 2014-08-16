@@ -6,6 +6,25 @@ askaway.controller('QuestionsCtrl', ['$scope', '$http', function( $scope, $http 
 
   $scope.toggleVote = toggleVote($http);
 
+  $scope.shareQuestion = function(e, question) {
+    var shareSelector = "#share-question-" + question.id
+    if (question.sharesLoaded != true) {
+      var twitterSelector = "#share-question-btn-twitter-" + question.id
+      var facebookSelector = "#share-question-btn-facebook-" + question.id
+      var questionUrl = document.URL + question.path
+      var twitterLink = '<a href="https://twitter.com/share" class="twitter-share-button" data-url="' + questionUrl + '" data-lang="en">Tweet</a>';
+      var facebookLink = '<div class="fb-like" data-href="' + questionUrl + '" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>';
+      $(twitterSelector).html(twitterLink);
+      $(facebookSelector).html(facebookLink);
+      twttr.widgets.load();
+      FB.XFBML.parse(document.getElementById(shareSelector), function() {
+        $(shareSelector + ' .share-question-buttons').removeClass('hide');
+        $(shareSelector + ' .loading-spinner').addClass('hide');
+      });
+      question.sharesLoaded = true;
+    }
+  }
+
   $scope.toggleQuestion = function(e) {
     var $target = $(e.target),
       $veto = $target.closest('a[href], form');
