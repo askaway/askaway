@@ -1,6 +1,8 @@
 .row(ng-controller='QuestionCtrl')
   .col-xs-12.col-md-8.col-md-offset-2
     .panel.panel-default
+      .see-more-questions
+        = link_to '← See more questions', root_path
       .panel-body.question
         .row
           .col-xs-2.col-sm-2
@@ -25,7 +27,7 @@
         %li.list-group-item.comment-count= "#{@question.comments_count} COMMENTS"
       .panel-body
         .row.comment-list
-          .col-xs-12.comment-input
+          .col-xs-12
             - unless current_user.try(:can_answer?, @question)
               - if user_signed_in?
                 = render 'comments/form'

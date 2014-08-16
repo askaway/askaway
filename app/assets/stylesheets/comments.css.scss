@@ -2,9 +2,10 @@
   color: $gray-light;
   font-size: $font-size-small;
 }
-.comment-input {
-  padding-top: 15px;
-  padding-bottom: 5px;
+.list-group-item.comment-count {
+  font-size: 12px;
+  border-top: 0;
+  border-bottom-color: #dadada;
 }
 .comment {
   font-family: $font-family-helvetica;

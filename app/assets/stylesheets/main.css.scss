@@ -18,6 +18,19 @@ body {
   margin-right: 0;
 }
 
+.loading-spinner {
+  text-align: center;
+  img {
+    opacity: 0.8em;
+  }
+}
+[ng-cloak].loading-spinner-uncloaked {
+  display: block !important;
+}
+.loading-spinner-uncloaked {
+  display: none;
+}
+
 .user-title {
   font-size: $font-size-large;
   font-weight: 400;
