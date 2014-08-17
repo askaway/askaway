@@ -47,7 +47,7 @@ end
 
 When(/^I create an account$/) do
   @password = 'password'
-  form = find('.simple_form.new_user')
+  form = find('#registration-modal .simple_form.new_user')
   form.fill_in :user_name, with: @invitation.name
   form.fill_in :user_email, with: @invitation.email
   form.fill_in :user_password, with: @password

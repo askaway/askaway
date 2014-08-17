@@ -9,7 +9,7 @@
         - if name == :alert
           %div{class: 'alert alert-warning'}
             %div= msg
-      = simple_form_for(:user, url: user_session_path) do |f|
+      = simple_form_for(resource, url: user_session_path) do |f|
         = f.input :email, required: false, autofocus: true, label: false, placeholder: 'Email', input_html: { class: 'input-lg' }
         = f.input :password, required: false, label: false, placeholder: 'Password', input_html: { class: 'input-lg' }
         .pull-right

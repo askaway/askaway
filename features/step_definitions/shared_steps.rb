@@ -6,8 +6,8 @@ Given(/^I am logged in$/) do
   @user = User.create!(name: @name, email: @email, password: password, is_admin: @is_admin)
   visit new_user_session_path
   click_on 'Log in with Email'
-  find('.simple_form.user').fill_in 'user_email', with: @email
-  find('.simple_form.user').fill_in 'user_password', with: password
+  find('#email-login-modal .simple_form.new_user').fill_in 'user_email', with: @email
+  find('#email-login-modal .simple_form.new_user').fill_in 'user_password', with: password
   click_on 'log-in-btn'
 end
 
