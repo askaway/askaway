@@ -303,6 +303,10 @@ GEM
       cocaine (~> 0.5.3)
       mime-types
     pg (0.17.1)
+    pg_search (0.7.6)
+      activerecord (>= 3.1)
+      activesupport (>= 3.1)
+      arel
     poltergeist (1.5.1)
       capybara (~> 2.1)
       cliver (~> 0.3.1)
@@ -495,6 +499,7 @@ DEPENDENCIES
   paper_trail (~> 3.0.3)
   paperclip (~> 4.1)
   pg
+  pg_search
   poltergeist
   pry-byebug
   pry-rails

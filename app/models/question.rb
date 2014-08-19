@@ -36,6 +36,11 @@ class Question < ActiveRecord::Base
     state :rejected
   end
 
+  include PgSearch
+  pg_search_scope :search,
+    against: [:body],
+    associated_against: { answers: [:body] }
+
   has_many :answers, inverse_of: :question, dependent: :destroy
   has_many :comments, inverse_of: :question, dependent: :destroy
   has_many :votes, inverse_of: :question, dependent: :destroy
