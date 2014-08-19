@@ -107,4 +107,21 @@ describe Question, :type => :model do
       expect(@question).to be_rejected
     end
   end
+
+  context '.search' do
+    let(:question){ FactoryGirl.create(:question, body: "Wes Anderson biodiesel.") }
+    let(:answer){ FactoryGirl.create(:answer, body: "Wes Anderson biodiesel.") }
+    subject{ Question.search(query) }
+    context 'matching query' do
+      let(:query){ "Wes Anderson" }
+      it{ expect(subject).to include(question) }
+      it{ expect(subject).to include(answer.question) }
+    end
+
+    context 'non-matching query' do
+      let(:query){ "Foobar" }
+      it{ expect(subject).to_not include(question) }
+      it{ expect(subject).to_not include(answer.question) }
+    end
+  end
 end
