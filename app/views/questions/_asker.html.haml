@@ -25,8 +25,3 @@
                   %span(id="share-question-btn-twitter-{{question.id}}")
   .col-sm-2.hidden-xs(ng-show="question.answers_count === 0")
     = render 'questions/expand_question'
-
-// :javascript
-//   $('#share-question-{{question.id}}').on('show.bs.dropdown', function () {
-//     alert('hi')
-//   })

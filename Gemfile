@@ -42,6 +42,7 @@ gem 'sitemap_generator'
 gem 'jbuilder'
 gem 'draper'
 gem 'dalli'
+gem 'pg_search'
 
 group :development do
   gem 'thin'

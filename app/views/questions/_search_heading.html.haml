@@ -1,0 +1,6 @@
+%li.list-group-item.row.row-no-gutter.search-heading
+  .pull-left
+    Search results for:
+    %strong #{params[:q]}
+  = link_to root_url, class: 'search-heading-close pull-right' do
+    <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>

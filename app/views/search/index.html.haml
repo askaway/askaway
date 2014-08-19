@@ -1,0 +1,11 @@
+- if @questions.any?
+  = render 'questions/question_list', hide_filters: true, search_query: true
+- else
+  .row
+    .questions.col-question-list.col-xs-12.col-md-8.col-md-offset-2.font-small
+      %ul.list-group.question-list
+        = render 'questions/search_heading'
+        %li.question.list-group-item
+          %em.text-muted No results
+          %br
+          %br

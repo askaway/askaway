@@ -87,3 +87,20 @@
 .share-question-btn-twitter {
   padding-bottom: 10px;
 }
+.search-heading {
+  background: $salmon;
+  border: $salmon;
+  color: white;
+  font-weight: 100;
+  strong { font-weight: 400; }
+}
+.search-heading-close {
+  color: white;
+  font-weight: 500;
+  margin-top: -4px;
+  font-size: $font-size-medium-large;
+  &:hover {
+    text-decoration: none;
+    color: #ddd;
+  }
+}
