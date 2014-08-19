@@ -1,4 +1,5 @@
 - hide_filters ||= false
+- search_query ||= nil
 
 %script#question-data(type="application/json")
   =render(:template => "questions/index.json").html_safe
@@ -11,6 +12,9 @@
       - unless hide_filters
         %li.question.question-filters.list-group-item.row.row-no-gutter
           = render 'questions/question_filters'
+      - if search_query
+        = render 'questions/search_heading'
+
 
       %li.question.list-group-item.list-group-item-clickable(ng-repeat="question in questionList" id="question-{{question.id}}" ng-class="{'question-expanded': question.expanded}" ng-click="toggleQuestion($event)" ng-cloak='')
         .row

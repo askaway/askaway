@@ -14,6 +14,32 @@ body {
   }
 }
 
+.navbar-form-search {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 5px;
+  padding-bottom: 2px;
+  border-bottom: 0px;
+  padding-left: 4px;
+  input {
+    border-radius: 26px;
+    width: 160px;
+    height: 34px;
+    margin-top: 2px;
+    background: #888;
+    @include placeholder(#bababa);
+    color: #eee;
+    font-weight: 300;
+    font-size: $font-size-small;
+  }
+}
+
+.navbar-about-link {
+  font-size: 16px;
+  font-weight: 300;
+  color: #333;
+}
+
 .navbar {
   background-color: white;
   .navbar-col { padding: 0; }
@@ -45,7 +71,7 @@ body {
   }
 
   .btn-login {
-    margin-right: 6px;
+    margin-right: 12px;
   }
   @media (max-width: $grid-float-breakpoint) {
     .navbar-btn-ask {

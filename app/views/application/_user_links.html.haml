@@ -1,13 +1,13 @@
 %li
   = link_to user_path(current_user) do
-    %span.fa.fa-user.dropdown-icon
+    %span.fa.fa-user.dropdown-icon.hidden-xs
     My profile
 - if current_user.is_rep?
   %li
     = link_to party_path(current_user.party) do
-      %span.fa.fa-group.dropdown-icon
+      %span.fa.fa-group.dropdown-icon.hidden-xs
       My party
 %li
   = link_to edit_user_path(current_user) do
-    %span.fa.fa-gear.dropdown-icon
+    %span.fa.fa-gear.dropdown-icon.hidden-xs
     Account settings
