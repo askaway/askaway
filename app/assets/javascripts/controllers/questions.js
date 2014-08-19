@@ -11,8 +11,8 @@ askaway.controller('QuestionsCtrl', ['$scope', '$http', function( $scope, $http 
     if (question.sharesLoaded != true) {
       var twitterSelector = "#share-question-btn-twitter-" + question.id
       var facebookSelector = "#share-question-btn-facebook-" + question.id
-      var questionUrl = document.URL + question.path
-      var twitterLink = '<a href="https://twitter.com/share" class="twitter-share-button" data-url="' + questionUrl + '" data-lang="en">Tweet</a>';
+      var questionUrl = document.URL.slice(0, -1) + question.path
+      var twitterLink = '<a href="https://twitter.com/share" class="twitter-share-button" data-text=" " data-url="' + questionUrl + '" data-lang="en">Tweet</a>';
       var facebookLink = '<div class="fb-like" data-href="' + questionUrl + '" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>';
       $(twitterSelector).html(twitterLink);
       $(facebookSelector).html(facebookLink);
