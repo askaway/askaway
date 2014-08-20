@@ -6,22 +6,10 @@ askaway.controller('QuestionCtrl', [
   '$http',
   'upvotes',
   function( $scope, $http, upvotes ) {
-  $scope.loadingQuestions = false;
-  $scope.question = undefined;
+    var $el = angular.element('#question-data');
 
-  $scope.toggleVote = upvotes;
+    $scope.question = JSON.parse($el.html());
 
-  loadQuestion();
-
-  function loadQuestion() {
-    var url = window.location.pathname + '.json';
-
-    $scope.loadingQuestions = true;
-
-    $http.get(url)
-      .success(function(data) {
-        $scope.loadingQuestions = false;
-        $scope.question = data;
-      });
+    $scope.toggleVote = upvotes;
   }
-}]);
+]);
