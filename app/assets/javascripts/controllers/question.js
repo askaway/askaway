@@ -10,6 +10,8 @@ askaway.controller('QuestionCtrl', [
 
     $scope.question = JSON.parse($el.html());
 
+    $el.remove();
+
     $scope.toggleVote = upvotes;
   }
 ]);
