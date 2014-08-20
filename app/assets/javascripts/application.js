@@ -21,9 +21,12 @@
 //= require directives/charcounter
 //= require directives/dirtyconfirm
 //= require directives/ng_initial
+//= require providers/upvotes
 //= require services/auth_interceptor
 //= require controllers/comments
 //= require controllers/questions
+//= require controllers/question
+//= require controllers/question-form
 //= require controllers/answers
 //= require controllers/parties
 //= require controllers/announcements
