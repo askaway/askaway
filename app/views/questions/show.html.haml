@@ -1,5 +1,7 @@
+%script#question-data(type="application/json")
+  =render(:template => "questions/show.json").html_safe
 .row(ng-controller='QuestionCtrl')
-  .col-xs-12.col-md-8.col-md-offset-2
+  .col-xs-12.col-md-8.col-md-offset-2(ng-cloak='')
     .panel.panel-default
       .see-more-questions
         = link_to '← See more questions', root_path
@@ -8,11 +10,16 @@
           .col-xs-2.col-sm-2
             = render 'question_up_vote'
           .col-xs-10.col-sm-10
-            .question-body= @question.body
-            .text-detail= asked_by_at_time_ago(@question)
+            =render 'questions/question_body'
+            .text-detail
+              {{question.created_at}} ago
+              by
+              %span(ng-show="question.is_anonymous") {{question.user}}
+              %a.emphasized(ng-hide="question.is_anonymous" ng-href="{{question.user_path}}") {{question.user}}
 
       %ul.list-group
-        %li.list-group-item.comment-count= "#{@question.answers_count} ANSWERS"
+        %li.list-group-item.comment-count
+          %ng-pluralize(count="question.answers_count" when="{ '1': '1 ANSWER', 'other': '{} ANSWERS' }")
         - if show_answer_form?
           %li.list-group-item
             %div.media
@@ -24,7 +31,8 @@
           = render 'answers/answers_expanded'
 
 
-        %li.list-group-item.comment-count= "#{@question.comments_count} COMMENTS"
+        %li.list-group-item.comment-count
+          %ng-pluralize(count="question.comments_count" when="{ '1': '1 COMMENT', 'other': '{} COMMENTS' }")
       .panel-body
         .row.comment-list
           .col-xs-12
