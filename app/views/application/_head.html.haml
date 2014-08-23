@@ -11,6 +11,7 @@
 %meta{:content => request.original_url, :property => "og:url"}
 %meta{:content => @meta_description, :property => "og:description"}
 %meta{:content => @meta_img, :property => "og:image"}
+%meta{:content => @meta_img, :property => "og:image:secure_url"}
 = csrf_meta_tags
 = stylesheet_link_tag "application", :media => "all"
 / fonts added by meg
