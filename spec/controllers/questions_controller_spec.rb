@@ -25,6 +25,11 @@ describe QuestionsController, :type => :controller do
     it_behaves_like 'index page'
   end
 
+  describe 'GET #most_answered' do
+    before{ get :most_answered }
+    it_behaves_like 'index page'
+  end
+
   context 'POST #create' do
     before { sign_in user }
 

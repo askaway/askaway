@@ -14,6 +14,7 @@ SitemapGenerator::Sitemap.create do
   add new_questions_path,  priority: 1, changefreq: 'always'
   add trending_path,       priority: 1, changefreq: 'always'
   add most_votes_path,     priority: 1, changefreq: 'always'
+  add most_answered_path,     priority: 1, changefreq: 'always'
 
   Question.find_each do |question|
     add question_path(question), priority: 0.9, changefreq: 'daily'

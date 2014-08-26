@@ -1,4 +1,12 @@
 GIT
+  remote: https://github.com/plataformatec/simple_form.git
+  revision: f02216793a045a614e5c0ef7e7c2fb25fea7584b
+  specs:
+    simple_form (3.1.0.rc1)
+      actionpack (~> 4.0)
+      activemodel (~> 4.0)
+
+GIT
   remote: git://github.com/gregbell/active_admin.git
   revision: f65e7cd6425b3d3f2e3fc5885c42ee35978b2eb5
   specs:
@@ -14,14 +22,6 @@ GIT
       rails (>= 3.2, < 4.2)
       ransack (~> 1.0)
       sass-rails
-
-GIT
-  remote: https://github.com/plataformatec/simple_form.git
-  revision: f02216793a045a614e5c0ef7e7c2fb25fea7584b
-  specs:
-    simple_form (3.1.0.rc1)
-      actionpack (~> 4.0)
-      activemodel (~> 4.0)
 
 GEM
   remote: https://rubygems.org/
