@@ -23,18 +23,7 @@ class Question < ActiveRecord::Base
   friendly_id slug_candidate, :use => [:slugged, :history]
   include FriendlyIdHelper
 
-  include Workflow
-  workflow do
-    state :default do
-      event :flag_for_review, :transitions_to => :awaiting_review
-    end
-    state :awaiting_review do
-      event :accept, :transitions_to => :accepted
-      event :reject, :transitions_to => :rejected
-    end
-    state :accepted
-    state :rejected
-  end
+  include ProfanityFilter
 
   include PgSearch
   pg_search_scope :search,
@@ -58,8 +47,6 @@ class Question < ActiveRecord::Base
   scope :unanswered, -> { where('questions.answers_count < 4') }
   scope :trending, -> { order('ranking(questions.created_at, questions.votes_count, questions.answers_count) DESC') }
   scope :not_anonymous, -> { where('is_anonymous IS NOT TRUE') }
-  scope :visible_to_public, -> { where("workflow_state IN ('default', 'accepted')") }
-  scope :awaiting_review, -> { with_awaiting_review_state }
 
   class << self
     def has_answer_from_party?(question, party)
@@ -110,9 +97,4 @@ class Question < ActiveRecord::Base
     self.created_at = Time.zone.now
     save! # FIXME: this isn't ideal cause save is getting called twice.
   end
-
-  private
-    def check_for_obscenity
-      self.workflow_state = 'awaiting_review' if Obscenity.profane?(body)
-    end
 end
