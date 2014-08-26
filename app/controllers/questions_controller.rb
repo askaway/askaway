@@ -2,7 +2,7 @@ class QuestionsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
   before_filter :fetch_question, only: [:show]
   before_filter :fetch_answers, only: [:show]
-  after_action :verify_authorized, :except => [:trending, :new_questions, :most_votes, :most_answered]
+  after_action :verify_authorized, :except => [:trending, :new_questions, :most_votes, :recently_answered]
 
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
@@ -27,10 +27,13 @@ class QuestionsController < ApplicationController
     render :index
   end
 
-  def most_answered
-    @questions = policy_scope(Question).order(answers_count: :desc)
-                  .common_includes
-                  .page(params[:page])
+  def recently_answered
+  @questions = policy_scope(Question)
+    .joins(:answers)
+    .where("answers.created_at = (SELECT MAX(answers.created_at) FROM answers WHERE answers.question_id = questions.id)")
+    .order("answers.created_at")
+    .common_includes
+    .page(params[:page])
     render :index
   end
 

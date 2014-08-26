@@ -25,8 +25,8 @@ describe QuestionsController, :type => :controller do
     it_behaves_like 'index page'
   end
 
-  describe 'GET #most_answered' do
-    before{ get :most_answered }
+  describe 'GET #recently_answered' do
+    before{ get :recently_answered }
     it_behaves_like 'index page'
   end
 
