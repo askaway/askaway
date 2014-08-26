@@ -27,7 +27,8 @@ describe QuestionsController, :type => :controller do
 
   describe 'GET #recently_answered' do
     before{ get :recently_answered }
-    it_behaves_like 'index page'
+    it{ expect(response).to be_successful }
+    it{ expect(response).to render_template(:index) }
   end
 
   context 'POST #create' do
