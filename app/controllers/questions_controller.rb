@@ -36,7 +36,7 @@ class QuestionsController < ApplicationController
     authorize @question
     redirect_to_canonical_show_path(@question) unless request.xhr?
     @comment = Comment.new
-    @comments = @question.comments.order(created_at: :asc)
+    @comments = @question.comments.visible_to_public.order(created_at: :asc)
     if show_answer_form?
       @new_answer = Answer.new
     end

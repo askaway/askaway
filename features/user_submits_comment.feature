@@ -8,3 +8,10 @@ Feature: User submits comment
     When I visit question page
     And I fill out the comment form
     Then I should see my comment at the top of the list
+
+  Scenario: User posts profane comment
+    Given I am logged in
+    When I visit question page
+    And I fill out the comment form with "Yo! What the fuck? This shit craay!!!"
+    Then I should not see my comment in the list
+    And I should see "Thanks! Your comment will be reviewed"

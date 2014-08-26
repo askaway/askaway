@@ -120,7 +120,8 @@ CREATE TABLE comments (
     user_id integer,
     body text,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    workflow_state character varying(255) DEFAULT 'default'::character varying
 );
 
 
@@ -953,6 +954,13 @@ CREATE INDEX index_comments_on_user_id ON comments USING btree (user_id);
 
 
 --
+-- Name: index_comments_on_workflow_state; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_comments_on_workflow_state ON comments USING btree (workflow_state);
+
+
+--
 -- Name: index_friendly_id_slugs_on_slug_and_sluggable_type; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1270,4 +1278,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140814083303');
 INSERT INTO schema_migrations (version) VALUES ('20140814103434');
 
 INSERT INTO schema_migrations (version) VALUES ('20140814104713');
+
+INSERT INTO schema_migrations (version) VALUES ('20140826095352');
 

@@ -18,6 +18,8 @@ module ProfanityFilter
 
     scope :visible_to_public, -> { where("workflow_state IN ('default', 'accepted')") }
     scope :awaiting_review, -> { with_awaiting_review_state }
+
+    before_create :check_for_obscenity
   end
 
   private

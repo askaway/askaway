@@ -41,8 +41,6 @@ class Question < ActiveRecord::Base
   validates_length_of :body, maximum: BODY_MAX_LENGTH
   validates_numericality_of :votes_count, greater_than_or_equal_to: 0
 
-  before_create :check_for_obscenity
-
   scope :answered, -> { joins(:answers).order('questions.answers_count DESC') }
   scope :unanswered, -> { where('questions.answers_count < 4') }
   scope :trending, -> { order('ranking(questions.created_at, questions.votes_count, questions.answers_count) DESC') }
