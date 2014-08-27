@@ -21,7 +21,7 @@ class CommentDecorator < Draper::Decorator
     object.user.avatar_url
   end
 
-  def can_delete
-    current_user.try(:is_admin?)
+  def path
+    h.comment_path(object)
   end
 end
