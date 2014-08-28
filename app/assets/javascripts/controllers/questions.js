@@ -11,17 +11,14 @@ askaway.controller('QuestionsCtrl', [
     $scope.toggleVote = upvotes;
 
     $scope.shareQuestion = function(e, question) {
-      var shareSelector,
-        twitterSelector,
-        facebookSelector,
-        questionUrl,
+      var shareSelector = "#share-question-" + question.id,
+        twitterSelector = "#share-question-btn-twitter-" + question.id,
+        facebookSelector = "#share-question-btn-facebook-" + question.id,
+        questionUrl = window.location.origin + question.path,
         twitterLink,
         facebookLink;
 
       if (question.sharesLoaded !== true) {
-        twitterSelector = "#share-question-btn-twitter-" + question.id;
-        facebookSelector = "#share-question-btn-facebook-" + question.id
-        questionUrl = document.URL.slice(0, -1) + question.path
         twitterLink = '<a href="https://twitter.com/share" class="twitter-share-button" data-text=" " data-url="' + questionUrl + '" data-lang="en">Tweet</a>';
         facebookLink = '<div class="fb-like" data-href="' + questionUrl + '" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>';
         $(twitterSelector).html(twitterLink);
