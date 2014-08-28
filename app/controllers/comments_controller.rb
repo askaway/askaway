@@ -7,7 +7,11 @@ class CommentsController < ApplicationController
     @comment.user = current_user
     authorize @comment
     if @comment.save
-      flash[:notice] = 'Comment posted.'
+      if @comment.awaiting_review?
+        flash[:notice] = 'Thanks! Your comment will be reviewed'
+      else
+        flash[:notice] = 'Comment posted.'
+      end
       redirect_to @question
     else
       render template: "questions/show"

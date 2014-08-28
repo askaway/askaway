@@ -11,6 +11,8 @@
 #
 
 class Comment < ActiveRecord::Base
+  include ProfanityFilter
+
   belongs_to :question, touch: true, counter_cache: true
   belongs_to :user
   validates :body, presence: true
