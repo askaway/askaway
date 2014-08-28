@@ -25,7 +25,7 @@ h1, h2, {
   @media (max-width: $screen-xs-max) {
     font-size: $font-size-extra-small-xs;
   }
-  line-height: 1.5em;
+  line-height: 20px;
   font-weight: 300;
   a {
     color: $gray-light;
@@ -43,7 +43,14 @@ h1, h2, {
 
 .right-align { text-align: right; }
 
-
-
-
-
+.fb-like {
+  display: inline-block;
+  width: 76px;
+  height: 20px;
+}
+.twitter-share-button {
+  display: inline-block;
+  width: 110px;
+  height: 20px;
+  vertical-align: bottom;
+}

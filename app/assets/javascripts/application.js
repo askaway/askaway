@@ -20,6 +20,8 @@
 //= require animations
 //= require directives/charcounter
 //= require directives/dirtyconfirm
+//= require directives/twitter_share
+//= require directives/fb_share
 //= require directives/ng_initial
 //= require providers/upvotes
 //= require services/auth_interceptor
