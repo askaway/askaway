@@ -4,7 +4,7 @@ When(/^I visit question page$/) do
 end
 
 When(/^I fill out the comment form$/) do
-  @comment_body = "#{Faker::Lorem.paragraph} http://bit.ly/example"
+  @comment_body = Faker::Lorem.paragraph + " http://bit.ly/example"
   fill_in 'comment_body', with: @comment_body
   click_on 'Post comment'
 end
@@ -24,5 +24,5 @@ Then(/^I should not see my comment in the list$/) do
 end
 
 Then(/^I should see my link is autolinked$/) do
-  expect(page).to have_content("<a href=\"http://bit.ly.example\">http://bit.ly.example</a>")
+  expect(page).to have_link("http://bit.ly/example", :href => "http://bit.ly/example")
 end
