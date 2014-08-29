@@ -6,6 +6,7 @@ askaway.controller('AnswerFormCtrl', ['$scope', '$http', function($scope, $http)
       }
     })
       .success(function(question) {
+        $scope.new_answer.$setPristine();
         $scope.question.answers = question.answers;
         $scope.question.answers_count = question.answers_count;
         $scope.question.can_answer = question.can_answer;
@@ -15,5 +16,8 @@ askaway.controller('AnswerFormCtrl', ['$scope', '$http', function($scope, $http)
           $scope.question.error_message = data.message;
         }
       });
+  };
+  $scope.submit = function() {
+    $scope.new_answer.$setPristine();
   };
 }]);
