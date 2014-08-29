@@ -86,7 +86,7 @@ Question.any_instance.stub(:set_initial_state)
   FactoryGirl.create(:seed_question)
 end
 
-Question.all.each do |question|
+Question.all.shuffle.each do |question|
   if question.answers.blank? && Random.rand < 0.7
     puts "Creating answers"
     Random.rand(4).times do |i|
