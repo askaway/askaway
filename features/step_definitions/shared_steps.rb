@@ -40,8 +40,8 @@ Then(/^I should see "(.*?)"$/) do |arg1|
   expect(page).to have_content(arg1)
 end
 
-Then(/^I should see "(.*?)" link$/) do |arg1|
-  expect(page).to have_link(arg1)
+Then(/^I should see \[(.*?)\]\((.*?)\)$/) do |text, href|
+  expect(page).to have_link(text, :href => href)
 end
 
 Then(/^I should not see "(.*?)"$/) do |arg1|

@@ -8,7 +8,7 @@ Feature: Site admin invites rep to party
     Given I am logged in as an admin
     And there is a question with a comment
     When I visit the question
-    Then I should see "Delete" link
+    Then I should see [Delete](/comments/1)
     And I click "Delete"
     Then the comment should no longer exist
 
