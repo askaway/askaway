@@ -5,7 +5,7 @@ class QuestionPolicy < ApplicationPolicy
     end
   end
 
-  [:trending, :new, :new_questions, :create].each do |action|
+  [:trending, :new, :new_questions, :create, :recently_answered].each do |action|
     define_method("#{action}?") do
       true
     end
