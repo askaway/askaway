@@ -9,7 +9,6 @@ askaway.directive('twittershare', [ '$window', '$timeout', function($window, $ti
           delay *= 2;
           return $timeout(loadShare, delay);
         }
-        console.log($el[0].outerHTML);
         $window.twttr.widgets.load($el.parent()[0]);
       }
 
