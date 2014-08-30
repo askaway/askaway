@@ -11,6 +11,7 @@ Feature: User submits comment
     Then I should see my comment at the top of the list
     And I should see my link is autolinked
 
+  @javascript
   Scenario: User posts profane comment
     Given I am logged in
     When I visit question page
