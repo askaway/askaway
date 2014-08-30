@@ -1,5 +1,5 @@
 ActiveAdmin.register Comment do
-  permit_params :body, :question_id, :user_id
+  permit_params :body, :question_id, :user_id, :workflow_state
 
   scope :all
   scope :awaiting_review
