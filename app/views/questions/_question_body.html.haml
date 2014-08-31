@@ -1,2 +1,1 @@
-.question-body.list-group-item-clickable-header
-  {{question.body}}
+.question-body.list-group-item-clickable-header(ng-bind-html="question.body | linky")
