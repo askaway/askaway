@@ -1,7 +1,8 @@
 var askaway = angular.module('askaway', [
  'infinite-scroll',
  'ngAnimate',
- 'ngSanitize'
+ 'ngSanitize',
+ 'autolinker'
 ]);
 
 askaway.config(function($httpProvider) {

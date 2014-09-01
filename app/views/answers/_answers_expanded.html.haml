@@ -14,7 +14,7 @@
             %span(ng-show='"{{answer.history_path}}"')
               ·
               %a(ng-href='{{answer.history_path}}') Edited
-        .comment-body(ng-bind-html="answer.body | linky")
+        .comment-body(ng-bind-html="answer.body | autolinker")
         .answer-footer.text-detail(ng-show="'{{answer.edit_path}}'")
           %a(ng-href="{{answer.edit_path}}") Edit
 

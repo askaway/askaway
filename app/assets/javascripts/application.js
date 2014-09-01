@@ -18,6 +18,7 @@
 //= require ng-infinite-scroll.min
 //= require main
 //= require animations
+//= require directives/autolinker
 //= require directives/charcounter
 //= require directives/dirtyconfirm
 //= require directives/ng_initial
@@ -30,3 +31,4 @@
 //= require controllers/answers
 //= require controllers/parties
 //= require controllers/announcements
+//= require lib/Autolinker.min

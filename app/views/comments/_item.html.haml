@@ -9,5 +9,5 @@
         %span(ng-show="comment.can_delete")
           ·
           %a(ng-href="{{comment.path}}" data-method="delete" rel="nofollow") Delete
-    .comment-body(ng-bind-html="comment.body | linky")
+    .comment-body(ng-bind-html="comment.body | autolinker")
 
