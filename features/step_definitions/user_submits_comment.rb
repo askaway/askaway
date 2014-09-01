@@ -16,7 +16,7 @@ When(/^I fill out the comment form with "(.*?)"$/) do |arg1|
 end
 
 Then(/^I should see my comment at the top of the list$/) do
-  expect(page).to have_content(@comment_body)
+  expect(page).to have_content(@comment_body.gsub("http://", ""))
 end
 
 Then(/^I should not see my comment in the list$/) do
@@ -24,5 +24,5 @@ Then(/^I should not see my comment in the list$/) do
 end
 
 Then(/^I should see my link is autolinked$/) do
-  expect(page).to have_link("http://bit.ly/example", :href => "http://bit.ly/example")
+  expect(page).to have_link("bit.ly/example", :href => "http://bit.ly/example")
 end
