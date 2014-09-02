@@ -32,11 +32,9 @@
                 %span.fa.fa-github-square
             %p.text-detail
               Please have a gander at our 
-              %a{href: "terms_of_use", :target => "_blank"}
-                Terms of Use 
+              = link_to("Terms of Use", terms_of_use_path, :target => "blank")
               and 
-              %a{href: "privacy_policy", :target => "_blank"}
-                Privacy Policy.
+              = link_to("Privacy Policy.", privacy_policy_path, :target => "blank")
               %p.text-detail
                 Ask Away is an open source project and you can find the code on 
                 %a{href: "https://github.com/askaway", :target => "_blank"}
