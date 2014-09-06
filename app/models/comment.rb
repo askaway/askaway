@@ -11,7 +11,7 @@
 #
 
 class Comment < ActiveRecord::Base
-  include ProfanityFilter
+  include ReviewFilter
 
   belongs_to :question, touch: true, counter_cache: true
   belongs_to :user

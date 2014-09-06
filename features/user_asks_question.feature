@@ -22,3 +22,14 @@ Feature: User asks question
     Then I should be taken to the new questions list
     And I should see "Thanks! Your question will be reviewed"
     And I should not see my question
+
+  @javascript
+  Scenario: Moderated User asks question
+    Given I am logged in
+    And I am under moderation
+    When I visit the home page
+    And I click on "Ask a question"
+    And I fill out the ask question form with "Will you consider adding bridge tolls?"
+    Then I should be taken to the new questions list
+    And I should see "Thanks! Your question will be reviewed"
+    And I should not see my question

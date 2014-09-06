@@ -66,22 +66,6 @@ describe Question, :type => :model do
     end
   end
 
-  describe "profanity filter" do
-    let(:dirty_q) { FactoryGirl.create(:question,
-                    body: "Yo! What the fuck? This shit is krayyy!!") }
-    let(:clean_q) { FactoryGirl.create(:question,
-                    body: "I like rainbows. Do you? Meowww!!") }
-
-    it "is marked as awaiting_review if it has profane words" do
-      expect(dirty_q).to be_awaiting_review
-    end
-
-    it 'is marked as default if no profane words' do
-      expect(clean_q).to be_default
-      expect(clean_q).not_to be_awaiting_review
-    end
-  end
-
   context 'awaiting_review' do
     before do
       @question = FactoryGirl.create(:question)

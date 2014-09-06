@@ -18,3 +18,12 @@ Feature: User submits comment
     And I fill out the comment form with "Yo! What the fuck? This shit craay!!!"
     Then I should not see my comment in the list
     And I should see "Thanks! Your comment will be reviewed"
+
+  @javascript
+  Scenario: Moderated User posts comment
+    Given I am logged in
+    And I am under moderation
+    When I visit question page
+    And I fill out the comment form with "Trolls 4 Lyfe"
+    Then I should not see my comment in the list
+    And I should see "Thanks! Your comment will be reviewed"

@@ -16,6 +16,10 @@ Given(/^I am logged in as an admin$/) do
   step 'I am logged in'
 end
 
+Given(/^I am under moderation$/) do
+  @user.update_attribute(:under_moderation, true)
+end
+
 Then(/^I should be asked to log in$/) do
   expect(page).to have_css('#login-modal.modal.in')
 end

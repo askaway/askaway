@@ -23,7 +23,7 @@ class Question < ActiveRecord::Base
   friendly_id slug_candidate, :use => [:slugged, :history]
   include FriendlyIdHelper
 
-  include ProfanityFilter
+  include ReviewFilter
 
   include PgSearch
   pg_search_scope :search,
