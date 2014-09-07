@@ -24,6 +24,7 @@ class Party < ActiveRecord::Base
 
   has_many :reps
   has_many :rep_users, through: :reps, source: :user
+  has_many :answers, through: :reps
 
   def invitations
     Invitation.to_join_party(self)

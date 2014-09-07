@@ -7,6 +7,18 @@ ActiveAdmin.register Party do
     end
   end
 
+  index do
+    selectable_column
+    column :id
+    column :name
+    column :auth_statement
+    column :description
+    column :questions_answered do |party|
+      party.answers.count
+    end
+    actions
+  end
+
   form do |f|
     f.inputs do
       f.input :name
