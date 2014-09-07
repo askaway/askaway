@@ -16,7 +16,7 @@ ActiveAdmin.register Answer do
     column :body
     column :rep
     column :party do |answer|
-      link_to answer.rep.party.name, answer.rep.party
+      link_to answer.rep.party.name, [:admin, answer.rep.party]
     end
     column :created_at
     column :updated_at
