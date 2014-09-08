@@ -559,7 +559,8 @@ CREATE TABLE users (
     uploaded_avatar_file_size integer,
     uploaded_avatar_updated_at timestamp without time zone,
     selected_avatar_type character varying(255),
-    selected_avatar_identity_id integer
+    selected_avatar_identity_id integer,
+    under_moderation boolean DEFAULT false NOT NULL
 );
 
 
@@ -1280,4 +1281,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140814103434');
 INSERT INTO schema_migrations (version) VALUES ('20140814104713');
 
 INSERT INTO schema_migrations (version) VALUES ('20140826095352');
+
+INSERT INTO schema_migrations (version) VALUES ('20140906035722');
 
