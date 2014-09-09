@@ -18,17 +18,10 @@
         .answer-footer.text-detail(ng-show="'{{answer.edit_path}}'")
           %a(ng-href="{{answer.edit_path}}") Edit
 
-.answer-form-container(ng-controller='AnswerFormCtrl' ng-show="question.can_answer && question.expanded")
+.answer-form-container(ng-show="question.can_answer && question.expanded")
   %div.media.comment.answer
     %span.pull-left.hidden-xs
       %img.media-object.avatar.comment-avatar{src: current_user.try(:avatar_url) }
     .media-body
-      %form(ng-submit="addAnswer()" name="new_answer" dirtyconfirm="new_answer")
-        .form-group
-          %textarea.form-control.required#answer-text(ng-model="question.answerText" placeholder='Write your answer...' ng-disabled="question.error_message")
-          %charcounter(for_model="question.answerText" maxlength="350")
-        .alert.alert-warning(ng-show="question.error_message")
-          {{question.error_message}}
-          %a(href ng-show="question.error_message" ng-click="loadQuestion()") (Reload question)
+      = render 'answers/form'
 
-        %input.btn.btn-primary#post-answer(type="submit" ng-disabled="!question.answerText" ng-hide="question.error_message" data-disable-with="Post answer" value='Post answer')

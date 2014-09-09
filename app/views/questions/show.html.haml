@@ -21,12 +21,12 @@
         %li.list-group-item.comment-count
           %ng-pluralize(count="question.answers_count" when="{ '1': '1 ANSWER', 'other': '{} ANSWERS' }")
         - if show_answer_form?
-          %li.list-group-item
+          %li.list-group-item(ng-show="question.can_answer")
             %div.media
               %span.pull-left
                 %img.media-object.avatar.comment-avatar{src: current_user.avatar_url }
               %div.media-body
-                = render 'answers/form', question: @question, answer: @new_answer, button_text: 'Post answer'
+                = render 'answers/form'
         .panel-body
           = render 'answers/answers_expanded'
 
@@ -44,3 +44,6 @@
                 to comment
 
             = render partial: 'comments/item'
+
+- if current_user.try(:can_answer?, @question)
+  = render 'answers/share'

@@ -13,5 +13,14 @@ askaway.controller('QuestionCtrl', [
     $el.remove();
 
     $scope.toggleVote = upvotes;
+
+    $scope.loadQuestion = function() {
+      $http.get($scope.question.path + '.json').success(function(data) {
+        $scope.question.error_message = undefined;
+        $scope.question.answers = data.answers;
+        $scope.question.answers_count = data.answers_count;
+        $scope.question.can_answer = data.can_answer;
+      });
+    };
   }
 ]);
