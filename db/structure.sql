@@ -553,13 +553,13 @@ CREATE TABLE users (
     is_admin boolean DEFAULT false,
     name character varying(255) NOT NULL,
     is_embedder boolean DEFAULT false,
-    placeholder_id integer,
     uploaded_avatar_file_name character varying(255),
     uploaded_avatar_content_type character varying(255),
     uploaded_avatar_file_size integer,
     uploaded_avatar_updated_at timestamp without time zone,
     selected_avatar_type character varying(255),
     selected_avatar_identity_id integer,
+    placeholder_id integer,
     under_moderation boolean DEFAULT false NOT NULL
 );
 
@@ -770,11 +770,11 @@ ALTER TABLE ONLY votes ALTER COLUMN id SET DEFAULT nextval('votes_id_seq'::regcl
 
 
 --
--- Name: admin_notes_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: active_admin_comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY active_admin_comments
-    ADD CONSTRAINT admin_notes_pkey PRIMARY KEY (id);
+    ADD CONSTRAINT active_admin_comments_pkey PRIMARY KEY (id);
 
 
 --

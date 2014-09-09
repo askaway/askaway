@@ -18,7 +18,7 @@
         .answer-footer.text-detail(ng-show="'{{answer.edit_path}}'")
           %a(ng-href="{{answer.edit_path}}") Edit
 
-.answer-form-container(ng-show="question.can_answer && question.expanded")
+.answer-form-container(ng-show="question.can_answer")
   %div.media.comment.answer
     %span.pull-left.hidden-xs
       %img.media-object.avatar.comment-avatar{src: current_user.try(:avatar_url) }

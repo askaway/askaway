@@ -9,7 +9,7 @@ end
 When(/^I fill in and submit the answer form$/) do
   @answer_count = @question.answers_count
   fill_in 'answer_body', with: Faker::Lorem.paragraph
-  click_on 'post-answer-btn'
+  click_on 'post-answer'
 end
 
 Then(/^my answer should be posted and it should appear on the question$/) do
