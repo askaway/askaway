@@ -1,3 +1,12 @@
-%h1 Edit answer
-%p= @answer.question.body
-= render 'form', question: nil, answer: @answer, button_text: 'Update answer'
+.row
+  .col-xs-12.col-md-8.col-md-offset-2
+    .panel.panel-default
+      .panel-heading
+        %h1.panel-title Edit answer
+      .panel-body
+        %p= @answer.question.body
+        -#= render 'form', question: nil, answer: @answer, button_text: 'Update answer'
+        %div(ng-controller='AnswerFormCtrl')
+          = simple_form_for([@answer], html: { ng_controller: 'AnswerFormCtrl', name: "new_answer", dirtyconfirm:"new_answer", ng_submit: "submit()" }) do |f|
+            = f.input :body, placeholder: 'Write your answer...', label_html: {class: 'sr-only'}, as: :charlimited, input_html: {ng_initial: true}
+            = f.submit "Update answer", id: 'post-answer-btn', class: 'btn btn-primary', data: { disable_with: "Update answer" }
