@@ -8,11 +8,13 @@ end
 
 When(/^I fill in and submit the answer form$/) do
   @answer_count = @question.answers_count
-  fill_in 'answer_body', with: Faker::Lorem.paragraph
+  @answer_body = Faker::Lorem.paragraph
+  fill_in 'answer_body', with: @answer_body
   click_on 'post-answer'
 end
 
 Then(/^my answer should be posted and it should appear on the question$/) do
+  expect(find(".answer-item")).to have_content(@answer_body)
   expect(@question.reload.answers_count).to eq(@answer_count + 1)
 end
 

@@ -1,6 +1,6 @@
 %ul.answers-expanded(ng-show="question.answers_count > 0")
   %li.answers-expanded-item(ng-repeat="answer in question.answers")
-    %div.media.comment.answer
+    %div.media.comment.answer.answer-item
       %span.pull-left.answer-avatar-container
         %img.media-object.avatar.comment-avatar(ng-src="{{answer.rep_avatar}}")
         .answer-party-avatar
@@ -19,7 +19,7 @@
           %a(ng-href="{{answer.edit_path}}") Edit
 
 .answer-form-container(ng-show="question.can_answer")
-  %div.media.comment.answer
+  %div.media.comment.answer.answer-form
     %span.pull-left.hidden-xs
       %img.media-object.avatar.comment-avatar{src: current_user.try(:avatar_url) }
     .media-body
