@@ -22,6 +22,7 @@
 //= require directives/charcounter
 //= require directives/dirtyconfirm
 //= require directives/ng_initial
+//= require directives/facebooksharer
 //= require providers/upvotes
 //= require services/auth_interceptor
 //= require controllers/comments

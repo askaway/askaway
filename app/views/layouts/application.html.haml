@@ -37,9 +37,10 @@
     // Facebook
     <div id="fb-root"></div>
     :javascript
+      var fbAppId = "#{ENV['FACEBOOK_API_KEY']}";
       window.fbAsyncInit = function() {
         FB.init({
-          appId      : "#{ENV['FACEBOOK_API_KEY']}",
+          appId      : fbAppId,
           xfbml      : true,
           version    : 'v2.0'
         });

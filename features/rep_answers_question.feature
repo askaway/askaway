@@ -3,6 +3,7 @@ Feature: Rep answers question
   I want to answer questions on behalf of my party
   So that I can communicate our party's stance to the public.
 
+  @javascript
   Scenario: Rep answers question
     Given I am logged in
     And I am rep for a party

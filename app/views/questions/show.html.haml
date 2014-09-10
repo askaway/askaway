@@ -16,21 +16,8 @@
               by
               %span(ng-show="question.is_anonymous") {{question.user}}
               %a.emphasized(ng-hide="question.is_anonymous" ng-href="{{question.user_path}}") {{question.user}}
-
-      %ul.list-group
-        %li.list-group-item.comment-count
-          %ng-pluralize(count="question.answers_count" when="{ '1': '1 ANSWER', 'other': '{} ANSWERS' }")
-        - if show_answer_form?
-          %li.list-group-item
-            %div.media
-              %span.pull-left
-                %img.media-object.avatar.comment-avatar{src: current_user.avatar_url }
-              %div.media-body
-                = render 'answers/form', question: @question, answer: @new_answer, button_text: 'Post answer'
-        .panel-body
-          = render 'answers/answers_expanded'
-
-
+      .panel-body
+        = render 'answers/answers_expanded'
         %li.list-group-item.comment-count
           %ng-pluralize(count="question.comments_count" when="{ '1': '1 COMMENT', 'other': '{} COMMENTS' }")
       .panel-body
@@ -44,3 +31,6 @@
                 to comment
 
             = render partial: 'comments/item'
+
+- if current_user.try(:can_answer?, @question)
+  = render 'answers/share'

@@ -29,3 +29,6 @@
               .col-xs-12= render 'questions/answers'
       %li.list-group-item.loading-spinner.questions-loading-spinner(ng-show="loadingQuestions")
         = image_tag "ajax-loader.gif"
+
+- if current_user.try(:is_rep?)
+  = render 'answers/share'
