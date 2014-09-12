@@ -1,0 +1,12 @@
+.comment-count
+  %ng-pluralize(count="question.comments_count" when="{ '1': '1 COMMENT', 'other': '{} COMMENTS' }")
+.row.comment-list
+  .col-xs-12
+    - unless current_user.try(:can_answer?, @question)
+      - if user_signed_in?
+        = render 'comments/form'
+      - else
+        = link_to 'Log in', new_user_session_path
+        to comment
+
+    = render partial: 'comments/item'

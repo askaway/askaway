@@ -1,0 +1,4 @@
+.comment-count.answers-count
+  %ng-pluralize(count="question.answers_count" when="{ '1': '1 ANSWER', 'other': '{} ANSWERS' }")
+= render 'answers/answers_expanded'
+

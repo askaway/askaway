@@ -21,10 +21,3 @@
             ·
             %a(ng-href="{{answer.convert_path}}" data-method="put" data-confirm="Are you sure you want to convert this answer into a comment?") Convert
 
-.answer-form-container(ng-show="question.can_answer")
-  %div.media.comment.answer.answer-form
-    %span.pull-left.hidden-xs
-      %img.media-object.avatar.comment-avatar{src: current_user.try(:avatar_url) }
-    .media-body
-      = render 'answers/form'
-

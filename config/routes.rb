@@ -59,7 +59,7 @@ Askaway::Application.routes.draw do
   end
 
   scope '/embed', module: :embed, as: 'embed' do
-    resources :questions, only: [] do
+    resources :questions, only: [:show] do
       collection do
         get :trending
       end

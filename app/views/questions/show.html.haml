@@ -1,36 +1,15 @@
 %script#question-data(type="application/json")
   =render(:template => "questions/show.json").html_safe
 .row(ng-controller='QuestionCtrl')
-  .col-xs-12.col-md-8.col-md-offset-2(ng-cloak='')
+  .col-question-list.col-xs-12.col-md-8.col-md-offset-2(ng-cloak='')
     .panel.panel-default
       .see-more-questions
         = link_to '← See more questions', root_path
       .panel-body.question
-        .row
-          .col-xs-2.col-sm-2
-            = render 'question_up_vote'
-          .col-xs-10.col-sm-10
-            =render 'questions/question_body'
-            .text-detail
-              {{question.created_at}} ago
-              by
-              %span(ng-show="question.is_anonymous") {{question.user}}
-              %a.emphasized(ng-hide="question.is_anonymous" ng-href="{{question.user_path}}") {{question.user}}
-      .panel-body
-        = render 'answers/answers_expanded'
-        %li.list-group-item.comment-count
-          %ng-pluralize(count="question.comments_count" when="{ '1': '1 COMMENT', 'other': '{} COMMENTS' }")
-      .panel-body
-        .row.comment-list
-          .col-xs-12
-            - unless current_user.try(:can_answer?, @question)
-              - if user_signed_in?
-                = render 'comments/form'
-              - else
-                = link_to 'Log in', new_user_session_path
-                to comment
-
-            = render partial: 'comments/item'
+        = render 'questions/show/heading'
+        = render 'questions/show/answers'
+        = render 'answers/form'
+        = render 'questions/show/comments'
 
 - if current_user.try(:can_answer?, @question)
   = render 'answers/share'
