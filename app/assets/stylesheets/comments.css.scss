@@ -1,11 +1,10 @@
 .comment-count {
   color: $gray-light;
   font-size: $font-size-small;
-}
-.list-group-item.comment-count {
-  font-size: 12px;
+  font-size: 13px;
   border-top: 0;
   border-bottom-color: #dadada;
+  margin-bottom: 8px;
 }
 .comment {
   font-family: $font-family-helvetica;

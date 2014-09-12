@@ -16,11 +16,11 @@
               by
               %span(ng-show="question.is_anonymous") {{question.user}}
               %a.emphasized(ng-hide="question.is_anonymous" ng-href="{{question.user_path}}") {{question.user}}
-      .panel-body
+        .comment-count.answers-count
+          %ng-pluralize(count="question.answers_count" when="{ '1': '1 ANSWER', 'other': '{} ANSWERS' }")
         = render 'answers/answers_expanded'
-        %li.list-group-item.comment-count
+        .comment-count
           %ng-pluralize(count="question.comments_count" when="{ '1': '1 COMMENT', 'other': '{} COMMENTS' }")
-      .panel-body
         .row.comment-list
           .col-xs-12
             - unless current_user.try(:can_answer?, @question)
