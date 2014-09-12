@@ -20,9 +20,17 @@ ActiveAdmin.register Answer do
     end
     column :created_at
     column :updated_at
+    column :convert do |answer|
+      link_to "Convert to comment", convert_admin_answer_path(answer), method: :put
+    end
 
     actions
   end
 
+  member_action :convert, method: :put do
+    answer = Answer.find(params[:id])
+    comment = ConvertAnswerToComment.execute(answer)
+    redirect_to question_path(comment.question), :notice => "Answer converted to comment."
+  end
 
 end

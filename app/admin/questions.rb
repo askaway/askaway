@@ -43,6 +43,9 @@ ActiveAdmin.register Question do
         ' '
       end
     end
+    column :Answers do |question|
+      link_to "See answers", admin_answers_path + "?q%5Bquestion_id_eq%5D=#{question.id}"
+    end
     actions
   end
 
