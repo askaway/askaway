@@ -5,7 +5,7 @@
     .comment-name
       %a(ng-href="{{comment.user_path}}" ng-bind-html="comment.user_name")
       .comment-detail.text-detail
-        {{ comment.updated_at }} ago
+        {{ comment.created_at }} ago
         %span(ng-show="comment.can_delete")
           ·
           %a(ng-href="{{comment.path}}" data-method="delete" rel="nofollow") Delete
