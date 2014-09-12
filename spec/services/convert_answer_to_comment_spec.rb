@@ -10,6 +10,7 @@ describe "ConvertAnswerToComment" do
     it { expect(subject.body).to eq(answer.body) }
     it { expect(subject.user).to eq(answer.rep.user) }
     it { expect(subject.question).to eq(answer.question) }
+    it { expect(subject.created_at).to eq(answer.created_at) }
     it 'deletes the answer' do
       subject
       expect{ answer.reload }.to raise_error(ActiveRecord::RecordNotFound)
