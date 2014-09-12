@@ -1,0 +1,10 @@
+.row
+  .col-xs-2.col-sm-2
+    = render 'question_up_vote'
+  .col-xs-10.col-sm-10
+    =render 'questions/question_list/question_body'
+    .text-detail
+      {{question.created_at}} ago
+      by
+      %span(ng-show="question.is_anonymous") {{question.user}}
+      %a.emphasized(ng-hide="question.is_anonymous" ng-href="{{question.user_path}}") {{question.user}}

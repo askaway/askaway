@@ -14,7 +14,7 @@
               .answers-preview-party-avatar
                 %img(ng-src="{{answer.party_avatar}}")
       .col-sm-2.hidden-xs(ng-show="question.answers_count > 0")
-        = render 'questions/expand_question'
+        = render 'questions/question_list/expand_question'
 
   .answers-expanded-container.slide-down(ng-show="question.expanded")
     %hr(ng-show="question.answers_count > 0")

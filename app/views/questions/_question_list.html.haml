@@ -22,11 +22,11 @@
             = render 'questions/question_up_vote'
           .col-xs-10.col-sm-10.question-col-main
             .row
-              .col-xs-12= render 'questions/question_body'
+              .col-xs-12= render 'questions/question_list/question_body'
             .row.question-asker-row
-              .col-xs-12= render 'questions/asker'
+              .col-xs-12= render 'questions/question_list/asker'
             .row
-              .col-xs-12= render 'questions/answers'
+              .col-xs-12= render 'questions/question_list/answers'
       %li.list-group-item.loading-spinner.questions-loading-spinner(ng-show="loadingQuestions")
         = image_tag "ajax-loader.gif"
 

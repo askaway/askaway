@@ -24,4 +24,4 @@
                 .share-question-btn.share-question-btn-twitter
                   %span(id="share-question-btn-twitter-{{question.id}}")
   .col-sm-2.hidden-xs(ng-show="question.answers_count === 0")
-    = render 'questions/expand_question'
+    = render 'questions/question_list/expand_question'
