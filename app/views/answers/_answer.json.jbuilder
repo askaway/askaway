@@ -13,3 +13,7 @@ json.created_at   answer.created_at_description
 if AnswerPolicy.new(current_user, answer).edit?
   json.edit_path edit_answer_path(answer)
 end
+
+if current_user.try(:is_admin?)
+  json.convert_path convert_admin_answer_path(answer)
+end
