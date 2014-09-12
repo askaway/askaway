@@ -1,6 +1,6 @@
 class Embed::QuestionsController < ApplicationController
-  after_action :verify_authorized, except: [:trending]
-  after_action :allow_iframe, only: :trending
+  after_action :verify_authorized, except: [:trending, :show]
+  after_action :allow_iframe
 
   def trending
     @questions = policy_scope(Question).trending
@@ -9,9 +9,22 @@ class Embed::QuestionsController < ApplicationController
     render layout: 'embedded'
   end
 
+  def show
+    fetch_question
+    @answers = @question.answers
+    @question = @question.decorate
+    render layout: 'embedded'
+  end
+
   private
     def allow_iframe
       response.headers.except! 'X-Frame-Options'
+    end
+
+    def fetch_question
+      @question ||= Question.common_includes
+        .includes(comments: [user: [:identities, :placeholder]])
+        .friendly.find(params[:id])
     end
 end
 

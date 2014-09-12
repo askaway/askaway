@@ -1,13 +1,14 @@
 %script#question-data(type="application/json")
   =render(:template => "questions/show.json").html_safe
 .row(ng-controller='QuestionCtrl')
-  .col-xs-12.col-md-8.col-md-offset-2(ng-cloak='')
+  .col-question-list.col-xs-12.col-md-8.col-md-offset-2(ng-cloak='')
     .panel.panel-default
       .see-more-questions
         = link_to '← See more questions', root_path
       .panel-body.question
         = render 'questions/show/heading'
         = render 'questions/show/answers'
+        = render 'answers/form'
         = render 'questions/show/comments'
 
 - if current_user.try(:can_answer?, @question)

@@ -1,0 +1,8 @@
+%script#question-data(type="application/json")
+  =render(:template => "questions/show.json").html_safe
+.row(ng-controller='QuestionCtrl')
+  .col-xs-12.col-question-list(ng-cloak='')
+    .panel.panel-default
+      .panel-body.question
+        = render 'questions/show/heading'
+        = render 'questions/show/answers'
