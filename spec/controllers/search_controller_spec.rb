@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe SearchController, :type => :controller do
   let(:question){ FactoryGirl.create(:question, body: "Wes Anderson biodiesel.") }
+  let(:bad_question){ FactoryGirl.create(:question, body: "What the fuck") }
   let(:answer){ FactoryGirl.create(:answer, body: "Wes Anderson biodiesel.") }
 
   describe "GET 'index'" do
@@ -22,6 +23,7 @@ RSpec.describe SearchController, :type => :controller do
       let(:query){ "Wes Anderson" }
       it{ expect(assigns(:questions)).to include(question) }
       it{ expect(assigns(:questions)).to include(answer.question) }
+      it{ expect(assigns(:questions)).not_to include(bad_question) }
     end
   end
 

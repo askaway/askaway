@@ -1,6 +1,6 @@
 class SearchController < ApplicationController
   def index
-    @questions = Question.search(params[:q]).page(params[:page])
+    @questions = policy_scope(Question).search(params[:q]).page(params[:page])
     respond_to do |format|
       format.html
       format.json{ render 'questions/index' }
