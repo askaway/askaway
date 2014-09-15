@@ -17,4 +17,8 @@ class Comment < ActiveRecord::Base
   belongs_to :user
   validates :body, presence: true
   validates :question, presence: true
+
+  def self.common_includes
+    includes(user: [rep: [:party]])
+  end
 end

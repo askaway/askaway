@@ -10,7 +10,8 @@ class CommentDecorator < Draper::Decorator
   end
 
   def user_name
-    object.user.name
+    name = object.user.name
+    name += " (#{object.user.party.name})" if object.user.is_rep?
   end
 
   def user_path
