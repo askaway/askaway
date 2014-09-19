@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
 
   def check_site_closed
     if Setting.site_closed?
-      flash[:alert] = 'Sorry! The site has closed.'
+      flash[:alert] = 'Sorry! Posting on Ask Away has closed.'
       return redirect_to root_url
     end
   end

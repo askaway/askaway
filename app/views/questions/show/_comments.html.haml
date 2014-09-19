@@ -3,7 +3,7 @@
 .row.comment-list
   .col-xs-12
     - if current_user.try(:can_answer?, @question) || Setting.site_closed?
-      .text-detail Comments are now closed.
+      .text-detail Commenting has closed.
     - else
       - if user_signed_in?
         = render 'comments/form'

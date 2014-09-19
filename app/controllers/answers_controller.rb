@@ -1,5 +1,7 @@
 class AnswersController < ApplicationController
   before_action :authenticate_user!, except: :history
+  before_action :check_site_closed_xhr, only: [:create]
+  before_action :check_site_closed, only: [:edit, :update]
 
   def edit
     authorize(answer)
@@ -42,6 +44,13 @@ class AnswersController < ApplicationController
   end
 
   private
+    def check_site_closed_xhr
+      if Setting.site_closed?
+        error_message = 'Sorry, answering on Ask Away has closed.'
+        return render json: { message: error_message }, status: 422
+      end
+    end
+
     def answer
       @answer ||= Answer.find(params[:id])
     end
