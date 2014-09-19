@@ -23,7 +23,7 @@
               %a.btn.btn-default.btn-login.navbar-btn{:href => '#', :'data-toggle' => 'modal', :'data-target' => '#login-modal'} Log in
         %li
           - if Setting.get('site_closed') == 't'
-            %div.tooltip-site-closed{"data-toggle" => "tooltip", 'data-placement' => "bottom", title: "Sorry! Question asking has now closed."}
+            %div.tooltip-site-closed{"data-toggle" => "tooltip", 'data-placement' => "bottom", title: "Sorry! Asking questions has closed."}
               = link_to 'Ask a question', '#', disabled: :disabled, class: 'btn btn-primary navbar-btn btn-ask navbar-btn-ask'
           - else
             %div
