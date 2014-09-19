@@ -22,8 +22,12 @@
             %div
               %a.btn.btn-default.btn-login.navbar-btn{:href => '#', :'data-toggle' => 'modal', :'data-target' => '#login-modal'} Log in
         %li
-          %div
-            = link_to 'Ask a question', new_question_path, class: 'btn btn-primary navbar-btn btn-ask navbar-btn-ask'
+          - if Setting.get('site_closed') == 't'
+            %div.tooltip-site-closed{"data-toggle" => "tooltip", 'data-placement' => "bottom", title: "Sorry! Question asking has now closed."}
+              = link_to 'Ask a question', '#', disabled: :disabled, class: 'btn btn-primary navbar-btn btn-ask navbar-btn-ask'
+          - else
+            %div
+              = link_to 'Ask a question', new_question_path, class: 'btn btn-primary navbar-btn btn-ask navbar-btn-ask'
         - if current_user
           %li
             %a.user-settings-dropdown.dropdown-toggle{href: '', :'data-toggle' => 'dropdown'}
@@ -33,8 +37,9 @@
               = render 'user_links'
               %li= link_to 'Log out', destroy_user_session_path, method: :delete
       %ul.nav.navbar-nav.visible-xs
-        %li
-          = link_to 'Ask a question', new_question_path
+        - unless Setting.get('site_closed') == 't'
+          %li
+            = link_to 'Ask a question', new_question_path
         - if current_user
           = render 'user_links'
         %li

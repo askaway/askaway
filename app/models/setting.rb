@@ -7,5 +7,9 @@ class Setting < ActiveRecord::Base
     def get(name)
       Setting.where(name: name).first.try(:value)
     end
+
+    def site_closed?
+      Setting.get('site_closed') == 't'
+    end
   end
 end

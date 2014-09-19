@@ -15,4 +15,7 @@ askaway.config(function($httpProvider) {
   $httpProvider.interceptors.push('askaway.auth_interceptor');
 });
 
-$(".alert").alert();
+$( document ).ready(function() {
+  $(".alert").alert();
+  $('.tooltip-site-closed').tooltip();
+});

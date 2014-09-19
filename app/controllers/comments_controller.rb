@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!, only: :create
+  before_action :check_site_closed, only: :create
   before_filter :fetch_question, only: :create
 
   def create

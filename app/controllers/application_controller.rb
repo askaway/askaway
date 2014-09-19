@@ -15,6 +15,13 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def check_site_closed
+    if Setting.site_closed?
+      flash[:alert] = 'Sorry! The site has closed.'
+      return redirect_to root_url
+    end
+  end
+
   def store_location
     # store last url - this is needed for post-login redirect to whatever the user last visited.
     # TODO: replace with checking controller name (less likely to change than path)
