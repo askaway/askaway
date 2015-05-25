@@ -56,6 +56,10 @@ group :development do
   gem 'spring'
   gem "spring-commands-rspec"
   gem "spring-commands-cucumber"
+  # Profilers while we speed things up...
+  gem 'bullet'
+  gem 'rack-mini-profiler'
+  gem 'flamegraph'
   # Livereload seemed to be causing me errors. Feel free to uncomment if needed.
   # You'll also need to uncomment the line in development.rb. -Jon Lemmon
   # gem "rack-livereload"
@@ -85,7 +89,7 @@ end
 # Production monitoring gems
 # (too annoying to stick into :production group, so i left them here -JL)
 gem 'raygun4ruby'
-gem 'newrelic_rpm'
+# gem 'newrelic_rpm'
 
 group :production do
   gem 'unicorn'

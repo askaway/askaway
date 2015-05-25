@@ -84,7 +84,9 @@ module UploadedAvatar
     else
       placeholder_image_url(size: size)
     end
+    ActionController::Base.helpers.asset_path("placeholders/#{Animae.sample}.jpg")
   end
+  Animae = [ 'baboon', 'fox', 'giraffe', 'owl', 'pukeko' ]
 
   private
     def placeholder_image_url(size: :small)
@@ -94,7 +96,7 @@ module UploadedAvatar
       else
         # This sucks but I can't think of a better way to do it. Should
         # mainly only affect the tests...
-        ActionController::Base.helpers.asset_path("placeholders/owl.jpg");
+        ActionController::Base.helpers.asset_path("placeholders/owl.jpg")
       end
     end
 

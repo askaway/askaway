@@ -53,11 +53,16 @@ class Question < ActiveRecord::Base
   end
 
   def self.common_includes
-    includes( user:[:identities, :placeholder],
+    includes( user:[:identities, :placeholder, :selected_avatar_identity],
               answers:[
                 rep:[
-                  party:[:placeholder],
-                  user:[:identities, :placeholder]
+                  ### Why :identities and :placeholder? they're not used on the landing page -ML
+                  # party: [:placeholder],
+                  # user:  [:identities, :placeholder]
+                  party: [:selected_avatar_identity],
+                  user:  [:selected_avatar_identity]
+                  # party: [:placeholder, :selected_avatar_identity],
+                  # user:  [:identities, :placeholder, :selected_avatar_identity]
                 ]
               ])
   end
