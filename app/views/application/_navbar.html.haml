@@ -15,8 +15,8 @@
           %input.form-control{type: "text", name: 'q', placeholder: "Search questions", value: params[:q]}
     %nav.collapse.navbar-collapse
       %ul.nav.navbar-nav.navbar-right.hidden-xs
-        %li
-          = link_to 'About', about_path, class: 'navbar-about-link'
+        -# %li
+        -#   = link_to 'About', about_path, class: 'navbar-about-link'
         - unless current_user
           %li
             %div
