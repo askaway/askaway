@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 # ruby '2.0.0'
 
-gem 'rails', '~> 4.1.0'
+gem 'rails', '~> 4.1.14'
 
 gem 'devise'
 gem 'activeadmin', github: 'gregbell/active_admin'
