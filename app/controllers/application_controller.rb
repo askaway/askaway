@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   before_filter :update_sanitized_params, if: :inside_devise?
   before_filter :ensure_signup_complete, unless: :inside_devise?
   before_filter :set_meta_tags
+  before_filter :add_note_about_the_site_being_old
 
   after_action :verify_authorized, :except => :index
 
@@ -113,6 +114,10 @@ class ApplicationController < ActionController::Base
     # @meta_description = "See the political parties' responses to the things you care about."
     # @meta_description = "See what they're saying about the things that are important to you."
     @meta_img = asset_url('askaway-facebook.jpg')
+  end
+
+  def add_note_about_the_site_being_old
+      flash[:notice] = "These questions and answers are from the 2014 General Election. To see what the Design and Democracy Project is doing this year, <a href='https://www.facebook.com/designanddemocracy' target='_blank'>follow them on Facebook</a>.".html_safe
   end
 
   def redirect_to_canonical_show_path(record)
