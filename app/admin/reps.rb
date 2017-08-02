@@ -2,6 +2,8 @@ ActiveAdmin.register Rep do
   scope :all
   scope :unassigned
 
+  permit_params :user_id, :party_id
+  
   index do
     column :id
     column :user_name
